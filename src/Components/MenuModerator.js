@@ -27,8 +27,8 @@ class MenuModerator extends Component {
         let allRecepies = [...recepies];
         let newMenu = [];
         while (allRecepies.length > 0 && newMenu.length < numberOfDays) {
-            let currentLength = allRecepies.length;
-            let randomNumber = this.getRandomNumber(currentLength);
+            let remainingRecepies = allRecepies.length;
+            let randomNumber = this.getRandomNumber(remainingRecepies);
             newMenu.push(allRecepies[randomNumber]);
             allRecepies.splice(randomNumber, 1);
         }        
