@@ -1,38 +1,78 @@
+* {
+  box-sizing: border-box;
+}
+
 .App {
+  margin: auto;
   text-align: center;
+  font-family: Garamond, Cambria;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.week-menu-moderator { 
+  margin-top: 3rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.week-menu-displayer {
+  background-color: #ffe6e6;
+  border-radius: 0.3rem;
+  color: #4d0001;
+  padding-bottom: 0.3rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.week-menu-button {
+  margin-top: 0.7rem;
+  font-family: Garamond, Cambria;
+  font-size: large;
+  background-color: #FC913A;
+  color: #4d0001;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  outline: none;
+}
+
+.week-menu-button:hover {
+  background-color: #df6616;
   color: white;
+  border: none;
 }
 
-.App-link {
-  color: #61dafb;
+.week-menu-button:active {
+  transform: translateY(2px);
+  border: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.week-menu-title {
+  padding-top: 1em;
+}
+
+.day-menu-displayer {
+  background-color: white;
+  margin: 0.5rem;
+  border: 0.1rem solid #FC913A;
+  border-radius: 0.3rem;
+  cursor: pointer;
+}
+
+.recepie-description {
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+  padding-bottom: 0;
+  text-align: left;
+}
+
+.recepie-description-row, .recepie-description-missing {
+  margin: 0 0 0.5rem 0;
+}
+
+.recepie-description-missing {
+  text-align: center;
+  color: #FC913A;
+}
+
+@media (min-width: 1000px) {
+  .App {
+    width: 25%;
   }
 }

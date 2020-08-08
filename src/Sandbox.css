@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+}
+
+.container-01 {
+    border: solid black 1px;
+    height: 500px;
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.box-01:hover {
+    height: 100px;
+    border-radius: 0.5rem;
+}
+
+.box-02:hover {
+    width: 100px;
+    border-radius: 0;
+}
+
+.box-03:hover {
+    opacity: 0;
+}
+
+.box-01 {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(27, 172, 172);
+    border: 0.1rem dotted turquoise;
+    transition: all 500ms;
+}
+
+.box-02 {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(175, 101, 169);
+    border: 0.1rem dotted rgb(109, 69, 133);
+    border-radius: 25%;
+    transition: all 500ms;
+}
+
+.box-03 {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(255, 253, 137);
+    border: 0.1rem dotted rgb(224, 168, 64);
+    border-radius: 50%;
+    transition: all 500ms;
+}
