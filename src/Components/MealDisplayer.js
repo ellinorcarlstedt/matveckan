@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import '../App.css';
-import MealCategoryTitle from './MealCategoryTitle';
+import Weekday from './Weekday';
+import MealCategory from './MealCategory';
 import MealTitle from './MealTitle';
 import RecepieDescription from './RecepieDescription';
 
@@ -28,10 +29,16 @@ class MealDisplayer extends Component {
         }
 
         return (
-            <div className="day-menu-displayer" onClick={() => this.toggleRecepie()}>
-                <MealCategoryTitle title={this.props.meal.mealCategory}/>
-                <MealTitle  title={this.props.meal.mealName}/>
-                {thisRecepieIsOpen && <RecepieDescription description={this.props.meal.description}/>}
+            <div className="meal-displayer" onClick={() => this.toggleRecepie()}>
+                <div className="meal-displayer-overview">
+                    <Weekday weekday={this.props.weekday}/>
+                    <MealTitle  title={this.props.meal.mealName}/>
+                    <MealCategory category={this.props.meal.mealCategory}/>
+                </div>
+                {thisRecepieIsOpen && 
+                <div>
+                    <RecepieDescription description={this.props.meal.description}/> 
+                </div>}
             </div>
         )
     }

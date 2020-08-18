@@ -1,15 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
 import '../App.css';
 
-class MealTitle extends Component {
-    render() {
+function MealTitle (props) {
         return (
-            <div className="meal-title">
-                {this.props.title}
+            <div className="meal-title" data-testid="test-div-meal-title">
+                {props.title}
             </div>
         )
     }
-
-}
 
 export default MealTitle;

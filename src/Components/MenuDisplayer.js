@@ -26,25 +26,27 @@ class MenuDisplayer extends Component {
     }
 
     render () {
-        const menu = [];
-        this.props.menu.forEach((meal) => {
-            menu.push(<MealDisplayer 
-                                key={meal.index} 
-                                meal={meal} 
-                                isARecepieOpen={this.state.isARecepieOpen}
-                                indexOfOpenRecepie={this.state.indexOfOpenRecepie}
-                                openRecepie={() => this.openRecepie(meal.index)}
-                                closeRecepie={() => this.closeRecepie()}/>)
-            } 
+
+        const menu = this.props.menu.map((meal, index) => 
+            (
+            <MealDisplayer 
+                key={meal.index} 
+                weekday={index + 1}
+                meal={meal} 
+                isARecepieOpen={this.state.isARecepieOpen}
+                indexOfOpenRecepie={this.state.indexOfOpenRecepie}
+                openRecepie={() => this.openRecepie(meal.index)}
+                closeRecepie={() => this.closeRecepie()}/>
+            )
         )
 
         return (
             <div>
-            <div className="week-menu-displayer">
-                <h2 className="week-menu-title">Veckans meny!</h2>
+            <div className="menu-displayer">
+                <h2 className="menu-displayer-title">Veckans meny</h2>
                 {menu} 
             </div>
-            <button className="week-menu-button" onClick={this.reloadMenu}>Nytt menyförslag</button>
+            <button className="menu-displayer-button-reload" onClick={this.reloadMenu}>Nytt menyförslag</button>
         </div>
         )
     }

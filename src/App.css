@@ -8,18 +8,44 @@
   font-family: Garamond, Cambria;
 }
 
-.week-menu-moderator { 
-  margin-top: 3rem;
+.head-links-ul {
+  background-color: #FC913A;;
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
-.week-menu-displayer {
+.head-links-ul li {
+  padding: 0.3rem 1rem;
+}
+
+.head-links-ul a {
+  color:#4d0001;
+  text-decoration: none;
+}
+
+.head-links-ul li:hover {
+  background-color: #df6616;
+  color: white;
+}
+.head-links-ul a:hover {
+  color: white;
+}
+
+.menu-moderator {
+  margin-top: 0.7rem;
+}
+
+.menu-displayer {
   background-color: #ffe6e6;
   border-radius: 0.3rem;
   color: #4d0001;
   padding-bottom: 0.3rem;
 }
 
-.week-menu-button {
+.menu-displayer-button-reload {
   margin-top: 0.7rem;
   font-family: Garamond, Cambria;
   font-size: large;
@@ -32,27 +58,46 @@
   outline: none;
 }
 
-.week-menu-button:hover {
+.menu-displayer-button-reload:hover {
   background-color: #df6616;
   color: white;
   border: none;
 }
 
-.week-menu-button:active {
+.menu-displayer-button-reload:active {
   transform: translateY(2px);
   border: none;
 }
 
-.week-menu-title {
+.menu-displayer-title {
   padding-top: 1em;
+  margin-top: 0;
 }
 
-.day-menu-displayer {
+.meal-displayer {
   background-color: white;
   margin: 0.5rem;
   border: 0.1rem solid #FC913A;
   border-radius: 0.3rem;
   cursor: pointer;
+}
+
+.meal-displayer-overview {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3rem;
+}
+
+.weekday {
+  padding-left: 0.7rem;
+}
+
+.meal-category img {
+  box-sizing: content-box;
+  height: 32px;
+  width: 32px;
+  padding-right: 0.7rem;
 }
 
 .recepie-description {
@@ -69,6 +114,12 @@
 .recepie-description-missing {
   text-align: center;
   color: #FC913A;
+}
+
+footer {
+  margin-top: 0.7rem;
+  font-size: small;
+  color: #4d0001;
 }
 
 @media (min-width: 1000px) {

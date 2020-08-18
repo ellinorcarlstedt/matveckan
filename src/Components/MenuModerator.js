@@ -40,7 +40,7 @@ class MenuModerator extends Component {
         let menu = this.getMenu(this.state.allRecepies, this.state.numberOfDays);
 
         return (
-        <div className="week-menu-moderator">
+        <div className="menu-moderator">
             <MenuDisplayer menu={menu} reloadMenu={() => this.reloadMenu(7)}/>
         </div>
         )
