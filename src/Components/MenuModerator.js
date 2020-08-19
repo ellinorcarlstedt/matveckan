@@ -41,10 +41,10 @@ class MenuModerator extends Component {
 
         return (
         <div className="menu-moderator">
-            <MenuDisplayer menu={menu} reloadMenu={() => this.reloadMenu(7)}/>
+            <MenuDisplayer menu={menu} reloadMenu={() => this.reloadMenu(7)}/>  
         </div>
         )
-    }
+    } // I konvertering från class till funktion, testa att skriva "reloadmenu={reloadmenu.bind(this, 7)}" om orginalsyntaxen inte längre lirar. 
 }
 
 export default MenuModerator;
