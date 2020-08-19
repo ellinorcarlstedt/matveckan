@@ -36,13 +36,19 @@ function MenuDisplayer (props) {
             )
         )
 
+
+    let buttonText = "Visa menyförslag"; 
+    if (props.menu.length) {
+        buttonText = "Nytt menyförslag";
+    }            
+
         return (
             <div>
             <div className="menu-displayer">
                 <h2 className="menu-displayer-title">Veckans meny</h2>
                 {menu} 
             </div>
-            <button className="menu-displayer-button-reload" onClick={reloadMenu}>Nytt menyförslag</button>
+        <button className="menu-displayer-button-reload" onClick={reloadMenu}>{buttonText}</button>
         </div>
         )
     

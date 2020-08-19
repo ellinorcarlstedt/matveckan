@@ -40,7 +40,7 @@ function MenuModerator () {
 
     return (
     <div className="menu-moderator">
-        <MenuDisplayer menu={menu} reloadMenu={() => reloadMenu()}/>  
+        <MenuDisplayer menu={menu} reloadMenu={() => reloadMenu()}/> 
     </div>
     )
 
