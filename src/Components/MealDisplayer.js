@@ -14,8 +14,7 @@ class MealDisplayer extends Component {
 
         if  (anyRecepieIsOpen === false) {
             this.props.openRecepie();
-        } 
-        if  (anyRecepieIsOpen === true && openRecepie === thisRecepie) {
+        } else if  (anyRecepieIsOpen === true && openRecepie === thisRecepie) {
             this.props.closeRecepie();
         } else {
             this.props.openRecepie();
