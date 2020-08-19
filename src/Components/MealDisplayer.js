@@ -1,48 +1,43 @@
-import React, {Component} from 'react';
+import React from 'react';
 import '../App.css';
 import Weekday from './Weekday';
 import MealCategory from './MealCategory';
 import MealTitle from './MealTitle';
 import RecepieDescription from './RecepieDescription';
 
-class MealDisplayer extends Component {
+function MealDisplayer(props) {
 
-    toggleRecepie() {
-        let anyRecepieIsOpen = this.props.isARecepieOpen;
-        let openRecepie = this.props.indexOfOpenRecepie;
-        let thisRecepie = this.props.meal.index;
+    let anyRecepieIsOpen = props.isARecepieOpen;
+    let openRecepie = props.indexOfOpenRecepie;
+    let thisRecepie = props.meal.index;
 
-        if  (anyRecepieIsOpen === false) {
-            this.props.openRecepie();
-        } 
-        if  (anyRecepieIsOpen === true && openRecepie === thisRecepie) {
-            this.props.closeRecepie();
+    const toggleRecepie = () => {
+        if  (!anyRecepieIsOpen) {
+            props.openRecepie();
+        } else if  (anyRecepieIsOpen && openRecepie === thisRecepie) {
+            props.closeRecepie();
         } else {
-            this.props.openRecepie();
+            props.openRecepie();
         }
     }
-
-    render () {
         let thisRecepieIsOpen = false;
-        if (this.props.indexOfOpenRecepie === this.props.meal.index) {
+        if (openRecepie === thisRecepie) {
             thisRecepieIsOpen = true;
         }
 
         return (
-            <div className="meal-displayer" onClick={() => this.toggleRecepie()}>
+            <div className="meal-displayer" onClick={() => toggleRecepie()}>
                 <div className="meal-displayer-overview">
-                    <Weekday weekday={this.props.weekday}/>
-                    <MealTitle  title={this.props.meal.mealName}/>
-                    <MealCategory category={this.props.meal.mealCategory}/>
+                    <Weekday weekday={props.weekday}/>
+                    <MealTitle  title={props.meal.mealName}/>
+                    <MealCategory category={props.meal.mealCategory}/>
                 </div>
                 {thisRecepieIsOpen && 
                 <div>
-                    <RecepieDescription description={this.props.meal.description}/> 
+                    <RecepieDescription description={props.meal.description}/> 
                 </div>}
             </div>
         )
-    }
-
 }
 
 export default MealDisplayer;

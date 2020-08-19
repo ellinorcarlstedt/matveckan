@@ -1,50 +1,49 @@
-import React, {Component} from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css';
 import MenuDisplayer from './MenuDisplayer';
 import recepies from '../recepies';
 
-class MenuModerator extends Component {
-    state = {
-        allRecepies: [],
-        numberOfDays: 7 
+function MenuModerator () {
+    const [ allRecepies, setAllRecepies ] = useState(null);
+    const [ selectedRecepies, setSelectedRecepies ] = useState([]);
+
+    const importRecepies = () => {
+         setAllRecepies(recepies);
     }
 
-    reloadMenu = this.reloadMenu.bind(this);
-
-    componentDidMount() {
-        this.setState({allRecepies: recepies})
-    } 
-
-    reloadMenu(days) {
-        this.setState({numberOfDays: days});
+    const reloadMenu = () => {
+        const newMenu = getMenu(allRecepies, 7);
+        setSelectedRecepies(newMenu);
     }
 
-    getRandomNumber(maxNumber) {
+    const getRandomNumber = (maxNumber) => {
         return Math.floor(Math.random() * maxNumber)
     }
 
-    getMenu(recepies, numberOfDays) {  
+    useEffect(() => {
+        importRecepies();
+    }, []);
+
+    const getMenu = (recepies, numberOfDays) => {  
         let allRecepies = [...recepies];
         let newMenu = [];
         while (allRecepies.length > 0 && newMenu.length < numberOfDays) {
             let remainingRecepies = allRecepies.length;
-            let randomNumber = this.getRandomNumber(remainingRecepies);
+            let randomNumber = getRandomNumber(remainingRecepies);
             newMenu.push(allRecepies[randomNumber]);
             allRecepies.splice(randomNumber, 1);
         }        
         return newMenu;
     }
 
+    let menu = selectedRecepies;
 
-    render () {
-        let menu = this.getMenu(this.state.allRecepies, this.state.numberOfDays);
+    return (
+    <div className="menu-moderator">
+        <MenuDisplayer menu={menu} reloadMenu={() => reloadMenu()}/>  
+    </div>
+    )
 
-        return (
-        <div className="menu-moderator">
-            <MenuDisplayer menu={menu} reloadMenu={() => this.reloadMenu(7)}/>  
-        </div>
-        )
-    } // I konvertering från class till funktion, testa att skriva "reloadmenu={reloadmenu.bind(this, 7)}" om orginalsyntaxen inte längre lirar. 
 }
 
 export default MenuModerator;
