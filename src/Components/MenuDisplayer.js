@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../App.css';
 import MealDisplayer from './MealDisplayer';
+import IconArtistAttribute from './IconArtistAttribute';
 
 function MenuDisplayer (props) {
 
@@ -37,18 +38,21 @@ function MenuDisplayer (props) {
         )
 
 
-    let buttonText = "Visa menyförslag"; 
+    let reloadButtonText = "Visa menyförslag"; 
+    let iconArtistAtt = "";
+    
     if (props.menu.length) {
-        buttonText = "Nytt menyförslag";
+        reloadButtonText = "Nytt menyförslag";
+        iconArtistAtt = <IconArtistAttribute />
     }            
 
         return (
-            <div>
+        <div>
             <div className="menu-displayer">
                 <h2 className="menu-displayer-title">Veckans meny</h2>
-                {menu} 
+                <button className="menu-displayer-button-reload" onClick={reloadMenu}>{reloadButtonText}</button>
+                    {menu}{iconArtistAtt}
             </div>
-        <button className="menu-displayer-button-reload" onClick={reloadMenu}>{buttonText}</button>
         </div>
         )
     

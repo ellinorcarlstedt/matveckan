@@ -45,10 +45,15 @@
   padding-bottom: 0.3rem;
 }
 
+.menu-displayer-title {
+  margin: 0;
+  padding-top: 1em;
+}
+
 .menu-displayer-button-reload {
-  margin-top: 0.7rem;
+  margin: 0.7rem 0 0.3rem;
   font-family: Garamond, Cambria;
-  font-size: large;
+  font-size: larger;
   background-color: #FC913A;
   color: #4d0001;
   border: none;
@@ -67,11 +72,6 @@
 .menu-displayer-button-reload:active {
   transform: translateY(2px);
   border: none;
-}
-
-.menu-displayer-title {
-  padding-top: 1em;
-  margin-top: 0;
 }
 
 .meal-displayer {
@@ -101,13 +101,25 @@
 }
 
 .recepie-description {
+  margin-top: -0.7rem;
   border-radius: 0.3rem;
   padding: 0.5rem;
   padding-bottom: 0;
   text-align: left;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  position: absolute;
+  width: 95%;
+  background-color: #ffffff;
 }
 
-.recepie-description-row, .recepie-description-missing {
+.recepie-description-title {
+  font-size: larger;
+  text-align: center;
+}
+
+.recepie-description-title,
+.recepie-description-row, 
+.recepie-description-missing {
   margin: 0 0 0.5rem 0;
 }
 
@@ -116,7 +128,7 @@
   color: #FC913A;
 }
 
-footer {
+.icon-artist-attribute {
   margin-top: 0.7rem;
   font-size: small;
   color: #4d0001;
@@ -126,4 +138,5 @@ footer {
   .App {
     width: 25%;
   }
+
 }

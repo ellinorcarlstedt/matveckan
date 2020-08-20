@@ -34,7 +34,7 @@ function MealDisplayer(props) {
                 </div>
                 {thisRecepieIsOpen && 
                 <div>
-                    <RecepieDescription description={props.meal.description}/> 
+                    <RecepieDescription description={props.meal.description} title={props.meal.mealName}/> 
                 </div>}
             </div>
         )

@@ -21,6 +21,7 @@ function RecepieDescription (props) {
     
     return (
         <div className="recepie-description">
+            <div className="recepie-description-title">{props.title}</div>
             {finalDescription}
         </div>
     )
