@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 import '../App.css';
 import Weekday from './Weekday';
 import MealCategory from './MealCategory';
@@ -9,7 +9,7 @@ function MealDisplayer(props) {
 
     let anyRecepieIsOpen = props.isARecepieOpen;
     let openRecepie = props.indexOfOpenRecepie;
-    let thisRecepie = props.meal.index;
+    let thisRecepie = props.meal.index;   
 
     const toggleRecepie = () => {
         if  (!anyRecepieIsOpen) {

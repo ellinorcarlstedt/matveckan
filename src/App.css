@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  margin: 0;
 }
 
 .App {
@@ -9,49 +10,38 @@
 }
 
 .head-links-ul {
-  background-color: #FC913A;;
   display: flex;
   justify-content: space-evenly;
   list-style-type: none;
+  background-color: #FC913A;;
   margin: 0;
-  padding: 0;
-}
-
-.head-links-ul li {
-  padding: 0.3rem 1rem;
+  padding: 0.7rem;
 }
 
 .head-links-ul a {
   color:#4d0001;
   text-decoration: none;
+  padding: 0.7rem;
 }
 
-.head-links-ul li:hover {
+.head-links-ul a:hover {
   background-color: #df6616;
   color: white;
 }
-.head-links-ul a:hover {
-  color: white;
-}
 
-.menu-moderator {
-  margin-top: 0.7rem;
-}
 
 .menu-displayer {
+  background-image: url('./icons/tomatobasil.jpg');
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-attachment: fixed;
   background-color: #ffe6e6;
-  border-radius: 0.3rem;
-  color: #4d0001;
-  padding-bottom: 0.3rem;
-}
-
-.menu-displayer-title {
-  margin: 0;
-  padding-top: 1em;
+  padding-bottom: 0.7rem;
 }
 
 .menu-displayer-button-reload {
-  margin: 0.7rem 0 0.3rem;
+  margin: 3rem 0 0.3rem;
   font-family: Garamond, Cambria;
   font-size: larger;
   background-color: #FC913A;
@@ -59,6 +49,7 @@
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 0.3rem;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
   cursor: pointer;
   outline: none;
 }
@@ -77,7 +68,7 @@
 .meal-displayer {
   background-color: white;
   margin: 0.5rem;
-  border: 0.1rem solid #FC913A;
+  box-shadow: 0.1rem 0.1rem 0.3rem rgba(0,0,0,0.25);
   border-radius: 0.3rem;
   cursor: pointer;
 }
@@ -129,9 +120,22 @@
 }
 
 .icon-artist-attribute {
-  margin-top: 0.7rem;
+  margin-top: 4rem;
   font-size: small;
-  color: #4d0001;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.icon-artist-attribute a {
+  text-decoration: none;
+}
+
+.icon-artist-attribute a:visited {
+  color: white;
+}
+
+.icon-artist-attribute a:hover {
+  color: #FC913A;
 }
 
 @media (min-width: 1000px) {

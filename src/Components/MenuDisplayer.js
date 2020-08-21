@@ -49,7 +49,6 @@ function MenuDisplayer (props) {
         return (
         <div>
             <div className="menu-displayer">
-                <h2 className="menu-displayer-title">Veckans meny</h2>
                 <button className="menu-displayer-button-reload" onClick={reloadMenu}>{reloadButtonText}</button>
                     {menu}{iconArtistAtt}
             </div>

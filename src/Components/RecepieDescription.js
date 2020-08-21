@@ -7,7 +7,7 @@ function RecepieDescription (props) {
     let finalDescription = "";
 
     if (rawDescription === "") {
-        finalDescription = (<div className="recepie-description-missing">Beskrivning saknas</div>)
+        finalDescription = (<div className="recepie-description-missing"> ~ beskrivning saknas ~</div>)
     } else {
         const splitDescription = rawDescription.split(".");
         finalDescription = splitDescription.map((row, i) => {

@@ -12,6 +12,7 @@ import RecepieInputModerator from './Components/RecepieInputModerator';
 function App() {
   return (
     <Router>
+      
       <div className="App">
         <nav>
             <ul className="head-links-ul">
