@@ -12,6 +12,7 @@ import RecepieInputModerator from './Components/RecepieInputModerator';
 function App() {
   return (
     <Router>
+      
       <div className="App">
         <nav>
             <ul className="head-links-ul">
@@ -27,9 +28,8 @@ function App() {
         <Switch> 
           <Route exact path="/" component={MenuModerator} />
           <Route exact path="/meny" component={MenuModerator} />
-          <Route exact path="/recept" component={RecepieInputModerator} /> 
+          <Route exact path="/recept" component={RecepieInputModerator} />
         </Switch>   
-        <footer><div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div></footer>
       </div>
       
     </Router>

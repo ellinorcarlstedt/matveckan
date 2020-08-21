@@ -1,55 +1,60 @@
-import React, {Component} from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 import MealDisplayer from './MealDisplayer';
+import IconArtistAttribute from './IconArtistAttribute';
 
-class MenuDisplayer extends Component {
-    state = {
-        isARecepieOpen: false,
-        indexOfOpenRecepie: null
+function MenuDisplayer (props) {
+
+    const [isARecepieOpen, setIsARecepieOpen] = useState(false);
+    const [indexOfOpenRecepie, setIndexOfOpenRecepie] = useState(null);
+
+    const openRecepie = (recepieIndex) => {
+        setIsARecepieOpen(true);
+        setIndexOfOpenRecepie(recepieIndex);
     }
 
-    openRecepie = this.openRecepie.bind(this);
-    closeRecepie = this.closeRecepie.bind(this);
-    reloadMenu = this.reloadMenu.bind(this);
-
-    openRecepie(recepieIndex) {
-        this.setState({isARecepieOpen: true, indexOfOpenRecepie: recepieIndex});
+    const closeRecepie = () => {
+        setIsARecepieOpen(false);
+        setIndexOfOpenRecepie(null);
     }
 
-    closeRecepie() {
-        this.setState({isARecepieOpen: false, indexOfOpenRecepie: null});
+    const reloadMenu = () => {
+        props.reloadMenu();
+        setIsARecepieOpen(false);
+        setIndexOfOpenRecepie(null);
     }
 
-    reloadMenu() {
-        this.props.reloadMenu();
-        this.closeRecepie();
-    }
-
-    render () {
-
-        const menu = this.props.menu.map((meal, index) => 
+    const menu = props.menu.map((meal, index) => 
             (
             <MealDisplayer 
                 key={meal.index} 
                 weekday={index + 1}
                 meal={meal} 
-                isARecepieOpen={this.state.isARecepieOpen}
-                indexOfOpenRecepie={this.state.indexOfOpenRecepie}
-                openRecepie={() => this.openRecepie(meal.index)}
-                closeRecepie={() => this.closeRecepie()}/>
+                isARecepieOpen={isARecepieOpen}
+                indexOfOpenRecepie={indexOfOpenRecepie}
+                openRecepie={() => openRecepie(meal.index)}
+                closeRecepie={() => closeRecepie()}/>
             )
         )
 
+
+    let reloadButtonText = "Visa menyförslag"; 
+    let iconArtistAtt = "";
+    
+    if (props.menu.length) {
+        reloadButtonText = "Nytt menyförslag";
+        iconArtistAtt = <IconArtistAttribute />
+    }            
+
         return (
-            <div>
+        <div>
             <div className="menu-displayer">
-                <h2 className="menu-displayer-title">Veckans meny</h2>
-                {menu} 
+                <button className="menu-displayer-button-reload" onClick={reloadMenu}>{reloadButtonText}</button>
+                    {menu}{iconArtistAtt}
             </div>
-            <button className="menu-displayer-button-reload" onClick={this.reloadMenu}>Nytt menyförslag</button>
         </div>
         )
-    }
+    
 }
 
 export default MenuDisplayer;
