@@ -7,21 +7,29 @@ function MenuDisplayer (props) {
 
     const [isARecepieOpen, setIsARecepieOpen] = useState(false);
     const [indexOfOpenRecepie, setIndexOfOpenRecepie] = useState(null);
+    const [lastOpenRecepie, setLastOpenRecepie] = useState(null);
 
     const openRecepie = (recepieIndex) => {
-        setIsARecepieOpen(true);
-        setIndexOfOpenRecepie(recepieIndex);
+        if (!isARecepieOpen) {
+            setIsARecepieOpen(true);
+            setIndexOfOpenRecepie(recepieIndex);
+        } else if (isARecepieOpen && !(indexOfOpenRecepie === recepieIndex)) {
+            setLastOpenRecepie(indexOfOpenRecepie);
+            setIndexOfOpenRecepie(recepieIndex);
+        }
     }
 
     const closeRecepie = () => {
         setIsARecepieOpen(false);
         setIndexOfOpenRecepie(null);
+        setLastOpenRecepie(null);
     }
 
     const reloadMenu = () => {
         props.reloadMenu();
         setIsARecepieOpen(false);
         setIndexOfOpenRecepie(null);
+        setLastOpenRecepie(null);
     }
 
     const menu = props.menu.map((meal, index) => 
@@ -32,8 +40,9 @@ function MenuDisplayer (props) {
                 meal={meal} 
                 isARecepieOpen={isARecepieOpen}
                 indexOfOpenRecepie={indexOfOpenRecepie}
+                lastOpenRecepie={lastOpenRecepie}
                 openRecepie={() => openRecepie(meal.index)}
-                closeRecepie={() => closeRecepie()}/>
+                closeRecepie={() => closeRecepie(meal.index)}/>
             )
         )
 

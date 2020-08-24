@@ -91,24 +91,24 @@
   padding-right: 0.7rem;
 }
 
-.hidden {
-  display: none;  
-}
-
 .recepie-description {
   overflow: hidden;
   border-radius: 0.3rem;
-  padding: 0 0.5rem 0.1rem;
+  padding: 0 0.5rem 0.1rem; 
   text-align: left;
   background-color: #ffffff;
   transition: height 0.5s;
 }
 
-.recepie-description-title,
 .recepie-description-row, 
 .recepie-description-missing {
   margin: 0 0 0.5rem 0;
 } 
+
+.hidden-no-padding {
+  display: none;  
+  padding: 0;
+}
 
 .recepie-description-missing {
   text-align: center;
