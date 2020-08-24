@@ -2,6 +2,7 @@ import React from 'react';
 import '../App.css';
 
 function MealTitle (props) {
+
         return (
             <div className="meal-title" data-testid="test-div-meal-title">
                 {props.title}
