@@ -7,41 +7,28 @@ import RecepieDescription from './RecepieDescription';
 
 function MealDisplayer(props) {
 
-    let anyRecepieIsOpen = props.isARecepieOpen;
+    let isARecepieOpen = props.isARecepieOpen;
     let openRecepie = props.indexOfOpenRecepie;
     let thisRecepie = props.meal.index;   
     let lastOpenRecepie = props.lastOpenRecepie;
 
     const toggleRecepie = () => {
-        if  (!anyRecepieIsOpen) {
+        if  (!isARecepieOpen) {
             props.openRecepie();
-        } else if (anyRecepieIsOpen && openRecepie === thisRecepie) {
+        } else if (isARecepieOpen && openRecepie === thisRecepie) {
             props.closeRecepie();
         } else {
             props.openRecepie();
         }
     }
 
-    let recepieDescriptionStatus = "idle";
+    let animationStatus = null;
+
     if (openRecepie === thisRecepie) {
-        recepieDescriptionStatus = "open";
-    } else if (anyRecepieIsOpen && !(openRecepie === thisRecepie) && lastOpenRecepie === thisRecepie) {
-        recepieDescriptionStatus = "close";
-    } else if (!anyRecepieIsOpen && lastOpenRecepie === thisRecepie) {
-        recepieDescriptionStatus = "close";
-    } else if (!anyRecepieIsOpen) {
-        recepieDescriptionStatus = "close";
-    }   else {
-        recepieDescriptionStatus = "idle";
-    }
-
-
-    /*
-        let isOpen = false;
-        if (openRecepie === thisRecepie) {
-            isOpen = true;
-        }
-    */
+        animationStatus = "open";
+    } else if (lastOpenRecepie === thisRecepie || !isARecepieOpen) {
+        animationStatus = "close";
+    }   
 
         return (
             <div className="meal-displayer" onClick={() => toggleRecepie()}>
@@ -53,9 +40,7 @@ function MealDisplayer(props) {
                 <div>
                     <RecepieDescription description={props.meal.description}
                                         id={thisRecepie}
-                                        recepieDescriptionStatus={recepieDescriptionStatus} 
-                                        anyRecepieIsOpen={anyRecepieIsOpen} 
-                                        lastOpenRecepie={lastOpenRecepie} 
+                                        animationStatus={animationStatus} 
                                         title={props.meal.mealName} 
                                         /> 
                 </div>

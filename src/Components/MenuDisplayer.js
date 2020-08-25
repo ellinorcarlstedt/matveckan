@@ -9,13 +9,13 @@ function MenuDisplayer (props) {
     const [indexOfOpenRecepie, setIndexOfOpenRecepie] = useState(null);
     const [lastOpenRecepie, setLastOpenRecepie] = useState(null);
 
-    const openRecepie = (recepieIndex) => {
+    const openRecepie = (recepie) => {
         if (!isARecepieOpen) {
             setIsARecepieOpen(true);
-            setIndexOfOpenRecepie(recepieIndex);
-        } else if (isARecepieOpen && !(indexOfOpenRecepie === recepieIndex)) {
+            setIndexOfOpenRecepie(recepie);
+        } else if (isARecepieOpen && !(indexOfOpenRecepie === recepie)) {
             setLastOpenRecepie(indexOfOpenRecepie);
-            setIndexOfOpenRecepie(recepieIndex);
+            setIndexOfOpenRecepie(recepie);
         }
     }
 
@@ -27,9 +27,7 @@ function MenuDisplayer (props) {
 
     const reloadMenu = () => {
         props.reloadMenu();
-        setIsARecepieOpen(false);
-        setIndexOfOpenRecepie(null);
-        setLastOpenRecepie(null);
+        closeRecepie();
     }
 
     const menu = props.menu.map((meal, index) => 
@@ -42,7 +40,7 @@ function MenuDisplayer (props) {
                 indexOfOpenRecepie={indexOfOpenRecepie}
                 lastOpenRecepie={lastOpenRecepie}
                 openRecepie={() => openRecepie(meal.index)}
-                closeRecepie={() => closeRecepie(meal.index)}/>
+                closeRecepie={() => closeRecepie()}/>
             )
         )
 
@@ -58,7 +56,7 @@ function MenuDisplayer (props) {
         return (
         <div>
             <div className="menu-displayer">
-                <button className="menu-displayer-button-reload" onClick={reloadMenu}>{reloadButtonText}</button>
+                <button className="menu-displayer-reload-button" onClick={reloadMenu}>{reloadButtonText}</button>
                     {menu}{iconArtistAtt}
             </div>
         </div>

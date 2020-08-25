@@ -23,7 +23,7 @@ const recepies = [
         index: 103,
         mealName: "Kyckling med basilikasås",
         mealCategory: 2,
-        ingredients: ["kycklingfilé", "basilika", "citron", "creme fraiche", "potatis", "salt", "peppar", "granatäppelkärnor"],
+        ingredients: ["kycklingfilé", "basilika", "citron", "creme fraiche", "potatis", "salt", "peppar", "granatäppelkärnor"], 
         description: "Sätt ugnen på 200°. Skär varje kycklingfilé i tre avlånga bitar. Lägg i en ugnsform och krydda med salt och peppar. Finhacka basilikan och rör ihop med crème fraiche, citron och vitlök. Häll såsen över kycklingen och gratinera mitt i ugnen ca 20 min. Strö över granatäppelkärnor och ev mer basilikablad. Dra ett varv med pepparkvarnen. Servera med ugnsrostad potatis eller tagliatelle."
     },
 

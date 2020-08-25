@@ -40,7 +40,7 @@
   padding-bottom: 0.7rem;
 }
 
-.menu-displayer-button-reload {
+.menu-displayer-reload-button {
   margin: 3rem 0 0.3rem;
   font-family: Garamond, Cambria;
   font-size: larger;
@@ -54,13 +54,13 @@
   outline: none;
 }
 
-.menu-displayer-button-reload:hover {
+.menu-displayer-reload-button:hover {
   background-color: #df6616;
   color: white;
   border: none;
 }
 
-.menu-displayer-button-reload:active {
+.menu-displayer-reload-button:active {
   transform: translateY(2px);
   border: none;
 }
@@ -94,10 +94,10 @@
 .recepie-description {
   overflow: hidden;
   border-radius: 0.3rem;
-  padding: 0 0.5rem 0.1rem; 
+  padding: 0 0.5rem 0; 
   text-align: left;
   background-color: #ffffff;
-  transition: height 0.5s;
+  transition: height 0.3s;
 }
 
 .recepie-description-row, 
@@ -105,9 +105,8 @@
   margin: 0 0 0.5rem 0;
 } 
 
-.hidden-no-padding {
+.hidden {
   display: none;  
-  padding: 0;
 }
 
 .recepie-description-missing {

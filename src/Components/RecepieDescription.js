@@ -11,17 +11,17 @@ function RecepieDescription (props) {
     }
 
     const openWithTransition = (element) => {
-        element.classList.remove("hidden-no-padding");
-        element.style.height = "0px";
+        element.classList.remove("hidden");
         requestAnimationFrame(() => { 
             element.style.height = elementHeight + "px";
         }) 
     }
 
-    const closeWithTransition = async (element) => {
-        await requestAnimationFrame(() => { 
+    const closeWithTransition = (element) => {
+            requestAnimationFrame(() => {  
             element.style.height = "0px";
         });
+        
     }
 
     let formattedDescription = "";
@@ -40,29 +40,25 @@ function RecepieDescription (props) {
     }
 
     useEffect(() => {
-        let recDesc = document.getElementById(`recDesc-${props.id}`);
-        recDesc.style.height = "auto";
-        recDesc.classList.remove("hidden-no-padding");
-        let recDescDimensions = recDesc.getBoundingClientRect();
-        registerHeight(recDescDimensions.height);
-        recDesc.classList.add("hidden-no-padding");
+        const element = document.getElementById(`recepie-description-${props.id}`);
+        element.classList.remove("hidden");
+        const elementDimensions = element.getBoundingClientRect();
+        registerHeight(elementDimensions.height);
+        element.classList.add("hidden");
     }, [props.id]);
 
     useEffect(() => {
-        let recDesc = document.getElementById(`recDesc-${props.id}`);
-        if (props.recepieDescriptionStatus === "open") {
-            console.log(`${props.title} would be open now.`);
-            openWithTransition(recDesc);
-        } else if (props.recepieDescriptionStatus === "close") {
-            console.log(`${props.title} would close.`);
-            closeWithTransition(recDesc);
-        } else if (props.recepieDescriptionStatus === "idle") {
-            console.log("Dupp-dupp");
-        }
+        const element = document.getElementById(`recepie-description-${props.id}`);
+        if (props.animationStatus === "open") {
+            openWithTransition(element);
+        } else if (props.animationStatus === "close") {
+            closeWithTransition(element);
+
+        } 
     });
     
     return (
-        <div className="recepie-description hidden-no-padding" id={`recDesc-${props.id}`}>
+        <div className="recepie-description hidden" id={`recepie-description-${props.id}`}>
             {formattedDescription}
         </div>
     )
