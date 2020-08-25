@@ -45,13 +45,8 @@ function MenuDisplayer (props) {
         )
 
 
-    let reloadButtonText = "Visa menyförslag"; 
-    let iconArtistAtt = "";
-    
-    if (props.menu.length) {
-        reloadButtonText = "Nytt menyförslag";
-        iconArtistAtt = <IconArtistAttribute />
-    }            
+    let reloadButtonText = props.menu.length ? "Nytt menyförslag" : "Visa menyförslag";
+    let iconArtistAtt = props.menu.length ? <IconArtistAttribute /> : "";
 
         return (
         <div>

@@ -41,7 +41,6 @@ function MealDisplayer(props) {
                     <RecepieDescription description={props.meal.description}
                                         id={thisRecepie}
                                         animationStatus={animationStatus} 
-                                        title={props.meal.mealName} 
                                         /> 
                 </div>
             </div>
