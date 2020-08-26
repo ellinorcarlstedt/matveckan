@@ -1,0 +1,9 @@
+.transition-component {
+    background-color: white;
+    overflow: hidden;
+    transition: height 0.3s;
+  }
+
+.hidden {
+    display: none
+}

@@ -91,6 +91,10 @@
   padding-right: 0.7rem;
 }
 
+.hidden {
+  display: none;
+}
+
 .recepie-description {
   overflow: hidden;
   border-radius: 0.3rem;
@@ -104,10 +108,6 @@
 .recepie-description-missing {
   margin: 0 0 0.5rem 0;
 } 
-
-.hidden {
-  display: none;  
-}
 
 .recepie-description-missing {
   text-align: center;

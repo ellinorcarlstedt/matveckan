@@ -27,9 +27,7 @@ function RecepieDescription (props) {
         element.classList.remove("hidden");
         const elementDimensions = element.getBoundingClientRect();
         registerHeight(elementDimensions.height);
-        element.classList.add("hidden");
     }, [props.id]); 
-
 
     useEffect(() => {
         const element = document.getElementById(`recepie-description-${props.id}`);

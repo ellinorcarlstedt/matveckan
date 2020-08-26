@@ -47,7 +47,6 @@ function MenuDisplayer (props) {
             </div>
         </div>
         )
-    
 }
 
 export default MenuDisplayer;
