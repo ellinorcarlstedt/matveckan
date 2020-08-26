@@ -7,22 +7,15 @@ function MenuDisplayer (props) {
 
     const [isARecepieOpen, setIsARecepieOpen] = useState(false);
     const [indexOfOpenRecepie, setIndexOfOpenRecepie] = useState(null);
-    const [lastOpenRecepie, setLastOpenRecepie] = useState(null);
 
     const openRecepie = (recepie) => {
-        if (!isARecepieOpen) {
-            setIsARecepieOpen(true);
-            setIndexOfOpenRecepie(recepie);
-        } else if (isARecepieOpen && !(indexOfOpenRecepie === recepie)) {
-            setLastOpenRecepie(indexOfOpenRecepie);
-            setIndexOfOpenRecepie(recepie);
-        }
+        setIsARecepieOpen(true);
+        setIndexOfOpenRecepie(recepie);
     }
 
     const closeRecepie = () => {
         setIsARecepieOpen(false);
         setIndexOfOpenRecepie(null);
-        setLastOpenRecepie(null);
     }
 
     const reloadMenu = () => {
@@ -38,15 +31,13 @@ function MenuDisplayer (props) {
                 meal={meal} 
                 isARecepieOpen={isARecepieOpen}
                 indexOfOpenRecepie={indexOfOpenRecepie}
-                lastOpenRecepie={lastOpenRecepie}
                 openRecepie={() => openRecepie(meal.index)}
                 closeRecepie={() => closeRecepie()}/>
             )
         )
 
-
-    let reloadButtonText = props.menu.length ? "Nytt menyförslag" : "Visa menyförslag";
-    let iconArtistAtt = props.menu.length ? <IconArtistAttribute /> : "";
+    const reloadButtonText = props.menu.length ? "Nytt menyförslag" : "Visa menyförslag";
+    const iconArtistAtt = props.menu.length ? <IconArtistAttribute /> : null;
 
         return (
         <div>

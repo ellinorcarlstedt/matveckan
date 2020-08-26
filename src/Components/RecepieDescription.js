@@ -13,14 +13,13 @@ function RecepieDescription (props) {
         element.classList.remove("hidden");
         requestAnimationFrame(() => { 
             element.style.height = elementHeight + "px";
-        }) 
+        }); 
     }
 
     const closeWithTransition = (element) => {
             requestAnimationFrame(() => {  
             element.style.height = "0px";
         });
-        
     }
 
     useEffect(() => {
@@ -31,19 +30,15 @@ function RecepieDescription (props) {
         element.classList.add("hidden");
     }, [props.id]); 
 
+
     useEffect(() => {
         const element = document.getElementById(`recepie-description-${props.id}`);
-        if (props.animationStatus === "open") {
-            openWithTransition(element);
-        } else if (props.animationStatus === "close") {
-            closeWithTransition(element);
-
-        } 
+        props.isOpen ? openWithTransition(element) : closeWithTransition(element); 
     });
+
     
     let description = props.description.length ? props.description.map((row, i) => <p className="recepie-description-row" key={i}>{row}</p>) 
         : (<p className="recepie-description-missing"> ~ Recept saknas ~ </p>)
-
 
     return (
         <div className="recepie-description hidden" id={`recepie-description-${props.id}`}>

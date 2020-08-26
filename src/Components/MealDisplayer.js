@@ -7,29 +7,12 @@ import RecepieDescription from './RecepieDescription';
 
 function MealDisplayer(props) {
 
-    let isARecepieOpen = props.isARecepieOpen;
-    let openRecepie = props.indexOfOpenRecepie;
-    let thisRecepie = props.meal.index;   
-    let lastOpenRecepie = props.lastOpenRecepie;
+    let isOpen = props.indexOfOpenRecepie === props.meal.index ? true : false;
 
     const toggleRecepie = () => {
-        if  (!isARecepieOpen) {
-            props.openRecepie();
-        } else if (isARecepieOpen && openRecepie === thisRecepie) {
-            props.closeRecepie();
-        } else {
-            props.openRecepie();
-        }
+        isOpen && props.isARecepieOpen ? props.closeRecepie() : props.openRecepie();
     }
-
-    let animationStatus = null;
-
-    if (openRecepie === thisRecepie) {
-        animationStatus = "open";
-    } else if (lastOpenRecepie === thisRecepie || !isARecepieOpen) {
-        animationStatus = "close";
-    }   
-
+    
         return (
             <div className="meal-displayer" onClick={() => toggleRecepie()}>
                 <div className="meal-displayer-overview">
@@ -39,8 +22,8 @@ function MealDisplayer(props) {
                 </div>
                 <div>
                     <RecepieDescription description={props.meal.description}
-                                        id={thisRecepie}
-                                        animationStatus={animationStatus} 
+                                        id={props.meal.index}
+                                        isOpen={isOpen} 
                                         /> 
                 </div>
             </div>
