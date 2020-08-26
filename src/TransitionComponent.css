@@ -4,6 +4,10 @@
     transition: height 0.3s;
   }
 
+.border-radius {
+    border-radius: 0.3rem;
+}
+
 .hidden {
     display: none
 }

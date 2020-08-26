@@ -4,6 +4,7 @@ import Weekday from './Weekday';
 import MealCategory from './MealCategory';
 import MealTitle from './MealTitle';
 import RecepieDescription from './RecepieDescription';
+import TransitionComponent from './TransitionComponent';
 
 function MealDisplayer(props) {
 
@@ -21,10 +22,9 @@ function MealDisplayer(props) {
                     <MealCategory category={props.meal.mealCategory}/>
                 </div>
                 <div>
-                    <RecepieDescription description={props.meal.description}
-                                        id={props.meal.index}
-                                        isOpen={isOpen} 
-                                        /> 
+                    <TransitionComponent isOpen={isOpen} id={props.meal.index} className="border-radius">
+                        <RecepieDescription description={props.meal.description}/> 
+                    </TransitionComponent>
                 </div>
             </div>
         )

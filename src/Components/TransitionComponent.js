@@ -14,7 +14,6 @@ function TransitionComponent (props) {
         element.classList.remove("hidden");
         const elementDimensions = element.getBoundingClientRect();
         registerHeight(elementDimensions.height);
-        console.log("Use 1");
     }, [props.id]); 
 
     useEffect(() => {
@@ -32,7 +31,7 @@ function TransitionComponent (props) {
     }, [props.isOpen, props.id, elementHeight]);
 
     return (
-        <div className="transition-component hidden" id={`transition-element-${props.id}`}>
+        <div className={`transition-component hidden ${props.className}`} id={`transition-element-${props.id}`}>
             {props.children}
         </div>
     )

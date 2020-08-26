@@ -29,7 +29,6 @@
   color: white;
 }
 
-
 .menu-displayer {
   background-image: url('./icons/tomatobasil.jpg');
   background-size: auto 100%;
@@ -97,11 +96,9 @@
 
 .recepie-description {
   overflow: hidden;
-  border-radius: 0.3rem;
   padding: 0 0.5rem 0; 
   text-align: left;
   background-color: #ffffff;
-  transition: height 0.3s;
 }
 
 .recepie-description-row, 
