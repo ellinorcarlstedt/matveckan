@@ -1,5 +1,4 @@
-.transition-component {
-    background-color: white;
+.height-transition {
     overflow: hidden;
     transition: height 0.3s;
   }
