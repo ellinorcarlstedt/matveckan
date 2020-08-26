@@ -11,7 +11,7 @@ function MealDisplayer(props) {
     let isOpen = props.indexOfOpenRecepie === props.meal.index ? true : false;
 
     const toggleRecepie = () => {
-        isOpen && props.isARecepieOpen ? props.closeRecepie() : props.openRecepie();
+        isOpen ? props.closeRecepie() : props.openRecepie();
     }
     
         return (

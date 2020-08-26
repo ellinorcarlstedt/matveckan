@@ -5,16 +5,13 @@ import IconArtistAttribute from './IconArtistAttribute';
 
 function MenuDisplayer (props) {
 
-    const [isARecepieOpen, setIsARecepieOpen] = useState(false);
     const [indexOfOpenRecepie, setIndexOfOpenRecepie] = useState(null);
 
     const openRecepie = (recepie) => {
-        setIsARecepieOpen(true);
         setIndexOfOpenRecepie(recepie);
     }
 
     const closeRecepie = () => {
-        setIsARecepieOpen(false);
         setIndexOfOpenRecepie(null);
     }
 
@@ -29,7 +26,6 @@ function MenuDisplayer (props) {
                 key={meal.index} 
                 weekday={index + 1}
                 meal={meal} 
-                isARecepieOpen={isARecepieOpen}
                 indexOfOpenRecepie={indexOfOpenRecepie}
                 openRecepie={() => openRecepie(meal.index)}
                 closeRecepie={() => closeRecepie()}/>
