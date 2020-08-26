@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
-import RecepieDescriptionRow from './RecepieDescriptionRow';
 
 function RecepieDescription (props) {
 
@@ -24,28 +23,13 @@ function RecepieDescription (props) {
         
     }
 
-    let formattedDescription = "";
-
-    if (props.description === "") {
-        formattedDescription = (<p className="recepie-description-missing"> ~ beskrivning saknas ~</p>)
-    } else {
-        const splitDescription = props.description.split(".");
-        formattedDescription = splitDescription.map((row, i) => {
-            let separator = ".";
-            if(i === splitDescription.length - 1) {
-                separator = "";
-            }
-            return <RecepieDescriptionRow key={i} row={row} separator={separator} className="recepie-description-row"/>
-        });
-    }
-
     useEffect(() => {
         const element = document.getElementById(`recepie-description-${props.id}`);
         element.classList.remove("hidden");
         const elementDimensions = element.getBoundingClientRect();
         registerHeight(elementDimensions.height);
         element.classList.add("hidden");
-    }, [props.id]);
+    }, [props.id]); 
 
     useEffect(() => {
         const element = document.getElementById(`recepie-description-${props.id}`);
@@ -57,9 +41,13 @@ function RecepieDescription (props) {
         } 
     });
     
+    let description = props.description.length ? props.description.map((row, i) => <p className="recepie-description-row" key={i}>{row}</p>) 
+        : (<p className="recepie-description-missing"> ~ Recept saknas ~ </p>)
+
+
     return (
         <div className="recepie-description hidden" id={`recepie-description-${props.id}`}>
-            {formattedDescription}
+            {description}
         </div>
     )
 }

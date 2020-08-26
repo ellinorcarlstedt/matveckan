@@ -28,8 +28,7 @@ function MenuModerator () {
         let allRecepies = [...recepies];
         let newMenu = [];
         while (allRecepies.length > 0 && newMenu.length < numberOfDays) {
-            let remainingRecepies = allRecepies.length;
-            let randomNumber = getRandomNumber(remainingRecepies);
+            let randomNumber = getRandomNumber(allRecepies.length);
             newMenu.push(allRecepies[randomNumber]);
             allRecepies.splice(randomNumber, 1);
         }        
