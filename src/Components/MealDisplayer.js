@@ -3,6 +3,7 @@ import '../App.css';
 import Weekday from './Weekday';
 import MealCategory from './MealCategory';
 import MealTitle from './MealTitle';
+import MealDisplayerArrowIcon from './MealDisplayerArrowIcon';
 import RecepieDescription from './RecepieDescription';
 import HeightTransitionComponent from './HeightTransitionComponent';
 
@@ -21,6 +22,7 @@ function MealDisplayer(props) {
                     <MealTitle  title={props.meal.mealName}/>
                     <MealCategory category={props.meal.mealCategory}/>
                 </div>
+                <MealDisplayerArrowIcon isOpen={isOpen}/>
                 <div>
                     <HeightTransitionComponent isOpen={isOpen} id={props.meal.index} className="border-radius">
                         <RecepieDescription description={props.meal.description}/> 

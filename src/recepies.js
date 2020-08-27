@@ -35,7 +35,7 @@ const recepies = [
 
     {
         index: 103,
-        mealName: "Kyckling med basilikasås",
+        mealName: "Kyckling med basilikasås och rostad potatis",
         mealCategory: 2,
         ingredients: ["kycklingfilé", "basilika", "citron", "creme fraiche", "potatis", "salt", "peppar", "granatäppelkärnor"], 
         description: [
