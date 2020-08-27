@@ -96,7 +96,7 @@
 
 .recepie-description {
   overflow: hidden;
-  padding: 0 0.5rem 0; 
+  padding: 0 0.5rem 0.3rem; 
   text-align: left;
   background-color: #ffffff;
 }
