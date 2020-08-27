@@ -19,7 +19,7 @@
 }
 
 .head-links-ul a {
-  color:#4d0001;
+  color: #4d0001;
   text-decoration: none;
   padding: 0.7rem;
 }
@@ -35,7 +35,7 @@
   background-repeat: no-repeat;
   background-position: right top;
   background-attachment: fixed;
-  background-color: #ffe6e6;
+  background-color: white, #ffe6e6;
   padding-bottom: 0.7rem;
 }
 

@@ -226,6 +226,37 @@ const recepies = [
                     "Skiva grillad kyckling. Tärna grönsakerna.", 
                     "Rör ihop sallad, kyckling, krutonger, tomater, paprika och dressing till en god sallad."
                     ] 
+    },
+
+    {
+        index: 116,
+        mealName: "Korvgryta",
+        mealCategory: 5,
+        ingredients: ["falukorv", "gul lök", "krossade tomater", "grädde", "ris"],
+        description: [
+                    "Koka riset enligt anvisning på förpackningen.",
+                    "Skär korven i strimlor. Skala och riv löken. Stek korven i smör-&rapsolja i en stekpanna. Rör i lök, tomatkross och grädde.",
+                    "Smaka av med salt och peppar. Låt koka ca 1 min. Servera grytan med riset."
+                    ] 
+    },
+
+    {
+        index: 117,
+        mealName: "Fläskkotlett med svamp",
+        mealCategory: 5,
+        ingredients: ["fläskotletter", "svamp", "vitlök", "citron", "vispgrädde", "persilja"],
+        description: [
+                    "Sätt ugnen på 100°.",
+                    "Bryn fläskkotletterna hastigt i olivolja och smör i en stekpanna, tills de fått fin färg.",
+                    "Salta och peppra.",
+                    "Lägg över i en ugnsfast form.",
+                    "Stek kotletterna klara i ugnen 20 minuter.",
+                    "Stek svampen i olivolja på hög värme i en stekpanna någon minut.",
+                    "Tillsätt vitlök och citronskal, stek ytterligare 1 minut.",
+                    "Häll på grädde och låt koka ihop något.",
+                    "Smaka av med salt och peppar.",
+                    "Vänd ner persiljan i såsen och servera den till kotletterna."
+                    ] 
     }
 ];
 
