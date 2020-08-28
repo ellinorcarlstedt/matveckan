@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../App.css';
+import './styles/ArrowIcon.css';
 
 function ArrowIcon(props) {
 

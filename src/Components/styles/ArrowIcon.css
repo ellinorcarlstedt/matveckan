@@ -1,0 +1,36 @@
+.arrow-icon {
+    margin: -0.15rem 0;
+    padding-top: 0.15rem;
+  }
+  
+  .arrow-icon img {
+    box-sizing: content-box;
+    height: 15px;
+    width: 15px;
+  }
+  
+  .rotate-180-open {
+    animation: rotate-180-open 0.2s linear forwards;
+  }
+  
+  .rotate-180-close {
+    animation: rotate-180-close 0.2s linear forwards;
+  }
+  
+  @keyframes rotate-180-open {
+    0% {
+      transform: rotate(0) translateY(0);
+    }
+    100% {
+      transform: rotate(180deg) translateY(0.25rem);
+    }
+  }
+  
+  @keyframes rotate-180-close {
+    0% {
+      transform: rotate(180deg) translateY(0.25rem);
+    }
+    100% {
+      transform: rotate(0) translateY(0);
+    }
+  }

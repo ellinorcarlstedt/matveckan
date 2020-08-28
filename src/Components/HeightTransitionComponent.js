@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../HeightTransitionComponent.css';
+import './styles/HeightTransitionComponent.css';
 
 function HeightTransitionComponent (props) {
 
