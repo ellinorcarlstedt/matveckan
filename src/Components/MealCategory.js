@@ -1,6 +1,5 @@
 import React from 'react';
 import '../App.css';
-import '../icons/carrot.png';
 
 function MealCategory (props) {
     let imgSrc = "";
