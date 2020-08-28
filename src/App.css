@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,6 +9,8 @@
   margin: auto;
   text-align: center;
   font-family: Garamond, Cambria;
+  font-family: 'Varela Round';
+  font-size: 0.7rem;
 }
 
 .head-links-ul {
@@ -21,7 +25,7 @@
 .head-links-ul a {
   color: #4d0001;
   text-decoration: none;
-  padding: 0.7rem;
+  padding: 0.65rem;
 }
 
 .head-links-ul a:hover {
@@ -41,8 +45,8 @@
 
 .menu-displayer-reload-button {
   margin: 3rem 0 0.3rem;
-  font-family: Garamond, Cambria;
-  font-size: larger;
+  font-family: inherit;
+  font-size: inherit;
   background-color: #FC913A;
   color: #4d0001;
   border: none;
@@ -118,7 +122,8 @@
 
 .icon-artist-attribute {
   margin-top: 4rem;
-  font-size: small;
+  padding: 0.1rem;
+  font-size: 0.5rem;
   color: white;
   background-color: rgba(0, 0, 0, 0.3);
 }
@@ -133,43 +138,6 @@
 
 .icon-artist-attribute a:hover {
   color: #FC913A;
-}
-
-.arrow-icon {
-  margin: -0.15rem 0;
-  padding-top: 0.15rem;
-}
-
-.arrow-icon img {
-  box-sizing: content-box;
-  height: 15px;
-  width: 15px;
-}
-
-.rotate-180-open {
-  animation: rotate-180-open 0.2s linear forwards;
-}
-
-.rotate-180-close {
-  animation: rotate-180-close 0.2s linear forwards;
-}
-
-@keyframes rotate-180-open {
-  0% {
-    transform: rotate(0) translateY(0);
-  }
-  100% {
-    transform: rotate(180deg) translateY(0.25rem);
-  }
-}
-
-@keyframes rotate-180-close {
-  0% {
-    transform: rotate(180deg) translateY(0.25rem);
-  }
-  100% {
-    transform: rotate(0) translateY(0);
-  }
 }
 
 @media (min-width: 1000px) {
