@@ -6,7 +6,50 @@ const recepies = [
         index: 101,
         mealName: "Spaghetti med köttfärssås",
         mealCategory: 1,
-        ingredients: ["köttfärs", "gul lök", "vitlök", "morötter", "tomatpuré", "salt", "peppar"],
+        ingredients: [
+            {
+                name: "köttfärs",
+                amount: 500,
+                unit: "g"
+            },
+            
+            {
+                name: "gul lök",
+                amount: 1,
+                unit: "st"
+            },
+            
+            {
+                name: "vitlök",
+                amount: 2,
+                unit: "klyftor"
+            },
+            
+            {
+                name: "morötter",
+                amount: 500,
+                unit: "g"
+            },
+            
+            {
+                name: "tomatpuré",
+                amount: 3,
+                unit: "msk"
+            },
+            
+            {
+                name: "salt",
+                amount: null,
+                unit: ""
+            },
+            
+            {
+                name: "peppar",
+                amount: null,
+                unit: ""
+            }
+        ],
+
         description: [
                     "Sätt på en stor kastrull med vatten till spaghettin.", 
                     "Skala och riv morötterna på ett rivjärn.",
@@ -24,7 +67,37 @@ const recepies = [
         index: 102,
         mealName: "Grönsakssoppa",
         mealCategory: 4,
-        ingredients: ["morötter", "vitkål", "potatis", "vitlök", "röda linser"],
+        ingredients: [
+            {
+                name: "morötter",
+                amount: 5,
+                unit: "st"
+            },
+            
+            {
+                name: "vitkål",
+                amount: 1/2,
+                unit: "st"
+            },
+            
+            {
+                name: "potatis",
+                amount: 5,
+                unit: "st"
+            },
+            
+            {
+                name: "vitlök",
+                amount: 3,
+                unit: "klyftor"
+            },
+            
+            {
+                name: "röda linser",
+                amount: 2,
+                unit: "dl"
+            }
+        ],
         description: [
                     "Skala och tvätta alla grönsaker.", 
                     "Skär grönsakerna i lämpliga bitar. Fräs i en kastrull eller gryta i olja.", 
@@ -37,7 +110,49 @@ const recepies = [
         index: 103,
         mealName: "Kyckling med basilikasås och rostad potatis",
         mealCategory: 2,
-        ingredients: ["kycklingfilé", "basilika", "citron", "creme fraiche", "potatis", "salt", "peppar", "granatäppelkärnor"], 
+        ingredients: [
+            {
+                name: "kycklingfilé",
+                amount: 500,
+                unit: "g"
+            },
+            
+            {
+                name: "basilika",
+                amount: 1,
+                unit: "kruka"
+            },
+            
+            {
+                name: "citron",
+                amount: 1/2,
+                unit: "st"
+            },
+            
+            {
+                name: "creme fraiche",
+                amount: 2,
+                unit: "dl"
+            },
+            
+            {
+                name: "potatis",
+                amount: 900,
+                unit: "g"
+            },
+            
+            {
+                name: "salt och peppar",
+                amount: null,
+                unit: ""
+            },
+            
+            {
+                name: "granatäppelkärnor",
+                amount: null,
+                unit: ""
+            }
+        ],
         description: [
                     "Sätt ugnen på 200°.", 
                     "Skär varje kycklingfilé i tre avlånga bitar. Lägg i en ugnsform och krydda med salt och peppar.", 
@@ -52,7 +167,49 @@ const recepies = [
         index: 104,
         mealName: "Pankopanerad rödspätta",
         mealCategory: 3,
-        ingredients: ["rödspättafilé", "panko", "vetemjöl", "ägg", "potatis", "broccoli", "citron", "salt", "peppar"],
+        ingredients: [
+            {
+                name: "rödspättafilé",
+                amount: 600,
+                unit: "g"
+            },
+            
+            {
+                name: "panko",
+                amount: null,
+                unit: ""
+            },
+            
+            {
+                name: "vetemjöl",
+                amount: 2,
+                unit: "dl"
+            },
+            
+            {
+                name: "ägg",
+                amount: 3,
+                unit: "st"
+            },
+            
+            {
+                name: "potatis",
+                amount: 900,
+                unit: "gr"
+            },
+            
+            {
+                name: "broccoli",
+                amount: 1,
+                unit: "st"
+            },
+            
+            {
+                name: "citron",
+                amount: 1/2,
+                unit: "st"
+            }
+        ],
         description: [
                     "Vispa ägget. Vänd varje rödspätta först i mjölet, sedan i ägg, sist i panko.", 
                     "Stek filéerna gyllenbruna i lite smör.", 
@@ -65,7 +222,49 @@ const recepies = [
         index: 105,
         mealName: "Tacos",
         mealCategory: 1,
-        ingredients: ["köttfärs", "riven ost", "majs", "paprika", "tomater", "avokado", "tortillasskal"],
+        ingredients: [
+            {
+                name: "köttfärs",
+                amount: 500,
+                unit: "g"
+            },
+            
+            {
+                name: "riven ost",
+                amount: 1,
+                unit: "paket"
+            },
+            
+            {
+                name: "majs",
+                amount: 1,
+                unit: "paket"
+            },
+            
+            {
+                name: "paprika",
+                amount: 1/2,
+                unit: "st"
+            },
+            
+            {
+                name: "tomater",
+                amount: 2,
+                unit: "st"
+            },
+            
+            {
+                name: "avokado",
+                amount: 2,
+                unit: "st"
+            },
+            
+            {
+                name: "tortillasskal",
+                amount: 1,
+                unit: "paket"
+            }
+        ],
         description: [
                     "Stek köttfärsen och krydda med kryddmixen.", 
                     "Blanda i ca 1 dl vatten och låt det koka ihop en stund.", 
@@ -78,7 +277,43 @@ const recepies = [
         index: 106,
         mealName: "Quornpasta",
         mealCategory: 4,
-        ingredients: ["quornbitar", "broccoli", "champinjoner", "pasta", "pesto", "parmesanost"],
+        ingredients: [
+            {
+                name: "quornbitar",
+                amount: 200,
+                unit: "gr"
+            },
+            
+            {
+                name: "broccoli",
+                amount: 1,
+                unit: "st"
+            },
+            
+            {
+                name: "champinjoner",
+                amount: 150,
+                unit: "g"
+            },
+            
+            {
+                name: "pasta",
+                amount: null,
+                unit: ""
+            },
+            
+            {
+                name: "pesto",
+                amount: 1,
+                unit: "dl"
+            },
+            
+            {
+                name: "parmesanost",
+                amount: null,
+                unit: ""
+            }
+        ],
         description: [
                     "Skär broccolin i tunna skivor och stek tills de blir mjuka.", 
                     "Lägg i quorn och skivade champinjoner och stek gyllenbruna. Se till att all vätska kokar bort.",
@@ -92,7 +327,37 @@ const recepies = [
         index: 107,
         mealName: "Fisk i ugn",
         mealCategory: 3,
-        ingredients: ["panerade torskfiléer", "citron", "potatis", "sparris", "remouladsås"],
+        ingredients: [
+            {
+                name: "panerade torskfiléer",
+                amount: 600,
+                unit: "g"
+            },
+            
+            {
+                name: "citron",
+                amount: 1,
+                unit: "st"
+            },
+            
+            {
+                name: "potatis",
+                amount: 900,
+                unit: "g"
+            },
+            
+            {
+                name: "sparris",
+                amount: 1,
+                unit: "paket"
+            },
+            
+            {
+                name: "remouladsås",
+                amount: null,
+                unit: ""
+            }
+        ],
         description: [
                     "Sätt ugnen på 225 grader.",
                     "Skala potatisen och skär den i klyftor. Lägg den på en plåt med bakplåtspapper. Häll över olja, salt och timjan, blanda och ställ in högst upp i ugnen i 30 min.",
@@ -106,7 +371,37 @@ const recepies = [
         index: 108,
         mealName: "Havregrynsgröt",
         mealCategory: 4,
-        ingredients: ["havregryn", "vatten", "mjölk", "grädde", "äppelmos"],
+        ingredients: [
+            {
+                name: "havregryn",
+                amount: 1,
+                unit: "dl"
+            },
+            
+            {
+                name: "vatten",
+                amount: 2,
+                unit: "dl"
+            },
+            
+            {
+                name: "mjölk",
+                amount: null,
+                unit: ""
+            },
+            
+            {
+                name: "grädde",
+                amount: null,
+                unit: ""
+            },
+            
+            {
+                name: "äppelmos",
+                amount: null,
+                unit: ""
+            }
+        ],
         description: [
                     "Blanda 1 dl havregryn med 2 dl vatten.", 
                     "Koka upp och låt koka på svag värme tills gröten uppnått önskad konsistens.", 
@@ -118,7 +413,59 @@ const recepies = [
         index: 109,
         mealName: "Boullabaisse",
         mealCategory: 3,
-        ingredients: ["citron", "morötter", "laxfilé", "torskfilé", "vitlök", "gul lök", "grädde", "saffran", "vitt vin"],
+        ingredients: [
+            {
+                name: "citron",
+                amount: null,
+                unit: ""
+            },
+            
+            {
+                name: "morötter",
+                amount: 300,
+                unit: "gr"
+            },
+            
+            {
+                name: "laxfilé",
+                amount: 250,
+                unit: "g"
+            },
+            
+            {
+                name: "torskfilé",
+                amount: 250,
+                unit: "g"
+            },
+            
+            {
+                name: "vitlök",
+                amount: 3,
+                unit: "klyftor"
+            },
+            
+            {
+                name: "gul lök",
+                amount: 2,
+                unit: "st"
+            },
+            
+            {
+                name: "grädde",
+                amount: 3,
+                unit: "dl"
+            },
+            {
+                name: "saffran",
+                amount: 1,
+                unit: "g"
+            },
+            {
+                name: "vitt vin",
+                amount: 1,
+                unit: "dl"
+            }
+        ],
         description: [
                     "Skala och finhacka lök och vitlök.", 
                     "Skölj och grovhacka purjolök.", 
@@ -141,7 +488,37 @@ const recepies = [
         index: 110,
         mealName: "Pannkakor",
         mealCategory: 4,
-        ingredients: ["ägg", "mjölk", "vetemjöl", "salt", "smör"],
+        ingredients: [
+            {
+                name: "ägg",
+                amount: 2,
+                unit: "st"
+            },
+            
+            {
+                name: "mjölk",
+                amount: 5,
+                unit: "dl"
+            },
+            
+            {
+                name: "vetemjöl",
+                amount: 2,
+                unit: "dl"
+            },
+            
+            {
+                name: "salt",
+                amount: null,
+                unit: ""
+            },
+            
+            {
+                name: "smör",
+                amount: 1,
+                unit: "msk"
+            }
+            ],
         description: [
                     "Vispa ihop ägg och hälften av mjölken i en bunke.", 
                     "Tillsätt vetemjöl och salt lite i taget.", 
@@ -157,7 +534,49 @@ const recepies = [
         index: 111,
         mealName: "Köttgryta med ris",
         mealCategory: 1,
-        ingredients: ["nötkött", "champinjoner", "gul lök", "morötter", "ris", "smör", "tomatpuré", "smör"],
+        ingredients: [
+            {
+                name: "nötkött",
+                amount: 600,
+                unit: "g"
+            },
+            
+            {
+                name: "champinjoner",
+                amount: 1,
+                unit: "paket"
+            },
+            
+            {
+                name: "gul lök",
+                amount: 1/2,
+                unit: "st"
+            },
+            
+            {
+                name: "morötter",
+                amount: 500,
+                unit: "g"
+            },
+            
+            {
+                name: "ris",
+                amount: null,
+                unit: ""
+            },
+            
+            {
+                name: "smör",
+                amount: null,
+                unit: ""
+            },
+            
+            {
+                name: "tomatpuré",
+                amount: 2,
+                unit: "msk"
+            }
+        ],
         description: [
                     "Tärna köttet och bryn det snabbt i smör- och rapsoljan.", 
                     "Häll champinjonerna i grytan, spara vätskan och ställ åt sidan.", 
@@ -174,7 +593,43 @@ const recepies = [
         index: 112,
         mealName: "Flygande Jacob",
         mealCategory: 2,
-        ingredients: ["grädde", "kyckling", "jordnötter", "bacon", "chilisås", "bananer"],
+        ingredients: [
+            {
+                name: "grädde",
+                amount: 2,
+                unit: "dl"
+            },
+            
+            {
+                name: "grillad kyckling",
+                amount: 500,
+                unit: "g"
+            },
+            
+            {
+                name: "jordnötter",
+                amount: 2,
+                unit: "dl"
+            },
+            
+            {
+                name: "bacon",
+                amount: 1,
+                unit: "paket"
+            },
+            
+            {
+                name: "chilisås",
+                amount: 1,
+                unit: "dl"
+            },
+            
+            {
+                name: "bananer",
+                amount: 2,
+                unit: "st"
+            }
+        ],
         description: [
                     "Sätt ugnen på 225 grader.", 
                     "Ta bort skinn och ben från din grillade kyckling. Skär kycklingköttet i mindre bitar.", 
@@ -192,7 +647,37 @@ const recepies = [
         index: 113,
         mealName: "Ärtsoppa",
         mealCategory: 4,
-        ingredients: ["gula ärtor", "sidfläsk", "gul lök", "morot", "timjan"],
+        ingredients: [
+            {
+                name: "gula ärtor",
+                amount: 3,
+                unit: "dl"
+            },
+            
+            {
+                name: "sidfläsk",
+                amount: 400,
+                unit: "g"
+            },
+            
+            {
+                name: "gul lök",
+                amount: 1,
+                unit: "st"
+            },
+            
+            {
+                name: "morot",
+                amount: 2,
+                unit: "st"
+            },
+            
+            {
+                name: "timjan",
+                amount: null,
+                unit: ""
+            }
+        ],
         description: [
                     "Lägg ärtorna i blöt över natten övertäckta i en stor kastrull eller skål.", 
                     "Häll av och lägg i en stor kastrull, tillsätt vatten och börja koka.", 
@@ -213,7 +698,37 @@ const recepies = [
         index: 114,
         mealName: "Adaspolo",
         mealCategory: 1,
-        ingredients: ["gröna linser", "köttfärs", "ris", "saffran", "potatis"],
+        ingredients: [
+            {
+                name: "gröna linser",
+                amount: 2,
+                unit: "dl"
+            },
+            
+            {
+                name: "köttfärs",
+                amount: 500,
+                unit: "g"
+            },
+            
+            {
+                name: "ris",
+                amount: null,
+                unit: ""
+            },
+            
+            {
+                name: "saffran",
+                amount: null,
+                unit: ""
+            },
+            
+            {
+                name: "potatis",
+                amount: null,
+                unit: ""
+            }
+        ],
         description: [] 
     },
 
@@ -221,7 +736,43 @@ const recepies = [
         index: 115,
         mealName: "Caesarsallad",
         mealCategory: 2,
-        ingredients: ["isbergssallad", "kyckling", "caesardressing", "krutonger", "tomater", "paprika"],
+        ingredients: [
+            {
+                name: "isbergssallad",
+                amount: null,
+                unit: ""
+            },
+            
+            {
+                name: "grillad kyckling",
+                amount: null,
+                unit: ""
+            },
+            
+            {
+                name: "caesardressing",
+                amount: null,
+                unit: ""
+            },
+            
+            {
+                name: "krutonger",
+                amount: null,
+                unit: ""
+            },
+            
+            {
+                name: "tomater",
+                amount: null,
+                unit: ""
+            },
+            
+            {
+                name: "paprika",
+                amount: null,
+                unit: ""
+            }
+            ],
         description: [
                     "Skiva grillad kyckling. Tärna grönsakerna.", 
                     "Rör ihop sallad, kyckling, krutonger, tomater, paprika och dressing till en god sallad."
@@ -232,7 +783,37 @@ const recepies = [
         index: 116,
         mealName: "Korvgryta",
         mealCategory: 5,
-        ingredients: ["falukorv", "gul lök", "krossade tomater", "grädde", "ris"],
+        ingredients: [
+            {
+                name: "falukorv",
+                amount: 1,
+                unit: "paket"
+            },
+            
+            {
+                name: "gul lök",
+                amount: 1,
+                unit: "st"
+            },
+            
+            {
+                name: "krossade tomater",
+                amount: 2,
+                unit: "paket"
+            },
+            
+            {
+                name: "grädde",
+                amount: 2,
+                unit: "dl"
+            },
+            
+            {
+                name: "ris",
+                amount: null,
+                unit: ""
+            },
+        ],
         description: [
                     "Koka riset enligt anvisning på förpackningen.",
                     "Skär korven i strimlor. Skala och riv löken. Stek korven i smör-&rapsolja i en stekpanna. Rör i lök, tomatkross och grädde.",
@@ -244,7 +825,43 @@ const recepies = [
         index: 117,
         mealName: "Fläskkotlett med svamp",
         mealCategory: 5,
-        ingredients: ["fläskotletter", "svamp", "vitlök", "citron", "vispgrädde", "persilja"],
+        ingredients: [
+            {
+                name: "fläskotletter",
+                amount: 800,
+                unit: "g"
+            },
+            
+            {
+                name: "svamp",
+                amount: 500,
+                unit: "g"
+            },
+            
+            {
+                name: "vitlök",
+                amount: 2,
+                unit: "klyftor"
+            },
+            
+            {
+                name: "citron",
+                amount: 1/2,
+                unit: "st"
+            },
+            
+            {
+                name: "vispgrädde",
+                amount: 2,
+                unit: "dl"
+            },
+            
+            {
+                name: "persilja",
+                amount: null,
+                unit: ""
+            }
+        ],
         description: [
                     "Sätt ugnen på 100°.",
                     "Bryn fläskkotletterna hastigt i olivolja och smör i en stekpanna, tills de fått fin färg.",

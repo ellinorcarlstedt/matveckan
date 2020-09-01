@@ -103,16 +103,22 @@
   padding: 0 0.7rem;
 }
 
-.recepie-description {
-  overflow: hidden;
-  padding: 0 0.5rem 0.3rem; 
+.recepie {
+  overflow: hidden; 
   text-align: left;
   background-color: #ffffff;
 }
 
+.recepie-ingredients {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  background-color: rgb(227, 229, 231);
+}
+
 .recepie-description-row, 
 .recepie-description-missing {
-  margin: 0 0 0.5rem 0;
+  padding: 0 0.5rem;
+  margin-bottom: 0.5rem;
 } 
 
 .recepie-description-missing {

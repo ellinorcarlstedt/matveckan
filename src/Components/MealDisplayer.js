@@ -3,7 +3,7 @@ import '../App.css';
 import Weekday from './Weekday';
 import MealCategory from './MealCategory';
 import MealTitle from './MealTitle';
-import RecepieDescription from './RecepieDescription';
+import Recepie from './Recepie';
 import HeightTransitionComponent from './HeightTransitionComponent';
 
 function MealDisplayer(props) {
@@ -23,7 +23,7 @@ function MealDisplayer(props) {
                 </div>
                 <div>
                     <HeightTransitionComponent isOpen={isOpen} id={props.meal.index} className="border-radius">
-                        <RecepieDescription description={props.meal.description}/> 
+                        <Recepie description={props.meal.description} ingredients={props.meal.ingredients}/> 
                     </HeightTransitionComponent>
                 </div>
             </div>

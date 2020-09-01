@@ -1,8 +1,6 @@
-import React from 'react';
-import '../App.css';
+import React from 'react'
 
-function RecepieDescription (props) {
-    
+function RecepieDescription(props) {
     let description = [];
     if (props.description.length) {
         description = props.description.map((row, i) => <p className="recepie-description-row" key={i}>{row}</p>)
@@ -11,12 +9,10 @@ function RecepieDescription (props) {
     }
 
     return (
-        <div className="recepie-description">
+        <div>
             {description}
         </div>
     )
 }
 
-export default React.memo(RecepieDescription);
-
-
+export default React.memo(RecepieDescription)
