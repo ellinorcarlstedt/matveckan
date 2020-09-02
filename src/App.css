@@ -145,6 +145,69 @@
   color: #FC913A;
 }
 
+.recepie-input-moderator {
+  margin: 0.5rem;
+}
+
+.recepie-input-moderator input {
+  border: 1px solid rgb(221, 213, 213);
+  padding: 0.3rem;
+  font-family: Garamond, Cambria;
+  font-family: 'Varela Round';
+  font-size: 0.7rem;
+}
+
+.input-title,
+.input-description,
+.input-ingredients-wrapper,
+.input-category {
+  margin-bottom: 0.5rem;
+}
+
+.input-ingredients,
+.input-category {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.input-title input,
+.input-description input {
+  width: 100%;
+}
+
+.input-description,
+.input-ingredients-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input-description-row,
+.input-ingredients {
+  flex-grow: 2;
+  margin-right: 0.5rem;
+}
+
+.input-ingredients-name {
+  width: 100%;
+}
+
+.input-ingredients-details {
+  width: 50%;
+}
+.input-ingredients-amount,
+.input-ingredients-unit {
+  width: 25%;
+}
+
+.input-category input {
+  margin-top: 0.3rem;
+}
+
 @media (min-width: 1000px) {
   .App {
     width: 25%;

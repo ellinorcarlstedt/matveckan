@@ -10,43 +10,50 @@ const recepies = [
             {
                 name: "köttfärs",
                 amount: 500,
-                unit: "g"
+                unit: "g",
+                details: ""
             },
             
             {
                 name: "gul lök",
                 amount: 1,
-                unit: "st"
+                unit: "st",
+                details: ""
             },
             
             {
                 name: "vitlök",
                 amount: 2,
-                unit: "klyftor"
+                unit: "klyftor",
+                details: ""
             },
             
             {
                 name: "morötter",
                 amount: 500,
-                unit: "g"
+                unit: "g",
+                details: ""
             },
             
             {
                 name: "tomatpuré",
                 amount: 3,
-                unit: "msk"
+                unit: "msk",
+                details: ""
             },
             
             {
                 name: "salt",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             },
             
             {
                 name: "peppar",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             }
         ],
 
@@ -71,31 +78,36 @@ const recepies = [
             {
                 name: "morötter",
                 amount: 5,
-                unit: "st"
+                unit: "st",
+                details: ""
             },
             
             {
                 name: "vitkål",
                 amount: 1/2,
-                unit: "st"
+                unit: "st",
+                details: ""
             },
             
             {
                 name: "potatis",
                 amount: 5,
-                unit: "st"
+                unit: "st",
+                details: ""
             },
             
             {
                 name: "vitlök",
                 amount: 3,
-                unit: "klyftor"
+                unit: "klyftor",
+                details: ""
             },
             
             {
                 name: "röda linser",
                 amount: 2,
-                unit: "dl"
+                unit: "dl",
+                details: ""
             }
         ],
         description: [
@@ -114,43 +126,50 @@ const recepies = [
             {
                 name: "kycklingfilé",
                 amount: 500,
-                unit: "g"
+                unit: "g",
+                details: ""
             },
             
             {
                 name: "basilika",
                 amount: 1,
-                unit: "kruka"
+                unit: "kruka",
+                details: ""
             },
             
             {
                 name: "citron",
                 amount: 1/2,
-                unit: "st"
+                unit: "st",
+                details: ""
             },
             
             {
                 name: "creme fraiche",
                 amount: 2,
-                unit: "dl"
+                unit: "dl",
+                details: ""
             },
             
             {
                 name: "potatis",
                 amount: 900,
-                unit: "g"
+                unit: "g",
+                details: ""
             },
             
             {
                 name: "salt och peppar",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             },
             
             {
                 name: "granatäppelkärnor",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             }
         ],
         description: [
@@ -171,43 +190,50 @@ const recepies = [
             {
                 name: "rödspättafilé",
                 amount: 600,
-                unit: "g"
+                unit: "g",
+                details: ""
             },
             
             {
                 name: "panko",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             },
             
             {
                 name: "vetemjöl",
                 amount: 2,
-                unit: "dl"
+                unit: "dl",
+                details: ""
             },
             
             {
                 name: "ägg",
                 amount: 3,
-                unit: "st"
+                unit: "st",
+                details: ""
             },
             
             {
                 name: "potatis",
                 amount: 900,
-                unit: "gr"
+                unit: "gr",
+                details: ""
             },
             
             {
                 name: "broccoli",
                 amount: 1,
-                unit: "st"
+                unit: "st",
+                details: ""
             },
             
             {
                 name: "citron",
                 amount: 1/2,
-                unit: "st"
+                unit: "st",
+                details: ""
             }
         ],
         description: [
@@ -226,43 +252,50 @@ const recepies = [
             {
                 name: "köttfärs",
                 amount: 500,
-                unit: "g"
+                unit: "g",
+                details: ""
             },
             
             {
                 name: "riven ost",
                 amount: 1,
-                unit: "paket"
+                unit: "paket",
+                details: ""
             },
             
             {
                 name: "majs",
                 amount: 1,
-                unit: "paket"
+                unit: "paket",
+                details: ""
             },
             
             {
                 name: "paprika",
                 amount: 1/2,
-                unit: "st"
+                unit: "st",
+                details: ""
             },
             
             {
                 name: "tomater",
                 amount: 2,
-                unit: "st"
+                unit: "st",
+                details: ""
             },
             
             {
                 name: "avokado",
                 amount: 2,
-                unit: "st"
+                unit: "st",
+                details: ""
             },
             
             {
                 name: "tortillasskal",
                 amount: 1,
-                unit: "paket"
+                unit: "paket",
+                details: ""
             }
         ],
         description: [
@@ -281,37 +314,43 @@ const recepies = [
             {
                 name: "quornbitar",
                 amount: 200,
-                unit: "gr"
+                unit: "gr",
+                details: ""
             },
             
             {
                 name: "broccoli",
                 amount: 1,
-                unit: "st"
+                unit: "st",
+                details: ""
             },
             
             {
                 name: "champinjoner",
                 amount: 150,
-                unit: "g"
+                unit: "g",
+                details: ""
             },
             
             {
                 name: "pasta",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             },
             
             {
                 name: "pesto",
                 amount: 1,
-                unit: "dl"
+                unit: "dl",
+                details: ""
             },
             
             {
                 name: "parmesanost",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             }
         ],
         description: [
@@ -331,31 +370,36 @@ const recepies = [
             {
                 name: "panerade torskfiléer",
                 amount: 600,
-                unit: "g"
+                unit: "g",
+                details: ""
             },
             
             {
                 name: "citron",
                 amount: 1,
-                unit: "st"
+                unit: "st",
+                details: ""
             },
             
             {
                 name: "potatis",
                 amount: 900,
-                unit: "g"
+                unit: "g",
+                details: ""
             },
             
             {
                 name: "sparris",
                 amount: 1,
-                unit: "paket"
+                unit: "paket",
+                details: ""
             },
             
             {
                 name: "remouladsås",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             }
         ],
         description: [
@@ -375,31 +419,36 @@ const recepies = [
             {
                 name: "havregryn",
                 amount: 1,
-                unit: "dl"
+                unit: "dl",
+                details: ""
             },
             
             {
                 name: "vatten",
                 amount: 2,
-                unit: "dl"
+                unit: "dl",
+                details: ""
             },
             
             {
                 name: "mjölk",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             },
             
             {
                 name: "grädde",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             },
             
             {
                 name: "äppelmos",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             }
         ],
         description: [
@@ -417,53 +466,62 @@ const recepies = [
             {
                 name: "citron",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             },
             
             {
                 name: "morötter",
                 amount: 300,
-                unit: "gr"
+                unit: "gr",
+                details: ""
             },
             
             {
                 name: "laxfilé",
                 amount: 250,
-                unit: "g"
+                unit: "g",
+                details: ""
             },
             
             {
                 name: "torskfilé",
                 amount: 250,
-                unit: "g"
+                unit: "g",
+                details: ""
             },
             
             {
                 name: "vitlök",
                 amount: 3,
-                unit: "klyftor"
+                unit: "klyftor",
+                details: ""
             },
             
             {
                 name: "gul lök",
                 amount: 2,
-                unit: "st"
+                unit: "st",
+                details: ""
             },
             
             {
                 name: "grädde",
                 amount: 3,
-                unit: "dl"
+                unit: "dl",
+                details: ""
             },
             {
                 name: "saffran",
                 amount: 1,
-                unit: "g"
+                unit: "g",
+                details: ""
             },
             {
                 name: "vitt vin",
                 amount: 1,
-                unit: "dl"
+                unit: "dl",
+                details: ""
             }
         ],
         description: [
@@ -492,31 +550,36 @@ const recepies = [
             {
                 name: "ägg",
                 amount: 2,
-                unit: "st"
+                unit: "st",
+                details: ""
             },
             
             {
                 name: "mjölk",
                 amount: 5,
-                unit: "dl"
+                unit: "dl",
+                details: ""
             },
             
             {
                 name: "vetemjöl",
                 amount: 2,
-                unit: "dl"
+                unit: "dl",
+                details: ""
             },
             
             {
                 name: "salt",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             },
             
             {
                 name: "smör",
                 amount: 1,
-                unit: "msk"
+                unit: "msk",
+                details: ""
             }
             ],
         description: [
@@ -538,43 +601,50 @@ const recepies = [
             {
                 name: "nötkött",
                 amount: 600,
-                unit: "g"
+                unit: "g",
+                details: ""
             },
             
             {
                 name: "champinjoner",
                 amount: 1,
-                unit: "paket"
+                unit: "paket",
+                details: ""
             },
             
             {
                 name: "gul lök",
                 amount: 1/2,
-                unit: "st"
+                unit: "st",
+                details: ""
             },
             
             {
                 name: "morötter",
                 amount: 500,
-                unit: "g"
+                unit: "g",
+                details: ""
             },
             
             {
                 name: "ris",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             },
             
             {
                 name: "smör",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             },
             
             {
                 name: "tomatpuré",
                 amount: 2,
-                unit: "msk"
+                unit: "msk",
+                details: ""
             }
         ],
         description: [
@@ -597,37 +667,43 @@ const recepies = [
             {
                 name: "grädde",
                 amount: 2,
-                unit: "dl"
+                unit: "dl",
+                details: ""
             },
             
             {
                 name: "grillad kyckling",
                 amount: 500,
-                unit: "g"
+                unit: "g",
+                details: ""
             },
             
             {
                 name: "jordnötter",
                 amount: 2,
-                unit: "dl"
+                unit: "dl",
+                details: ""
             },
             
             {
                 name: "bacon",
                 amount: 1,
-                unit: "paket"
+                unit: "paket",
+                details: ""
             },
             
             {
                 name: "chilisås",
                 amount: 1,
-                unit: "dl"
+                unit: "dl",
+                details: ""
             },
             
             {
                 name: "bananer",
                 amount: 2,
-                unit: "st"
+                unit: "st",
+                details: ""
             }
         ],
         description: [
@@ -645,37 +721,42 @@ const recepies = [
 
     {
         index: 113,
-        mealName: "Ärtsoppa",
-        mealCategory: 4,
+        mealName: "Ärtsoppa med fläsk",
+        mealCategory: 5,
         ingredients: [
             {
                 name: "gula ärtor",
                 amount: 3,
-                unit: "dl"
+                unit: "dl",
+                details: ""
             },
             
             {
                 name: "sidfläsk",
                 amount: 400,
-                unit: "g"
+                unit: "g",
+                details: ""
             },
             
             {
                 name: "gul lök",
                 amount: 1,
-                unit: "st"
+                unit: "st",
+                details: ""
             },
             
             {
                 name: "morot",
                 amount: 2,
-                unit: "st"
+                unit: "st",
+                details: ""
             },
             
             {
                 name: "timjan",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             }
         ],
         description: [
@@ -702,31 +783,36 @@ const recepies = [
             {
                 name: "gröna linser",
                 amount: 2,
-                unit: "dl"
+                unit: "dl",
+                details: ""
             },
             
             {
                 name: "köttfärs",
                 amount: 500,
-                unit: "g"
+                unit: "g",
+                details: ""
             },
             
             {
                 name: "ris",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             },
             
             {
                 name: "saffran",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             },
             
             {
                 name: "potatis",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             }
         ],
         description: [] 
@@ -740,37 +826,43 @@ const recepies = [
             {
                 name: "isbergssallad",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             },
             
             {
                 name: "grillad kyckling",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             },
             
             {
                 name: "caesardressing",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             },
             
             {
                 name: "krutonger",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             },
             
             {
                 name: "tomater",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             },
             
             {
                 name: "paprika",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             }
             ],
         description: [
@@ -787,31 +879,36 @@ const recepies = [
             {
                 name: "falukorv",
                 amount: 1,
-                unit: "paket"
+                unit: "paket",
+                details: ""
             },
             
             {
                 name: "gul lök",
                 amount: 1,
-                unit: "st"
+                unit: "st",
+                details: ""
             },
             
             {
                 name: "krossade tomater",
                 amount: 2,
-                unit: "paket"
+                unit: "paket",
+                details: ""
             },
             
             {
                 name: "grädde",
                 amount: 2,
-                unit: "dl"
+                unit: "dl",
+                details: ""
             },
             
             {
                 name: "ris",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             },
         ],
         description: [
@@ -829,37 +926,43 @@ const recepies = [
             {
                 name: "fläskotletter",
                 amount: 800,
-                unit: "g"
+                unit: "g",
+                details: ""
             },
             
             {
                 name: "svamp",
                 amount: 500,
-                unit: "g"
+                unit: "g",
+                details: ""
             },
             
             {
                 name: "vitlök",
                 amount: 2,
-                unit: "klyftor"
+                unit: "klyftor",
+                details: ""
             },
             
             {
                 name: "citron",
                 amount: 1/2,
-                unit: "st"
+                unit: "st",
+                details: ""
             },
             
             {
                 name: "vispgrädde",
                 amount: 2,
-                unit: "dl"
+                unit: "dl",
+                details: ""
             },
             
             {
                 name: "persilja",
                 amount: null,
-                unit: ""
+                unit: "",
+                details: ""
             }
         ],
         description: [

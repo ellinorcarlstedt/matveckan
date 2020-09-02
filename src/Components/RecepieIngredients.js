@@ -13,13 +13,13 @@ function RecepieIngredients(props) {
             if (ingredient.amount === null) {
                 let ingredientName = firstLetterUppercase(ingredient.name);
                 return (
-                    <div>
+                    <div key={i}>
                         <p>{ingredientName}</p>
                     </div>
                 )
             } else {
             return (
-                <div>
+                <div key={i}>
                     <p>{`${ingredient.amount} ${ingredient.unit} ${ingredient.name}`}</p>
                 </div>
                 )
