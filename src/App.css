@@ -145,68 +145,104 @@
   color: #FC913A;
 }
 
-.recepie-input-moderator {
-  margin: 0.5rem;
-}
+
+/********************** Recepie input moderator with children *************************/
+
 
 .recepie-input-moderator input {
-  border: 1px solid rgb(221, 213, 213);
-  padding: 0.3rem;
   font-family: Garamond, Cambria;
   font-family: 'Varela Round';
   font-size: 0.7rem;
 }
 
-.input-title,
-.input-description,
-.input-ingredients-wrapper,
-.input-category {
-  margin-bottom: 0.5rem;
-}
+/******************* FLEXBOX **********************/
 
-.input-ingredients,
-.input-category {
+.input-description,
+.ingredient-input-wrapper,
+.category-input {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.category-input {
   flex-wrap: wrap;
 }
 
-.input-title input,
-.input-description input {
-  width: 100%;
-}
-
-.input-description,
-.input-ingredients-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.input-description-row,
-.input-ingredients {
+.ingredient-input {
   flex-grow: 2;
-  margin-right: 0.5rem;
 }
 
-.input-ingredients-name {
+/******************* WIDTH **********************/
+
+.title-input input,
+.input-description input,
+.ingredient-input-name {
   width: 100%;
 }
 
-.input-ingredients-details {
+.ingredient-input-details {
   width: 50%;
 }
-.input-ingredients-amount,
-.input-ingredients-unit {
+.ingredient-input-amount,
+.ingredient-input-unit {
   width: 25%;
 }
 
-.input-category input {
+/********** MARGINS / PADDING / BORDER ***********/
+
+.recepie-input-moderator input:focus {
+  outline: none;
+}
+
+.recepie-input-moderator {
+  margin: 0.5rem;
+}
+
+.recepie-input-moderator input {
+  padding: 0.3rem;
+}
+
+.title-input input,
+.input-description input {
+  border: 1px solid rgb(221, 213, 213);
+}
+
+.title-input,
+.input-description,
+.ingredient-input-wrapper,
+.category-input {
+  margin-bottom: 0.5rem;
+}
+
+.input-description-row,
+.ingredient-input {
+  margin-right: 0.5rem;
+}
+
+.category-input input {
   margin-top: 0.3rem;
 }
+
+.ingredient-input-name,
+.ingredient-input-amount,
+.ingredient-input-unit,
+.ingredient-input-details {
+  border: 1px solid rgb(221, 213, 213);
+}
+
+.ingredient-input-details {
+  border-top: none;
+}
+
+.ingredient-input-amount,
+.ingredient-input-unit {
+  border-top: none;
+  border-right: none;
+}
+
+/************ Media queries ******************/
 
 @media (min-width: 1000px) {
   .App {
