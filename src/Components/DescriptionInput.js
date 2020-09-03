@@ -4,9 +4,9 @@ import '../App.css';
 function DescriptionInput(props) {
 
     return (
-        <div className="input-description" onChange={props.handleChange}>
-            <input type="text" className="input-description-row"/>
-            <button type="button">+</button>
+        <div className="input-description">
+            <input type="text" className="input-description-row" value={props.value} onChange={props.handleChange}/>
+            <button type="button" onClick={props.addDescriptionRow}>+</button>
         </div>
     )
 }

@@ -3,6 +3,7 @@ import IngredientInput from './IngredientInput';
 import DescriptionInput from './DescriptionInput';
 import CategoryInput from './CategoryInput';
 import AddedIngredient from './AddedIngredient';
+import AddedDescriptionRow from './AddedDescriptionRow';
 import '../App.css';
 
 
@@ -17,6 +18,7 @@ function RecepieInputModerator() {
   const [ ingredientUnit, setIngredientUnit ] = useState("");
   const [ ingredientDetails, setIngredientDetails ] = useState("");
   
+  const [ currentDescriptionRowIndex, setCurrentDescriptionRowIndex ] = useState(null);
   const [ descriptionRowInput, setDescriptionRowInput ] = useState("");
 
   const [ addedIngredients, setAddedIngredients ] = useState([]);
@@ -80,24 +82,60 @@ function RecepieInputModerator() {
     setIngredientDetails("");
   }
 
+  const clearDescriptionRowInput = () => {
+    setCurrentDescriptionRowIndex(null);
+    setDescriptionRowInput("");
+  }
+
   const setIngredientEditMode = (index) => {
     let ingredientToEdit = addedIngredients.filter((item) => {
       return item.id === index;
     })
-    setCurrentIngredientIndex(ingredientToEdit.id);
-    setIngredientName(ingredientToEdit.name);
-    setIngredientAmount(ingredientToEdit.amount);
-    setIngredientUnit(ingredientToEdit.unit);
-    setIngredientDetails(ingredientToEdit.details);
+    setCurrentIngredientIndex(ingredientToEdit[0].id);
+    setIngredientName(ingredientToEdit[0].name);
+    setIngredientAmount(ingredientToEdit[0].amount);
+    setIngredientUnit(ingredientToEdit[0].unit);
+    setIngredientDetails(ingredientToEdit[0].details);
+  }
+
+  const setDescriptionEditMode = (index) => {
+    let descriptionRowToEdit = addedDescriptionRows.filter((item) => {
+      return item.id === index;
+    })
+    setCurrentDescriptionRowIndex(descriptionRowToEdit[0].id);
+    setDescriptionRowInput(descriptionRowToEdit[0].description);
   }
 
   const addDescriptionRow = () => {
-    "Action here";
+    const id = currentDescriptionRowIndex === null ? addedDescriptionRows.length + 1 : currentDescriptionRowIndex;
+    const descriptionRowObject = {
+      id: id,
+      description: descriptionRowInput
+    }
+    let allDescriptionRows = [...addedDescriptionRows];
+    if (currentDescriptionRowIndex === null) {
+      allDescriptionRows.push(descriptionRowObject);
+    } else {
+      allDescriptionRows.splice((currentDescriptionRowIndex - 1), 1, descriptionRowObject);
+    }
+    setAddedDescriptionRows(allDescriptionRows);
+    clearDescriptionRowInput();
   }
 
  const allAddedIngredients = addedIngredients.map((item) => {
-      return <AddedIngredient name={item.name} amount={item.amount} unit={item.unit} details={item.details} setEditMode={() => setIngredientEditMode(item.id)}/> 
- }) 
+      return <AddedIngredient key={item.id} 
+                              name={item.name} 
+                              amount={item.amount} 
+                              unit={item.unit} 
+                              details={item.details} 
+                              setEditMode={() => setIngredientEditMode(item.id)}/> 
+ });
+ 
+  const allAddedDescriptionRows = addedDescriptionRows.map((item) => {
+   return <AddedDescriptionRow  key={item.id} 
+                                description={item.description}
+                                setEditMode={() => setDescriptionEditMode(item.id)}/>
+ })
 
   return (
     <div className="recepie-input-moderator">
@@ -122,7 +160,11 @@ function RecepieInputModerator() {
         
         {allAddedIngredients}
 
-        <DescriptionInput handleChange={handleDescriptionChange}/>
+        <DescriptionInput handleChange={handleDescriptionChange} 
+                          addDescriptionRow={addDescriptionRow} 
+                          value={descriptionRowInput}/>
+ 
+        {allAddedDescriptionRows}
 
         <button type="submit" name="submit">Klar</button>
 
