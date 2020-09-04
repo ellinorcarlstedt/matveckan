@@ -12,13 +12,13 @@ function RecepieInputModerator() {
   const [ titleInput, setTitleInput ] = useState("");
   const [ categoryInput, setCategoryInput ] = useState("");
 
-  const [ currentIngredientIndex, setCurrentIngredientIndex ] = useState(null);
+  const [ currentIngredientId, setCurrentIngredientId ] = useState(null);
   const [ ingredientName, setIngredientName ] = useState("");
   const [ ingredientAmount, setIngredientAmount ] = useState("");
   const [ ingredientUnit, setIngredientUnit ] = useState("");
   const [ ingredientDetails, setIngredientDetails ] = useState("");
   
-  const [ currentDescriptionRowIndex, setCurrentDescriptionRowIndex ] = useState(null);
+  const [ currentDescriptionRowId, setCurrentDescriptionRowId ] = useState(null);
   const [ descriptionRowInput, setDescriptionRowInput ] = useState("");
 
   const [ addedIngredients, setAddedIngredients ] = useState([]);
@@ -33,6 +33,21 @@ function RecepieInputModerator() {
   const handleCategoryChange = (e) => {
     e.preventDefault();
     setCategoryInput(e.target.value);
+  }
+
+  const handleDescriptionChange = (e) => {
+    e.preventDefault();
+    setDescriptionRowInput(e.target.value);
+  }
+
+  const getNewId = (list) => {
+    let highestIdInList = 0; 
+    for(let i=0; i < list.length; i++) {
+      if (list[i].id > highestIdInList) {
+        highestIdInList = list[i].id;
+      }
+    }
+    return highestIdInList + 1;
   }
 
   const handleIngredientChange = (e) => {
@@ -50,13 +65,8 @@ function RecepieInputModerator() {
     } 
   }
 
-  const handleDescriptionChange = (e) => {
-    e.preventDefault();
-    setDescriptionRowInput(e.target.value);
-  }
-
   const addIngredient = () => {
-    const id = currentIngredientIndex === null ? addedIngredients.length + 1 : currentIngredientIndex;
+    const id = currentIngredientId === null ? getNewId(addedIngredients) : currentIngredientId;
     const ingredientObject = {
       id: id,
       name: ingredientName,
@@ -65,62 +75,87 @@ function RecepieInputModerator() {
       details: ingredientDetails
     }
     let allIngredients = [...addedIngredients];
-    if (currentIngredientIndex === null) {
+    if (currentIngredientId === null) {
       allIngredients.push(ingredientObject);
     } else {
-      allIngredients.splice((currentIngredientIndex - 1), 1, ingredientObject);
+      let index = allIngredients.findIndex(ingredient => ingredient.id === currentIngredientId);
+      allIngredients.splice((index), 1, ingredientObject); 
     }
     setAddedIngredients(allIngredients);
     clearIngredientsInput();
   }
 
-  const clearIngredientsInput = () => {
-    setCurrentIngredientIndex(null);
-    setIngredientName("");
-    setIngredientAmount("");
-    setIngredientUnit("");
-    setIngredientDetails("");
+
+  const deleteIngredient = (id) => {
+    let allIngredients = [...addedIngredients];
+    let index = allIngredients.findIndex(ingredient => ingredient.id === id);
+    allIngredients.splice(index, 1); 
+    setAddedIngredients(allIngredients);
   }
 
-  const clearDescriptionRowInput = () => {
-    setCurrentDescriptionRowIndex(null);
-    setDescriptionRowInput("");
-  }
 
-  const setIngredientEditMode = (index) => {
+  const setIngredientEditMode = (id) => {
     let ingredientToEdit = addedIngredients.filter((item) => {
-      return item.id === index;
+      return item.id === id;
     })
-    setCurrentIngredientIndex(ingredientToEdit[0].id);
+    setCurrentIngredientId(ingredientToEdit[0].id);
     setIngredientName(ingredientToEdit[0].name);
     setIngredientAmount(ingredientToEdit[0].amount);
     setIngredientUnit(ingredientToEdit[0].unit);
     setIngredientDetails(ingredientToEdit[0].details);
   }
 
-  const setDescriptionEditMode = (index) => {
-    let descriptionRowToEdit = addedDescriptionRows.filter((item) => {
-      return item.id === index;
-    })
-    setCurrentDescriptionRowIndex(descriptionRowToEdit[0].id);
-    setDescriptionRowInput(descriptionRowToEdit[0].description);
+
+  const clearIngredientsInput = () => {
+    setCurrentIngredientId(null);
+    setIngredientName("");
+    setIngredientAmount("");
+    setIngredientUnit("");
+    setIngredientDetails("");
   }
 
+
   const addDescriptionRow = () => {
-    const id = currentDescriptionRowIndex === null ? addedDescriptionRows.length + 1 : currentDescriptionRowIndex;
+    const id = currentDescriptionRowId === null ? getNewId(addedDescriptionRows) : currentDescriptionRowId;
     const descriptionRowObject = {
       id: id,
       description: descriptionRowInput
     }
     let allDescriptionRows = [...addedDescriptionRows];
-    if (currentDescriptionRowIndex === null) {
+    if (currentDescriptionRowId === null) {
       allDescriptionRows.push(descriptionRowObject);
     } else {
-      allDescriptionRows.splice((currentDescriptionRowIndex - 1), 1, descriptionRowObject);
+      let index = allDescriptionRows.findIndex(row => row.id === currentDescriptionRowId);
+      allDescriptionRows.splice((index), 1, descriptionRowObject); 
     }
     setAddedDescriptionRows(allDescriptionRows);
     clearDescriptionRowInput();
   }
+
+
+  const deleteDescriptionRow = (id) => {
+    let allDescriptionRows = [...addedDescriptionRows];
+    let index = allDescriptionRows.findIndex(row => row.id === id);
+    allDescriptionRows.splice(index, 1); 
+    setAddedDescriptionRows(allDescriptionRows);
+  }
+
+
+  const setDescriptionEditMode = (id) => {
+    let descriptionRowToEdit = addedDescriptionRows.filter((item) => {
+      return item.id === id;
+    })
+    setCurrentDescriptionRowId(descriptionRowToEdit[0].id);
+    setDescriptionRowInput(descriptionRowToEdit[0].description);
+  }
+
+
+  const clearDescriptionRowInput = () => {
+    setCurrentDescriptionRowId(null);
+    setDescriptionRowInput("");
+  }
+
+
 
  const allAddedIngredients = addedIngredients.map((item) => {
       return <AddedIngredient key={item.id} 
@@ -128,13 +163,15 @@ function RecepieInputModerator() {
                               amount={item.amount} 
                               unit={item.unit} 
                               details={item.details} 
-                              setEditMode={() => setIngredientEditMode(item.id)}/> 
+                              setEditMode={() => setIngredientEditMode(item.id)}
+                              deleteIngredient={() => deleteIngredient(item.id)}/> 
  });
  
   const allAddedDescriptionRows = addedDescriptionRows.map((item) => {
    return <AddedDescriptionRow  key={item.id} 
                                 description={item.description}
-                                setEditMode={() => setDescriptionEditMode(item.id)}/>
+                                setEditMode={() => setDescriptionEditMode(item.id)}
+                                deleteDescriptionRow={() => deleteDescriptionRow(item.id)}/>
  })
 
   return (
