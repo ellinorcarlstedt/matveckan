@@ -12,14 +12,14 @@ function RecepieInputModerator() {
   const [ titleInput, setTitleInput ] = useState("");
   const [ categoryInput, setCategoryInput ] = useState("");
 
-  const [ currentIngredient, setCurrentIngredient ] = useState(null);
   const [ ingredientName, setIngredientName ] = useState("");
   const [ ingredientAmount, setIngredientAmount ] = useState("");
   const [ ingredientUnit, setIngredientUnit ] = useState("");
   const [ ingredientDetails, setIngredientDetails ] = useState("");
-  
-  const [ currentDescriptionRow, setCurrentDescriptionRow ] = useState(null);
   const [ descriptionRowInput, setDescriptionRowInput ] = useState("");
+
+  const [ currentIngredient, setCurrentIngredient ] = useState(null);
+  const [ currentDescriptionRow, setCurrentDescriptionRow ] = useState(null);
 
   const [ addedIngredients, setAddedIngredients ] = useState([]);
   const [ addedDescriptionRows, setAddedDescriptionRows ] = useState([]);
@@ -30,15 +30,6 @@ function RecepieInputModerator() {
     console.log("Submit will be handled here");
   }
 
-  const handleCategoryChange = (e) => {
-    setCategoryInput(e.target.value);
-  }
-
-  const handleDescriptionChange = (e) => {
-    e.preventDefault();
-    setDescriptionRowInput(e.target.value);
-  }
-
   const getNewId = (list) => {
     let highestIdInList = 0; 
     for(let i=0; i < list.length; i++) {
@@ -47,6 +38,15 @@ function RecepieInputModerator() {
       }
     }
     return highestIdInList + 1;
+  }
+
+  const handleCategoryChange = (e) => {
+    setCategoryInput(e.target.value);
+  }
+
+  const handleDescriptionChange = (e) => {
+    e.preventDefault();
+    setDescriptionRowInput(e.target.value);
   }
 
   const handleIngredientChange = (e) => {
@@ -141,11 +141,11 @@ function RecepieInputModerator() {
 
 
   const setDescriptionEditMode = (id) => {
-    let descriptionRowToEdit = addedDescriptionRows.filter((item) => {
+    let descriptionRowToEdit = addedDescriptionRows.find((item) => {
       return item.id === id;
     })
-    setCurrentDescriptionRow(descriptionRowToEdit[0].id);
-    setDescriptionRowInput(descriptionRowToEdit[0].description);
+    setCurrentDescriptionRow(descriptionRowToEdit.id);
+    setDescriptionRowInput(descriptionRowToEdit.description);
   }
 
 
