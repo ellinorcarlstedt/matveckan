@@ -12,13 +12,13 @@ function RecepieInputModerator() {
   const [ titleInput, setTitleInput ] = useState("");
   const [ categoryInput, setCategoryInput ] = useState("");
 
-  const [ currentIngredientId, setCurrentIngredientId ] = useState(null);
+  const [ currentIngredient, setCurrentIngredient ] = useState(null);
   const [ ingredientName, setIngredientName ] = useState("");
   const [ ingredientAmount, setIngredientAmount ] = useState("");
   const [ ingredientUnit, setIngredientUnit ] = useState("");
   const [ ingredientDetails, setIngredientDetails ] = useState("");
   
-  const [ currentDescriptionRowId, setCurrentDescriptionRowId ] = useState(null);
+  const [ currentDescriptionRow, setCurrentDescriptionRow ] = useState(null);
   const [ descriptionRowInput, setDescriptionRowInput ] = useState("");
 
   const [ addedIngredients, setAddedIngredients ] = useState([]);
@@ -31,7 +31,6 @@ function RecepieInputModerator() {
   }
 
   const handleCategoryChange = (e) => {
-    e.preventDefault();
     setCategoryInput(e.target.value);
   }
 
@@ -66,7 +65,7 @@ function RecepieInputModerator() {
   }
 
   const addIngredient = () => {
-    const id = currentIngredientId === null ? getNewId(addedIngredients) : currentIngredientId;
+    const id = currentIngredient === null ? getNewId(addedIngredients) : currentIngredient;
     const ingredientObject = {
       id: id,
       name: ingredientName,
@@ -75,10 +74,10 @@ function RecepieInputModerator() {
       details: ingredientDetails
     }
     let allIngredients = [...addedIngredients];
-    if (currentIngredientId === null) {
+    if (currentIngredient === null) {
       allIngredients.push(ingredientObject);
     } else {
-      let index = allIngredients.findIndex(ingredient => ingredient.id === currentIngredientId);
+      let index = allIngredients.findIndex(ingredient => ingredient.id === currentIngredient);
       allIngredients.splice((index), 1, ingredientObject); 
     }
     setAddedIngredients(allIngredients);
@@ -98,7 +97,7 @@ function RecepieInputModerator() {
     let ingredientToEdit = addedIngredients.filter((item) => {
       return item.id === id;
     })
-    setCurrentIngredientId(ingredientToEdit[0].id);
+    setCurrentIngredient(ingredientToEdit[0].id);
     setIngredientName(ingredientToEdit[0].name);
     setIngredientAmount(ingredientToEdit[0].amount);
     setIngredientUnit(ingredientToEdit[0].unit);
@@ -107,7 +106,7 @@ function RecepieInputModerator() {
 
 
   const clearIngredientsInput = () => {
-    setCurrentIngredientId(null);
+    setCurrentIngredient(null);
     setIngredientName("");
     setIngredientAmount("");
     setIngredientUnit("");
@@ -116,16 +115,16 @@ function RecepieInputModerator() {
 
 
   const addDescriptionRow = () => {
-    const id = currentDescriptionRowId === null ? getNewId(addedDescriptionRows) : currentDescriptionRowId;
+    const id = currentDescriptionRow === null ? getNewId(addedDescriptionRows) : currentDescriptionRow;
     const descriptionRowObject = {
       id: id,
       description: descriptionRowInput
     }
     let allDescriptionRows = [...addedDescriptionRows];
-    if (currentDescriptionRowId === null) {
+    if (currentDescriptionRow === null) {
       allDescriptionRows.push(descriptionRowObject);
     } else {
-      let index = allDescriptionRows.findIndex(row => row.id === currentDescriptionRowId);
+      let index = allDescriptionRows.findIndex(row => row.id === currentDescriptionRow);
       allDescriptionRows.splice((index), 1, descriptionRowObject); 
     }
     setAddedDescriptionRows(allDescriptionRows);
@@ -145,13 +144,13 @@ function RecepieInputModerator() {
     let descriptionRowToEdit = addedDescriptionRows.filter((item) => {
       return item.id === id;
     })
-    setCurrentDescriptionRowId(descriptionRowToEdit[0].id);
+    setCurrentDescriptionRow(descriptionRowToEdit[0].id);
     setDescriptionRowInput(descriptionRowToEdit[0].description);
   }
 
 
   const clearDescriptionRowInput = () => {
-    setCurrentDescriptionRowId(null);
+    setCurrentDescriptionRow(null);
     setDescriptionRowInput("");
   }
 
