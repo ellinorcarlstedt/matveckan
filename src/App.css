@@ -142,7 +142,7 @@
 }
 
 .icon-artist-attribute a:hover {
-  color: #FC913A;
+  color: rgb(209, 205, 205);
 }
 
 
@@ -155,11 +155,49 @@
   font-size: 0.7rem;
 }
 
+.added-item {
+  text-align: left;
+  padding-left: 0.3rem;
+  margin-bottom: 0.1rem;
+}
+
+.input-clickable-icon {
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.input-clickable-icon:active {
+  transform: translateY(1px);
+}
+
+.add-remove {
+  padding: 0.2rem;
+  border-radius: 50%; 
+  border: 0.1rem solid black;
+}
+
+.add-remove:hover {
+  background-color: #FC913A;
+}
+
+.icon-edit-mode, 
+.edit:hover {
+  transform: rotate(45deg)
+}
+
+.item-edit-mode {
+  background-color: #fcd1ae;
+}
+
 /******************* FLEXBOX **********************/
 
 .input-description,
 .ingredient-input-wrapper,
-.category-input {
+.category-input,
+.added-item,
+.added-item-buttons {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -212,13 +250,9 @@
 .title-input,
 .input-description,
 .ingredient-input-wrapper,
-.category-input {
+.category-input,
+.added-items-list {
   margin-bottom: 0.5rem;
-}
-
-.input-description-row,
-.ingredient-input {
-  margin-right: 0.5rem;
 }
 
 .category-input input {
