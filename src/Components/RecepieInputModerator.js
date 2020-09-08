@@ -116,6 +116,9 @@ function RecepieInputModerator() {
     let index = allIngredients.findIndex(ingredient => ingredient.id === id);
     allIngredients.splice(index, 1); 
     setAddedIngredients(allIngredients);
+    if (currentIngredient === id) {
+      clearIngredientsInput();
+    }
   }
 
 
@@ -124,11 +127,14 @@ function RecepieInputModerator() {
     let index = allDescriptionRows.findIndex(row => row.id === id);
     allDescriptionRows.splice(index, 1); 
     setAddedDescriptionRows(allDescriptionRows);
+    if (currentDescriptionRow === id) {
+      clearDescriptionRowInput();
+    }
   }
 
 
   const toggleIngredientEditMode = (id) => {
-    if (currentIngredient === null) {
+    if (currentIngredient === null || currentIngredient !== id) {
       let ingredientToEdit = addedIngredients.find((item) => {
         return item.id === id;
       });
@@ -144,7 +150,7 @@ function RecepieInputModerator() {
 
 
   const toggleDescriptionEditMode = (id) => {
-    if (currentDescriptionRow === null) {
+    if (currentDescriptionRow === null || currentDescriptionRow !== id) {
       let descriptionRowToEdit = addedDescriptionRows.find((item) => {
         return item.id === id;
       })

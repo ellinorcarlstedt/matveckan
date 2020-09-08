@@ -12,8 +12,8 @@ function AddedIngredient(props) {
         <div className={`added-item ${itemClass}`}>
             <p>{`${props.amount} ${props.unit} ${props.name} ${props.details}`}</p>
             <div className="added-item-buttons">
-                <img src={require("../icons/pencil.png")} className={`input-clickable-icon ${iconClass}`} onClick={props.toggleEditMode} alt="Redigera"/>
-                <img src={require("../icons/minus-no-border.png")} className="input-clickable-icon add-remove" onClick={props.deleteIngredient} alt="Ta bort"/>
+                <img src={require("../icons/pencil.png")}  alt="Redigera" className={`input-clickable-icon ${iconClass}`} onClick={props.toggleEditMode}/>
+                <img src={require("../icons/minus-no-border.png")} alt="Ta bort" className="input-clickable-icon add-remove" onClick={props.deleteIngredient} />
             </div>
         </div>
     )
