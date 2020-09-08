@@ -22,4 +22,4 @@ function CategoryInput(props) {
     )
 }
 
-export default CategoryInput
+export default CategoryInput;

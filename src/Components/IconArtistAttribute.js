@@ -9,4 +9,4 @@ function IconArtistAttribute() {
     )
 }
 
-export default IconArtistAttribute
+export default IconArtistAttribute;

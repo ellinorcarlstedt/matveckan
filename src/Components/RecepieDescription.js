@@ -15,4 +15,4 @@ function RecepieDescription(props) {
     )
 }
 
-export default React.memo(RecepieDescription)
+export default React.memo(RecepieDescription);

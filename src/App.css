@@ -157,14 +157,12 @@
 
 .added-item {
   text-align: left;
-  padding: 0 0.5rem;
-  margin-bottom: 0.15rem;
+  padding: 0.15rem 0.5rem;
 }
 
 .input-clickable-icon {
-  width: 1.2rem;
-  height: 1.2rem;
-  margin-left: 0.5rem;
+  width: 1rem;
+  height: 1rem;
   cursor: pointer;
 }
 
@@ -172,17 +170,12 @@
   transform: translateY(1px);
 }
 
-.add-remove:hover {
-  background-color: #FC913A;
-}
-
-.icon-edit-mode, 
-.edit:hover {
+.icon-edit-mode {
   transform: rotate(45deg)
 }
 
 .item-edit-mode {
-  background-color: #fcd1ae;
+  background-color: rgb(227, 229, 231);
 }
 
 /******************* FLEXBOX **********************/
@@ -252,12 +245,26 @@
   margin-bottom: 0.5rem;
 }
 
-.recepie-input-moderator {
-  padding-top: 0.5rem;
+.add-icon {
+  margin-left: 0.5rem;
+}
+
+.remove-icon,
+.edit,
+.icon-edit-mode {
+  margin-left: 0.3rem;
 }
 
 .category-input p {
   margin-bottom: 0.3rem;
+}
+
+.recepie-input-moderator {
+  padding-top: 0.5rem;
+}
+
+.remove-icon {
+  padding: 0.1rem;
 }
 
 .ingredient-input-name,
@@ -277,11 +284,6 @@
   border-right: none;
 }
 
-.add-remove {
-  padding: 0.2rem;
-  border-radius: 50%; 
-  border: 0.1rem solid black;
-}
 
 /************ Media queries ******************/
 

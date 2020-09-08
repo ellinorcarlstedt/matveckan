@@ -34,4 +34,4 @@ function RecepieIngredients(props) {
     )
 }
 
-export default React.memo(RecepieIngredients)
+export default React.memo(RecepieIngredients);

@@ -31,4 +31,4 @@ function ArrowIcon(props) {
     )
 }
 
-export default React.memo(ArrowIcon)
+export default React.memo(ArrowIcon);

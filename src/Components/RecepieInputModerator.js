@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import IngredientInput from './IngredientInput';
 import DescriptionInput from './DescriptionInput';
 import CategoryInput from './CategoryInput';
-import AddedIngredient from './AddedIngredient';
-import AddedDescriptionRow from './AddedDescriptionRow';
+import AddedRecepieItem from './AddedRecepieItem';
 import IconArtistAttribute from './IconArtistAttribute';
 import '../App.css';
 
@@ -48,7 +47,7 @@ function RecepieInputModerator() {
 
   const getNewId = (list) => {
     let highestIdInList = 0; 
-    for(let i=0; i < list.length; i++) {
+    for (let i=0; i < list.length; i++) {
       if (list[i].id > highestIdInList) {
         highestIdInList = list[i].id;
       }
@@ -211,24 +210,21 @@ function RecepieInputModerator() {
 
 
  const allAddedIngredients = addedIngredients.map((item) => {
-      return <AddedIngredient key={item.id} 
-                              id={item.id}
-                              name={item.name} 
-                              amount={item.amount} 
-                              unit={item.unit} 
-                              details={item.details} 
-                              currentIngredient={currentIngredient}
-                              toggleEditMode={() => toggleIngredientEditMode(item.id)}
-                              deleteIngredient={() => deleteIngredient(item.id)}/> 
+      return <AddedRecepieItem  key={item.id} 
+                                id={item.id}
+                                content={`${item.amount} ${item.unit} ${item.name} ${item.details}`}  
+                                currentItem={currentIngredient}
+                                toggleEditMode={() => toggleIngredientEditMode(item.id)}
+                                deleteItem={() => deleteIngredient(item.id)}/>
  });
  
   const allAddedDescriptionRows = addedDescriptionRows.map((item) => {
-   return <AddedDescriptionRow  key={item.id} 
+      return <AddedRecepieItem  key={item.id} 
                                 id={item.id}
-                                description={item.description}
-                                currentDescriptionRow={currentDescriptionRow}
+                                content={item.description}
+                                currentItem={currentDescriptionRow}
                                 toggleEditMode={() => toggleDescriptionEditMode(item.id)}
-                                deleteDescriptionRow={() => deleteDescriptionRow(item.id)}/>
+                                deleteItem={() => deleteDescriptionRow(item.id)}/>
  })
 
   return (
