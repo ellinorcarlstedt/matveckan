@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import IngredientInput from './IngredientInput';
 import DescriptionInput from './DescriptionInput';
 import CategoryInput from './CategoryInput';
@@ -26,10 +26,24 @@ function RecepieInputModerator() {
   const [ addedDescriptionRows, setAddedDescriptionRows ] = useState([]);
 
 
+  const titleFocus = React.createRef();
+  const ingredientFocus = React.createRef();
+  const descriptionFocus = React.createRef();
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submit will be handled here");
   }
+
+  const manageInputFocus = (refName) => {
+    refName.current.focus();
+  }
+
+
+  useEffect(() => {
+    manageInputFocus(titleFocus);
+}, []);
 
 
   const getNewId = (list) => {
@@ -89,6 +103,7 @@ function RecepieInputModerator() {
     }
     setAddedIngredients(allIngredients);
     clearIngredientsInput();
+    manageInputFocus(ingredientFocus);
   }
 
 
@@ -108,6 +123,7 @@ function RecepieInputModerator() {
     }
     setAddedDescriptionRows(allDescriptionRows);
     clearDescriptionRowInput();
+    manageInputFocus(descriptionFocus);
   }
 
 
@@ -119,6 +135,7 @@ function RecepieInputModerator() {
     if (currentIngredient === id) {
       clearIngredientsInput();
     }
+    manageInputFocus(ingredientFocus);
   }
 
 
@@ -130,6 +147,7 @@ function RecepieInputModerator() {
     if (currentDescriptionRow === id) {
       clearDescriptionRowInput();
     }
+    manageInputFocus(descriptionFocus);
   }
 
 
@@ -146,6 +164,7 @@ function RecepieInputModerator() {
     } else {
       clearIngredientsInput();
     }
+    manageInputFocus(ingredientFocus);
   }
 
 
@@ -159,6 +178,7 @@ function RecepieInputModerator() {
     } else {
       clearDescriptionRowInput();
     }
+    manageInputFocus(descriptionFocus);
   }
 
 
@@ -219,7 +239,7 @@ function RecepieInputModerator() {
         <div className="title-input">
           <label>
             <input type="text" 
-                  name="title" placeholder="Vad heter maträtten?" value={titleInput} autoComplete="off" onChange={(e => setTitleInput(e.target.value))}/>
+                  name="title" placeholder="Vad heter maträtten?" value={titleInput} autoComplete="off" onChange={(e => setTitleInput(e.target.value))} ref={titleFocus}/>
           </label> 
         </div>  
 
@@ -231,14 +251,16 @@ function RecepieInputModerator() {
                           name={ingredientName} 
                           amount={ingredientAmount} 
                           unit={ingredientUnit} 
-                          details={ingredientDetails}/>
+                          details={ingredientDetails}
+                          inputFocus={ingredientFocus}/>
         
         <div className="added-items-list">{allAddedIngredients}</div>
 
         <DescriptionInput handleChange={handleDescriptionChange} 
                           addDescriptionRow={addDescriptionRow} 
                           handleEnter={handleEnter} 
-                          value={descriptionRowInput}/>
+                          value={descriptionRowInput}
+                          inputFocus={descriptionFocus}/>
  
         <div className="added-items-list">{allAddedDescriptionRows}</div>
 
