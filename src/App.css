@@ -5,12 +5,17 @@
   margin: 0;
 }
 
+html {
+  font-size: 1rem;
+}
+
+
 .App {
   margin: auto;
   text-align: center;
   font-family: Garamond, Cambria;
   font-family: 'Varela Round';
-  font-size: 0.7rem;
+  font-size: 0.7rem; 
 }
 
 .head-links-ul {
@@ -35,9 +40,9 @@
 
 .menu-displayer {
   background-image: url('./icons/tomatobasil.jpg');
-  background-size: auto 100%;
+  background-size: auto 100%; 
   background-repeat: no-repeat;
-  background-position: right top;
+  background-position: top right;
   background-attachment: fixed;
   background-color: white, #ffe6e6;
   padding-bottom: 0.7rem;
@@ -103,25 +108,25 @@
   padding: 0 0.7rem;
 }
 
-.recepie {
+.recipe {
   overflow: hidden; 
   text-align: left;
   background-color: #ffffff;
 }
 
-.recepie-ingredients {
+.recipe-ingredients {
   padding: 0.5rem;
   margin-bottom: 0.5rem;
   background-color: rgb(227, 229, 231);
 }
 
-.recepie-description-row, 
-.recepie-description-missing {
+.recipe-description-row, 
+.recipe-description-missing {
   padding: 0 0.5rem;
   margin-bottom: 0.5rem;
 } 
 
-.recepie-description-missing {
+.recipe-description-missing {
   text-align: center;
 }
 
@@ -146,10 +151,13 @@
 }
 
 
-/********************** Recepie input moderator with children *************************/
+/********************** recipe input moderator with children *************************/
 
+.recipe-input-moderator {
+  padding-top: 1rem;
+}
 
-.recepie-input-moderator input {
+.recipe-input-moderator input {
   font-family: Garamond, Cambria;
   font-family: 'Varela Round';
   font-size: 0.7rem;
@@ -157,7 +165,7 @@
 
 .added-item {
   text-align: left;
-  padding: 0.15rem 0.5rem;
+  padding: 0.15rem 1rem;
 }
 
 .input-clickable-icon {
@@ -217,7 +225,7 @@
 
 /********** MARGINS / PADDING / BORDER ***********/
 
-.recepie-input-moderator input:focus {
+.recipe-input-moderator input:focus {
   outline: none;
 }
 
@@ -225,11 +233,7 @@
 .category-input,
 .ingredient-input-wrapper,
 .input-description {
-  padding: 0 0.5rem;
-}
-
-.recepie-input-moderator input {
-  padding: 0.3rem;
+  padding: 0 1rem;
 }
 
 .title-input input,
@@ -242,7 +246,7 @@
 .ingredient-input-wrapper,
 .category-input,
 .added-items-list {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.7rem;
 }
 
 .add-icon {
@@ -259,8 +263,8 @@
   margin-bottom: 0.3rem;
 }
 
-.recepie-input-moderator {
-  padding-top: 0.5rem;
+.recipe-input-moderator input {
+  padding: 0.3rem;
 }
 
 .remove-icon {
@@ -287,9 +291,23 @@
 
 /************ Media queries ******************/
 
-@media (min-width: 1000px) {
+@media all and (max-width: 485px) {
+
+    html {
+      font-size: 1.4rem;
+    }
+
+}
+
+@media screen and (min-width: 486px) {
+
   .App {
-    width: 25%;
+    width: 300px;
   }
+
+  .menu-displayer {
+    background-position: center; 
+  }
+  
 
 }

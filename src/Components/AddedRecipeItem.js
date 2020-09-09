@@ -1,6 +1,6 @@
 import React from 'react';
 
-function AddedRecepieItem(props) {
+function AddedRecipeItem(props) {
     let iconClass = "edit";
     let itemClass = "";
     if (props.id === props.currentItem) {
@@ -28,4 +28,4 @@ function AddedRecepieItem(props) {
     )
 }
 
-export default AddedRecepieItem;
+export default AddedRecipeItem;

@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 import MenuModerator from './Components/MenuModerator';
-import RecepieInputModerator from './Components/RecepieInputModerator';
+import RecipeInputModerator from './Components/RecipeInputModerator';
 
 function App() {
   return (
@@ -28,7 +28,7 @@ function App() {
         <Switch> 
           <Route exact path="/" component={MenuModerator} />
           <Route exact path="/meny" component={MenuModerator} />
-          <Route exact path="/recept" component={RecepieInputModerator} />
+          <Route exact path="/recept" component={RecipeInputModerator} />
         </Switch>   
       </div>
       

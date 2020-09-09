@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import IngredientInput from './IngredientInput';
 import DescriptionInput from './DescriptionInput';
 import CategoryInput from './CategoryInput';
-import AddedRecepieItem from './AddedRecepieItem';
+import AddedRecipeItem from './AddedRecipeItem';
 import IconArtistAttribute from './IconArtistAttribute';
 import '../App.css';
 
 
-function RecepieInputModerator() {
+function RecipeInputModerator() {
 
   const [ titleInput, setTitleInput ] = useState("");
   const [ categoryInput, setCategoryInput ] = useState("");
@@ -210,7 +210,7 @@ function RecepieInputModerator() {
 
 
  const allAddedIngredients = addedIngredients.map((item) => {
-      return <AddedRecepieItem  key={item.id} 
+      return <AddedRecipeItem  key={item.id} 
                                 id={item.id}
                                 content={`${item.amount} ${item.unit} ${item.name} ${item.details}`}  
                                 currentItem={currentIngredient}
@@ -219,7 +219,7 @@ function RecepieInputModerator() {
  });
  
   const allAddedDescriptionRows = addedDescriptionRows.map((item) => {
-      return <AddedRecepieItem  key={item.id} 
+      return <AddedRecipeItem  key={item.id} 
                                 id={item.id}
                                 content={item.description}
                                 currentItem={currentDescriptionRow}
@@ -228,7 +228,7 @@ function RecepieInputModerator() {
  })
 
   return (
-    <div className="recepie-input-moderator">
+    <div className="recipe-input-moderator">
 
       <form onSubmit={handleSubmit}>
 
@@ -270,4 +270,4 @@ function RecepieInputModerator() {
   );
 }
 
-export default RecepieInputModerator;
+export default RecipeInputModerator;

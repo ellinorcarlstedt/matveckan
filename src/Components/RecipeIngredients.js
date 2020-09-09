@@ -1,6 +1,6 @@
 import React from 'react'
 
-function RecepieIngredients(props) {
+function RecipeIngredients(props) {
 
     const firstLetterUppercase = (string) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -28,10 +28,10 @@ function RecepieIngredients(props) {
     }
 
     return (
-        <div className="recepie-ingredients">
+        <div className="recipe-ingredients">
             {ingredients}
         </div>
     )
 }
 
-export default React.memo(RecepieIngredients);
+export default React.memo(RecipeIngredients);

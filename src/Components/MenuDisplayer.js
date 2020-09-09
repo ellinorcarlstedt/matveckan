@@ -5,19 +5,19 @@ import IconArtistAttribute from './IconArtistAttribute';
 
 function MenuDisplayer (props) {
 
-    const [indexOfOpenRecepie, setIndexOfOpenRecepie] = useState(null);
+    const [indexOfOpenRecipe, setIndexOfOpenRecipe] = useState(null);
 
-    const openRecepie = (recepie) => {
-        setIndexOfOpenRecepie(recepie);
+    const openRecipe = (recipe) => {
+        setIndexOfOpenRecipe(recipe);
     }
 
-    const closeRecepie = () => {
-        setIndexOfOpenRecepie(null);
+    const closeRecipe = () => {
+        setIndexOfOpenRecipe(null);
     }
 
     const reloadMenu = () => {
         props.reloadMenu();
-        closeRecepie();
+        closeRecipe();
     }
 
     const menu = props.menu.map((meal, index) => 
@@ -26,9 +26,9 @@ function MenuDisplayer (props) {
                 key={meal.index} 
                 weekday={index + 1}
                 meal={meal} 
-                indexOfOpenRecepie={indexOfOpenRecepie}
-                openRecepie={() => openRecepie(meal.index)}
-                closeRecepie={() => closeRecepie()}/>
+                indexOfOpenRecipe={indexOfOpenRecipe}
+                openRecipe={() => openRecipe(meal.index)}
+                closeRecipe={() => closeRecipe()}/>
             )
         )
 
