@@ -1,0 +1,31 @@
+.tooltip-hidden {
+    visibility: hidden;
+}
+
+.tooltip-visible {
+    visibility: visible;
+}
+
+.tooltip {
+    position: relative;
+  }
+  
+  .tooltip-text {
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+  }
+
+  .tooltip .tooltip-ingredient {
+    top: -1.3rem;
+    right: 2.5rem;
+  }
+
+  .tooltip .tooltip-description {
+    top: -1rem;
+    right: 2.5rem;
+  }

@@ -20,6 +20,7 @@ function RecipeInputModerator() {
 
   const [ currentIngredient, setCurrentIngredient ] = useState(null);
   const [ currentDescriptionRow, setCurrentDescriptionRow ] = useState(null);
+  const [ tooltipTarget, setTooltipTarget ] = useState("");
 
   const [ addedIngredients, setAddedIngredients ] = useState([]);
   const [ addedDescriptionRows, setAddedDescriptionRows ] = useState([]);
@@ -39,11 +40,17 @@ function RecipeInputModerator() {
     refName.current.focus();
   }
 
-
   useEffect(() => {
     manageInputFocus(titleFocus);
-}, []);
+  }, []);
 
+  const showTooltip = (source) => {
+    setTooltipTarget(source);
+  }
+
+  const hideTooltip = () => {
+    setTooltipTarget("");
+  }
 
   const getNewId = (list) => {
     let highestIdInList = 0; 
@@ -56,13 +63,21 @@ function RecipeInputModerator() {
   }
 
 
+  const handleTitleChange = (e) => {
+    if (tooltipTarget !== "") { hideTooltip(); }
+    setTitleInput(e.target.value);
+  }
+
+
   const handleCategoryChange = (e) => {
+    if (tooltipTarget !== "") { hideTooltip(); }
     setCategoryInput(e.target.value);
   }
 
 
   const handleDescriptionChange = (e) => {
     e.preventDefault();
+    if (tooltipTarget !== "") { hideTooltip(); }
     setDescriptionRowInput(e.target.value);
   }
 
@@ -72,6 +87,7 @@ function RecipeInputModerator() {
     const target = e.target.name;
     const value = e.target.value;
     if (target === "name") {
+      if (tooltipTarget !== "") { hideTooltip(); }
       setIngredientName(value);
     } else if (target === "amount") {
       setIngredientAmount(value);
@@ -84,7 +100,10 @@ function RecipeInputModerator() {
 
 
   const addIngredient = () => {
-    if (ingredientName === "") { return };
+    if (ingredientName === "") { 
+      showTooltip("ingredient");
+      return; 
+    };
     const id = currentIngredient === null ? getNewId(addedIngredients) : currentIngredient;
     const ingredientObject = {
       id: id,
@@ -107,7 +126,10 @@ function RecipeInputModerator() {
 
 
   const addDescriptionRow = () => {
-    if (descriptionRowInput === "") { return };
+    if (descriptionRowInput === "") { 
+      showTooltip("description");
+      return; 
+    } 
     const id = currentDescriptionRow === null ? getNewId(addedDescriptionRows) : currentDescriptionRow;
     const descriptionRowObject = {
       id: id,
@@ -210,6 +232,8 @@ function RecipeInputModerator() {
 
  const ingredientEditMode = currentIngredient === null ? false : true;
  const descriptionEditMode = currentDescriptionRow === null ? false : true;
+ const ingredientTooltip = tooltipTarget === "ingredient" ? true : false;
+ const descriptionTooltip = tooltipTarget === "description" ? true : false;
 
  const allAddedIngredients = addedIngredients.map((item) => {
       return <AddedRecipeItem  key={item.id} 
@@ -237,7 +261,7 @@ function RecipeInputModerator() {
         <div className="title-input">
           <label>
             <input type="text" 
-                  name="title" placeholder="Vad heter maträtten?" value={titleInput} autoComplete="off" onChange={(e => setTitleInput(e.target.value))} ref={titleFocus}/>
+                  name="title" placeholder="Vad heter maträtten?" value={titleInput} autoComplete="off" onChange={handleTitleChange} ref={titleFocus}/>
           </label> 
         </div>  
 
@@ -251,6 +275,7 @@ function RecipeInputModerator() {
                           unit={ingredientUnit} 
                           details={ingredientDetails}
                           inputFocus={ingredientFocus}
+                          showTooltip={ingredientTooltip}
                           editMode={ingredientEditMode}/>
         
         <div className="added-items-list">{allAddedIngredients}</div>
@@ -260,6 +285,7 @@ function RecipeInputModerator() {
                           handleEnter={handleEnter} 
                           value={descriptionRowInput}
                           inputFocus={descriptionFocus}
+                          showTooltip={descriptionTooltip}
                           editMode={descriptionEditMode}/>
  
         <div className="added-items-list">{allAddedDescriptionRows}</div>
