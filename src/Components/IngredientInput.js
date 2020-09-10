@@ -3,6 +3,8 @@ import '../App.css';
 
 function IngredientInput(props) {
 
+ const addIcon = props.editMode ? "check" : "plus";
+
     return (
         <div className="ingredient-input-wrapper" onKeyPress={props.handleEnter}>
 
@@ -42,7 +44,7 @@ function IngredientInput(props) {
                     onChange={props.handleChange}/>
           </div>
 
-          <img  src={require("../icons/plus.svg")} 
+          <img  src={require(`../icons/${addIcon}.svg`)} 
                 alt="Lägg till" 
                 className="input-clickable-icon add-icon" 
                 onClick={props.addIngredient}/>

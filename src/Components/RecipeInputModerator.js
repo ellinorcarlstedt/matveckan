@@ -208,6 +208,8 @@ function RecipeInputModerator() {
   }
 
 
+ const ingredientEditMode = currentIngredient === null ? false : true;
+ const descriptionEditMode = currentDescriptionRow === null ? false : true;
 
  const allAddedIngredients = addedIngredients.map((item) => {
       return <AddedRecipeItem  key={item.id} 
@@ -248,7 +250,8 @@ function RecipeInputModerator() {
                           amount={ingredientAmount} 
                           unit={ingredientUnit} 
                           details={ingredientDetails}
-                          inputFocus={ingredientFocus}/>
+                          inputFocus={ingredientFocus}
+                          editMode={ingredientEditMode}/>
         
         <div className="added-items-list">{allAddedIngredients}</div>
 
@@ -256,7 +259,8 @@ function RecipeInputModerator() {
                           addDescriptionRow={addDescriptionRow} 
                           handleEnter={handleEnter} 
                           value={descriptionRowInput}
-                          inputFocus={descriptionFocus}/>
+                          inputFocus={descriptionFocus}
+                          editMode={descriptionEditMode}/>
  
         <div className="added-items-list">{allAddedDescriptionRows}</div>
 

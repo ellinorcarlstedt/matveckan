@@ -155,6 +155,7 @@ html {
 
 .recipe-input-moderator {
   padding-top: 1rem;
+  border: solid rgb(227, 229, 231) 1px;
 }
 
 .recipe-input-moderator input {

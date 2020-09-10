@@ -3,6 +3,8 @@ import '../App.css';
 
 function DescriptionInput(props) {
 
+    const addIcon = props.editMode ? "check" : "plus";
+
     return (
         <div className="input-description">
 
@@ -14,7 +16,7 @@ function DescriptionInput(props) {
                     onKeyPress={props.handleEnter} 
                     ref={props.inputFocus}/>
 
-            <img    src={require("../icons/plus.svg")} 
+            <img    src={require(`../icons/${addIcon}.svg`)} 
                     alt="Lägg till" 
                     className="input-clickable-icon add-icon" 
                     onClick={props.addDescriptionRow} />
