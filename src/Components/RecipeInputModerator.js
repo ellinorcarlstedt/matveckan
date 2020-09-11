@@ -176,6 +176,7 @@ function RecipeInputModerator() {
 
 
   const toggleIngredientEditMode = (id) => {
+    if (currentDescriptionRow !== null) { clearDescriptionRowInput(); }
     if (currentIngredient === null || currentIngredient !== id) {
       let ingredientToEdit = addedIngredients.find((item) => {
         return item.id === id;
@@ -193,6 +194,7 @@ function RecipeInputModerator() {
 
 
   const toggleDescriptionEditMode = (id) => {
+    if (currentIngredient !== null) { clearIngredientsInput(); } 
     if (currentDescriptionRow === null || currentDescriptionRow !== id) {
       let descriptionRowToEdit = addedDescriptionRows.find((item) => {
         return item.id === id;
