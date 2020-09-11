@@ -17,6 +17,7 @@ function DescriptionInput(props) {
                         value={props.value} 
                         onChange={props.handleChange} 
                         onKeyPress={props.handleEnter} 
+                        autoComplete="off"
                         ref={props.inputFocus}/>
 
                 <img    src={require(`../icons/${addIcon}.svg`)} 
