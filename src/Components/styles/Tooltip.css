@@ -20,12 +20,19 @@
     z-index: 1;
   }
 
-  .tooltip .tooltip-ingredient {
-    top: -1.3rem;
-    right: 2.5rem;
-  }
+  .tooltip .tooltip-text::after {
+  content: " ";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
 
-  .tooltip .tooltip-description {
-    top: -1rem;
+  .tooltip .tooltip-top {
+    max-width: calc(100% - 3.5rem);
+    bottom: 0;
     right: 2.5rem;
   }

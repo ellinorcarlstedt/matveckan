@@ -102,6 +102,7 @@ function RecipeInputModerator() {
   const addIngredient = () => {
     if (ingredientName === "") { 
       showTooltip("ingredient");
+      manageInputFocus(ingredientFocus);
       return; 
     };
     const id = currentIngredient === null ? getNewId(addedIngredients) : currentIngredient;
@@ -128,6 +129,7 @@ function RecipeInputModerator() {
   const addDescriptionRow = () => {
     if (descriptionRowInput === "") { 
       showTooltip("description");
+      manageInputFocus(descriptionFocus);
       return; 
     } 
     const id = currentDescriptionRow === null ? getNewId(addedDescriptionRows) : currentDescriptionRow;

@@ -8,7 +8,7 @@ function DescriptionInput(props) {
 
     return (
         <div>
-            <Tooltip showTooltip={props.showTooltip} positionClass="tooltip-description">Skriv en beskrivningsrad.</Tooltip>
+            <Tooltip showTooltip={props.showTooltip} positionClass="tooltip-top">Skriv en instruktion</Tooltip>
             <div className="input-description">
 
                 <input  type="text" 
