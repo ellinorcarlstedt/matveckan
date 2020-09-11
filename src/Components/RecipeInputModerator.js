@@ -272,6 +272,7 @@ function RecipeInputModerator() {
         <IngredientInput  handleChange={handleIngredientChange} 
                           addIngredient={addIngredient}
                           handleEnter={handleEnter} 
+                          hideTooltip={hideTooltip}
                           name={ingredientName} 
                           amount={ingredientAmount} 
                           unit={ingredientUnit} 
@@ -285,6 +286,7 @@ function RecipeInputModerator() {
         <DescriptionInput handleChange={handleDescriptionChange} 
                           addDescriptionRow={addDescriptionRow} 
                           handleEnter={handleEnter} 
+                          hideTooltip={hideTooltip}
                           value={descriptionRowInput}
                           inputFocus={descriptionFocus}
                           showTooltip={descriptionTooltip}

@@ -8,7 +8,7 @@ function IngredientInput(props) {
 
     return (
         <div>
-           <Tooltip showTooltip={props.showTooltip} positionClass="tooltip-top">Skriv ingrediensens namn</Tooltip>
+           <Tooltip showTooltip={props.showTooltip} hideTooltip={props.hideTooltip} positionClass="tooltip-top">Skriv ingrediensens namn</Tooltip>
            <div className="ingredient-input-wrapper" onKeyPress={props.handleEnter}>
                 <div className="ingredient-input" id={props.id}>
 
