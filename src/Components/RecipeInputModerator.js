@@ -53,6 +53,14 @@ function RecipeInputModerator() {
     setTooltipTarget("");
   }
 
+  const clearEditMode = () => {
+    if (currentIngredient !== null) {
+      clearIngredientsInput();
+    } else if (currentDescriptionRow !== null) {
+      clearDescriptionRowInput();
+    }
+  }
+
   const getNewId = (list) => {
     let highestIdInList = 0; 
     for (let i=0; i < list.length; i++) {
@@ -66,12 +74,14 @@ function RecipeInputModerator() {
 
   const handleTitleChange = (e) => {
     if (tooltipTarget !== "") { hideTooltip(); }
+    clearEditMode();
     setTitleInput(e.target.value);
   }
 
 
   const handleCategoryChange = (e) => {
     if (tooltipTarget !== "") { hideTooltip(); }
+    clearEditMode();
     setCategoryInput(e.target.value);
   }
 
@@ -79,12 +89,14 @@ function RecipeInputModerator() {
   const handleDescriptionChange = (e) => {
     e.preventDefault();
     if (tooltipTarget !== "") { hideTooltip(); }
+    if (currentIngredient !== null) { clearIngredientsInput(); }
     setDescriptionRowInput(e.target.value);
   }
 
 
   const handleIngredientChange = (e) => {
     e.preventDefault();
+    if (currentDescriptionRow !== null) { clearDescriptionRowInput(); }
     const target = e.target.name;
     const value = e.target.value;
     if (target === "name") {
@@ -100,12 +112,29 @@ function RecipeInputModerator() {
   }
 
 
+  const clearIngredientsInput = () => {
+    setCurrentIngredient(null);
+    setIngredientName("");
+    setIngredientAmount("");
+    setIngredientUnit("");
+    setIngredientDetails("");
+  }
+
+
+  const clearDescriptionRowInput = () => {
+    setCurrentDescriptionRow(null);
+    setDescriptionRowInput("");
+  }
+
+
   const addIngredient = () => {
     if (ingredientName === "") { 
       showTooltip("ingredient");
       manageInputFocus(ingredientFocus);
+      clearEditMode();
       return; 
     };
+    if (currentDescriptionRow !== null) { clearDescriptionRowInput(); }
     const id = currentIngredient === null ? getNewId(addedIngredients) : currentIngredient;
     const ingredientObject = {
       id: id,
@@ -131,8 +160,10 @@ function RecipeInputModerator() {
     if (descriptionRowInput === "") { 
       showTooltip("description");
       manageInputFocus(descriptionFocus);
+      clearEditMode();
       return; 
     } 
+    if (currentIngredient !== null) { clearIngredientsInput(); }
     const id = currentDescriptionRow === null ? getNewId(addedDescriptionRows) : currentDescriptionRow;
     const descriptionRowObject = {
       id: id,
@@ -151,7 +182,21 @@ function RecipeInputModerator() {
   }
 
 
+  const handleEnter = (e) => {
+    let source = e.target.name;
+    if (e.key === "Enter") {
+      if (source === "name" || source === "unit" || source === "amount" || source === "details") {
+        addIngredient();
+      } else if (source === "description") {
+        addDescriptionRow();
+      } 
+    }
+  }
+
+
   const deleteIngredient = (id) => {
+    if (tooltipTarget !== "") { hideTooltip(); }
+    clearEditMode();
     let allIngredients = [...addedIngredients];
     let index = allIngredients.findIndex(ingredient => ingredient.id === id);
     allIngredients.splice(index, 1); 
@@ -164,6 +209,8 @@ function RecipeInputModerator() {
 
 
   const deleteDescriptionRow = (id) => {
+    if (tooltipTarget !== "") { hideTooltip(); }
+    clearEditMode();
     let allDescriptionRows = [...addedDescriptionRows];
     let index = allDescriptionRows.findIndex(row => row.id === id);
     allDescriptionRows.splice(index, 1); 
@@ -176,6 +223,7 @@ function RecipeInputModerator() {
 
 
   const toggleIngredientEditMode = (id) => {
+    if (tooltipTarget !== "") { hideTooltip(); }
     if (currentDescriptionRow !== null) { clearDescriptionRowInput(); }
     if (currentIngredient === null || currentIngredient !== id) {
       let ingredientToEdit = addedIngredients.find((item) => {
@@ -194,6 +242,7 @@ function RecipeInputModerator() {
 
 
   const toggleDescriptionEditMode = (id) => {
+    if (tooltipTarget !== "") { hideTooltip(); }
     if (currentIngredient !== null) { clearIngredientsInput(); } 
     if (currentDescriptionRow === null || currentDescriptionRow !== id) {
       let descriptionRowToEdit = addedDescriptionRows.find((item) => {
@@ -208,35 +257,8 @@ function RecipeInputModerator() {
   }
 
 
-  const clearIngredientsInput = () => {
-    setCurrentIngredient(null);
-    setIngredientName("");
-    setIngredientAmount("");
-    setIngredientUnit("");
-    setIngredientDetails("");
-  }
-
-
-  const clearDescriptionRowInput = () => {
-    setCurrentDescriptionRow(null);
-    setDescriptionRowInput("");
-  }
-
-
-  const handleEnter = (e) => {
-    let source = e.target.name;
-    if (e.key === "Enter") {
-      if (source === "name" || source === "unit" || source === "amount" || source === "details") {
-        addIngredient();
-      } else if (source === "description") {
-        addDescriptionRow();
-      } 
-    }
-  }
-
-
- const ingredientEditMode = currentIngredient === null ? false : true;
- const descriptionEditMode = currentDescriptionRow === null ? false : true;
+ const ingredientEditMode = currentIngredient !== null ? true : false;
+ const descriptionEditMode = currentDescriptionRow !== null ? true : false;
  const ingredientTooltip = tooltipTarget === "ingredient" ? true : false;
  const descriptionTooltip = tooltipTarget === "description" ? true : false;
 
