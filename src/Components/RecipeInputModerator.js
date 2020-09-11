@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import TitleInput from './TitleInput';
 import IngredientInput from './IngredientInput';
 import DescriptionInput from './DescriptionInput';
 import CategoryInput from './CategoryInput';
@@ -260,12 +261,7 @@ function RecipeInputModerator() {
 
       <form onSubmit={handleSubmit}>
 
-        <div className="title-input">
-          <label>
-            <input type="text" 
-                  name="title" placeholder="Vad heter maträtten?" value={titleInput} autoComplete="off" onChange={handleTitleChange} ref={titleFocus}/>
-          </label> 
-        </div>  
+        <TitleInput titleInput={titleInput} handleChange={handleTitleChange} titleFocus={titleFocus}/>
 
         <CategoryInput handleChange={handleCategoryChange}/>
 
