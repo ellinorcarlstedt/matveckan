@@ -1,25 +1,24 @@
 import React from 'react';
+import CategoryInputIcon from './CategoryInputIcon';
+import iconList from '../icons/icon-list';
 
 function CategoryInput(props) {
+
+  const categoryOptions = iconList.map((item) => {
+    return <CategoryInputIcon imgSrc={item.imgSrc} 
+                              name={item.name} 
+                              value={item.value} 
+                              key={item.value} 
+                              handleChange={props.handleChange}
+                              selectedCategory={props.selectedCategory}/>
+  })
+
     return (
-        <div className="category-input" onChange={props.handleChange}>         
-          <label htmlFor="Nöt"><p>Nöt</p>
-            <input type="radio" id="Nöt" name="category" value="1" />
-          </label> 
-          <label htmlFor="Fläsk"><p>Fläsk</p>
-            <input type="radio" id="Fläsk" name="category" value="5" />
-          </label> 
-          <label htmlFor="Fågel"><p>Fågel</p>
-            <input type="radio" id="Fågel" name="category" value="2" />
-          </label> 
-          <label htmlFor="Fisk"><p>Fisk</p>
-            <input type="radio" id="Fisk" name="category" value="3" />
-          </label> 
-          <label htmlFor="Vegetariskt"><p>Veg</p>
-            <input type="radio" id="Vegetariskt" name="category" value="4" />
-          </label> 
+        <div className="category-input">  
+            {categoryOptions}
         </div>
     )
 }
 
 export default CategoryInput;
+

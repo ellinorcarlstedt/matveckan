@@ -5,6 +5,7 @@ import DescriptionInput from './DescriptionInput';
 import CategoryInput from './CategoryInput';
 import AddedRecipeItem from './AddedRecipeItem';
 import IconArtistAttribute from './IconArtistAttribute';
+import iconList from '../icons/icon-list';
 import '../App.css';
 
 
@@ -96,8 +97,8 @@ function RecipeInputModerator() {
   }
 
 
-  const handleCategoryChange = (e) => {
-    setCategoryInput(e.target.value);
+  const handleCategoryChange = (val) => {
+    setCategoryInput(val);
     clearEditMode();
     if (tooltipTarget !== "") { hideTooltip(); }
   }
@@ -283,7 +284,7 @@ function RecipeInputModerator() {
 
         <TitleInput titleInput={titleInput} handleChange={handleTitleChange} titleFocus={titleFocus}/>
 
-        <CategoryInput handleChange={handleCategoryChange}/>
+        <CategoryInput handleChange={handleCategoryChange} selectedCategory={categoryInput}/>
 
         <IngredientInput  handleChange={handleIngredientChange} 
                           addIngredient={addIngredient}
