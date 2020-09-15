@@ -55,6 +55,10 @@ input[type=text]:focus {
 
 .menu-displayer-reload-button {
   margin: 3rem 0 0.3rem;
+}
+
+.menu-displayer-reload-button,
+.recipe-input-submit-button {
   font-family: inherit;
   font-size: inherit;
   background-color: rgb(176, 238, 238);
@@ -67,12 +71,14 @@ input[type=text]:focus {
   outline: none;
 }
 
+.recipe-input-submit-button:hover,
 .menu-displayer-reload-button:hover {
   background-color: rgb(85, 173, 173);
   color: white;
   border: none;
 }
 
+.recipe-input-submit-button:active,
 .menu-displayer-reload-button:active {
   transform: translateY(2px);
   border: none;
@@ -158,6 +164,20 @@ input[type=text]:focus {
 
 /********************** recipe input moderator with children *************************/
 
+.recipe-input-moderator-container {
+  background-image: url('./icons/kitchen.jpg');
+  background-size: auto 100%; 
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-attachment: fixed;
+  background-color: white;
+  padding: 3rem 0 0.7rem;
+  min-height: 32rem; 
+}
+
+.recipe-input-moderator {
+  background-color: white;
+}
 
 .recipe-input-moderator input {
   font-family: Garamond, Cambria;
@@ -167,7 +187,7 @@ input[type=text]:focus {
 
 .added-item {
   text-align: left;
-  padding: 0.15rem 1rem;
+  padding: 0.15rem 0.5rem 0.15rem 0.7rem;
 }
 
 .input-clickable-icon {
@@ -246,15 +266,16 @@ input[type=text]:focus {
 /********** MARGINS / PADDING / BORDER ***********/
 
 .recipe-input-moderator {
-  padding-top: 1rem;
-  border: solid rgb(227, 229, 231) 1px;
+  padding: 1rem 0;
+  border-radius: 0.3rem;
+  margin: 0 0.5rem;
 }
 
 .title-input,
 .category-input,
 .ingredient-input-wrapper,
 .input-description {
-  padding: 0 1rem;
+  padding: 0 0.5rem;
 }
 
 .title-input input,
@@ -265,9 +286,12 @@ input[type=text]:focus {
 .title-input,
 .input-description,
 .ingredient-input-wrapper,
-.category-input,
-.added-items-list {
+.category-input {
   margin-bottom: 0.7rem;
+}
+
+.added-items-list {
+  margin-bottom: 1.5rem;
 }
 
 .add-icon {
@@ -308,6 +332,10 @@ input[type=text]:focus {
   margin-top: 0.3rem;
 }
 
+.recipe-input-submit-button {
+  margin-top: 1rem;
+}
+
 
 /************ Media queries ******************/
 
@@ -324,10 +352,5 @@ input[type=text]:focus {
   .App {
     width: 300px;
   }
-
-  .menu-displayer {
-    background-position: center; 
-  }
   
-
 }

@@ -20,6 +20,7 @@ function IngredientInput(props) {
                                 autoComplete="off" 
                                 onChange={props.handleChange} 
                                 ref={props.inputFocus}/>
+                                
                         <div className="ingredient-input-details-wrapper">
                                 <input  type="text" 
                                         name="amount" 
@@ -41,7 +42,7 @@ function IngredientInput(props) {
                                         name="details" 
                                         value={props.details} 
                                         className="ingredient-input-details" 
-                                        placeholder="Kommentar" 
+                                        placeholder="Övrigt" 
                                         autoComplete="off" 
                                         onChange={props.handleChange}/>
                         </div>

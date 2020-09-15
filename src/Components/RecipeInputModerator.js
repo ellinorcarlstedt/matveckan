@@ -5,7 +5,6 @@ import DescriptionInput from './DescriptionInput';
 import CategoryInput from './CategoryInput';
 import AddedRecipeItem from './AddedRecipeItem';
 import IconArtistAttribute from './IconArtistAttribute';
-import iconList from '../icons/icon-list';
 import '../App.css';
 
 
@@ -280,43 +279,45 @@ function RecipeInputModerator() {
  })
 
   return (
-    <div className="recipe-input-moderator">
+    <div className="recipe-input-moderator-container"> 
+      <div className="recipe-input-moderator">
 
-      <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
 
-        <TitleInput titleInput={titleInput} handleChange={handleTitleChange} titleFocus={titleFocus}/>
+          <TitleInput titleInput={titleInput} handleChange={handleTitleChange} titleFocus={titleFocus}/>
 
-        <CategoryInput handleChange={handleCategoryChange} selectedCategory={categoryInput} handleEnter={handleEnter} />
+          <CategoryInput handleChange={handleCategoryChange} selectedCategory={categoryInput} handleEnter={handleEnter} />
 
-        <IngredientInput  handleChange={handleIngredientChange} 
-                          addIngredient={addIngredient}
-                          handleEnter={handleEnter} 
-                          hideTooltip={hideTooltip}
-                          name={ingredientName} 
-                          amount={ingredientAmount} 
-                          unit={ingredientUnit} 
-                          details={ingredientDetails}
-                          inputFocus={ingredientFocus}
-                          showTooltip={ingredientTooltip}
-                          editMode={ingredientEditMode}/>
+          <IngredientInput  handleChange={handleIngredientChange} 
+                            addIngredient={addIngredient}
+                            handleEnter={handleEnter} 
+                            hideTooltip={hideTooltip}
+                            name={ingredientName} 
+                            amount={ingredientAmount} 
+                            unit={ingredientUnit} 
+                            details={ingredientDetails}
+                            inputFocus={ingredientFocus}
+                            showTooltip={ingredientTooltip}
+                            editMode={ingredientEditMode}/>
+          
+          <div className="added-items-list">{allAddedIngredients}</div>
+
+          <DescriptionInput handleChange={handleDescriptionChange} 
+                            addDescriptionRow={addDescriptionRow} 
+                            handleEnter={handleEnter} 
+                            hideTooltip={hideTooltip}
+                            value={descriptionRowInput}
+                            inputFocus={descriptionFocus}
+                            showTooltip={descriptionTooltip}
+                            editMode={descriptionEditMode}/>
+  
+          <div className="added-items-list">{allAddedDescriptionRows}</div>
+
+        </form>
         
-        <div className="added-items-list">{allAddedIngredients}</div>
+      </div>
 
-        <DescriptionInput handleChange={handleDescriptionChange} 
-                          addDescriptionRow={addDescriptionRow} 
-                          handleEnter={handleEnter} 
-                          hideTooltip={hideTooltip}
-                          value={descriptionRowInput}
-                          inputFocus={descriptionFocus}
-                          showTooltip={descriptionTooltip}
-                          editMode={descriptionEditMode}/>
- 
-        <div className="added-items-list">{allAddedDescriptionRows}</div>
-
-        <button type="submit" name="submit">Klar</button>
-
-      </form>
-    
+      <button type="submit" name="submit" className="recipe-input-submit-button">Klar</button>
       <IconArtistAttribute />
 
     </div>
@@ -324,3 +325,5 @@ function RecipeInputModerator() {
 }
 
 export default RecipeInputModerator;
+
+ 
