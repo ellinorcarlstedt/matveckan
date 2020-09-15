@@ -97,8 +97,8 @@ function RecipeInputModerator() {
   }
 
 
-  const handleCategoryChange = (val) => {
-    setCategoryInput(val);
+  const handleCategoryChange = (categoryId) => {
+    setCategoryInput(categoryId);
     clearEditMode();
     if (tooltipTarget !== "") { hideTooltip(); }
   }
@@ -192,7 +192,9 @@ function RecipeInputModerator() {
         addIngredient();
       } else if (source === "description") {
         addDescriptionRow();
-      } 
+      } else if (source === "Nöt" || source === "Fläsk" || source === "Fågel" || source === "Fisk" || source === "Veg" ) {
+        handleCategoryChange(e.target.id);
+      }
     }
   }
 
@@ -284,7 +286,7 @@ function RecipeInputModerator() {
 
         <TitleInput titleInput={titleInput} handleChange={handleTitleChange} titleFocus={titleFocus}/>
 
-        <CategoryInput handleChange={handleCategoryChange} selectedCategory={categoryInput}/>
+        <CategoryInput handleChange={handleCategoryChange} selectedCategory={categoryInput} handleEnter={handleEnter} />
 
         <IngredientInput  handleChange={handleIngredientChange} 
                           addIngredient={addIngredient}

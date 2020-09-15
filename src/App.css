@@ -9,6 +9,9 @@ html {
   font-size: 1rem;
 }
 
+input:focus {
+  outline: 1px solid black;
+}
 
 .App {
   margin: auto;
@@ -153,10 +156,6 @@ html {
 
 /********************** recipe input moderator with children *************************/
 
-.recipe-input-moderator {
-  padding-top: 1rem;
-  border: solid rgb(227, 229, 231) 1px;
-}
 
 .recipe-input-moderator input {
   font-family: Garamond, Cambria;
@@ -209,17 +208,25 @@ html {
 .added-item,
 .added-item-buttons {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
 
+.ingredient-input,
 .category-input {
   flex-wrap: wrap;
 }
 
-.ingredient-input {
-  flex-grow: 2;
+.ingredient-input,
+.ingredient-input-details-wrapper {
+  display: flex;
+  min-width: 0;
+}
+
+.ingredient-input-amount,
+.ingredient-input-unit,
+.ingredient-input-details {
+  min-width: 0;
 }
 
 /******************* WIDTH **********************/
@@ -230,18 +237,11 @@ html {
   width: 100%;
 }
 
-.ingredient-input-details {
-  width: 50%;
-}
-.ingredient-input-amount,
-.ingredient-input-unit {
-  width: 25%;
-}
-
 /********** MARGINS / PADDING / BORDER ***********/
 
-.recipe-input-moderator input:focus {
-  outline: none;
+.recipe-input-moderator {
+  padding-top: 1rem;
+  border: solid rgb(227, 229, 231) 1px;
 }
 
 .title-input,
@@ -290,17 +290,16 @@ html {
 .ingredient-input-amount,
 .ingredient-input-unit,
 .ingredient-input-details {
-  border: 1px solid rgb(221, 213, 213);
-}
-
-.ingredient-input-details {
-  border-top: none;
+ border: 1px solid rgb(221, 213, 213); 
 }
 
 .ingredient-input-amount,
 .ingredient-input-unit {
-  border-top: none;
-  border-right: none;
+  margin-right: 0.3rem;
+} 
+
+.ingredient-input-details-wrapper {
+  margin-top: 0.3rem;
 }
 
 
