@@ -11,6 +11,7 @@ html {
 
 input[type=text]:focus {
   border: 1px solid black;
+  outline: none;
 }
 
 .App {
@@ -25,19 +26,19 @@ input[type=text]:focus {
   display: flex;
   justify-content: space-evenly;
   list-style-type: none;
-  background-color: #FC913A;;
+  background-color: rgb(176, 238, 238);
   margin: 0;
   padding: 0.7rem;
 }
 
 .head-links-ul a {
-  color: #4d0001;
+  color: black;
   text-decoration: none;
   padding: 0.65rem;
 }
 
 .head-links-ul a:hover {
-  background-color: #df6616;
+  background-color: rgb(85, 173, 173);
   color: white;
 }
 
@@ -47,7 +48,7 @@ input[type=text]:focus {
   background-repeat: no-repeat;
   background-position: top right;
   background-attachment: fixed;
-  background-color: white, #ffe6e6;
+  background-color: white;
   padding-bottom: 0.7rem;
 }
 
@@ -55,8 +56,8 @@ input[type=text]:focus {
   margin: 3rem 0 0.3rem;
   font-family: inherit;
   font-size: inherit;
-  background-color: #FC913A;
-  color: #4d0001;
+  background-color: rgb(176, 238, 238);
+  color: black;
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 0.3rem;
@@ -66,7 +67,7 @@ input[type=text]:focus {
 }
 
 .menu-displayer-reload-button:hover {
-  background-color: #df6616;
+  background-color: rgb(85, 173, 173);
   color: white;
   border: none;
 }
