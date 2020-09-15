@@ -43,13 +43,14 @@ input[type=text]:focus {
 }
 
 .menu-displayer {
-  background-image: url('./icons/tomatobasil.jpg');
+  background-image: url('./icons/kitchen.jpg');
   background-size: auto 100%; 
   background-repeat: no-repeat;
   background-position: top right;
   background-attachment: fixed;
   background-color: white;
   padding-bottom: 0.7rem;
+  min-height: 32rem;
 }
 
 .menu-displayer-reload-button {
