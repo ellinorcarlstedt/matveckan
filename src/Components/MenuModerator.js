@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import '../App.css';
 import MenuDisplayer from './MenuDisplayer';
-import recepies from '../recepies';
+import recipes from '../recipes';
 
 function MenuModerator () {
-    const [ allRecepies, setAllRecepies ] = useState(null);
-    const [ selectedRecepies, setSelectedRecepies ] = useState([]);
+    const [ allRecipes, setAllRecipes ] = useState(null);
+    const [ selectedRecipes, setSelectedRecipes ] = useState([]);
 
-    const importRecepies = () => {
-         setAllRecepies(recepies);
+    const importRecipes = () => {
+         setAllRecipes(recipes);
     }
 
     const reloadMenu = () => {
-        const newMenu = getMenu(allRecepies, 7);
-        setSelectedRecepies(newMenu);
+        const newMenu = getMenu(allRecipes, 7);
+        setSelectedRecipes(newMenu);
     }
 
     const getRandomNumber = (maxNumber) => {
@@ -21,21 +20,21 @@ function MenuModerator () {
     }
 
     useEffect(() => {
-        importRecepies();
+        importRecipes();
     }, []);
 
-    const getMenu = (recepies, numberOfDays) => {  
-        let allRecepies = [...recepies];
+    const getMenu = (recipes, numberOfDays) => {  
+        let allRecipes = [...recipes];
         let newMenu = [];
-        while (allRecepies.length > 0 && newMenu.length < numberOfDays) {
-            let randomNumber = getRandomNumber(allRecepies.length);
-            newMenu.push(allRecepies[randomNumber]);
-            allRecepies.splice(randomNumber, 1);
+        while (allRecipes.length > 0 && newMenu.length < numberOfDays) {
+            let randomNumber = getRandomNumber(allRecipes.length);
+            newMenu.push(allRecipes[randomNumber]);
+            allRecipes.splice(randomNumber, 1);
         }        
         return newMenu;
     }
 
-    let menu = selectedRecepies;
+    let menu = selectedRecipes;
 
     return (
     <div className="menu-moderator">

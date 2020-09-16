@@ -1,6 +1,5 @@
 import React from 'react';
 import Tooltip from './Tooltip';
-import '../App.css';
 
 function IngredientInput(props) {
 

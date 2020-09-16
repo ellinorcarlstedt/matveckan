@@ -1,7 +1,6 @@
 import React from 'react';
 import RecipeIngredients from './RecipeIngredients';
 import RecipeDescription from './RecipeDescription';
-import '../App.css';
 
 function Recipe (props) {
 

@@ -4,8 +4,7 @@ import IngredientInput from './IngredientInput';
 import DescriptionInput from './DescriptionInput';
 import CategoryInput from './CategoryInput';
 import AddedRecipeItem from './AddedRecipeItem';
-import IconArtistAttribute from './IconArtistAttribute';
-import '../App.css';
+import IconArtistAttribute from './IconArtistAttribute'; 
 
 
 function RecipeInputModerator() {
@@ -99,6 +98,7 @@ function RecipeInputModerator() {
   const handleCategoryChange = (categoryId) => {
     setCategoryInput(categoryId);
     clearEditMode();
+    manageInputFocus(ingredientFocus);
     if (tooltipTarget !== "") { hideTooltip(); }
   }
 

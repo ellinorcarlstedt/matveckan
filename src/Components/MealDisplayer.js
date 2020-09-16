@@ -1,5 +1,4 @@
 import React  from 'react';
-import '../App.css';
 import Weekday from './Weekday';
 import MealCategory from './MealCategory';
 import MealTitle from './MealTitle';

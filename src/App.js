@@ -5,7 +5,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import './App.css';
+import './Components/css/App.css';
 import MenuModerator from './Components/MenuModerator';
 import RecipeInputModerator from './Components/RecipeInputModerator';
 
