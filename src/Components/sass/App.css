@@ -1,22 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
-/* line 3, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 * {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   margin: 0;
 }
 
-/* line 8, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 html {
   font-size: 1rem;
 }
 
-/* line 12, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 input[type=text]:focus {
   border: 1px solid black;
   outline: none;
 }
 
-/* line 17, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .App {
   margin: auto;
   text-align: center;
@@ -25,30 +22,30 @@ input[type=text]:focus {
   font-size: 0.7rem;
 }
 
-/* line 25, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .head-links-ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-evenly;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   list-style-type: none;
   background-color: #b0eeee;
   margin: 0;
   padding: 0.7rem;
 }
 
-/* line 34, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .head-links-ul a {
   color: black;
   text-decoration: none;
   padding: 0.65rem;
 }
 
-/* line 40, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .head-links-ul a:hover {
   background-color: #55adad;
   color: white;
 }
 
-/* line 45, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .menu-displayer {
   background-image: url("../../icons/kitchen.jpg");
   background-size: auto 100%;
@@ -60,12 +57,10 @@ input[type=text]:focus {
   min-height: 32rem;
 }
 
-/* line 56, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .menu-displayer-reload-button {
   margin: 3rem 0 0.3rem;
 }
 
-/* line 60, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .menu-displayer-reload-button,
 .recipe-input-submit-button {
   font-family: inherit;
@@ -75,12 +70,12 @@ input[type=text]:focus {
   border: none;
   padding: 0.5rem 1rem;
   border-radius: 0.3rem;
-  box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.25);
+          box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.25);
   cursor: pointer;
   outline: none;
 }
 
-/* line 74, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .recipe-input-submit-button:hover,
 .menu-displayer-reload-button:hover {
   background-color: #55adad;
@@ -88,80 +83,83 @@ input[type=text]:focus {
   border: none;
 }
 
-/* line 81, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .recipe-input-submit-button:active,
 .menu-displayer-reload-button:active {
-  transform: translateY(2px);
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
   border: none;
 }
 
-/* line 87, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .meal-displayer {
   background-color: white;
   margin: 0.5rem;
-  box-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.25);
+          box-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.25);
   border-radius: 0.3rem;
   cursor: pointer;
 }
 
-/* line 95, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .meal-displayer-overview {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 0.3rem 0;
   position: relative;
 }
 
-/* line 103, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .weekday {
   width: 5rem;
   padding: 0 0.7rem;
   text-align: left;
 }
 
-/* line 109, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .meal-category {
   width: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row-reverse;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
 }
 
-/* line 115, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .meal-category img {
-  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
   height: 1.8rem;
   width: 1.8rem;
   padding: 0 0.7rem;
 }
 
-/* line 122, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .recipe {
   overflow: hidden;
   text-align: left;
   background-color: #ffffff;
 }
 
-/* line 128, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .recipe-ingredients {
   padding: 0.5rem;
   margin-bottom: 0.5rem;
   background-color: #e3e5e7;
 }
 
-/* line 134, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .recipe-description-row,
 .recipe-description-missing {
   padding: 0 0.5rem;
   margin-bottom: 0.5rem;
 }
 
-/* line 140, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .recipe-description-missing {
   text-align: center;
 }
 
-/* line 144, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .icon-artist-attribute {
   margin-top: 4rem;
   padding: 0.1rem;
@@ -170,23 +168,19 @@ input[type=text]:focus {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-/* line 152, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .icon-artist-attribute a {
   text-decoration: none;
 }
 
-/* line 156, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .icon-artist-attribute a:visited {
   color: white;
 }
 
-/* line 160, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .icon-artist-attribute a:hover {
   color: #d1cdcd;
 }
 
 /********************** recipe input moderator with children *************************/
-/* line 167, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .recipe-input-moderator-container {
   background-image: url("../../icons/kitchen.jpg");
   background-size: auto 100%;
@@ -198,34 +192,30 @@ input[type=text]:focus {
   min-height: 32rem;
 }
 
-/* line 178, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .recipe-input-moderator {
   background-color: white;
 }
 
-/* line 182, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .recipe-input-moderator input {
   font-family: Garamond, Cambria;
   font-family: 'Varela Round';
   font-size: 0.7rem;
 }
 
-/* line 188, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .added-item {
   text-align: left;
   padding: 0.15rem 0.5rem 0.15rem 0.7rem;
 }
 
-/* line 193, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .input-clickable-icon {
   width: 1rem;
   height: 1rem;
   cursor: pointer;
 }
 
-/* line 199, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .category-input-icon img {
-  box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
   height: 1.8rem;
   width: 1.8rem;
   padding: 0.3rem;
@@ -233,58 +223,61 @@ input[type=text]:focus {
   cursor: pointer;
 }
 
-/* line 208, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .category-input-icon img:focus {
-  box-shadow: 0 0 3px 3px #b0eeee;
+  -webkit-box-shadow: 0 0 3px 3px #b0eeee;
+          box-shadow: 0 0 3px 3px #b0eeee;
   outline: none;
 }
 
-/* line 213, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .category-input-icon .selected {
   background-color: #b0eeee;
 }
 
-/* line 217, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .input-clickable-icon:active {
-  transform: translateY(1px);
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
 }
 
-/* line 221, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .icon-edit-mode {
-  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
 
-/* line 225, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .item-edit-mode {
   background-color: #e3e5e7;
 }
 
 /******************* FLEXBOX **********************/
-/* line 231, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .input-description,
 .ingredient-input-wrapper,
 .category-input,
 .added-item,
 .added-item-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-/* line 241, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .ingredient-input,
 .category-input {
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
-/* line 246, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .ingredient-input,
 .ingredient-input-details-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   min-width: 0;
 }
 
-/* line 252, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .ingredient-input-amount,
 .ingredient-input-unit,
 .ingredient-input-details {
@@ -292,7 +285,6 @@ input[type=text]:focus {
 }
 
 /******************* WIDTH **********************/
-/* line 260, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .title-input input,
 .input-description input,
 .ingredient-input-name {
@@ -300,14 +292,12 @@ input[type=text]:focus {
 }
 
 /********** MARGINS / PADDING / BORDER ***********/
-/* line 268, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .recipe-input-moderator {
   padding: 1rem 0;
   border-radius: 0.3rem;
   margin: 0 0.5rem;
 }
 
-/* line 274, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .title-input,
 .category-input,
 .ingredient-input-wrapper,
@@ -315,13 +305,11 @@ input[type=text]:focus {
   padding: 0 0.5rem;
 }
 
-/* line 281, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .title-input input,
 .input-description input {
   border: 1px solid #ddd5d5;
 }
 
-/* line 286, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .title-input,
 .input-description,
 .ingredient-input-wrapper,
@@ -329,39 +317,32 @@ input[type=text]:focus {
   margin-bottom: 0.7rem;
 }
 
-/* line 293, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .added-items-list {
   margin-bottom: 1.5rem;
 }
 
-/* line 297, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .add-icon {
   margin-left: 0.5rem;
 }
 
-/* line 301, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .remove-icon,
 .edit,
 .icon-edit-mode {
   margin-left: 0.3rem;
 }
 
-/* line 307, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .category-input p {
   margin-bottom: 0.3rem;
 }
 
-/* line 311, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .recipe-input-moderator input {
   padding: 0.3rem;
 }
 
-/* line 315, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .remove-icon {
   padding: 0.1rem;
 }
 
-/* line 319, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .ingredient-input-name,
 .ingredient-input-amount,
 .ingredient-input-unit,
@@ -369,35 +350,29 @@ input[type=text]:focus {
   border: 1px solid #ddd5d5;
 }
 
-/* line 326, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .ingredient-input-amount,
 .ingredient-input-unit {
   margin-right: 0.3rem;
 }
 
-/* line 331, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .ingredient-input-details-wrapper {
   margin-top: 0.3rem;
 }
 
-/* line 335, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
 .recipe-input-submit-button {
   margin-top: 1rem;
 }
 
 /************ Media queries ******************/
 @media all and (max-width: 485px) {
-  /* line 344, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
   html {
     font-size: 1.4rem;
   }
 }
 
 @media screen and (min-width: 486px) {
-  /* line 352, ../../code/matveckan/matveckan/src/Components/sass/App.scss */
   .App {
     width: 300px;
   }
 }
-
 /*# sourceMappingURL=App.css.map */
