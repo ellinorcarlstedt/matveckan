@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+
+@import "./partials/variables";
+@import "./partials/mixins";
+@import "./partials/menuDisplayer";
+@import "./partials/inputModerator";
+@import "./partials/heightTransitionComponent";
+@import "./partials/tooltip";
+@import "./partials/arrowIcon";
+@import "./partials/mediaQueries";
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-size: 1rem;
+}
+
+input[type=text]:focus {
+  border: 1px solid black;
+  outline: none;
+}
+
+.App {
+  margin: auto;
+  text-align: center;
+  @include primaryFont();
+}
+
+.head-links-ul {
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
+  background-color: $primaryBlue;
+  margin: 0;
+  padding: 0.7rem;
+  a {
+    color: black;
+    text-decoration: none;
+    padding: 0.65rem;
+    &:hover {
+    background-color: $secondaryBlue;
+     color: white;
+    }
+  }
+}
+
+.icon-artist-attribute {
+  margin-top: 4rem;
+  padding: 0.1rem;
+  font-size: 0.5rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  a {
+    text-decoration: none;
+    &:visited {
+      color: white;
+    } 
+    &:hover {
+    color: rgb(209, 205, 205);
+    }
+  }
+}
+

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MenuDisplayer from './MenuDisplayer';
-import recipes from '../recipes';
+import recipes from '../resources/recipes';
 
 function MenuModerator () {
     const [ allRecipes, setAllRecipes ] = useState(null);

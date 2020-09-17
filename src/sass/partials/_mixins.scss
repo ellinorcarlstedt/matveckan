@@ -1,0 +1,13 @@
+/**************** Mixins ****************/
+
+@mixin flexSpaceBetween {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+} 
+
+@mixin primaryFont {
+    font-family: Garamond, Cambria;
+    font-family: 'Varela Round';
+    font-size: 0.7rem; 
+}

@@ -1,53 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
-* {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  margin: 0;
-}
-
-html {
-  font-size: 1rem;
-}
-
-input[type=text]:focus {
-  border: 1px solid black;
-  outline: none;
-}
-
-.App {
-  margin: auto;
-  text-align: center;
-  font-family: Garamond, Cambria;
-  font-family: 'Varela Round';
-  font-size: 0.7rem;
-}
-
-.head-links-ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  list-style-type: none;
-  background-color: #b0eeee;
-  margin: 0;
-  padding: 0.7rem;
-}
-
-.head-links-ul a {
-  color: black;
-  text-decoration: none;
-  padding: 0.65rem;
-}
-
-.head-links-ul a:hover {
-  background-color: #55adad;
-  color: white;
-}
-
+/**************** Variables ****************/
+/**************** Mixins ****************/
+/**************** MenuDisplayer ****************/
 .menu-displayer {
-  background-image: url("../../icons/kitchen.jpg");
+  background-image: url("../icons/kitchen.jpg");
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: top right;
@@ -103,12 +59,12 @@ input[type=text]:focus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 0.3rem 0;
   position: relative;
 }
@@ -160,29 +116,9 @@ input[type=text]:focus {
   text-align: center;
 }
 
-.icon-artist-attribute {
-  margin-top: 4rem;
-  padding: 0.1rem;
-  font-size: 0.5rem;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-.icon-artist-attribute a {
-  text-decoration: none;
-}
-
-.icon-artist-attribute a:visited {
-  color: white;
-}
-
-.icon-artist-attribute a:hover {
-  color: #d1cdcd;
-}
-
-/********************** recipe input moderator with children *************************/
+/********************** InputModerator with children *************************/
 .recipe-input-moderator-container {
-  background-image: url("../../icons/kitchen.jpg");
+  background-image: url("../icons/kitchen.jpg");
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: top right;
@@ -229,13 +165,13 @@ input[type=text]:focus {
   outline: none;
 }
 
-.category-input-icon .selected {
-  background-color: #b0eeee;
-}
-
-.input-clickable-icon:active {
+.category-input-icon img:active {
   -webkit-transform: translateY(1px);
           transform: translateY(1px);
+}
+
+.category-input-icon .selected {
+  background-color: #b0eeee;
 }
 
 .icon-edit-mode {
@@ -363,7 +299,129 @@ input[type=text]:focus {
   margin-top: 1rem;
 }
 
-/************ Media queries ******************/
+/**************** HeightTransitionComponent ****************/
+.height-transition {
+  overflow: hidden;
+  -webkit-transition: height 0.3s;
+  transition: height 0.3s;
+}
+
+.border-radius {
+  border-radius: 0 0 0.3rem 0.3rem;
+}
+
+.hidden {
+  display: none;
+}
+
+/**************** Tooltip ****************/
+.tooltip-hidden {
+  visibility: hidden;
+}
+
+.tooltip-visible {
+  visibility: visible;
+}
+
+.tooltip {
+  position: relative;
+}
+
+.tooltip-text {
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip .tooltip-text::after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.tooltip .tooltip-top {
+  max-width: calc(100% - 3.5rem);
+  bottom: 0;
+  right: 2rem;
+}
+
+/**************** ArrowIcon ****************/
+.arrow-icon {
+  margin: -0.15rem 0;
+  padding-top: 0.15rem;
+}
+
+.arrow-icon img {
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  height: 15px;
+  width: 15px;
+}
+
+.rotate-180-open {
+  -webkit-animation: rotate-180-open 0.2s linear forwards;
+          animation: rotate-180-open 0.2s linear forwards;
+}
+
+.rotate-180-close {
+  -webkit-animation: rotate-180-close 0.2s linear forwards;
+          animation: rotate-180-close 0.2s linear forwards;
+}
+
+@-webkit-keyframes rotate-180-open {
+  0% {
+    -webkit-transform: rotate(0) translateY(0);
+            transform: rotate(0) translateY(0);
+  }
+  100% {
+    -webkit-transform: rotate(180deg) translateY(0.25rem);
+            transform: rotate(180deg) translateY(0.25rem);
+  }
+}
+
+@keyframes rotate-180-open {
+  0% {
+    -webkit-transform: rotate(0) translateY(0);
+            transform: rotate(0) translateY(0);
+  }
+  100% {
+    -webkit-transform: rotate(180deg) translateY(0.25rem);
+            transform: rotate(180deg) translateY(0.25rem);
+  }
+}
+
+@-webkit-keyframes rotate-180-close {
+  0% {
+    -webkit-transform: rotate(180deg) translateY(0.25rem);
+            transform: rotate(180deg) translateY(0.25rem);
+  }
+  100% {
+    -webkit-transform: rotate(0) translateY(0);
+            transform: rotate(0) translateY(0);
+  }
+}
+
+@keyframes rotate-180-close {
+  0% {
+    -webkit-transform: rotate(180deg) translateY(0.25rem);
+            transform: rotate(180deg) translateY(0.25rem);
+  }
+  100% {
+    -webkit-transform: rotate(0) translateY(0);
+            transform: rotate(0) translateY(0);
+  }
+}
+
+/**************** Media Queries ****************/
 @media all and (max-width: 485px) {
   html {
     font-size: 1.4rem;
@@ -374,5 +432,72 @@ input[type=text]:focus {
   .App {
     width: 300px;
   }
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-size: 1rem;
+}
+
+input[type=text]:focus {
+  border: 1px solid black;
+  outline: none;
+}
+
+.App {
+  margin: auto;
+  text-align: center;
+  font-family: Garamond, Cambria;
+  font-family: 'Varela Round';
+  font-size: 0.7rem;
+}
+
+.head-links-ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  list-style-type: none;
+  background-color: #b0eeee;
+  margin: 0;
+  padding: 0.7rem;
+}
+
+.head-links-ul a {
+  color: black;
+  text-decoration: none;
+  padding: 0.65rem;
+}
+
+.head-links-ul a:hover {
+  background-color: #55adad;
+  color: white;
+}
+
+.icon-artist-attribute {
+  margin-top: 4rem;
+  padding: 0.1rem;
+  font-size: 0.5rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.icon-artist-attribute a {
+  text-decoration: none;
+}
+
+.icon-artist-attribute a:visited {
+  color: white;
+}
+
+.icon-artist-attribute a:hover {
+  color: #d1cdcd;
 }
 /*# sourceMappingURL=App.css.map */

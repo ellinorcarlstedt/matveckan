@@ -98,7 +98,6 @@ function RecipeInputModerator() {
   const handleCategoryChange = (categoryId) => {
     setCategoryInput(categoryId);
     clearEditMode();
-    manageInputFocus(ingredientFocus);
     if (tooltipTarget !== "") { hideTooltip(); }
   }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import CategoryInputIcon from './CategoryInputIcon';
-import iconList from '../icons/icon-list';
+import iconList from '../resources/icon-list';
 
 function CategoryInput(props) {
 
