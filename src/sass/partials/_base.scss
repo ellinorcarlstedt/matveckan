@@ -1,0 +1,21 @@
+/**************** Base ****************/
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+  }
+  
+  html {
+    font-size: 1rem;
+  }
+  
+  input[type=text]:focus {
+    border: 1px solid black;
+    outline: none;
+  }
+  
+  .App {
+    margin: auto;
+    text-align: center;
+    @include primaryFont();
+  }

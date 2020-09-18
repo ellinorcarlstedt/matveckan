@@ -15,6 +15,7 @@
     background-color: white;
     input {
       @include primaryFont();
+      font-size: 0.7rem; 
     }
   }
   

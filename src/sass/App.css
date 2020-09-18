@@ -136,6 +136,7 @@
   font-family: Garamond, Cambria;
   font-family: 'Varela Round';
   font-size: 0.7rem;
+  font-size: 0.7rem;
 }
 
 .added-item {
@@ -299,6 +300,52 @@
   margin-top: 1rem;
 }
 
+/**************** mainNavbar ****************/
+.head-links-ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  list-style-type: none;
+  background-color: #b0eeee;
+  margin: 0;
+  padding: 0.7rem;
+}
+
+.head-links-ul a {
+  color: black;
+  text-decoration: none;
+  padding: 0.65rem;
+}
+
+.head-links-ul a:hover {
+  background-color: #55adad;
+  color: white;
+}
+
+/**************** iconArtistAttribute ****************/
+.icon-artist-attribute {
+  margin-top: 4rem;
+  padding: 0.1rem;
+  font-size: 0.5rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.icon-artist-attribute a {
+  text-decoration: none;
+}
+
+.icon-artist-attribute a:visited {
+  color: white;
+}
+
+.icon-artist-attribute a:hover {
+  color: #d1cdcd;
+}
+
 /**************** HeightTransitionComponent ****************/
 .height-transition {
   overflow: hidden;
@@ -434,6 +481,7 @@
   }
 }
 
+/**************** Base ****************/
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -455,49 +503,5 @@ input[type=text]:focus {
   font-family: Garamond, Cambria;
   font-family: 'Varela Round';
   font-size: 0.7rem;
-}
-
-.head-links-ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  list-style-type: none;
-  background-color: #b0eeee;
-  margin: 0;
-  padding: 0.7rem;
-}
-
-.head-links-ul a {
-  color: black;
-  text-decoration: none;
-  padding: 0.65rem;
-}
-
-.head-links-ul a:hover {
-  background-color: #55adad;
-  color: white;
-}
-
-.icon-artist-attribute {
-  margin-top: 4rem;
-  padding: 0.1rem;
-  font-size: 0.5rem;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-.icon-artist-attribute a {
-  text-decoration: none;
-}
-
-.icon-artist-attribute a:visited {
-  color: white;
-}
-
-.icon-artist-attribute a:hover {
-  color: #d1cdcd;
 }
 /*# sourceMappingURL=App.css.map */

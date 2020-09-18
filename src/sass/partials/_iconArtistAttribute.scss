@@ -1,0 +1,18 @@
+/**************** iconArtistAttribute ****************/
+
+.icon-artist-attribute {
+    margin-top: 4rem;
+    padding: 0.1rem;
+    font-size: 0.5rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.3);
+    a {
+      text-decoration: none;
+      &:visited {
+        color: white;
+      } 
+      &:hover {
+      color: rgb(209, 205, 205);
+      }
+    }
+  }
