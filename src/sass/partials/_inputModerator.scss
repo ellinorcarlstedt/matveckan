@@ -15,7 +15,6 @@
     background-color: white;
     input {
       @include primaryFont();
-      font-size: 0.7rem; 
     }
   }
   
@@ -67,6 +66,13 @@
   .added-item,
   .added-item-buttons {
     @include flexSpaceBetween();
+  }
+
+  .recipe-input-moderator-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
   }
   
   .ingredient-input,

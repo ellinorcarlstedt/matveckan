@@ -35,7 +35,7 @@ function MenuDisplayer (props) {
     const iconArtistAtt = props.menu.length ? <IconArtistAttribute /> : null;
 
         return (
-        <div>
+        <div className="component-resizer">
             <div className="menu-displayer">
                 <button className="menu-displayer-reload-button" onClick={reloadMenu}>{reloadButtonText}</button>
                     {menu}{iconArtistAtt}

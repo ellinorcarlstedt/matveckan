@@ -6,6 +6,12 @@
     justify-content: space-between;
 } 
 
+@mixin flexCenter {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+} 
+
 @mixin primaryFont {
     font-family: Garamond, Cambria;
     font-family: 'Varela Round';

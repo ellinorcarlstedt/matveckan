@@ -1,8 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+/**************** Base ****************/
+/**************** Mixins ****************/
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  font-size: 1rem;
+}
+
+input[type=text]:focus {
+  border: 1px solid black;
+  outline: none;
+}
+
+.App {
+  margin: auto;
+  text-align: center;
+  font-family: Garamond, Cambria;
+  font-family: 'Varela Round';
+  font-size: 0.7rem;
+}
+
+.component-resizer {
+  width: 100%;
+}
+
 /**************** Variables ****************/
 /**************** Mixins ****************/
 /**************** MenuDisplayer ****************/
-.menu-displayer {
+.menu-moderator {
   background-image: url("../icons/kitchen.jpg");
   background-size: auto 100%;
   background-repeat: no-repeat;
@@ -11,6 +40,15 @@
   background-color: white;
   padding-bottom: 0.7rem;
   min-height: 32rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .menu-displayer-reload-button {
@@ -136,7 +174,6 @@
   font-family: Garamond, Cambria;
   font-family: 'Varela Round';
   font-size: 0.7rem;
-  font-size: 0.7rem;
 }
 
 .added-item {
@@ -199,6 +236,22 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.recipe-input-moderator-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .ingredient-input,
@@ -327,6 +380,7 @@
 
 /**************** iconArtistAttribute ****************/
 .icon-artist-attribute {
+  width: 100%;
   margin-top: 4rem;
   padding: 0.1rem;
   font-size: 0.5rem;
@@ -469,7 +523,7 @@
 }
 
 /**************** Media Queries ****************/
-@media all and (max-width: 485px) {
+@media all and (max-width: 486px) {
   html {
     font-size: 1.4rem;
   }
@@ -477,31 +531,10 @@
 
 @media screen and (min-width: 486px) {
   .App {
-    width: 300px;
+    width: 500px;
   }
-}
-
-/**************** Base ****************/
-* {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  margin: 0;
-}
-
-html {
-  font-size: 1rem;
-}
-
-input[type=text]:focus {
-  border: 1px solid black;
-  outline: none;
-}
-
-.App {
-  margin: auto;
-  text-align: center;
-  font-family: Garamond, Cambria;
-  font-family: 'Varela Round';
-  font-size: 0.7rem;
+  .component-resizer {
+    width: 350px;
+  }
 }
 /*# sourceMappingURL=App.css.map */

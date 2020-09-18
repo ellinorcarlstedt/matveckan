@@ -1,7 +1,7 @@
 
 /**************** Media Queries ****************/
 
-@media all and (max-width: 485px) {
+@media all and (max-width: 486px) {
 
     html {
       font-size: 1.4rem;
@@ -12,7 +12,11 @@
 @media screen and (min-width: 486px) {
 
   .App {
-    width: 300px;
+    width: 500px;
+  }
+
+  .component-resizer {
+    width: 350px;
   }
   
 }
