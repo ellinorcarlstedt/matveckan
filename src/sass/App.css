@@ -422,14 +422,6 @@ input[type=text]:focus {
 }
 
 /**************** Tooltip ****************/
-.tooltip-hidden {
-  visibility: hidden;
-}
-
-.tooltip-visible {
-  visibility: visible;
-}
-
 .tooltip {
   position: relative;
 }

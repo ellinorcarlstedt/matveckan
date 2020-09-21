@@ -254,11 +254,6 @@ function RecipeInputModerator() {
   }
 
 
- const ingredientEditMode = currentIngredient !== null ? true : false;
- const descriptionEditMode = currentDescriptionRow !== null ? true : false;
- const ingredientTooltip = tooltipTarget === "ingredient" ? true : false;
- const descriptionTooltip = tooltipTarget === "description" ? true : false;
-
  const allAddedIngredients = addedIngredients.map((item) => {
       return <AddedRecipeItem   key={item.id} 
                                 id={item.id}
@@ -277,6 +272,7 @@ function RecipeInputModerator() {
                                 deleteItem={() => deleteDescriptionRow(item.id)}/>
  })
 
+ 
   return (
     <div className="recipe-input-moderator-container">
       <div className="component-resizer">
@@ -297,8 +293,8 @@ function RecipeInputModerator() {
                               unit={ingredientUnit} 
                               details={ingredientDetails}
                               inputFocus={ingredientFocus}
-                              showTooltip={ingredientTooltip}
-                              editMode={ingredientEditMode}/>
+                              showTooltip={tooltipTarget === "ingredient"}
+                              editMode={currentIngredient !== null}/>
             
             <div className="added-items-list">{allAddedIngredients}</div>
 
@@ -308,8 +304,8 @@ function RecipeInputModerator() {
                               hideTooltip={hideTooltip}
                               value={descriptionRowInput}
                               inputFocus={descriptionFocus}
-                              showTooltip={descriptionTooltip}
-                              editMode={descriptionEditMode}/>
+                              showTooltip={tooltipTarget === "description"}
+                              editMode={currentDescriptionRow !== null}/>
     
             <div className="added-items-list">{allAddedDescriptionRows}</div>
 
