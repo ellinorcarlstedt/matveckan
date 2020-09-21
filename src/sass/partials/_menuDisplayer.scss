@@ -1,6 +1,8 @@
 /**************** MenuDisplayer ****************/
 
 .menu-moderator {
+    position: relative;
+    min-height: 100vh;
     background-image: url('../icons/kitchen.jpg');
     background-size: auto 100%; 
     background-repeat: no-repeat;
@@ -8,12 +10,15 @@
     background-attachment: fixed;
     background-color: white;
     padding-bottom: 0.7rem;
-    min-height: 32rem;
     @include flexCenter();
   }
   
+  .menu-displayer {
+    margin: 5rem 0 2rem;
+  }
+
   .menu-displayer-reload-button {
-    margin: 3rem 0 0.3rem;
+    margin: 0.3rem 0;
   }
   
   .menu-displayer-reload-button,

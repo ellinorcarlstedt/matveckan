@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import MealDisplayer from './MealDisplayer';
-import IconArtistAttribute from './IconArtistAttribute';
+
 
 function MenuDisplayer (props) {
 
@@ -32,13 +32,12 @@ function MenuDisplayer (props) {
         )
 
     const reloadButtonText = props.menu.length ? "Nytt menyförslag" : "Visa menyförslag";
-    const iconArtistAtt = props.menu.length ? <IconArtistAttribute /> : null;
 
         return (
         <div className="component-resizer">
             <div className="menu-displayer">
                 <button className="menu-displayer-reload-button" onClick={reloadMenu}>{reloadButtonText}</button>
-                    {menu}{iconArtistAtt}
+                    {menu}
             </div>
         </div>
         )

@@ -1,18 +1,21 @@
 /********************** InputModerator with children *************************/
 
 .recipe-input-moderator-container {
+    min-height: 100vh; 
+    position: relative;
     background-image: url('../icons/kitchen.jpg');
     background-size: auto 100%; 
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
     background-color: white;
-    padding: 3rem 0 0.7rem;
-    min-height: 32rem; 
   }
   
-  .recipe-input-moderator {
+  .recipe-input-moderator form {
     background-color: white;
+    padding: 1rem 0;
+    border-radius: 0.3rem;
+    margin-bottom: 1rem;
     input {
       @include primaryFont();
     }
@@ -103,9 +106,7 @@
   /********** MARGINS / PADDING / BORDER ***********/
   
   .recipe-input-moderator {
-    padding: 1rem 0;
-    border-radius: 0.3rem;
-    margin: 0 0.5rem;
+    margin: 5rem 0.5rem 3rem;
   }
   
   .title-input,
@@ -167,8 +168,4 @@
   
   .ingredient-input-details-wrapper {
     margin-top: 0.3rem;
-  }
-  
-  .recipe-input-submit-button {
-    margin-top: 1rem;
   }

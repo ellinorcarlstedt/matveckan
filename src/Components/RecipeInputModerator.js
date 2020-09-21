@@ -315,9 +315,9 @@ function RecipeInputModerator() {
 
           </form>
           
+          <button type="submit" name="submit" className="recipe-input-submit-button">Klar</button>
+        
         </div>
-
-        <button type="submit" name="submit" className="recipe-input-submit-button">Klar</button>
 
       </div> 
       <IconArtistAttribute />

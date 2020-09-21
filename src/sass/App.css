@@ -32,6 +32,8 @@ input[type=text]:focus {
 /**************** Mixins ****************/
 /**************** MenuDisplayer ****************/
 .menu-moderator {
+  position: relative;
+  min-height: 100vh;
   background-image: url("../icons/kitchen.jpg");
   background-size: auto 100%;
   background-repeat: no-repeat;
@@ -39,7 +41,6 @@ input[type=text]:focus {
   background-attachment: fixed;
   background-color: white;
   padding-bottom: 0.7rem;
-  min-height: 32rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -51,8 +52,12 @@ input[type=text]:focus {
           justify-content: center;
 }
 
+.menu-displayer {
+  margin: 5rem 0 2rem;
+}
+
 .menu-displayer-reload-button {
-  margin: 3rem 0 0.3rem;
+  margin: 0.3rem 0;
 }
 
 .menu-displayer-reload-button,
@@ -156,21 +161,24 @@ input[type=text]:focus {
 
 /********************** InputModerator with children *************************/
 .recipe-input-moderator-container {
+  min-height: 100vh;
+  position: relative;
   background-image: url("../icons/kitchen.jpg");
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
   background-color: white;
-  padding: 3rem 0 0.7rem;
-  min-height: 32rem;
 }
 
-.recipe-input-moderator {
+.recipe-input-moderator form {
   background-color: white;
+  padding: 1rem 0;
+  border-radius: 0.3rem;
+  margin-bottom: 1rem;
 }
 
-.recipe-input-moderator input {
+.recipe-input-moderator form input {
   font-family: Garamond, Cambria;
   font-family: 'Varela Round';
   font-size: 0.7rem;
@@ -283,9 +291,7 @@ input[type=text]:focus {
 
 /********** MARGINS / PADDING / BORDER ***********/
 .recipe-input-moderator {
-  padding: 1rem 0;
-  border-radius: 0.3rem;
-  margin: 0 0.5rem;
+  margin: 5rem 0.5rem 3rem;
 }
 
 .title-input,
@@ -349,12 +355,11 @@ input[type=text]:focus {
   margin-top: 0.3rem;
 }
 
-.recipe-input-submit-button {
-  margin-top: 1rem;
-}
-
 /**************** mainNavbar ****************/
 .head-links-ul {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -380,8 +385,9 @@ input[type=text]:focus {
 
 /**************** iconArtistAttribute ****************/
 .icon-artist-attribute {
+  position: absolute;
+  bottom: 1rem;
   width: 100%;
-  margin-top: 4rem;
   padding: 0.1rem;
   font-size: 0.5rem;
   color: white;
@@ -530,7 +536,9 @@ input[type=text]:focus {
 }
 
 @media screen and (min-width: 486px) {
-  .App {
+  .App,
+  .head-links-ul,
+  .icon-artist-attribute {
     width: 500px;
   }
   .component-resizer {

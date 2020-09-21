@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MenuDisplayer from './MenuDisplayer';
 import recipes from '../resources/recipes';
+import IconArtistAttribute from './IconArtistAttribute';
 
 function MenuModerator () {
     const [ allRecipes, setAllRecipes ] = useState(null);
@@ -39,6 +40,7 @@ function MenuModerator () {
     return (
     <div className="menu-moderator">
         <MenuDisplayer menu={menu} reloadMenu={() => reloadMenu()}/> 
+        <IconArtistAttribute />
     </div>
     )
 

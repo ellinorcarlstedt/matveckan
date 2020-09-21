@@ -1,12 +1,15 @@
 /**************** mainNavbar ****************/
 
 .head-links-ul {
-    display: flex;
-    justify-content: space-evenly;
-    list-style-type: none;
-    background-color: $primaryBlue;
-    margin: 0;
-    padding: 0.7rem;
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
+  background-color: $primaryBlue;
+  margin: 0;
+  padding: 0.7rem;
     a {
       color: black;
       text-decoration: none;
