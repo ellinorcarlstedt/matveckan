@@ -285,6 +285,8 @@ function RecipeInputModerator() {
 
             <CategoryInput handleChange={handleCategoryChange} selectedCategory={categoryInput} handleEnter={handleEnter} />
 
+          <div className="input-with-items-wrapper">
+
             <IngredientInput  handleChange={handleIngredientChange} 
                               addIngredient={addIngredient}
                               handleEnter={handleEnter} 
@@ -297,7 +299,11 @@ function RecipeInputModerator() {
                               showTooltip={tooltipTarget === "ingredient"}
                               editMode={currentIngredient !== null}/>
             
-            <div className="added-items-list">{allAddedIngredients}</div>
+            {(addedIngredients.length > 0) && <div className="added-items-list">{allAddedIngredients}</div>}
+
+          </div>
+
+          <div className="input-with-items-wrapper"> 
 
             <DescriptionInput handleChange={handleDescriptionChange} 
                               addDescriptionRow={addDescriptionRow} 
@@ -308,7 +314,9 @@ function RecipeInputModerator() {
                               showTooltip={tooltipTarget === "description"}
                               editMode={currentDescriptionRow !== null}/>
     
-            <div className="added-items-list">{allAddedDescriptionRows}</div>
+            {(addedDescriptionRows.length > 0) &&<div className="added-items-list">{allAddedDescriptionRows}</div>}
+          
+          </div>
 
           </form>
           

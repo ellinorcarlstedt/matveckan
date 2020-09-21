@@ -11,7 +11,8 @@ function DescriptionInput(props) {
             <div className="input-description" onKeyPress={props.handleEnter} >
 
                 <input  type="text" 
-                        className="input-description-row" 
+                        className="input-description-row"
+                        placeholder="Gör såhär..." 
                         name="description" 
                         value={props.value} 
                         onChange={props.handleChange} 
