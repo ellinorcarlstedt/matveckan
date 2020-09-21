@@ -52,6 +52,9 @@ function RecipeInputModerator() {
     setTooltipTarget("");
   }
 
+  const clearTooltip = () => {
+    if (tooltipTarget !== "") { hideTooltip(); }
+  }
 
   const getNewId = (list) => {
     let highestIdInList = 0; 
@@ -90,22 +93,20 @@ function RecipeInputModerator() {
 
   const handleTitleChange = (e) => {
     setTitleInput(e.target.value);
-    clearEditMode();
-    if (tooltipTarget !== "") { hideTooltip(); }
+    clearTooltip();
   }
 
 
   const handleCategoryChange = (categoryId) => {
     setCategoryInput(categoryId);
-    clearEditMode();
-    if (tooltipTarget !== "") { hideTooltip(); }
+    clearTooltip();
   }
 
 
   const handleDescriptionChange = (e) => {
     e.preventDefault();
     setDescriptionRowInput(e.target.value);
-    if (tooltipTarget !== "") { hideTooltip(); }
+    clearTooltip();
     if (currentIngredient !== null) { clearIngredientsInput(); }
   }
 
@@ -123,7 +124,7 @@ function RecipeInputModerator() {
     } else if (target === "details") {
       setIngredientDetails(value);
     } 
-    if (tooltipTarget !== "") { hideTooltip(); }
+    clearTooltip();
     if (currentDescriptionRow !== null) { clearDescriptionRowInput(); }
   }
 
@@ -132,7 +133,7 @@ function RecipeInputModerator() {
     if (ingredientName === "") { 
       showTooltip("ingredient");
       manageInputFocus(ingredientFocus);
-      if (currentDescriptionRow !== null) { clearEditMode(); };
+      clearEditMode();
       return; 
     };
     const id = currentIngredient === null ? getNewId(addedIngredients) : currentIngredient;
@@ -161,7 +162,7 @@ function RecipeInputModerator() {
     if (descriptionRowInput === "") { 
       showTooltip("description");
       manageInputFocus(descriptionFocus);
-      if (currentIngredient !== null) { clearEditMode(); }
+      clearEditMode();
       return; 
     } 
     const id = currentDescriptionRow === null ? getNewId(addedDescriptionRows) : currentDescriptionRow;
@@ -203,7 +204,7 @@ function RecipeInputModerator() {
     allIngredients.splice(index, 1); 
     setAddedIngredients(allIngredients);
     manageInputFocus(ingredientFocus);
-    if (tooltipTarget !== "") { hideTooltip(); }
+    clearTooltip();
     clearEditMode();
   }
 
@@ -214,13 +215,13 @@ function RecipeInputModerator() {
     allDescriptionRows.splice(index, 1); 
     setAddedDescriptionRows(allDescriptionRows);
     manageInputFocus(descriptionFocus);
-    if (tooltipTarget !== "") { hideTooltip(); }
+    clearTooltip();
     clearEditMode();
   }
 
 
   const toggleIngredientEditMode = (id) => {
-    if (tooltipTarget !== "") { hideTooltip(); }
+    clearTooltip();
     if (currentDescriptionRow !== null) { clearDescriptionRowInput(); }
     if (currentIngredient === null || currentIngredient !== id) {
       let ingredientToEdit = addedIngredients.find((item) => {
@@ -239,7 +240,7 @@ function RecipeInputModerator() {
 
 
   const toggleDescriptionEditMode = (id) => {
-    if (tooltipTarget !== "") { hideTooltip(); }
+    clearTooltip();
     if (currentIngredient !== null) { clearIngredientsInput(); } 
     if (currentDescriptionRow === null || currentDescriptionRow !== id) {
       let descriptionRowToEdit = addedDescriptionRows.find((item) => {
@@ -272,7 +273,7 @@ function RecipeInputModerator() {
                                 deleteItem={() => deleteDescriptionRow(item.id)}/>
  })
 
- 
+
   return (
     <div className="recipe-input-moderator-container">
       <div className="component-resizer">
