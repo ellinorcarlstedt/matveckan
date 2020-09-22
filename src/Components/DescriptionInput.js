@@ -8,10 +8,9 @@ function DescriptionInput(props) {
     return (
         <div>
             {props.showTooltip && <Tooltip hideTooltip={props.hideTooltip} positionClass="tooltip-top">Skriv en instruktion</Tooltip>}
-            <div className="input-description" onKeyPress={props.handleEnter} >
+            <div className="description-input" onKeyPress={props.handleEnter} >
 
                 <input  type="text" 
-                        className="input-description-row"
                         placeholder="Gör såhär..." 
                         name="description" 
                         value={props.value} 

@@ -9,29 +9,44 @@
     background-position: center;
     background-attachment: fixed;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
   }
   
-  .recipe-input-moderator form {
+  .recipe-input-moderator {
+    margin: 5rem 0.5rem 3rem;
+    form {
     background-color: white;
     padding: 1rem 0 1px; /*1px to avoid collapsing margins*/
     border-radius: 0.3rem;
     margin-bottom: 1rem;
     input {
+      padding: 0.3rem;
+      border: 1px solid rgb(221, 213, 213);
       @include primaryFont();
+      }
+    }
+  } 
+
+  /**************** Inputs ****************/
+ 
+  .title-input {
+    margin-bottom: 0.7rem;
+    padding: 0 0.5rem;
+    input {
+      width: 100%;
     }
   }
-  
-  .added-item {
-    text-align: left;
-    padding: 0.15rem 0.5rem 0.15rem 0.7rem;
+
+  .category-input {
+    @include flexSpaceBetween();
+    flex-wrap: wrap;
+    margin-bottom: 0.7rem;
+    padding: 0 calc(0.5rem + 3px);
   }
-  
-  .input-clickable-icon {
-    width: 1rem;
-    height: 1rem;
-    cursor: pointer;
-  }
-  
+
   .category-input-icon {
     img {
       box-sizing: content-box; 
@@ -52,123 +67,98 @@
       background-color: $primaryBlue;
     }
   }
-  
-  .icon-edit-mode {
-    transform: rotate(45deg)
-  } 
-  
-  .item-edit-mode {
-    background-color: $lightGray;
-  }
-  
-  /******************* FLEXBOX **********************/
-  
-  .input-description,
-  .ingredient-input-wrapper,
-  .category-input,
-  .added-item,
-  .added-item-buttons {
-    @include flexSpaceBetween();
-  }
 
-  .recipe-input-moderator-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-  }
-  
-  .ingredient-input,
-  .category-input {
-    flex-wrap: wrap;
-  }
-  
-  .ingredient-input,
-  .ingredient-input-details-wrapper {
-    display: flex;
-    min-width: 0;
-  }
-  
-  .ingredient-input-amount,
-  .ingredient-input-unit,
-  .ingredient-input-details {
-    min-width: 0;
-  }
-  
-  /******************* WIDTH **********************/
-  
-  .title-input input,
-  .input-description input,
-  .ingredient-input-name {
-    width: 100%;
-  }
-  
-  /********** MARGINS / PADDING / BORDER ***********/
-  
-  .recipe-input-moderator {
-    margin: 5rem 0.5rem 3rem;
-  }
-  
-  .title-input,
-  .category-input,
-  .ingredient-input-wrapper,
-  .input-description {
-    padding: 0 0.5rem;
-  }
-  
-  .title-input input,
-  .input-description input {
-    border: 1px solid rgb(221, 213, 213);
-  }
-  
-  .title-input,
-  .category-input {
-    margin-bottom: 0.7rem;
-  }
-  
   .input-with-items-wrapper {
     margin-bottom: 1.5rem;
   }
+
+  .ingredient-input-wrapper {
+    @include flexSpaceBetween();
+    padding: 0 0.5rem;
+  }
+
+  .ingredient-input {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .ingredient-input-details-wrapper {
+    display: flex;
+    margin-top: 0.3rem;
+  }
+
+  .ingredient-input-name {
+    width: 100%;
+  }
+
+  .ingredient-input,
+  .ingredient-input-details,
+  .ingredient-input-details-wrapper,
+  .ingredient-input-amount,
+  .ingredient-input-unit {
+    min-width: 0;
+  }
+ 
+  .ingredient-input-amount,
+  .ingredient-input-unit {
+    margin-right: 0.3rem;
+  }
+
+  .description-input {
+    @include flexSpaceBetween();
+    padding: 0 0.5rem;
+    input {
+      width: 100%;
+    }
+  }
+
+  /**************** Added items / icons / edit-mode ****************/
 
   .added-items-list {
     margin-top: 0.7rem;
     padding: 0; 
   }
 
+  .added-item {
+    text-align: left;
+    padding: 0.15rem 0.5rem;
+  }
+
+  .added-item,
+  .added-item-buttons {
+    @include flexSpaceBetween();
+  }
+
+  .input-clickable-icon {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+  }
+  
   .add-icon {
     margin-left: 0.5rem;
   }
-  
+
   .remove-icon,
-  .edit,
-  .icon-edit-mode {
+  .edit {
     margin-left: 0.3rem;
   }
-  
-  .category-input p {
-    margin-bottom: 0.3rem;
-  }
-  
-  .recipe-input-moderator input {
-    padding: 0.3rem;
-  }
-  
+
   .remove-icon {
     padding: 0.1rem;
   }
-  
-  .ingredient-input-name,
-  .ingredient-input-amount,
-  .ingredient-input-unit,
-  .ingredient-input-details {
-   border: 1px solid rgb(221, 213, 213); 
-  }
-  
-  .ingredient-input-amount,
-  .ingredient-input-unit {
-    margin-right: 0.3rem;
+
+  .icon-edit-mode {
+    transform: rotate(45deg);
+    margin-left: 0.3rem;
   } 
   
-  .ingredient-input-details-wrapper {
-    margin-top: 0.3rem;
+  .item-edit-mode {
+    background-color: $lightGray;
   }
+  
+
+  
+  
+
+  
