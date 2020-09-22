@@ -7,10 +7,12 @@ function AddedRecipeItem(props) {
         iconClass = "icon-edit-mode";
         itemClass = "item-edit-mode";
     }
+
+    let listItemNumber = props.listItemNumber ? `${props.listItemNumber}. ` : "";
     
     return (
-        <div className={`added-item ${itemClass}`}>
-            <p>{props.content}</p>
+        <li className={`added-item ${itemClass}`}>
+            <p>{listItemNumber} {props.content}</p>
             <div className="added-item-buttons">
 
                 <img    src={require("../icons/pencil.svg")}  
@@ -24,7 +26,7 @@ function AddedRecipeItem(props) {
                         onClick={props.deleteItem} />
 
             </div>
-        </div>
+        </li>
     )
 }
 

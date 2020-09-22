@@ -264,9 +264,10 @@ function RecipeInputModerator() {
                                 deleteItem={() => deleteIngredient(item.id)}/>
  });
  
-  const allAddedDescriptionRows = addedDescriptionRows.map((item) => {
+  const allAddedDescriptionRows = addedDescriptionRows.map((item, i) => {
       return <AddedRecipeItem   key={item.id} 
                                 id={item.id}
+                                listItemNumber={i + 1}
                                 content={item.description}
                                 currentItem={currentDescriptionRow}
                                 toggleEditMode={() => toggleDescriptionEditMode(item.id)}
@@ -276,7 +277,9 @@ function RecipeInputModerator() {
 
   return (
     <div className="recipe-input-moderator-container">
+
       <div className="component-resizer">
+        
         <div className="recipe-input-moderator">
 
           <form onSubmit={handleSubmit}>
@@ -285,38 +288,38 @@ function RecipeInputModerator() {
 
             <CategoryInput handleChange={handleCategoryChange} selectedCategory={categoryInput} handleEnter={handleEnter} />
 
-          <div className="input-with-items-wrapper">
+            <div className="input-with-items-wrapper">
 
-            <IngredientInput  handleChange={handleIngredientChange} 
-                              addIngredient={addIngredient}
-                              handleEnter={handleEnter} 
-                              hideTooltip={hideTooltip}
-                              name={ingredientName} 
-                              amount={ingredientAmount} 
-                              unit={ingredientUnit} 
-                              details={ingredientDetails}
-                              inputFocus={ingredientFocus}
-                              showTooltip={tooltipTarget === "ingredient"}
-                              editMode={currentIngredient !== null}/>
+              <IngredientInput  handleChange={handleIngredientChange} 
+                                addIngredient={addIngredient}
+                                handleEnter={handleEnter} 
+                                hideTooltip={hideTooltip}
+                                name={ingredientName} 
+                                amount={ingredientAmount} 
+                                unit={ingredientUnit} 
+                                details={ingredientDetails}
+                                inputFocus={ingredientFocus}
+                                showTooltip={tooltipTarget === "ingredient"}
+                                editMode={currentIngredient !== null}/>
+              
+              {(addedIngredients.length > 0) && <ul className="added-items-list">{allAddedIngredients}</ul>}
+
+            </div>
+
+            <div className="input-with-items-wrapper"> 
+
+              <DescriptionInput handleChange={handleDescriptionChange} 
+                                addDescriptionRow={addDescriptionRow} 
+                                handleEnter={handleEnter} 
+                                hideTooltip={hideTooltip}
+                                value={descriptionRowInput}
+                                inputFocus={descriptionFocus}
+                                showTooltip={tooltipTarget === "description"}
+                                editMode={currentDescriptionRow !== null}/>
+      
+              {(addedDescriptionRows.length > 0) && <ul className="added-items-list">{allAddedDescriptionRows}</ul>}
             
-            {(addedIngredients.length > 0) && <div className="added-items-list">{allAddedIngredients}</div>}
-
-          </div>
-
-          <div className="input-with-items-wrapper"> 
-
-            <DescriptionInput handleChange={handleDescriptionChange} 
-                              addDescriptionRow={addDescriptionRow} 
-                              handleEnter={handleEnter} 
-                              hideTooltip={hideTooltip}
-                              value={descriptionRowInput}
-                              inputFocus={descriptionFocus}
-                              showTooltip={tooltipTarget === "description"}
-                              editMode={currentDescriptionRow !== null}/>
-    
-            {(addedDescriptionRows.length > 0) &&<div className="added-items-list">{allAddedDescriptionRows}</div>}
-          
-          </div>
+            </div>
 
           </form>
           
@@ -325,7 +328,9 @@ function RecipeInputModerator() {
         </div>
 
       </div> 
+
       <IconArtistAttribute />
+
     </div>
   );
 }
