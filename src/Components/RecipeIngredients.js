@@ -6,31 +6,30 @@ function RecipeIngredients(props) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
-
     let ingredients = [];
     if (props.ingredients.length) {
         ingredients = props.ingredients.map((ingredient, i) => {
             if (ingredient.amount === null) {
                 let ingredientName = firstLetterUppercase(ingredient.name);
                 return (
-                    <div key={i}>
+                    <li key={i}>
                         <p>{ingredientName}</p>
-                    </div>
+                    </li>
                 )
             } else {
             return (
-                <div key={i}>
+                <li key={i}>
                     <p>{`${ingredient.amount} ${ingredient.unit} ${ingredient.name}`}</p>
-                </div>
+                </li>
                 )
             }
         })
     }
 
     return (
-        <div className="recipe-ingredients">
+        <ul className="recipe-ingredients">
             {ingredients}
-        </div>
+        </ul>
     )
 }
 

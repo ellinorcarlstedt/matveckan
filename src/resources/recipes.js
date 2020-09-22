@@ -815,7 +815,9 @@ const recepies = [
                 details: ""
             }
         ],
-        description: [] 
+        description: [
+            "Fråga Masood hur man gör, laga sedan rätten."
+        ] 
     },
 
     {

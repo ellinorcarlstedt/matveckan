@@ -1,17 +1,13 @@
 import React from 'react';
 
 function RecipeDescription(props) {
-    let description = [];
-    if (props.description.length) {
-        description = props.description.map((row, i) => <p className="recipe-description-row" key={i}>{row}</p>)
-    } else {
-        description = <p className="recipe-description-missing"> ~ Recept saknas ~ </p>
-    }
+
+    let description = props.description.map((row, i) => <li className="recipe-description-row" key={i}>{row}</li>)
 
     return (
-        <div>
+        <ol className="recipe-description">
             {description}
-        </div>
+        </ol>
     )
 }
 
