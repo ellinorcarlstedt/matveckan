@@ -14,7 +14,8 @@
       color: black;
       text-decoration: none;
       padding: 0.65rem;
-      &:hover {
+      &:hover,
+      &.active {
       background-color: $secondaryBlue;
        color: white;
       }

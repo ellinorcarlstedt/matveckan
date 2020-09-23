@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "../sass/App.css";
 
 const MainNav = () => {
@@ -7,10 +7,10 @@ const MainNav = () => {
         <nav>
             <ul className="main-nav">
               <li>
-                <Link to="/meny">Skapa meny</Link>
+                <NavLink to="/meny">Skapa meny</NavLink>
               </li>
               <li>
-                <Link to="/recept">Lägg in recept</Link>
+                <NavLink to="/recept">Lägg in recept</NavLink>
               </li>
             </ul>
         </nav>
