@@ -7,25 +7,15 @@ import {
   Redirect
 } from "react-router-dom";
 import './sass/App.css';
+import MainNav from './Components/MainNav';
 import MenuModerator from './Components/MenuModerator';
 import RecipeInputModerator from './Components/RecipeInputModerator';
 
 function App() {
   return (
     <Router>
-      
       <div className="App">
-        <nav>
-            <ul className="head-links-ul">
-              <li>
-                <Link to="/meny">Skapa meny</Link>
-              </li>
-              <li>
-                <Link to="/recept">Lägg in recept</Link>
-              </li>
-            </ul>
-        </nav>
-
+        <MainNav />
         <Switch> 
           <Route exact path="/" component={MenuModerator} />
           <Route exact path="/meny" component={MenuModerator} />
