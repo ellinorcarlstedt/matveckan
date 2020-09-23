@@ -3,7 +3,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 import './sass/App.css';
 import MenuModerator from './Components/MenuModerator';
@@ -29,6 +30,7 @@ function App() {
           <Route exact path="/" component={MenuModerator} />
           <Route exact path="/meny" component={MenuModerator} />
           <Route exact path="/recept" component={RecipeInputModerator} />
+          <Redirect to="/" />
         </Switch>   
       </div>
       
