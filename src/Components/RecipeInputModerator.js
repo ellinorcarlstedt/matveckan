@@ -255,27 +255,9 @@ function RecipeInputModerator() {
   }
 
 
- const allAddedIngredients = addedIngredients.map((item) => {
-      return <AddedRecipeItem   key={item.id} 
-                                id={item.id}
-                                content={`${item.amount} ${item.unit} ${item.name} ${item.details}`}  
-                                currentItem={currentIngredient}
-                                toggleEditMode={() => toggleIngredientEditMode(item.id)}
-                                deleteItem={() => deleteIngredient(item.id)}/>
- });
- 
-  const allAddedDescriptionRows = addedDescriptionRows.map((item, i) => {
-      return <AddedRecipeItem   key={item.id} 
-                                id={item.id}
-                                listItemNumber={i + 1}
-                                content={item.description}
-                                currentItem={currentDescriptionRow}
-                                toggleEditMode={() => toggleDescriptionEditMode(item.id)}
-                                deleteItem={() => deleteDescriptionRow(item.id)}/>
- })
-
 
   return (
+    
     <div className="recipe-input-moderator-container">
 
       <div className="component-resizer">
@@ -302,7 +284,16 @@ function RecipeInputModerator() {
                                 showTooltip={tooltipTarget === "ingredient"}
                                 editMode={currentIngredient !== null}/>
               
-              {(addedIngredients.length > 0) && <ul className="added-items-list">{allAddedIngredients}</ul>}
+              {(addedIngredients.length > 0) && <ul className="added-items-list">
+                {addedIngredients.map((item) => {
+                return <AddedRecipeItem   key={item.id} 
+                                          id={item.id}
+                                          content={`${item.amount} ${item.unit} ${item.name} ${item.details}`}  
+                                          currentItem={currentIngredient}
+                                          toggleEditMode={() => toggleIngredientEditMode(item.id)}
+                                          deleteItem={() => deleteIngredient(item.id)}/>
+                  })}
+              </ul>}
 
             </div>
 
@@ -317,7 +308,17 @@ function RecipeInputModerator() {
                                 showTooltip={tooltipTarget === "description"}
                                 editMode={currentDescriptionRow !== null}/>
       
-              {(addedDescriptionRows.length > 0) && <ul className="added-items-list">{allAddedDescriptionRows}</ul>}
+              {(addedDescriptionRows.length > 0) && <ul className="added-items-list">
+                {addedDescriptionRows.map((item, i) => {
+                  return <AddedRecipeItem   key={item.id} 
+                                            id={item.id}
+                                            listItemNumber={i + 1}
+                                            content={item.description}
+                                            currentItem={currentDescriptionRow}
+                                            toggleEditMode={() => toggleDescriptionEditMode(item.id)}
+                                            deleteItem={() => deleteDescriptionRow(item.id)}/>
+                    })}
+                </ul>}
             
             </div>
 
