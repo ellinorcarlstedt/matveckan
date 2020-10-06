@@ -6,9 +6,10 @@ import {
   Redirect
 } from "react-router-dom";
 import './sass/App.css';
-import MainNav from './Components/MainNav';
-import MenuModerator from './Components/MenuModerator';
-import RecipeInputModerator from './Components/RecipeInputModerator';
+import MainNav from './shared/UIElements/MainNav';
+import MenuModerator from './menu/pages/MenuModerator';
+import RecipeInputModerator from './recipe-input/pages/RecipeInputModerator';
+import Auth from './shared/auth/pages/Auth';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/" component={MenuModerator} />
           <Route exact path="/meny" component={MenuModerator} />
           <Route exact path="/recept" component={RecipeInputModerator} />
+          <Route exact path="/auth" component={Auth} />
           <Redirect to="/" />
         </Switch>   
       </div>

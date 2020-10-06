@@ -7,6 +7,10 @@
   margin: 0;
 }
 
+body {
+  background-color: #4d4d4d;
+}
+
 html {
   font-size: 1rem;
 }
@@ -34,7 +38,7 @@ input[type=text]:focus {
 .menu-moderator {
   position: relative;
   min-height: 100vh;
-  background-image: url("../icons/kitchen.jpg");
+  background-image: url("../shared/icons/kitchen.jpg");
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -162,7 +166,7 @@ input[type=text]:focus {
 .recipe-input-moderator-container {
   min-height: 100vh;
   position: relative;
-  background-image: url("../icons/kitchen.jpg");
+  background-image: url("../shared/icons/kitchen.jpg");
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -399,6 +403,51 @@ input[type=text]:focus {
 .main-nav a:hover, .main-nav a.active {
   background-color: #55adad;
   color: white;
+}
+
+/**************** Auth ****************/
+.auth {
+  background-color: white;
+  min-height: 100vh;
+  position: relative;
+  background-image: url("../shared/icons/kitchen.jpg");
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.auth form {
+  background: white;
+  padding: 1rem;
+  border-radius: 0.3rem;
+  margin-top: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.auth form input {
+  margin-bottom: 0.5rem;
+  padding: 0.3rem;
+  border: 1px solid #ddd5d5;
+  font-family: Garamond, Cambria;
+  font-family: 'Varela Round';
+  font-size: 0.7rem;
 }
 
 /**************** iconArtistAttribute ****************/

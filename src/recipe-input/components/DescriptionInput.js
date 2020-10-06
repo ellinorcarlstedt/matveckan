@@ -1,5 +1,5 @@
 import React from 'react';
-import Tooltip from './Tooltip';
+import Tooltip from '../../shared/UIElements/Tooltip';
 
 function DescriptionInput(props) {
 
@@ -18,7 +18,7 @@ function DescriptionInput(props) {
                         autoComplete="off"
                         ref={props.inputFocus}/>
 
-                <img    src={require(`../icons/${addIcon}.svg`)} 
+                <img    src={require(`../../shared/icons/${addIcon}.svg`)} 
                         alt="Lägg till" 
                         className="input-clickable-icon add-icon" 
                         onClick={props.addDescriptionRow} />

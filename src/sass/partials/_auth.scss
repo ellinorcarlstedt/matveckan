@@ -1,0 +1,30 @@
+/**************** Auth ****************/
+
+.auth {
+    background-color: white;
+    min-height: 100vh; 
+    position: relative;
+    background-image: url('../shared/icons/kitchen.jpg');
+    background-size: auto 100%; 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    form {
+        background: white;
+        padding: 1rem;
+        border-radius: 0.3rem;
+        margin-top: 5rem;
+        display: flex;
+        flex-direction: column;
+        input {
+            margin-bottom: 0.5rem;
+            padding: 0.3rem;
+            border: 1px solid rgb(221, 213, 213);
+            @include primaryFont();
+        }
+    }
+}

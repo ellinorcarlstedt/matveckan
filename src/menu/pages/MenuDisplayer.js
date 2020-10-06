@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MealDisplayer from './MealDisplayer';
+import MealDisplayer from '../components/MealDisplayer';
 
 
 function MenuDisplayer (props) {

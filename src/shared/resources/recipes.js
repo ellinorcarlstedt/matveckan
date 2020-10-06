@@ -67,7 +67,8 @@ const recepies = [
                     "Koka spaghettin enligt anvisningen på förpackningen.", 
                     "Hacka persiljan. Skär tomaterna i bitar och blanda med persilja, olivolja och rödvinsvinäger. Krydda med salt och peppar.",
                     "Servera köttfärssåsen med spaghetti och tomater."
-                    ]
+                    ],
+        user: "u1"
     },
 
     {
@@ -115,7 +116,8 @@ const recepies = [
                     "Skär grönsakerna i lämpliga bitar. Fräs i en kastrull eller gryta i olja.", 
                     "Häll över vatten och lägg i buljongtärning samt valfria örtkryddor och örtsalt. Låt koka tills grönsakerna precis mjuknat. Smaka av med salt och peppar.", 
                     "Servera gärna med ett gott surdegsknäcke med ost eller skinka."
-                    ] 
+                    ],
+        user: "u1" 
     },
 
     {
@@ -179,7 +181,8 @@ const recepies = [
                     "Häll såsen över kycklingen och gratinera mitt i ugnen ca 20 min.", 
                     "Strö över granatäppelkärnor och ev mer basilikablad. Dra ett varv med pepparkvarnen.", 
                     "Servera med ugnsrostad potatis eller tagliatelle."
-                    ] 
+                    ],
+        user: "u1" 
     },
 
     {
@@ -241,7 +244,8 @@ const recepies = [
                     "Stek filéerna gyllenbruna i lite smör.", 
                     "Skala och koka potatis. Dela och koka broccoli.", 
                     "Servera rödspättan med pressad citron."
-                    ] 
+                    ],
+        user: "u1" 
     },
 
     {
@@ -303,7 +307,8 @@ const recepies = [
                     "Blanda i ca 1 dl vatten och låt det koka ihop en stund.", 
                     "Under tiden så skär du alla grönsakerna.", 
                     "Servera med tacoskal, grönsaker, tacosås, gräddfil och riven ost."
-                    ] 
+                    ],
+        user: "u1" 
     },
 
     {
@@ -359,7 +364,8 @@ const recepies = [
                     "Koka pastan och häll av vattnet. Blanda i en stor klick pesto och rör ihop.",
                     "Ta stekpannan från plattan och blanda ner pastan och rör ihop.",
                     "Servera med nyriven parmesanost."
-                    ] 
+                    ],
+        user: "u1" 
     },
 
     {
@@ -408,7 +414,8 @@ const recepies = [
                     "Lägg de frysta panerade torskfiléerna i en ugnssäker form. Ställ in dem i nedre delen av ugnen när det är ca 20 minuter kvar för potatisen.",
                     "Under tiden steker eller kokar du sparrisen.",
                     "Servera med pressad citron och remouladsås."
-                    ] 
+                    ],
+        user: "u1" 
     },
 
     {
@@ -455,7 +462,8 @@ const recepies = [
                     "Blanda 1 dl havregryn med 2 dl vatten.", 
                     "Koka upp och låt koka på svag värme tills gröten uppnått önskad konsistens.", 
                     "Servera med äppelmos, mjölk och en skvätt grädde."
-                    ]      
+                    ],
+        user: "u1"      
     },
 
     {
@@ -539,7 +547,8 @@ const recepies = [
                     "Lägg ner lax, torsk och musslor i soppan och låt sjuda i ca 5 min.", 
                     "Lägg ner räkor och timjan och smaka av soppan med citronsaft, salt och peppar.", 
                     "Lägg upp soppan i skålar och servera med ett gott bröd och ev en klick aioli."
-                    ] 
+                    ],
+        user: "u1" 
     },
 
     {
@@ -590,7 +599,8 @@ const recepies = [
                     "Häll i ca 1 dl smet och vicka lätt på laggen så att smeten fördelas till ett jämnt tunt lager.", 
                     "Vänd på pannkakan när smeten har stelnat så att den får färg på båda sidor.",
                     "Lägg de färdiga pannkakorna på ett serveringsfat och servera med sylt, bär och glass eller grädde."
-                    ] 
+                    ],
+        user: "u1" 
     },
 
     {
@@ -656,7 +666,8 @@ const recepies = [
                     "Krydda efter smak och låt allt koka ihop.", 
                     "Blanda majsstärkelse med resten av champinjonspadet och red av grytan. Koka 3-4 minuter.", 
                     "Servera med ris."
-                    ] 
+                    ],
+        user: "u1" 
     },
 
     {
@@ -716,7 +727,8 @@ const recepies = [
                     "Strimla under tiden bacon och stek det knaprigt i en stekpanna. Lägg upp på hushållspapper för att rinna av.", 
                     "Tag ut kycklingen och strö över bacon och jordnötter.", 
                     "Matsortera dina bananskal och renset från kycklingen till återvinning och njut av din Flygande Jacob!"
-                    ] 
+                    ],
+        user: "u1" 
     },
 
     {
@@ -772,7 +784,8 @@ const recepies = [
                     "Ta upp fläsk och skär i kuber och lägg tillbaks.", 
                     "Smaka av och koka upp ärtsoppan med kryddor som timjan, vitpeppar, mejram och salt. Köttbuljong eller grönsaksbuljong kan man också smaksätta med - dock sparsamt.", 
                     "Servera ärtsoppan med senap."
-                    ] 
+                    ],
+        user: "u1" 
     },
 
     {
@@ -817,7 +830,8 @@ const recepies = [
         ],
         description: [
             "Fråga Masood hur man gör, laga sedan rätten."
-        ] 
+        ],
+        user: "u1" 
     },
 
     {
@@ -870,7 +884,8 @@ const recepies = [
         description: [
                     "Skiva grillad kyckling. Tärna grönsakerna.", 
                     "Rör ihop sallad, kyckling, krutonger, tomater, paprika och dressing till en god sallad."
-                    ] 
+                    ],
+        user: "u1" 
     },
 
     {
@@ -917,7 +932,8 @@ const recepies = [
                     "Koka riset enligt anvisning på förpackningen.",
                     "Skär korven i strimlor. Skala och riv löken. Stek korven i smör-&rapsolja i en stekpanna. Rör i lök, tomatkross och grädde.",
                     "Smaka av med salt och peppar. Låt koka ca 1 min. Servera grytan med riset."
-                    ] 
+                    ],
+        user: "u1" 
     },
 
     {
@@ -978,7 +994,8 @@ const recepies = [
                     "Häll på grädde och låt koka ihop något.",
                     "Smaka av med salt och peppar.",
                     "Vänd ner persiljan i såsen och servera den till kotletterna."
-                    ] 
+                    ],
+        user: "u1" 
     }
 ];
 

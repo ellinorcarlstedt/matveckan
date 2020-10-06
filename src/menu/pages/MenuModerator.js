@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MenuDisplayer from './MenuDisplayer';
-import recipes from '../resources/recipes';
-import IconArtistAttribute from './IconArtistAttribute';
+import recipes from '../../shared/resources/recipes';
+import IconArtistAttribute from '../../shared/UIElements/IconArtistAttribute';
 
 function MenuModerator () {
     const [ allRecipes, setAllRecipes ] = useState(null);

@@ -1,5 +1,5 @@
 import React from 'react';
-import Tooltip from './Tooltip';
+import Tooltip from '../../shared/UIElements/Tooltip';
 
 function IngredientInput(props) {
 
@@ -47,7 +47,7 @@ function IngredientInput(props) {
                         </div>
                 </div>
 
-                <img    src={require(`../icons/${addIcon}.svg`)} 
+                <img    src={require(`../../shared/icons/${addIcon}.svg`)} 
                         alt="Lägg till" 
                         className="input-clickable-icon add-icon" 
                         onClick={props.addIngredient}/>

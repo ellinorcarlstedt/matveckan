@@ -3,7 +3,7 @@ import Weekday from './Weekday';
 import MealCategory from './MealCategory';
 import MealTitle from './MealTitle';
 import Recipe from './Recipe';
-import HeightTransitionComponent from './HeightTransitionComponent';
+import HeightTransitionComponent from '../../shared/UIElements/HeightTransitionComponent';
 
 function MealDisplayer(props) {
 

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import TitleInput from './TitleInput';
-import IngredientInput from './IngredientInput';
-import DescriptionInput from './DescriptionInput';
-import CategoryInput from './CategoryInput';
-import AddedRecipeItem from './AddedRecipeItem';
-import IconArtistAttribute from './IconArtistAttribute'; 
+import TitleInput from '../components/TitleInput';
+import IngredientInput from '../components/IngredientInput';
+import DescriptionInput from '../components/DescriptionInput';
+import CategoryInput from '../components/CategoryInput';
+import AddedRecipeItem from '../components/AddedRecipeItem';
+import IconArtistAttribute from '../../shared/UIElements/IconArtistAttribute'; 
 
 
-function RecipeInputModerator() {
+const RecipeInputModerator = () => {
 
   const [ titleInput, setTitleInput ] = useState("");
   const [ categoryInput, setCategoryInput ] = useState("");
