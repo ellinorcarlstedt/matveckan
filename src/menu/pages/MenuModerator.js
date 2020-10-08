@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useHttpClient } from "../../shared/hooks/http-hook";
 import MenuDisplayer from './MenuDisplayer';
 import recipes from '../../shared/resources/recipes';
 import IconArtistAttribute from '../../shared/UIElements/IconArtistAttribute';
 
 function MenuModerator () {
+    const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const [ allRecipes, setAllRecipes ] = useState(null);
     const [ selectedRecipes, setSelectedRecipes ] = useState([]);
-
-    const importRecipes = () => {
-         setAllRecipes(recipes);
-    }
 
     const reloadMenu = () => {
         const newMenu = getMenu(allRecipes, 7);
@@ -21,8 +19,17 @@ function MenuModerator () {
     }
 
     useEffect(() => {
-        importRecipes();
-    }, []);
+        const fetchRecipes = async () => {
+            try {
+                const response = await sendRequest("http://localhost:5000/api/recipes");
+                console.log(response.recipes); //remove
+                setAllRecipes(response.recipes);
+            } catch(err) {
+                console.log(err);
+            }
+        }
+        fetchRecipes();
+    }, [sendRequest]);
 
     const getMenu = (recipes, numberOfDays) => {  
         let allRecipes = [...recipes];

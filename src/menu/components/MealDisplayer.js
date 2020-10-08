@@ -7,7 +7,7 @@ import HeightTransitionComponent from '../../shared/UIElements/HeightTransitionC
 
 function MealDisplayer(props) {
 
-    let isOpen = props.indexOfOpenRecipe === props.meal.index ? true : false;
+    let isOpen = props.indexOfOpenRecipe === props.meal.id ? true : false;
 
     const toggleRecipe = () => {
         isOpen ? props.closeRecipe() : props.openRecipe();
@@ -21,7 +21,7 @@ function MealDisplayer(props) {
                     <MealCategory category={props.meal.mealCategory}/>
                 </div>
                 <div>
-                    <HeightTransitionComponent isOpen={isOpen} id={props.meal.index} className="border-radius">
+                    <HeightTransitionComponent isOpen={isOpen} id={props.meal.id} className="border-radius">
                         <Recipe description={props.meal.description} ingredients={props.meal.ingredients}/> 
                     </HeightTransitionComponent>
                 </div>
