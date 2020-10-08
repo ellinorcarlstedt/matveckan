@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { AuthContext } from "../../shared/context/auth-context";
+import { useHttpClient } from "../../shared/hooks/http-hook";
 import TitleInput from '../components/TitleInput';
 import IngredientInput from '../components/IngredientInput';
 import DescriptionInput from '../components/DescriptionInput';
@@ -8,6 +10,8 @@ import IconArtistAttribute from '../../shared/UIElements/IconArtistAttribute';
 
 
 const RecipeInputModerator = () => {
+  const auth = useContext(AuthContext);
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
   const [ titleInput, setTitleInput ] = useState("");
   const [ categoryInput, setCategoryInput ] = useState("");
@@ -31,9 +35,29 @@ const RecipeInputModerator = () => {
   const descriptionFocus = React.createRef();
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Submit will be handled here");
+  const handleSubmit = async event => {
+    event.preventDefault();
+  
+    try {
+      const response = await sendRequest(
+        "http://localhost:5000/api/recipes",
+        "POST",
+        JSON.stringify({
+          mealName: titleInput,
+          mealCategory: categoryInput,
+          ingredients: addedIngredients,
+          description: addedDescriptionRows,
+          creator: auth.userId
+        }),
+        { 
+          "Content-Type" : "application/json"
+        }
+        );
+        console.log("Recipe posted to database!")
+
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   const manageInputFocus = (refName) => {
@@ -264,7 +288,7 @@ const RecipeInputModerator = () => {
         
         <div className="recipe-input-moderator">
 
-          <form onSubmit={handleSubmit}>
+          <form>
 
             <TitleInput titleInput={titleInput} handleChange={handleTitleChange} titleFocus={titleFocus}/>
 
@@ -323,9 +347,9 @@ const RecipeInputModerator = () => {
             </div>
 
           </form>
-          
-          <button type="submit" name="submit" className="recipe-input-submit-button">Klar</button>
         
+          <button type="button" onClick={handleSubmit} className="recipe-input-submit-button">Lägg upp recept</button>
+
         </div>
 
       </div> 
