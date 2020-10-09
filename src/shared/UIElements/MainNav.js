@@ -12,9 +12,9 @@ const MainNav = () => {
               <li>
                 <NavLink to="/meny">Skapa meny</NavLink>
               </li>
-              {auth.isLoggedin &&<li>
+              <li>
                 <NavLink to="/recept">Lägg in recept</NavLink>
-              </li>}
+              </li>
               {!auth.isLoggedin && <li>
                 <NavLink to="/auth">Logga in</NavLink>
               </li>}

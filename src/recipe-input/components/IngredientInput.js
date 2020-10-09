@@ -6,7 +6,7 @@ function IngredientInput(props) {
  const addIcon = props.editMode ? "check" : "plus";
 
     return (
-        <div>
+        <React.Fragment>
            {props.showTooltip && <Tooltip hideTooltip={props.hideTooltip} positionClass="tooltip-top">Skriv ingrediensens namn</Tooltip>}
            <div className="ingredient-input-wrapper" onKeyPress={props.handleEnter}>
                 <div className="ingredient-input" id={props.id}>
@@ -53,7 +53,7 @@ function IngredientInput(props) {
                         onClick={props.addIngredient}/>
         
            </div>
-        </div>
+        </React.Fragment>
     )
 }
 

@@ -51,7 +51,6 @@
   .meal-displayer-overview {
     @include flexSpaceBetween();
     padding: 0.3rem 0;
-    position: relative;
   }
   
   .weekday {
@@ -73,7 +72,6 @@
   }
 
   .recipe {
-    overflow: hidden; 
     text-align: left;
     background-color: #ffffff;
   }
