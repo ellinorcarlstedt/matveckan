@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from "../../shared/context/auth-context";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import Background from "../../shared/UIElements/Background";
 import TitleInput from '../components/TitleInput';
 import IngredientInput from '../components/IngredientInput';
 import DescriptionInput from '../components/DescriptionInput';
@@ -282,7 +283,7 @@ const RecipeInputModerator = () => {
 
   return (
     
-    <div className="recipe-input-moderator-container">
+    <Background className="recipe-input-moderator-container">
 
       <div className="component-resizer">
         
@@ -356,7 +357,7 @@ const RecipeInputModerator = () => {
 
       <IconArtistAttribute />
 
-    </div>
+    </Background>
   );
 }
 

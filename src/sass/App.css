@@ -34,16 +34,19 @@ input[type=text]:focus {
 
 /**************** Variables ****************/
 /**************** Mixins ****************/
-/**************** MenuDisplayer ****************/
-.menu-moderator {
-  position: relative;
+/**************** Background ****************/
+.background {
   min-height: 100vh;
-  background-image: url("../shared/icons/kitchen.jpg");
+  position: relative;
+  background-image: url("../shared/backgrounds/kitchen.jpg");
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
-  background-color: white;
+}
+
+/**************** MenuDisplayer ****************/
+.menu-moderator {
   padding-bottom: 0.7rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -166,12 +169,11 @@ input[type=text]:focus {
 .recipe-input-moderator-container {
   min-height: 100vh;
   position: relative;
-  background-image: url("../shared/icons/kitchen.jpg");
+  background-image: url("../shared/backgrounds/kitchen.jpg");
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
-  background-color: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -407,15 +409,13 @@ input[type=text]:focus {
 
 /**************** Auth ****************/
 .auth {
-  background-color: white;
   min-height: 100vh;
   position: relative;
-  background-image: url("../shared/icons/kitchen.jpg");
+  background-image: url("../shared/backgrounds/kitchen.jpg");
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
-  background-color: white;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import Background from "../../shared/UIElements/Background";
 import MenuDisplayer from './MenuDisplayer';
-import recipes from '../../shared/resources/recipes';
 import IconArtistAttribute from '../../shared/UIElements/IconArtistAttribute';
 
 function MenuModerator () {
@@ -45,10 +45,10 @@ function MenuModerator () {
     let menu = selectedRecipes;
 
     return (
-    <div className="menu-moderator">
+    <Background className="menu-moderator">
         <MenuDisplayer menu={menu} reloadMenu={() => reloadMenu()}/> 
         <IconArtistAttribute />
-    </div>
+    </Background>
     )
 
 }

@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from "../../context/auth-context";
 import { useHttpClient } from "../../hooks/http-hook";
+import Background from "../../../shared/UIElements/Background";
 import "../../../sass/App.css";
 
 const Auth = () => {
@@ -74,7 +75,7 @@ const Auth = () => {
     }
 
     return (
-        <div className="auth">
+        <Background className="auth">
             <div>
                 <form onSubmit={submitHandler}>
                    {!isLoginMode && 
@@ -103,7 +104,7 @@ const Auth = () => {
                             <button onClick={clearError}>X</button>
                         </div>}
             </div>
-        </div>
+        </Background>
     )
 }
 
