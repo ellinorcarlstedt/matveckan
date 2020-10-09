@@ -9,11 +9,12 @@
   list-style-type: none;
   background-color: $primaryBlue;
   margin: 0;
-  padding: 0.7rem;
+  padding: 0;
     a {
+      display: inline-block;
       color: black;
       text-decoration: none;
-      padding: 0.65rem;
+      padding: 0.7rem;
       &:hover,
       &.active {
       background-color: $secondaryBlue;
@@ -21,3 +22,18 @@
       }
     }
   }
+
+  .nav-button {
+    border: none;
+    background-color: $primaryBlue;
+    font: inherit;
+    cursor: pointer;
+    padding: 0.7rem;
+    &:hover,
+    &.active {
+      background-color: $secondaryBlue;
+       color: white;
+      }
+  }
+
+  

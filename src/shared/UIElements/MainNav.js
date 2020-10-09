@@ -19,7 +19,7 @@ const MainNav = () => {
                 <NavLink to="/auth">Logga in</NavLink>
               </li>}
               {auth.isLoggedin &&<li>
-                <button onClick={auth.logout}>Log out</button> 
+                <button className="nav-button" onClick={auth.logout}>Log out</button> 
               </li>}
             </ul>
         </nav>

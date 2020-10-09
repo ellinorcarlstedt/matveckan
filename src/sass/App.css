@@ -384,16 +384,30 @@ input[type=text]:focus {
   list-style-type: none;
   background-color: #b0eeee;
   margin: 0;
-  padding: 0.7rem;
+  padding: 0;
 }
 
 .main-nav a {
+  display: inline-block;
   color: black;
   text-decoration: none;
-  padding: 0.65rem;
+  padding: 0.7rem;
 }
 
 .main-nav a:hover, .main-nav a.active {
+  background-color: #55adad;
+  color: white;
+}
+
+.nav-button {
+  border: none;
+  background-color: #b0eeee;
+  font: inherit;
+  cursor: pointer;
+  padding: 0.7rem;
+}
+
+.nav-button:hover, .nav-button.active {
   background-color: #55adad;
   color: white;
 }
