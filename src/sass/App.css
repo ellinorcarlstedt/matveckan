@@ -25,7 +25,7 @@ input[type=text]:focus {
   text-align: center;
   font-family: Garamond, Cambria;
   font-family: 'Varela Round';
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 
 .component-resizer {
@@ -197,7 +197,7 @@ input[type=text]:focus {
   border: 1px solid #ddd5d5;
   font-family: Garamond, Cambria;
   font-family: 'Varela Round';
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 
 /**************** Inputs ****************/
@@ -452,7 +452,7 @@ input[type=text]:focus {
   border: 1px solid #ddd5d5;
   font-family: Garamond, Cambria;
   font-family: 'Varela Round';
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 
 /**************** iconArtistAttribute ****************/
