@@ -51,13 +51,12 @@ function App() {
 
   return (
     <AuthContext.Provider value={{isLoggedin : isLoggedIn, userId: userId, login: login, logout: logout}}>
-    <Router>
-      <div className="App">
-        <MainNav />
-          {routs}
-      </div>
-      
-    </Router>
+      <Router>
+        <div className="App">
+          <MainNav />
+            {routs}
+        </div>
+      </Router>
     </AuthContext.Provider>
   );
 }
