@@ -3,8 +3,6 @@ import Tooltip from '../../shared/UIElements/Tooltip';
 
 function DescriptionInput(props) {
 
-    const addIcon = props.editMode ? "check" : "plus";
-
     return (
         <div>
             {props.showTooltip && <Tooltip hideTooltip={props.hideTooltip} positionClass="tooltip-top">Skriv en instruktion</Tooltip>}
@@ -18,7 +16,7 @@ function DescriptionInput(props) {
                         autoComplete="off"
                         ref={props.inputFocus}/>
 
-                <img    src={require(`../../shared/icons/${addIcon}.svg`)} 
+                <img    src={require("../../shared/icons/plus.svg")} 
                         alt="Lägg till" 
                         className="input-clickable-icon add-icon" 
                         onClick={props.addDescriptionRow} />

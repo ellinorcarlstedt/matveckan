@@ -14,11 +14,6 @@
     padding: 1rem 0 1px; /*1px to avoid collapsing margins*/
     border-radius: 0.3rem;
     margin-bottom: 1rem;
-    input {
-      padding: 0.3rem;
-      border: 1px solid rgb(221, 213, 213);
-      @include primaryFont();
-      }
     }
   } 
 
@@ -76,7 +71,7 @@
 
   .ingredient-input-details-wrapper {
     display: flex;
-    margin-top: 0.3rem;
+    margin-top: 0.4rem;
   }
 
   .ingredient-input-name {
@@ -93,7 +88,7 @@
  
   .ingredient-input-amount,
   .ingredient-input-unit {
-    margin-right: 0.3rem;
+    margin-right: 0.4rem;
   }
 
   .description-input {
@@ -113,8 +108,9 @@
 
   .added-item {
     text-align: left;
-    padding: 0.15rem 0.5rem;
+    padding: 0.2rem 0.5rem;
   }
+
 
   .added-item,
   .added-item-buttons {

@@ -15,9 +15,17 @@ html {
   font-size: 1rem;
 }
 
-input[type=text]:focus {
-  border: 1px solid black;
-  outline: none;
+input[type=text],
+input[type=name],
+input[type=email],
+input[type=password] {
+  background-color: white;
+  padding: 0.4rem 0.3rem 0.3rem 0.3rem;
+  border: 1px solid #ddd5d5;
+  border-radius: 0.3rem;
+  font-family: Garamond, Cambria;
+  font-family: 'Varela Round';
+  font-size: 0.8rem;
 }
 
 .App {
@@ -240,7 +248,7 @@ input[type=text]:focus {
 .recipe-ingredients {
   padding: 0.5rem;
   margin-bottom: 0.5rem;
-  background-color: #e3e5e7;
+  background-color: #e6eaed;
 }
 
 .recipe-description {
@@ -279,14 +287,6 @@ input[type=text]:focus {
   /*1px to avoid collapsing margins*/
   border-radius: 0.3rem;
   margin-bottom: 1rem;
-}
-
-.recipe-input-moderator form input {
-  padding: 0.3rem;
-  border: 1px solid #ddd5d5;
-  font-family: Garamond, Cambria;
-  font-family: 'Varela Round';
-  font-size: 0.8rem;
 }
 
 /**************** Inputs ****************/
@@ -369,7 +369,7 @@ input[type=text]:focus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 0.3rem;
+  margin-top: 0.4rem;
 }
 
 .ingredient-input-name {
@@ -386,7 +386,7 @@ input[type=text]:focus {
 
 .ingredient-input-amount,
 .ingredient-input-unit {
-  margin-right: 0.3rem;
+  margin-right: 0.4rem;
 }
 
 .description-input {
@@ -414,7 +414,7 @@ input[type=text]:focus {
 
 .added-item {
   text-align: left;
-  padding: 0.15rem 0.5rem;
+  padding: 0.2rem 0.5rem;
 }
 
 .added-item,
@@ -456,7 +456,7 @@ input[type=text]:focus {
 }
 
 .item-edit-mode {
-  background-color: #e3e5e7;
+  background-color: #e6eaed;
 }
 
 /**************** mainNavbar ****************/
@@ -540,15 +540,11 @@ input[type=text]:focus {
 
 .auth form input {
   margin-bottom: 0.5rem;
-  padding: 0.3rem;
-  border: 1px solid #ddd5d5;
-  font-family: Garamond, Cambria;
-  font-family: 'Varela Round';
-  font-size: 0.8rem;
 }
 
 .login-button {
-  width: 5rem;
+  width: 7rem;
+  margin-top: 0.5rem;
 }
 
 .switch-mode-button {

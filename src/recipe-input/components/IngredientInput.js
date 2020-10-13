@@ -3,8 +3,6 @@ import Tooltip from '../../shared/UIElements/Tooltip';
 
 function IngredientInput(props) {
 
- const addIcon = props.editMode ? "check" : "plus";
-
     return (
         <React.Fragment>
            {props.showTooltip && <Tooltip hideTooltip={props.hideTooltip} positionClass="tooltip-top">Skriv ingrediensens namn</Tooltip>}
@@ -47,7 +45,7 @@ function IngredientInput(props) {
                         </div>
                 </div>
 
-                <img    src={require(`../../shared/icons/${addIcon}.svg`)} 
+                <img    src={require("../../shared/icons/plus.svg")} 
                         alt="Lägg till" 
                         className="input-clickable-icon add-icon" 
                         onClick={props.addIngredient}/>

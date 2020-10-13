@@ -30,7 +30,6 @@ const Auth = () => {
         });
     }
 
-
     const submitHandler = async (e) => {
         e.preventDefault();
         if (isLoginMode) {
@@ -50,7 +49,7 @@ const Auth = () => {
                     auth.login(responseData.user.id);
                 } catch (err) {}
             } else {
-                openModal("Oj då, det gick inte att logga in med de uppgifter du angivit. Försök igen.");
+                openModal("Det gick inte att logga in med de uppgifter du angivit. Försök igen.");
             }
         } else {
             if (formName !== "" && formEmail.length >= 4 && formPassword.length >= 6) {
@@ -70,7 +69,7 @@ const Auth = () => {
                     auth.login(responseData.user.id);
                 } catch (err) {}
             } else {
-                openModal("Oj då, det gick inte att logga in med de uppgifter du angivit. Försök igen.");
+                openModal("Det gick inte att registrera en användare med de uppgifter du angivit. Försök igen.");
             }
         }
     }
@@ -115,27 +114,26 @@ const Auth = () => {
                     <input  type="name" 
                             value={formName} 
                             placeholder="name" 
+                            autoComplete="off"
                             onChange={formNameHandler}/> }
                     <input  type="email" 
                             value={formEmail} 
+                            autoComplete="off"
                             placeholder="email" 
                             onChange={formEmailHandler}/>
                     <input  type="password" 
                             value={formPassword} 
+                            autoComplete="off"
                             placeholder="password" 
                             onChange={formPasswordHandler}/>
                     <Button type="sumbmit" buttonClass="login-button">
-                        {isLoginMode ? "Log in" : "Sign up"}
+                        {isLoginMode ? "Logga in" : "Bli medlem"}
                     </Button>
                 </form>
                 <Button onClick={switchModeHandler} buttonClass="switch-mode-button">
-                    Switch to {isLoginMode ? "sign up" : "log in"}
+                    {isLoginMode ? "Ny användare?" : "Redan medlem?"}
                 </Button>
                 {isLoading && <div><h2>Loading...</h2></div>}  
-                {error && <div style={{backgroundColor: "white", padding: "0.5rem", marginTop: "1rem"}}>
-                            <h2>{error}</h2>
-                            <Button onClick={clearError}>X</Button>
-                        </div>}
             </div>
         </Background>
     )

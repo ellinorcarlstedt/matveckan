@@ -15,11 +15,17 @@ body {
   html {
     font-size: 1rem;
   }
-  
-  input[type=text]:focus {
-    border: 1px solid black;
-    outline: none;
-  }
+
+  input[type=text],
+  input[type=name],
+  input[type=email],
+  input[type=password] {
+    background-color: white;
+    padding: 0.4rem 0.3rem 0.3rem 0.3rem;
+    border: 1px solid rgb(221, 213, 213);
+    border-radius: 0.3rem;
+    @include primaryFont();
+  } 
   
   .App {
     margin: auto;

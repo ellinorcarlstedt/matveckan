@@ -21,15 +21,13 @@
         align-items: center;
         input {
             margin-bottom: 0.5rem;
-            padding: 0.3rem;
-            border: 1px solid rgb(221, 213, 213);
-            @include primaryFont();
         }
     }
 }
 
 .login-button {
-    width: 5rem;
+    width: 7rem;
+    margin-top: 0.5rem;
 }
 
 .switch-mode-button {
