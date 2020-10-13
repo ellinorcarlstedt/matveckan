@@ -12,7 +12,7 @@ function AddedRecipeItem(props) {
     
     return (
         <li className={`added-item ${itemClass}`}>
-            <p>{listItemNumber} {props.content}</p>
+            {listItemNumber} {props.content}
             <div className="added-item-buttons">
 
                 <img    src={require("../../shared/icons/pencil.svg")}  

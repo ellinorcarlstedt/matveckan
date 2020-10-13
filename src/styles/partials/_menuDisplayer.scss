@@ -23,23 +23,21 @@
   
   .meal-displayer-overview {
     @include flexSpaceBetween();
-    padding: 0.3rem 0;
+    padding: 0.5rem 0;
   }
   
   .weekday {
-    width: 5rem;
     padding: 0 0.7rem;
     text-align: left;
   }
   
   .meal-category {
-    width: 5rem;
     display: flex;
     flex-direction: row-reverse;
     img {
       box-sizing: content-box;
-      height: 1.8rem;
-      width: 1.8rem;
+      height: 1.5rem;
+      width: 1.5rem;
       padding: 0 0.7rem;
     }
   }
@@ -56,11 +54,15 @@
   }
   
   .recipe-description {
-    padding-left: 1.5rem;
+    padding-left: 1.7rem;
   }
 
   .recipe-description-row {
-    padding: 0 0.5rem 0 0.25rem;
+    padding: 0 0.7rem 0 0.25rem;
     margin-bottom: 0.5rem;
   } 
+
+  .recipe-description li:last-child {
+    margin-bottom: 1rem;
+  }
  
