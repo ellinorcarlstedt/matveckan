@@ -3,6 +3,7 @@ import { AuthContext } from "../../context/auth-context";
 import { useHttpClient } from "../../hooks/http-hook";
 import Background from "../../../shared/UIElements/Background";
 import Modal from "../../../shared/UIElements/Modal";
+import Button from "../../../shared/UIElements/Button";
 import "../../../styles/App.css";
 
 const Auth = () => {
@@ -96,7 +97,7 @@ const Auth = () => {
                 show={showModal.show}
                 onCancel={closeModal}
                 header="Det gick inte att logga in"
-                footer={<button onClick={closeModal}>OK</button>}
+                footer={<Button onClick={closeModal}>OK</Button>}
                 >
             <p>{showModal.message}</p>
             </Modal>
@@ -104,7 +105,7 @@ const Auth = () => {
                 show={error}
                 onCancel={clearError}
                 header="Something went wrong"
-                footer={<button onClick={clearError}>OK</button>}
+                footer={<Button onClick={clearError}>OK</Button>}
                 >
             <p>{error}</p>
             </Modal>
@@ -123,17 +124,17 @@ const Auth = () => {
                             value={formPassword} 
                             placeholder="password" 
                             onChange={formPasswordHandler}/>
-                    <button type="sumbmit">
+                    <Button type="sumbmit" buttonClass="login-button">
                         {isLoginMode ? "Log in" : "Sign up"}
-                    </button>
+                    </Button>
                 </form>
-                <button onClick={switchModeHandler}>
+                <Button onClick={switchModeHandler} buttonClass="switch-mode-button">
                     Switch to {isLoginMode ? "sign up" : "log in"}
-                </button>
+                </Button>
                 {isLoading && <div><h2>Loading...</h2></div>}  
                 {error && <div style={{backgroundColor: "white", padding: "0.5rem", marginTop: "1rem"}}>
                             <h2>{error}</h2>
-                            <button onClick={clearError}>X</button>
+                            <Button onClick={clearError}>X</Button>
                         </div>}
             </div>
         </Background>

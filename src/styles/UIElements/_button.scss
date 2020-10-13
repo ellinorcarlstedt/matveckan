@@ -1,0 +1,25 @@
+/**************** Button ****************/
+
+.button {
+    font-family: inherit;
+    font-size: inherit;
+    background-color: $primaryBlue;
+    color: black;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+    box-shadow: 0 0 0.1rem rgba(0,0,0,0.25);
+    cursor: pointer;
+    outline: none;
+}
+
+.button:hover {
+  background-color: $secondaryBlue;
+  color: white;
+  border: none;
+}
+
+.button:active {
+  transform: translateY(2px);
+  border: none;
+}

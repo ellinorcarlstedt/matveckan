@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import MealDisplayer from '../components/MealDisplayer';
+import Button from '../../shared/UIElements/Button';
 
 
 function MenuDisplayer (props) {
@@ -36,7 +37,7 @@ function MenuDisplayer (props) {
         return (
         <div className="component-resizer">
             <div className="menu-displayer">
-                <button className="menu-displayer-reload-button" onClick={reloadMenu}>{reloadButtonText}</button>
+                <Button buttonClass="menu-displayer-reload-button" onClick={reloadMenu}>{reloadButtonText}</Button>
                     {menu}
             </div>
         </div>

@@ -10,39 +10,12 @@
   }
 
   .menu-displayer-reload-button {
-    margin: 0.3rem 0;
-  }
-  
-  .menu-displayer-reload-button,
-  .recipe-input-submit-button {
-    font-family: inherit;
-    font-size: inherit;
-    background-color: $primaryBlue;
-    color: black;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 0.3rem;
-    box-shadow: 0 0 0.1rem rgba(0,0,0,0.25);
-    cursor: pointer;
-    outline: none;
-  }
-  
-  .recipe-input-submit-button:hover,
-  .menu-displayer-reload-button:hover {
-    background-color: $secondaryBlue;
-    color: white;
-    border: none;
-  }
-  
-  .recipe-input-submit-button:active,
-  .menu-displayer-reload-button:active {
-    transform: translateY(2px);
-    border: none;
+    margin-bottom: 1rem;
   }
   
   .meal-displayer {
     background-color: white;
-    margin: 0.5rem;
+    margin: 0 0.5rem 0.5rem 0.5rem;
     box-shadow: 0.1rem 0.1rem 0.3rem rgba(0,0,0,0.25);
     border-radius: 0.3rem;
     cursor: pointer;

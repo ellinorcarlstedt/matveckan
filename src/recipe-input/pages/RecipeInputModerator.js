@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from "../../shared/context/auth-context";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import Background from "../../shared/UIElements/Background";
+import Button from '../../shared/UIElements/Button';
 import TitleInput from '../components/TitleInput';
 import IngredientInput from '../components/IngredientInput';
 import DescriptionInput from '../components/DescriptionInput';
@@ -349,7 +350,7 @@ const RecipeInputModerator = () => {
 
           </form>
         
-          <button type="button" onClick={handleSubmit} className="recipe-input-submit-button">Lägg upp recept</button>
+          <Button type="button" onClick={handleSubmit}>Lägg upp recept</Button>
 
         </div>
 

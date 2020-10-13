@@ -121,6 +121,48 @@ input[type=text]:focus {
   transition: all 200ms;
 }
 
+/**************** Button ****************/
+.button {
+  font-family: inherit;
+  font-size: inherit;
+  background-color: #b0eeee;
+  color: black;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  -webkit-box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.25);
+          box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  outline: none;
+}
+
+.button:hover {
+  background-color: #55adad;
+  color: white;
+  border: none;
+}
+
+.button:active {
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
+  border: none;
+}
+
+/**************** HeightTransitionComponent ****************/
+.height-transition {
+  overflow: hidden;
+  -webkit-transition: height 0.3s;
+  transition: height 0.3s;
+}
+
+.border-radius {
+  border-radius: 0 0 0.3rem 0.3rem;
+}
+
+.hidden {
+  display: none;
+}
+
 /**************** MenuDisplayer ****************/
 .menu-moderator {
   padding-bottom: 0.7rem;
@@ -140,41 +182,12 @@ input[type=text]:focus {
 }
 
 .menu-displayer-reload-button {
-  margin: 0.3rem 0;
-}
-
-.menu-displayer-reload-button,
-.recipe-input-submit-button {
-  font-family: inherit;
-  font-size: inherit;
-  background-color: #b0eeee;
-  color: black;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.3rem;
-  -webkit-box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.25);
-          box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.25);
-  cursor: pointer;
-  outline: none;
-}
-
-.recipe-input-submit-button:hover,
-.menu-displayer-reload-button:hover {
-  background-color: #55adad;
-  color: white;
-  border: none;
-}
-
-.recipe-input-submit-button:active,
-.menu-displayer-reload-button:active {
-  -webkit-transform: translateY(2px);
-          transform: translateY(2px);
-  border: none;
+  margin-bottom: 1rem;
 }
 
 .meal-displayer {
   background-color: white;
-  margin: 0.5rem;
+  margin: 0 0.5rem 0.5rem 0.5rem;
   -webkit-box-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.25);
           box-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.25);
   border-radius: 0.3rem;
@@ -520,6 +533,9 @@ input[type=text]:focus {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .auth form input {
@@ -529,6 +545,14 @@ input[type=text]:focus {
   font-family: Garamond, Cambria;
   font-family: 'Varela Round';
   font-size: 0.8rem;
+}
+
+.login-button {
+  width: 5rem;
+}
+
+.switch-mode-button {
+  margin-top: 1rem;
 }
 
 /**************** iconArtistAttribute ****************/
@@ -552,21 +576,6 @@ input[type=text]:focus {
 
 .icon-artist-attribute a:hover {
   color: #d1cdcd;
-}
-
-/**************** HeightTransitionComponent ****************/
-.height-transition {
-  overflow: hidden;
-  -webkit-transition: height 0.3s;
-  transition: height 0.3s;
-}
-
-.border-radius {
-  border-radius: 0 0 0.3rem 0.3rem;
-}
-
-.hidden {
-  display: none;
 }
 
 /**************** Tooltip ****************/

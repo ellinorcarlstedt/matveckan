@@ -22,7 +22,6 @@ function MenuModerator () {
         const fetchRecipes = async () => {
             try {
                 const response = await sendRequest("http://localhost:5000/api/recipes");
-                console.log(response.recipes); //remove
                 setAllRecipes(response.recipes);
             } catch(err) {
                 console.log(err);
