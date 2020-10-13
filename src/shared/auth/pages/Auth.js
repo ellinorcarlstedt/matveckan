@@ -2,16 +2,32 @@ import React, { useState, useContext } from 'react';
 import { AuthContext } from "../../context/auth-context";
 import { useHttpClient } from "../../hooks/http-hook";
 import Background from "../../../shared/UIElements/Background";
-import "../../../sass/App.css";
+import Modal from "../../../shared/UIElements/Modal";
+import "../../../styles/App.css";
 
 const Auth = () => {
     const auth = useContext(AuthContext);
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
     const [ isLoginMode, setIsLogInMode ] = useState(true);
+    const [ showModal, setShowModal ] = useState({ show: false, message: null});
     const [ formName, setFormName ] = useState("");
     const [ formEmail, setFormEmail ] = useState("");
     const [ formPassword, setFormPassword ] = useState("");
+
+    const openModal = (message) => {
+        setShowModal({
+            show: true,
+            message
+        });
+    }
+
+    const closeModal = () => {
+        setShowModal({
+            show: false,
+            message: null
+        });
+    }
 
 
     const submitHandler = async (e) => {
@@ -33,7 +49,7 @@ const Auth = () => {
                     auth.login(responseData.user.id);
                 } catch (err) {}
             } else {
-                alert("Oj då, det gick inte att logga in med de uppgifter du angivit. Försök igen.")
+                openModal("Oj då, det gick inte att logga in med de uppgifter du angivit. Försök igen.");
             }
         } else {
             if (formName !== "" && formEmail.length >= 4 && formPassword.length >= 6) {
@@ -53,7 +69,7 @@ const Auth = () => {
                     auth.login(responseData.user.id);
                 } catch (err) {}
             } else {
-                alert("Oj då, det gick inte att registrera en ny användare med de uppgifter du angivit. Försök igen.");
+                openModal("Oj då, det gick inte att logga in med de uppgifter du angivit. Försök igen.");
             }
         }
     }
@@ -76,6 +92,22 @@ const Auth = () => {
 
     return (
         <Background className="auth">
+            <Modal 
+                show={showModal.show}
+                onCancel={closeModal}
+                header="Det gick inte att logga in"
+                footer={<button onClick={closeModal}>OK</button>}
+                >
+            <p>{showModal.message}</p>
+            </Modal>
+            <Modal 
+                show={error}
+                onCancel={clearError}
+                header="Something went wrong"
+                footer={<button onClick={clearError}>OK</button>}
+                >
+            <p>{error}</p>
+            </Modal>
             <div>
                 <form onSubmit={submitHandler}>
                    {!isLoginMode && 

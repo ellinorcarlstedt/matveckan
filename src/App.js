@@ -5,7 +5,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import './sass/App.css';
+import './styles/App.css';
 import MainNav from './shared/UIElements/MainNav';
 import MenuModerator from './menu/pages/MenuModerator';
 import RecipeInputModerator from './recipe-input/pages/RecipeInputModerator';
