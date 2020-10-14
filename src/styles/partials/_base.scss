@@ -21,7 +21,7 @@ body {
   input[type=email],
   input[type=password] {
     background-color: white;
-    padding: 0.4rem 0.3rem 0.3rem 0.3rem;
+    padding: 0.4rem 0.3rem 0.3rem 0.4rem;
     border: 1px solid rgb(221, 213, 213);
     border-radius: 0.3rem;
     @include primaryFont();

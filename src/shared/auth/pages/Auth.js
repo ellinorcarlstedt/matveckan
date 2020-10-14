@@ -103,7 +103,7 @@ const Auth = () => {
             <Modal 
                 show={error}
                 onCancel={clearError}
-                header="Something went wrong"
+                header="Någonting gick fel"
                 footer={<Button onClick={clearError}>OK</Button>}
                 >
             <p>{error}</p>
@@ -113,18 +113,18 @@ const Auth = () => {
                    {!isLoginMode && 
                     <input  type="name" 
                             value={formName} 
-                            placeholder="name" 
+                            placeholder="namn" 
                             autoComplete="off"
                             onChange={formNameHandler}/> }
                     <input  type="email" 
                             value={formEmail} 
                             autoComplete="off"
-                            placeholder="email" 
+                            placeholder="mailadress" 
                             onChange={formEmailHandler}/>
                     <input  type="password" 
                             value={formPassword} 
                             autoComplete="off"
-                            placeholder="password" 
+                            placeholder="lösenord" 
                             onChange={formPasswordHandler}/>
                     <Button type="sumbmit" buttonClass="login-button">
                         {isLoginMode ? "Logga in" : "Bli medlem"}

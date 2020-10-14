@@ -20,7 +20,7 @@ input[type=name],
 input[type=email],
 input[type=password] {
   background-color: white;
-  padding: 0.4rem 0.3rem 0.3rem 0.3rem;
+  padding: 0.4rem 0.3rem 0.3rem 0.4rem;
   border: 1px solid #ddd5d5;
   border-radius: 0.3rem;
   font-family: Garamond, Cambria;
@@ -259,7 +259,7 @@ input[type=password] {
 }
 
 .recipe-description li:last-child {
-  margin-bottom: 1rem;
+  margin-bottom: 0.7rem;
 }
 
 /********************** InputModerator with children *************************/
@@ -314,7 +314,7 @@ input[type=password] {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin-bottom: 0.7rem;
-  padding: 0 calc(0.5rem + 3px);
+  padding: 0 0.8rem;
 }
 
 .category-input-icon img {
@@ -444,7 +444,7 @@ input[type=password] {
 
 .remove-icon,
 .edit {
-  margin-left: 0.3rem;
+  margin-left: 0.5rem;
 }
 
 .remove-icon {
