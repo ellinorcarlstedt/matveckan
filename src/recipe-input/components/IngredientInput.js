@@ -5,7 +5,7 @@ function IngredientInput(props) {
 
     return (
         <React.Fragment>
-           {props.showTooltip && <Tooltip hideTooltip={props.hideTooltip} positionClass="tooltip-top">Skriv ingrediensens namn</Tooltip>}
+           <Tooltip show={props.showTooltip} hideTooltip={props.hideTooltip} positionClass="tooltip-top">Skriv ingrediensens namn</Tooltip>
            <div className="ingredient-input-wrapper" onKeyPress={props.handleEnter}>
                 <div className="ingredient-input" id={props.id}>
 

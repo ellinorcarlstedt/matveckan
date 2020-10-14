@@ -11,6 +11,7 @@
     border-radius: 6px;
     padding: 5px;
     position: absolute;
+    font-size: 0.7rem;
     z-index: 1;
   }
 
@@ -30,3 +31,7 @@
     bottom: 0;
     right: 2rem;
   }
+
+.tooltip__hidden {
+    display: none;
+}

@@ -10,31 +10,68 @@ import "../../../styles/App.css";
 const Auth = () => {
     const auth = useContext(AuthContext);
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
-
     const [ isLoginMode, setIsLogInMode ] = useState(true);
-    const [ showModal, setShowModal ] = useState({ show: false, message: null});
+    const [ errorMessage, setErrorMessage] = useState("");
     const [ formName, setFormName ] = useState("");
     const [ formEmail, setFormEmail ] = useState("");
     const [ formPassword, setFormPassword ] = useState("");
 
-    const openModal = (message) => {
-        setShowModal({
-            show: true,
-            message
-        });
+
+    const switchModeHandler = () => {
+        setIsLogInMode(!isLoginMode);
+        clearErrorMessage();
     }
 
-    const closeModal = () => {
-        setShowModal({
-            show: false,
-            message: null
-        });
+    const formNameHandler = (e) => {
+        setFormName(e.target.value);
+        clearErrorMessage();
     }
 
+    const formEmailHandler = (e) => {
+        setFormEmail(e.target.value);
+        clearErrorMessage();
+    }
+
+    const formPasswordHandler = (e) => {
+        setFormPassword(e.target.value);
+        clearErrorMessage();
+    }
+
+    const showError = (message) => {
+        setErrorMessage(message);
+    }
+
+    const hideError = () => {
+        setErrorMessage("");
+    }
+
+    const clearErrorMessage = () => {
+        if (errorMessage) { 
+            hideError() }
+    }
+
+    const validateInput = () => {
+        if(!isLoginMode && formName === "") {
+            showError("Ange ett namn.");
+        } else if (formEmail.length < 4) {
+            showError("Ange en (giltig) mailadress.");
+        } else if(!isLoginMode && formPassword.length < 6) {
+            showError("Ange ett lösenord på minst 6 tecken.");
+        } else if (isLoginMode && !formPassword) {
+                showError("Ange ditt lösenord.");
+        } else {
+            return true;
+        }
+    }
+  
     const submitHandler = async (e) => {
         e.preventDefault();
+        let validInput = false;
+        validInput = validateInput();
+        if (!validInput) { 
+            return; 
+        } else {
         if (isLoginMode) {
-            if (formEmail.length >= 4 && formPassword.length >= 6) {
                 try {
                     const responseData = await sendRequest(
                         "http://localhost:5000/api/users/login",
@@ -49,14 +86,10 @@ const Auth = () => {
                     );
                     auth.login(responseData.user.id);
                 } catch (err) {}
-            } else {
-                openModal("Det gick inte att logga in med de uppgifter du angivit. Försök igen.");
-            }
         } else {
-            if (formName !== "" && formEmail.length >= 4 && formPassword.length >= 6) {
                 try {
                     const responseData = await sendRequest(
-                        "http://localhost:5000/api/users/login",
+                        "http://localhost:5000/api/users/signup",
                         "POST",
                         JSON.stringify({
                             name: formName,
@@ -69,55 +102,31 @@ const Auth = () => {
                     );
                     auth.login(responseData.user.id);
                 } catch (err) {}
-            } else {
-                openModal("Det gick inte att registrera en användare med de uppgifter du angivit. Försök igen.");
             }
         }
     }
 
-    const switchModeHandler = () => {
-        setIsLogInMode(!isLoginMode);
-    }
-
-    const formNameHandler = (e) => {
-        setFormName(e.target.value);
-    }
-
-    const formEmailHandler = (e) => {
-        setFormEmail(e.target.value);
-    }
-
-    const formPasswordHandler = (e) => {
-        setFormPassword(e.target.value);
-    }
 
     return (
         <Background className="auth-background">
              <div className="component-resizer">
                 <Modal 
-                    show={showModal.show}
-                    onCancel={closeModal}
-                    header="Det gick inte att logga in"
-                    footer={<Button onClick={closeModal}>OK</Button>}
-                    >
-                <p>{showModal.message}</p>
-                </Modal>
-                <Modal 
-                    show={error}
+                    show={!!error}
                     onCancel={clearError}
                     header="Någonting gick fel"
                     footer={<Button onClick={clearError}>OK</Button>}
                     >
-                <p>{error}</p>
+                {error}
                 </Modal>
                 <div className="auth">
                     <form onSubmit={submitHandler}>
-                    {!isLoginMode && 
+                    {!isLoginMode && ( 
                         <input  type="name" 
                                 value={formName} 
                                 placeholder="namn" 
                                 autoComplete="off"
-                                onChange={formNameHandler}/> }
+                                onChange={formNameHandler}/> 
+                        )}
                         <input  type="email" 
                                 value={formEmail} 
                                 autoComplete="off"
@@ -128,7 +137,12 @@ const Auth = () => {
                                 autoComplete="off"
                                 placeholder="lösenord" 
                                 onChange={formPasswordHandler}/>
-                        <Button type="sumbmit" buttonClass="login-button">
+                        {errorMessage && (
+                        <span className="auth__error-message" onClick={hideError}>
+                            {errorMessage}
+                        </span>
+                        )}
+                        <Button type="submit" buttonClass="login-button">
                             {isLoginMode ? "Logga in" : "Bli medlem"}
                         </Button>
                     </form>

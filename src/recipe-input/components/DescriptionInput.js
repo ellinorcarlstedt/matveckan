@@ -5,7 +5,7 @@ function DescriptionInput(props) {
 
     return (
         <div>
-            {props.showTooltip && <Tooltip hideTooltip={props.hideTooltip} positionClass="tooltip-top">Skriv en instruktion</Tooltip>}
+            <Tooltip show={props.showTooltip} hideTooltip={props.hideTooltip} positionClass="tooltip-top">Skriv en instruktion</Tooltip>
             <div className="description-input" onKeyPress={props.handleEnter} >
 
                 <input  type="text" 
