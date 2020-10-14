@@ -156,6 +156,80 @@ input[type=password] {
   border: none;
 }
 
+/**************** Loading Spinner ****************/
+.loading-spinner {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  background-color: white;
+  border-radius: 0.3rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.loading-spinner:after {
+  display: block;
+  content: " ";
+  width: 80px;
+  height: 80px;
+  border: solid 0.5rem #55adad;
+  border-radius: 50%;
+  border-color: #55adad transparent #b0eeee transparent;
+  -webkit-animation: spin 0.8s linear infinite;
+          animation: spin 0.8s linear infinite;
+}
+
+.loading-spinner__overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.loading-spinner__overlay > div {
+  background-color: transparent;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
 /**************** HeightTransitionComponent ****************/
 .height-transition {
   overflow: hidden;
@@ -504,14 +578,7 @@ input[type=password] {
 }
 
 /**************** Auth ****************/
-.auth {
-  min-height: 100vh;
-  position: relative;
-  background-image: url("../shared/backgrounds/kitchen.jpg");
-  background-size: auto 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
+.auth-background {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -523,7 +590,22 @@ input[type=password] {
           align-items: flex-start;
 }
 
+.auth {
+  margin: 0 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .auth form {
+  max-width: 100%;
   background: white;
   padding: 1rem;
   border-radius: 0.3rem;
@@ -542,6 +624,7 @@ input[type=password] {
 
 .auth form input {
   margin-bottom: 0.5rem;
+  max-width: 95%;
 }
 
 .login-button {
@@ -550,6 +633,10 @@ input[type=password] {
 }
 
 .switch-mode-button {
+  margin: 1rem;
+}
+
+.spinner {
   margin-top: 1rem;
 }
 

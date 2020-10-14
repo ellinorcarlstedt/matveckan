@@ -1,17 +1,18 @@
 /**************** Auth ****************/
 
-.auth {
-    min-height: 100vh; 
-    position: relative;
-    background-image: url('../shared/backgrounds/kitchen.jpg');
-    background-size: auto 100%; 
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
+.auth-background {
     display: flex;
     justify-content: center;
     align-items: flex-start;
+}
+
+.auth {
+    margin: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     form {
+        max-width: 100%;
         background: white;
         padding: 1rem;
         border-radius: 0.3rem;
@@ -21,6 +22,7 @@
         align-items: center;
         input {
             margin-bottom: 0.5rem;
+            max-width: 95%;
         }
     }
 }
@@ -31,6 +33,10 @@
 }
 
 .switch-mode-button {
+    margin: 1rem;
+}
+
+.spinner {
     margin-top: 1rem;
 }
 

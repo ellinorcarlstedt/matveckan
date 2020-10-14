@@ -3,7 +3,8 @@ import { AuthContext } from "../../context/auth-context";
 import { useHttpClient } from "../../hooks/http-hook";
 import Background from "../../../shared/UIElements/Background";
 import Modal from "../../../shared/UIElements/Modal";
-import Button from "../../../shared/UIElements/Button";
+import Button from "../../../shared/UIElements/Button"; 
+import LoadingSpinner from "../../../shared/UIElements/LoadingSpinner";
 import "../../../styles/App.css";
 
 const Auth = () => {
@@ -91,49 +92,51 @@ const Auth = () => {
     }
 
     return (
-        <Background className="auth">
-            <Modal 
-                show={showModal.show}
-                onCancel={closeModal}
-                header="Det gick inte att logga in"
-                footer={<Button onClick={closeModal}>OK</Button>}
-                >
-            <p>{showModal.message}</p>
-            </Modal>
-            <Modal 
-                show={error}
-                onCancel={clearError}
-                header="Någonting gick fel"
-                footer={<Button onClick={clearError}>OK</Button>}
-                >
-            <p>{error}</p>
-            </Modal>
-            <div>
-                <form onSubmit={submitHandler}>
-                   {!isLoginMode && 
-                    <input  type="name" 
-                            value={formName} 
-                            placeholder="namn" 
-                            autoComplete="off"
-                            onChange={formNameHandler}/> }
-                    <input  type="email" 
-                            value={formEmail} 
-                            autoComplete="off"
-                            placeholder="mailadress" 
-                            onChange={formEmailHandler}/>
-                    <input  type="password" 
-                            value={formPassword} 
-                            autoComplete="off"
-                            placeholder="lösenord" 
-                            onChange={formPasswordHandler}/>
-                    <Button type="sumbmit" buttonClass="login-button">
-                        {isLoginMode ? "Logga in" : "Bli medlem"}
+        <Background className="auth-background">
+             <div className="component-resizer">
+                <Modal 
+                    show={showModal.show}
+                    onCancel={closeModal}
+                    header="Det gick inte att logga in"
+                    footer={<Button onClick={closeModal}>OK</Button>}
+                    >
+                <p>{showModal.message}</p>
+                </Modal>
+                <Modal 
+                    show={error}
+                    onCancel={clearError}
+                    header="Någonting gick fel"
+                    footer={<Button onClick={clearError}>OK</Button>}
+                    >
+                <p>{error}</p>
+                </Modal>
+                <div className="auth">
+                    <form onSubmit={submitHandler}>
+                    {!isLoginMode && 
+                        <input  type="name" 
+                                value={formName} 
+                                placeholder="namn" 
+                                autoComplete="off"
+                                onChange={formNameHandler}/> }
+                        <input  type="email" 
+                                value={formEmail} 
+                                autoComplete="off"
+                                placeholder="mailadress" 
+                                onChange={formEmailHandler}/>
+                        <input  type="password" 
+                                value={formPassword} 
+                                autoComplete="off"
+                                placeholder="lösenord" 
+                                onChange={formPasswordHandler}/>
+                        <Button type="sumbmit" buttonClass="login-button">
+                            {isLoginMode ? "Logga in" : "Bli medlem"}
+                        </Button>
+                    </form>
+                    <Button onClick={switchModeHandler} buttonClass="switch-mode-button">
+                        {isLoginMode ? "Ny användare?" : "Redan medlem?"}
                     </Button>
-                </form>
-                <Button onClick={switchModeHandler} buttonClass="switch-mode-button">
-                    {isLoginMode ? "Ny användare?" : "Redan medlem?"}
-                </Button>
-                {isLoading && <div><h2>Loading...</h2></div>}  
+                    {isLoading && <LoadingSpinner asOverlay />}  
+                </div>
             </div>
         </Background>
     )
