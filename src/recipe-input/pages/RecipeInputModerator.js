@@ -5,6 +5,7 @@ import Background from "../../shared/UIElements/Background";
 import Modal from "../../shared/UIElements/Modal";
 import Button from '../../shared/UIElements/Button';
 import LoadingSpinner from '../../shared/UIElements/LoadingSpinner';
+import OverlayInfo from '../../shared/UIElements/OverlayInfo';
 import ErrorMessage from '../../shared/UIElements/ErrorMessage';
 import TitleInput from '../components/TitleInput';
 import IngredientInput from '../components/IngredientInput';
@@ -12,6 +13,7 @@ import DescriptionInput from '../components/DescriptionInput';
 import CategoryInput from '../components/CategoryInput';
 import AddedRecipeItem from '../components/AddedRecipeItem';
 import IconArtistAttribute from '../../shared/UIElements/IconArtistAttribute'; 
+import Auth from '../../shared/auth/pages/Auth';
 
 
 const RecipeInputModerator = () => {
@@ -346,96 +348,100 @@ const RecipeInputModerator = () => {
 
 
   return (
-    
-    <Background className="recipe-input-moderator-container">
+    <React.Fragment>
+          <Modal 
+            show={!!error}
+            onCancel={clearError}
+            header="Någonting gick fel"
+            footer={<Button onClick={clearError}>OK</Button>}>
+            {error}
+          </Modal>
 
-      <div className="component-resizer">
+      <Background className="recipe-input-moderator-container">
 
-        <Modal 
-          show={!!error}
-          onCancel={clearError}
-          header="Någonting gick fel"
-          footer={<Button onClick={clearError}>OK</Button>}>
-          {error}
-        </Modal>
-        
-        <div className="recipe-input-moderator">
+       {isLoading && <LoadingSpinner asOverlay />}
 
-          <form>
+        <div className="component-resizer">
+          
+        {!auth.isLoggedin && <OverlayInfo>Logga in för att lägga till ett nytt recept</OverlayInfo>}
+ 
+          <div className="recipe-input-moderator">
 
-            <TitleInput titleInput={titleInput} handleChange={handleTitleChange} titleFocus={titleFocus}/>
+            <form>
 
-            <CategoryInput handleChange={handleCategoryChange} selectedCategory={categoryInput} handleEnter={handleEnter} />
+              <TitleInput titleInput={titleInput} handleChange={handleTitleChange} titleFocus={titleFocus}/>
 
-            <div className="input-with-items-wrapper">
+              <CategoryInput handleChange={handleCategoryChange} selectedCategory={categoryInput} handleEnter={handleEnter} />
 
-              <IngredientInput  handleChange={handleIngredientChange} 
-                                addIngredient={addIngredient}
-                                handleEnter={handleEnter} 
-                                hideTooltip={hideTooltip}
-                                name={ingredientName} 
-                                amount={ingredientAmount} 
-                                unit={ingredientUnit} 
-                                details={ingredientDetails}
-                                inputFocus={ingredientFocus}
-                                tooltipTarget={tooltipTarget}
-                                editMode={currentIngredient !== null}/>
-              
-              {(addedIngredients.length > 0) && <ul className="added-items-list">
-                {addedIngredients.map((item) => {
-                return <AddedRecipeItem   key={item.id} 
-                                          id={item.id}
-                                          content={`${item.amount} ${item.unit} ${item.name} ${item.details}`}  
-                                          currentItem={currentIngredient}
-                                          toggleEditMode={() => toggleIngredientEditMode(item.id)}
-                                          deleteItem={() => deleteIngredient(item.id)}/>
-                  })}
-              </ul>}
+              <div className="input-with-items-wrapper">
 
-            </div>
-
-            <div className="input-with-items-wrapper"> 
-
-              <DescriptionInput handleChange={handleDescriptionChange} 
-                                addDescriptionRow={addDescriptionRow} 
-                                handleEnter={handleEnter} 
-                                hideTooltip={hideTooltip}
-                                value={descriptionRowInput}
-                                inputFocus={descriptionFocus}
-                                showTooltip={tooltipTarget === "description"}
-                                editMode={currentDescriptionRow !== null}/>
-      
-              {(addedDescriptionRows.length > 0) && <ul className="added-items-list">
-                {addedDescriptionRows.map((item, i) => {
+                <IngredientInput  handleChange={handleIngredientChange} 
+                                  addIngredient={addIngredient}
+                                  handleEnter={handleEnter} 
+                                  hideTooltip={hideTooltip}
+                                  name={ingredientName} 
+                                  amount={ingredientAmount} 
+                                  unit={ingredientUnit} 
+                                  details={ingredientDetails}
+                                  inputFocus={ingredientFocus}
+                                  tooltipTarget={tooltipTarget}
+                                  editMode={currentIngredient !== null}/>
+                
+                {(addedIngredients.length > 0) && <ul className="added-items-list">
+                  {addedIngredients.map((item) => {
                   return <AddedRecipeItem   key={item.id} 
                                             id={item.id}
-                                            listItemNumber={i + 1}
-                                            content={item.description}
-                                            currentItem={currentDescriptionRow}
-                                            toggleEditMode={() => toggleDescriptionEditMode(item.id)}
-                                            deleteItem={() => deleteDescriptionRow(item.id)}/>
+                                            content={`${item.amount} ${item.unit} ${item.name} ${item.details}`}  
+                                            currentItem={currentIngredient}
+                                            toggleEditMode={() => toggleIngredientEditMode(item.id)}
+                                            deleteItem={() => deleteIngredient(item.id)}/>
                     })}
                 </ul>}
-            
-            </div>
-            {errorMessage && (
-              <ErrorMessage hideError={hideError} errorClass="input-moderator__error-message">
-                  {errorMessage}
-              </ErrorMessage>
-              )}
-          </form>
+
+              </div>
+
+              <div className="input-with-items-wrapper"> 
+
+                <DescriptionInput handleChange={handleDescriptionChange} 
+                                  addDescriptionRow={addDescriptionRow} 
+                                  handleEnter={handleEnter} 
+                                  hideTooltip={hideTooltip}
+                                  value={descriptionRowInput}
+                                  inputFocus={descriptionFocus}
+                                  showTooltip={tooltipTarget === "description"}
+                                  editMode={currentDescriptionRow !== null}/>
         
-          <Button type="button" onClick={handleSubmit}>Lägg upp recept</Button>
+                {(addedDescriptionRows.length > 0) && <ul className="added-items-list">
+                  {addedDescriptionRows.map((item, i) => {
+                    return <AddedRecipeItem   key={item.id} 
+                                              id={item.id}
+                                              listItemNumber={i + 1}
+                                              content={item.description}
+                                              currentItem={currentDescriptionRow}
+                                              toggleEditMode={() => toggleDescriptionEditMode(item.id)}
+                                              deleteItem={() => deleteDescriptionRow(item.id)}/>
+                      })}
+                  </ul>}
+              
+              </div>
+              {errorMessage && (
+                <ErrorMessage hideError={hideError} errorClass="input-moderator__error-message">
+                    {errorMessage}
+                </ErrorMessage>
+                )}
+            </form>
+          
+            <Button type="button" onClick={handleSubmit}>Lägg upp recept</Button>
 
-        </div>
+          </div> 
 
-        {isLoading && <LoadingSpinner asOverlay />}  
+        </div> 
 
-      </div> 
+        <IconArtistAttribute />
 
-      <IconArtistAttribute />
-
-    </Background>
+      </Background>
+  
+    </React.Fragment>
   );
 }
 

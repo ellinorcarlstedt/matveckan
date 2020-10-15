@@ -131,6 +131,7 @@ input[type=password] {
 
 /**************** Button ****************/
 .button {
+  display: inline-block;
   font-family: inherit;
   font-size: inherit;
   background-color: #b0eeee;
@@ -142,6 +143,7 @@ input[type=password] {
           box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.25);
   cursor: pointer;
   outline: none;
+  text-decoration: none;
 }
 
 .button:hover {
@@ -154,6 +156,11 @@ input[type=password] {
   -webkit-transform: translateY(2px);
           transform: translateY(2px);
   border: none;
+}
+
+.button--large {
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 
 /**************** Loading Spinner ****************/
@@ -229,6 +236,32 @@ input[type=password] {
     -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
   }
+}
+
+/**************** Overlay Info ****************/
+.overlay-info {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  z-index: 1;
+}
+
+.overlay-info__button {
+  margin: 10rem 1rem 1rem;
+  padding: 1rem;
+  max-width: 20rem;
 }
 
 /**************** HeightTransitionComponent ****************/

@@ -1,0 +1,20 @@
+/**************** Overlay Info ****************/
+
+.overlay-info {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    z-index: 1;
+}
+
+.overlay-info__button {
+    margin: 10rem 1rem 1rem;
+    padding: 1rem;
+    max-width: 20rem;
+}
