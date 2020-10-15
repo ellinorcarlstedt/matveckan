@@ -143,9 +143,20 @@
   .item-edit-mode {
     background-color: $lightGray;
   }
-  
 
-  
-  
+  .input-moderator__error-message {
+    margin-bottom: 1rem;
+  }
 
+  .tooltip .ingredient__tooltip {
+    max-width: calc(100% - 3.5rem);
+    bottom: 0;
+    right: 2rem;
+  }
+
+  .tooltip .amount__tooltip {
+    max-width: calc(100% - 2.5rem);
+    bottom: -2.2rem;
+    left: 0.5rem;
+  }
   

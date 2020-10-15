@@ -5,7 +5,20 @@ function IngredientInput(props) {
 
     return (
         <React.Fragment>
-           <Tooltip show={props.showTooltip} hideTooltip={props.hideTooltip} positionClass="tooltip-top">Skriv ingrediensens namn</Tooltip>
+           <Tooltip 
+                show={props.tooltipTarget === "ingredient"} 
+                hideTooltip={props.hideTooltip} 
+                position="middle" 
+                tooltipClass="ingredient__tooltip">
+                        Skriv ingrediensens namn
+           </Tooltip>
+           <Tooltip 
+                show={props.tooltipTarget === "amount"} 
+                hideTooltip={props.hideTooltip} 
+                position="left" 
+                tooltipClass="amount__tooltip">
+                        Ange mängd med siffror. Skriv decimaler med punkt.
+           </Tooltip>
            <div className="ingredient-input-wrapper" onKeyPress={props.handleEnter}>
                 <div className="ingredient-input" id={props.id}>
 

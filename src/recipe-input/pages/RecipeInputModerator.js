@@ -5,6 +5,7 @@ import Background from "../../shared/UIElements/Background";
 import Modal from "../../shared/UIElements/Modal";
 import Button from '../../shared/UIElements/Button';
 import LoadingSpinner from '../../shared/UIElements/LoadingSpinner';
+import ErrorMessage from '../../shared/UIElements/ErrorMessage';
 import TitleInput from '../components/TitleInput';
 import IngredientInput from '../components/IngredientInput';
 import DescriptionInput from '../components/DescriptionInput';
@@ -18,7 +19,7 @@ const RecipeInputModerator = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
   const [ titleInput, setTitleInput ] = useState("");
-  const [ categoryInput, setCategoryInput ] = useState("");
+  const [ categoryInput, setCategoryInput ] = useState(null);
   const [ ingredientName, setIngredientName ] = useState("");
   const [ ingredientAmount, setIngredientAmount ] = useState("");
   const [ ingredientUnit, setIngredientUnit ] = useState("");
@@ -32,6 +33,7 @@ const RecipeInputModerator = () => {
   const [ addedDescriptionRows, setAddedDescriptionRows ] = useState([]);
 
   const [ tooltipTarget, setTooltipTarget ] = useState("");
+  const [ errorMessage, setErrorMessage] = useState("");
 
   const titleFocus = React.createRef();
   const ingredientFocus = React.createRef();
@@ -40,26 +42,31 @@ const RecipeInputModerator = () => {
 
   const handleSubmit = async event => {
     event.preventDefault();
-  
-    try {
-      const response = await sendRequest(
-        "http://localhost:5000/api/recipes",
-        "POST",
-        JSON.stringify({
-          mealName: titleInput,
-          mealCategory: categoryInput,
-          ingredients: addedIngredients,
-          description: addedDescriptionRows,
-          creator: auth.userId
-        }),
-        { 
-          "Content-Type" : "application/json"
-        }
-        );
-        console.log("Recipe posted to database!")
+    let validInput = false;
+    validInput = validateInput();
+    if (!validInput) { 
+        return; 
+    } else {
+        try {
+          const response = await sendRequest(
+            "http://localhost:5000/api/recipes",
+            "POST",
+            JSON.stringify({
+              mealName: titleInput,
+              mealCategory: categoryInput,
+              ingredients: addedIngredients,
+              description: addedDescriptionRows,
+              creator: auth.userId
+            }),
+            { 
+              "Content-Type" : "application/json"
+            }
+            );
+            console.log("Recipe posted to database!")
 
-    } catch (err) {
-      console.log(err);
+        } catch (err) {
+          console.log(err);
+        }
     }
   }
 
@@ -83,6 +90,37 @@ const RecipeInputModerator = () => {
     if (tooltipTarget !== "") { hideTooltip(); }
   }
 
+
+  const showError = (message) => {
+    setErrorMessage(message);
+  }
+
+  const hideError = () => {
+      setErrorMessage("");
+  }
+
+  const clearErrorMessage = () => {
+      if (errorMessage) { 
+          hideError() }
+  }
+
+  const validateInput = () => {
+    if(titleInput === "") {
+        showError("Du behöver ange maträttens namn.");
+        manageInputFocus(titleFocus);
+    } else if (categoryInput === null) {
+        showError("Du behöver ange en kategori för receptet - klicka på en av symbolerna.");
+    } else if(!addedIngredients.length) {
+        showError("Lägg till minst en ingrediens.");
+        manageInputFocus(ingredientFocus);
+    } else if(!addedDescriptionRows.length) {
+        showError("Lägg till minst en beskrivningspunkt.");
+        manageInputFocus(descriptionFocus);
+    } else {
+        return true;
+    }
+}
+
   const getNewId = (list) => {
     let highestIdInList = 0; 
     for (let i=0; i < list.length; i++) {
@@ -93,6 +131,14 @@ const RecipeInputModerator = () => {
     return highestIdInList + 1;
   } 
 
+
+  const clearTitelInput = () => {
+    setTitleInput("");
+  }
+
+  const clearCategoryInput = () => {
+    setCategoryInput(null);
+  }
 
   const clearIngredientsInput = () => {
     setCurrentIngredient(null);
@@ -121,12 +167,14 @@ const RecipeInputModerator = () => {
   const handleTitleChange = (e) => {
     setTitleInput(e.target.value);
     clearTooltip();
+    clearErrorMessage();
   }
 
 
   const handleCategoryChange = (categoryId) => {
     setCategoryInput(categoryId);
     clearTooltip();
+    clearErrorMessage();
   }
 
 
@@ -134,6 +182,7 @@ const RecipeInputModerator = () => {
     e.preventDefault();
     setDescriptionRowInput(e.target.value);
     clearTooltip();
+    clearErrorMessage();
     if (currentIngredient !== null) { clearIngredientsInput(); }
   }
 
@@ -152,17 +201,25 @@ const RecipeInputModerator = () => {
       setIngredientDetails(value);
     } 
     clearTooltip();
+    clearErrorMessage();
     if (currentDescriptionRow !== null) { clearDescriptionRowInput(); }
   }
 
 
   const addIngredient = () => {
+    clearErrorMessage();
     if (ingredientName === "") { 
       showTooltip("ingredient");
       manageInputFocus(ingredientFocus);
       clearEditMode();
+      clearErrorMessage();
       return; 
-    };
+    } else if (isNaN(ingredientAmount)) {
+      showTooltip("amount");
+      clearEditMode();
+      clearErrorMessage();
+      return;
+    }
     const id = currentIngredient === null ? getNewId(addedIngredients) : currentIngredient;
     const ingredientObject = {
       id: id,
@@ -186,6 +243,7 @@ const RecipeInputModerator = () => {
 
 
   const addDescriptionRow = () => {
+    clearErrorMessage();
     if (descriptionRowInput === "") { 
       showTooltip("description");
       manageInputFocus(descriptionFocus);
@@ -233,6 +291,7 @@ const RecipeInputModerator = () => {
     manageInputFocus(ingredientFocus);
     clearTooltip();
     clearEditMode();
+    clearErrorMessage();
   }
 
 
@@ -244,11 +303,13 @@ const RecipeInputModerator = () => {
     manageInputFocus(descriptionFocus);
     clearTooltip();
     clearEditMode();
+    clearErrorMessage();
   }
 
 
   const toggleIngredientEditMode = (id) => {
     clearTooltip();
+    clearErrorMessage();
     if (currentDescriptionRow !== null) { clearDescriptionRowInput(); }
     if (currentIngredient === null || currentIngredient !== id) {
       let ingredientToEdit = addedIngredients.find((item) => {
@@ -268,6 +329,7 @@ const RecipeInputModerator = () => {
 
   const toggleDescriptionEditMode = (id) => {
     clearTooltip();
+    clearErrorMessage();
     if (currentIngredient !== null) { clearIngredientsInput(); } 
     if (currentDescriptionRow === null || currentDescriptionRow !== id) {
       let descriptionRowToEdit = addedDescriptionRows.find((item) => {
@@ -316,7 +378,7 @@ const RecipeInputModerator = () => {
                                 unit={ingredientUnit} 
                                 details={ingredientDetails}
                                 inputFocus={ingredientFocus}
-                                showTooltip={tooltipTarget === "ingredient"}
+                                tooltipTarget={tooltipTarget}
                                 editMode={currentIngredient !== null}/>
               
               {(addedIngredients.length > 0) && <ul className="added-items-list">
@@ -356,7 +418,11 @@ const RecipeInputModerator = () => {
                 </ul>}
             
             </div>
-
+            {errorMessage && (
+              <ErrorMessage hideError={hideError} errorClass="input-moderator__error-message">
+                  {errorMessage}
+              </ErrorMessage>
+              )}
           </form>
         
           <Button type="button" onClick={handleSubmit}>Lägg upp recept</Button>

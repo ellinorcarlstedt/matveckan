@@ -6,7 +6,7 @@ function Tooltip(props) {
 
     return (
         <div className={`tooltip ${show}`} onClick={props.hideTooltip}>
-            <span className={`tooltip-text ${props.positionClass}`}>{props.children}</span>
+            <span className={`tooltip-text__${props.position} ${props.tooltipClass}`}>{props.children}</span>
         </div>
     )
 }

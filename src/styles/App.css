@@ -250,6 +250,7 @@ input[type=password] {
 .error-message {
   color: white;
   background-color: black;
+  display: inline-block;
   padding: 0.3rem 0.5rem;
   border-radius: 0.3rem;
   font-size: 0.7rem;
@@ -543,6 +544,22 @@ input[type=password] {
   background-color: #e6eaed;
 }
 
+.input-moderator__error-message {
+  margin-bottom: 1rem;
+}
+
+.tooltip .ingredient__tooltip {
+  max-width: calc(100% - 3.5rem);
+  bottom: 0;
+  right: 2rem;
+}
+
+.tooltip .amount__tooltip {
+  max-width: calc(100% - 2.5rem);
+  bottom: -2.2rem;
+  left: 0.5rem;
+}
+
 /**************** mainNavbar ****************/
 .main-nav {
   position: fixed;
@@ -676,7 +693,9 @@ input[type=password] {
   position: relative;
 }
 
-.tooltip-text {
+.tooltip-text__left,
+.tooltip-text__middle,
+.tooltip-text__right {
   background-color: black;
   color: #fff;
   text-align: center;
@@ -687,7 +706,18 @@ input[type=password] {
   z-index: 1;
 }
 
-.tooltip .tooltip-text::after {
+.tooltip .tooltip-text__left::after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  left: 20%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.tooltip .tooltip-text__middle::after {
   content: " ";
   position: absolute;
   top: 100%;
@@ -698,10 +728,15 @@ input[type=password] {
   border-color: black transparent transparent transparent;
 }
 
-.tooltip .tooltip-top {
-  max-width: calc(100% - 3.5rem);
-  bottom: 0;
-  right: 2rem;
+.tooltip .tooltip-text__right::after {
+  content: " ";
+  position: absolute;
+  top: 100%;
+  left: 80%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
 }
 
 .tooltip__hidden {
