@@ -545,7 +545,7 @@ input[type=password] {
 }
 
 .input-moderator__error-message {
-  margin-bottom: 1rem;
+  margin: 0 0.5rem 1rem 0.5rem;
 }
 
 .tooltip .ingredient__tooltip {
@@ -558,6 +558,12 @@ input[type=password] {
   max-width: calc(100% - 2.5rem);
   bottom: -2.2rem;
   left: 0.5rem;
+}
+
+.tooltip .description__tooltip {
+  max-width: calc(100% - 3.5rem);
+  bottom: 0;
+  right: 2rem;
 }
 
 /**************** mainNavbar ****************/

@@ -211,12 +211,12 @@ const RecipeInputModerator = () => {
     if (ingredientName === "") { 
       showTooltip("ingredient");
       manageInputFocus(ingredientFocus);
-      clearEditMode();
+      if (currentDescriptionRow !== null) { clearDescriptionRowInput(); }
       clearErrorMessage();
       return; 
     } else if (isNaN(ingredientAmount)) {
       showTooltip("amount");
-      clearEditMode();
+      if (currentDescriptionRow !== null) { clearDescriptionRowInput(); }
       clearErrorMessage();
       return;
     }
@@ -247,7 +247,7 @@ const RecipeInputModerator = () => {
     if (descriptionRowInput === "") { 
       showTooltip("description");
       manageInputFocus(descriptionFocus);
-      clearEditMode();
+      if (currentIngredient !== null) { clearIngredientsInput(); }
       return; 
     } 
     const id = currentDescriptionRow === null ? getNewId(addedDescriptionRows) : currentDescriptionRow;
