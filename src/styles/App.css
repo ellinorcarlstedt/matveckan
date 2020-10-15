@@ -63,6 +63,7 @@ input[type=password] {
   z-index: 10;
 }
 
+/**************** Modal ****************/
 .modal {
   z-index: 100;
   position: fixed;
@@ -76,6 +77,19 @@ input[type=password] {
   font-family: Garamond, Cambria;
   font-family: 'Varela Round';
   font-size: 0.8rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .modal__header {
@@ -84,10 +98,12 @@ input[type=password] {
   border-radius: 8px 8px 0 0;
   background: #55adad;
   color: white;
+  text-align: center;
 }
 
 .modal__content {
   padding: 1rem;
+  width: 100%;
 }
 
 .modal__footer {
@@ -287,6 +303,7 @@ input[type=password] {
   padding: 0.3rem 0.5rem;
   border-radius: 0.3rem;
   font-size: 0.7rem;
+  cursor: pointer;
 }
 
 /**************** MenuDisplayer ****************/
@@ -365,6 +382,7 @@ input[type=password] {
   padding: 0.5rem;
   margin-bottom: 0.7rem;
   background-color: #e6eaed;
+  list-style-type: none;
 }
 
 .recipe-description {
@@ -554,6 +572,12 @@ input[type=password] {
   cursor: pointer;
 }
 
+.input-clickable-icon:active {
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+  border: none;
+}
+
 .add-icon {
   margin-left: 0.5rem;
 }
@@ -597,6 +621,10 @@ input[type=password] {
   max-width: calc(100% - 3.5rem);
   bottom: 0;
   right: 2rem;
+}
+
+.confirmation-modal__footer {
+  padding-top: 0;
 }
 
 /**************** mainNavbar ****************/
@@ -743,6 +771,7 @@ input[type=password] {
   position: absolute;
   font-size: 0.7rem;
   z-index: 1;
+  cursor: pointer;
 }
 
 .tooltip .tooltip-text__left::after {

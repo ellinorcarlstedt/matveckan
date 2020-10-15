@@ -35,8 +35,8 @@ function App() {
         <Route exact path="/" component={MenuModerator} />
         <Route exact path="/meny" component={MenuModerator} />
         <Route exact path="/recept" component={RecipeInputModerator} />
-        <Redirect to="/meny" />
-    </Switch> 
+        <Redirect to="/recept" />
+      </Switch> 
     );
   } else {
     routs = (
@@ -45,8 +45,8 @@ function App() {
         <Route exact path="/meny" component={MenuModerator} />
         <Route exact path="/recept" component={RecipeInputModerator} />
         <Route exact path="/auth" component={Auth} />
-      <Redirect to="/meny" />
-  </Switch> 
+        <Redirect to="/meny" />
+      </Switch> 
       );
   }
 

@@ -15,6 +15,7 @@
     position: absolute;
     font-size: 0.7rem;
     z-index: 1;
+    cursor: pointer;
   }
 
   .tooltip .tooltip-text__left::after {

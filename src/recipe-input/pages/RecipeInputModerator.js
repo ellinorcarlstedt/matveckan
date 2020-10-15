@@ -11,9 +11,9 @@ import TitleInput from '../components/TitleInput';
 import IngredientInput from '../components/IngredientInput';
 import DescriptionInput from '../components/DescriptionInput';
 import CategoryInput from '../components/CategoryInput';
+import Recipe from '../../menu/components/Recipe';
 import AddedRecipeItem from '../components/AddedRecipeItem';
 import IconArtistAttribute from '../../shared/UIElements/IconArtistAttribute'; 
-import Auth from '../../shared/auth/pages/Auth';
 
 
 const RecipeInputModerator = () => {
@@ -26,7 +26,7 @@ const RecipeInputModerator = () => {
   const [ ingredientAmount, setIngredientAmount ] = useState("");
   const [ ingredientUnit, setIngredientUnit ] = useState("");
   const [ ingredientDetails, setIngredientDetails ] = useState("");
-  const [ descriptionRowInput, setDescriptionRowInput ] = useState("");
+  const [ descriptionInput, setdescriptionInput ] = useState("");
 
   const [ currentIngredient, setCurrentIngredient ] = useState(null);
   const [ currentDescriptionRow, setCurrentDescriptionRow ] = useState(null);
@@ -36,6 +36,7 @@ const RecipeInputModerator = () => {
 
   const [ tooltipTarget, setTooltipTarget ] = useState("");
   const [ errorMessage, setErrorMessage] = useState("");
+  const [ postedRecipe, setPostedRecipe] = useState("");
 
   const titleFocus = React.createRef();
   const ingredientFocus = React.createRef();
@@ -64,11 +65,14 @@ const RecipeInputModerator = () => {
               "Content-Type" : "application/json"
             }
             );
-            console.log("Recipe posted to database!")
-
-        } catch (err) {
-          console.log(err);
-        }
+            setPostedRecipe(response.recipe);
+            clearTitleInput();
+            clearCategoryInput();
+            clearIngredientsInput();
+            cleardescriptionInput();
+            setAddedIngredients([]);
+            setAddedDescriptionRows([]);
+        } catch (err) {}
     }
   }
 
@@ -77,8 +81,10 @@ const RecipeInputModerator = () => {
   }
 
   useEffect(() => {
-    manageInputFocus(titleFocus);
-  }, []);
+    if (auth.isLoggedin) {
+      manageInputFocus(titleFocus);
+    }
+  }, [auth.isLoggedin]);
 
   const showTooltip = (source) => {
     setTooltipTarget(source);
@@ -134,7 +140,7 @@ const RecipeInputModerator = () => {
   } 
 
 
-  const clearTitelInput = () => {
+  const clearTitleInput = () => {
     setTitleInput("");
   }
 
@@ -151,9 +157,9 @@ const RecipeInputModerator = () => {
   }
 
 
-  const clearDescriptionRowInput = () => {
+  const cleardescriptionInput = () => {
     setCurrentDescriptionRow(null);
-    setDescriptionRowInput("");
+    setdescriptionInput("");
   }
 
 
@@ -161,7 +167,7 @@ const RecipeInputModerator = () => {
     if (currentIngredient !== null) {
       clearIngredientsInput();
     } else if (currentDescriptionRow !== null) {
-      clearDescriptionRowInput();
+      cleardescriptionInput();
     }
   }
 
@@ -182,7 +188,7 @@ const RecipeInputModerator = () => {
 
   const handleDescriptionChange = (e) => {
     e.preventDefault();
-    setDescriptionRowInput(e.target.value);
+    setdescriptionInput(e.target.value);
     clearTooltip();
     clearErrorMessage();
     if (currentIngredient !== null) { clearIngredientsInput(); }
@@ -204,7 +210,7 @@ const RecipeInputModerator = () => {
     } 
     clearTooltip();
     clearErrorMessage();
-    if (currentDescriptionRow !== null) { clearDescriptionRowInput(); }
+    if (currentDescriptionRow !== null) { cleardescriptionInput(); }
   }
 
 
@@ -213,12 +219,12 @@ const RecipeInputModerator = () => {
     if (ingredientName === "") { 
       showTooltip("ingredient");
       manageInputFocus(ingredientFocus);
-      if (currentDescriptionRow !== null) { clearDescriptionRowInput(); }
+      if (currentDescriptionRow !== null) { cleardescriptionInput(); }
       clearErrorMessage();
       return; 
     } else if (isNaN(ingredientAmount)) {
       showTooltip("amount");
-      if (currentDescriptionRow !== null) { clearDescriptionRowInput(); }
+      if (currentDescriptionRow !== null) { cleardescriptionInput(); }
       clearErrorMessage();
       return;
     }
@@ -239,14 +245,14 @@ const RecipeInputModerator = () => {
     }
     setAddedIngredients(allIngredients);
     clearIngredientsInput();
-    if (currentDescriptionRow !== null) { clearDescriptionRowInput(); }
+    if (currentDescriptionRow !== null) { cleardescriptionInput(); }
     manageInputFocus(ingredientFocus);
   }
 
 
   const addDescriptionRow = () => {
     clearErrorMessage();
-    if (descriptionRowInput === "") { 
+    if (descriptionInput === "") { 
       showTooltip("description");
       manageInputFocus(descriptionFocus);
       if (currentIngredient !== null) { clearIngredientsInput(); }
@@ -255,7 +261,7 @@ const RecipeInputModerator = () => {
     const id = currentDescriptionRow === null ? getNewId(addedDescriptionRows) : currentDescriptionRow;
     const descriptionRowObject = {
       id: id,
-      description: descriptionRowInput
+      description: descriptionInput
     }
     let allDescriptionRows = [...addedDescriptionRows];
     if (currentDescriptionRow === null) {
@@ -265,7 +271,7 @@ const RecipeInputModerator = () => {
       allDescriptionRows.splice((index), 1, descriptionRowObject); 
     }
     setAddedDescriptionRows(allDescriptionRows);
-    clearDescriptionRowInput();
+    cleardescriptionInput();
     if (currentIngredient !== null) { clearIngredientsInput(); }
     manageInputFocus(descriptionFocus);
   }
@@ -312,7 +318,7 @@ const RecipeInputModerator = () => {
   const toggleIngredientEditMode = (id) => {
     clearTooltip();
     clearErrorMessage();
-    if (currentDescriptionRow !== null) { clearDescriptionRowInput(); }
+    if (currentDescriptionRow !== null) { cleardescriptionInput(); }
     if (currentIngredient === null || currentIngredient !== id) {
       let ingredientToEdit = addedIngredients.find((item) => {
         return item.id === id;
@@ -338,9 +344,9 @@ const RecipeInputModerator = () => {
         return item.id === id;
       })
       setCurrentDescriptionRow(descriptionRowToEdit.id);
-      setDescriptionRowInput(descriptionRowToEdit.description);
+      setdescriptionInput(descriptionRowToEdit.description);
     } else {
-      clearDescriptionRowInput();
+      cleardescriptionInput();
     }
     manageInputFocus(descriptionFocus);
   }
@@ -355,6 +361,15 @@ const RecipeInputModerator = () => {
             header="Någonting gick fel"
             footer={<Button onClick={clearError}>OK</Button>}>
             {error}
+          </Modal>
+
+          <Modal
+            show={!!postedRecipe}
+            onCancel={() => setPostedRecipe("")}
+            header={`${postedRecipe.mealName} är sparat!`}
+            footer={<Button onClick={() => setPostedRecipe("")}>OK</Button>}
+            footerClass="confirmation-modal__footer">
+              {postedRecipe.creator && <Recipe ingredients={postedRecipe.ingredients} description={postedRecipe.description}/>}
           </Modal>
 
       <Background className="recipe-input-moderator-container">
@@ -406,7 +421,7 @@ const RecipeInputModerator = () => {
                                   addDescriptionRow={addDescriptionRow} 
                                   handleEnter={handleEnter} 
                                   hideTooltip={hideTooltip}
-                                  value={descriptionRowInput}
+                                  value={descriptionInput}
                                   inputFocus={descriptionFocus}
                                   showTooltip={tooltipTarget === "description"}
                                   editMode={currentDescriptionRow !== null}/>

@@ -120,6 +120,10 @@
     width: 1rem;
     height: 1rem;
     cursor: pointer;
+    &:active {
+      transform: translateY(1px);
+      border: none;
+    }
   }
   
   .add-icon {
@@ -166,3 +170,6 @@
     right: 2rem;
   }
   
+  .confirmation-modal__footer {
+    padding-top: 0;
+  }
