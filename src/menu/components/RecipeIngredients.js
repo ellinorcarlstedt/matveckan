@@ -6,6 +6,10 @@ function RecipeIngredients(props) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
+    const allLettersLowercase = (string) => {
+        return string.toLowerCase();
+    }
+
     let ingredients = [];
     if (props.ingredients.length) {
         ingredients = props.ingredients.map((ingredient, i) => {
@@ -17,9 +21,10 @@ function RecipeIngredients(props) {
                     </li>
                 )
             } else {
+                let ingredientName = allLettersLowercase(ingredient.name);
             return (
                 <li key={i}>
-                    <p>{`${ingredient.amount} ${ingredient.unit} ${ingredient.name}`}</p>
+                    <p>{`${ingredient.amount} ${ingredient.unit} ${ingredientName}`}</p>
                 </li>
                 )
             }

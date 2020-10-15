@@ -379,14 +379,22 @@ input[type=password] {
 }
 
 .recipe-ingredients {
-  padding: 0.5rem;
+  padding: 1rem;
   margin-bottom: 0.7rem;
   background-color: #e6eaed;
   list-style-type: none;
 }
 
-.recipe-description {
-  padding-left: 1.5rem;
+.recipe-ingredients li {
+  margin-bottom: 0.2rem;
+}
+
+.recipe-ingredients li:last-child {
+  margin-bottom: 0.7rem;
+}
+
+.recipe-ingredients li:last-child {
+  margin-bottom: 0;
 }
 
 .recipe-description-row {
@@ -394,8 +402,12 @@ input[type=password] {
   margin-bottom: 0.5rem;
 }
 
+.recipe-description {
+  padding-left: 1.5rem;
+}
+
 .recipe-description li:last-child {
-  margin-bottom: 0.7rem;
+  margin-bottom: 1rem;
 }
 
 /********************** InputModerator with children *************************/
