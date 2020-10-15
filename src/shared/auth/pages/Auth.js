@@ -4,6 +4,7 @@ import { useHttpClient } from "../../hooks/http-hook";
 import Background from "../../../shared/UIElements/Background";
 import Modal from "../../../shared/UIElements/Modal";
 import Button from "../../../shared/UIElements/Button"; 
+import ErrorMessage from "../../../shared/UIElements/ErrorMessage"; 
 import LoadingSpinner from "../../../shared/UIElements/LoadingSpinner";
 import "../../../styles/App.css";
 
@@ -58,7 +59,7 @@ const Auth = () => {
         } else if(!isLoginMode && formPassword.length < 6) {
             showError("Ange ett lösenord på minst 6 tecken.");
         } else if (isLoginMode && !formPassword) {
-                showError("Ange ditt lösenord.");
+            showError("Ange ditt lösenord.");
         } else {
             return true;
         }
@@ -138,9 +139,9 @@ const Auth = () => {
                                 placeholder="lösenord" 
                                 onChange={formPasswordHandler}/>
                         {errorMessage && (
-                        <span className="auth__error-message" onClick={hideError}>
+                        <ErrorMessage hideError={hideError}>
                             {errorMessage}
-                        </span>
+                        </ErrorMessage>
                         )}
                         <Button type="submit" buttonClass="login-button">
                             {isLoginMode ? "Logga in" : "Bli medlem"}

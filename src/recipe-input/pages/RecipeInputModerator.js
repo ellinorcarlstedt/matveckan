@@ -2,7 +2,9 @@ import React, { useState, useEffect, useContext } from 'react';
 import { AuthContext } from "../../shared/context/auth-context";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import Background from "../../shared/UIElements/Background";
+import Modal from "../../shared/UIElements/Modal";
 import Button from '../../shared/UIElements/Button';
+import LoadingSpinner from '../../shared/UIElements/LoadingSpinner';
 import TitleInput from '../components/TitleInput';
 import IngredientInput from '../components/IngredientInput';
 import DescriptionInput from '../components/DescriptionInput';
@@ -17,7 +19,6 @@ const RecipeInputModerator = () => {
 
   const [ titleInput, setTitleInput ] = useState("");
   const [ categoryInput, setCategoryInput ] = useState("");
-
   const [ ingredientName, setIngredientName ] = useState("");
   const [ ingredientAmount, setIngredientAmount ] = useState("");
   const [ ingredientUnit, setIngredientUnit ] = useState("");
@@ -26,11 +27,11 @@ const RecipeInputModerator = () => {
 
   const [ currentIngredient, setCurrentIngredient ] = useState(null);
   const [ currentDescriptionRow, setCurrentDescriptionRow ] = useState(null);
-  const [ tooltipTarget, setTooltipTarget ] = useState("");
 
   const [ addedIngredients, setAddedIngredients ] = useState([]);
   const [ addedDescriptionRows, setAddedDescriptionRows ] = useState([]);
 
+  const [ tooltipTarget, setTooltipTarget ] = useState("");
 
   const titleFocus = React.createRef();
   const ingredientFocus = React.createRef();
@@ -287,6 +288,14 @@ const RecipeInputModerator = () => {
     <Background className="recipe-input-moderator-container">
 
       <div className="component-resizer">
+
+        <Modal 
+          show={!!error}
+          onCancel={clearError}
+          header="Någonting gick fel"
+          footer={<Button onClick={clearError}>OK</Button>}>
+          {error}
+        </Modal>
         
         <div className="recipe-input-moderator">
 
@@ -353,6 +362,8 @@ const RecipeInputModerator = () => {
           <Button type="button" onClick={handleSubmit}>Lägg upp recept</Button>
 
         </div>
+
+        {isLoading && <LoadingSpinner asOverlay />}  
 
       </div> 
 

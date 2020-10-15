@@ -202,6 +202,7 @@ input[type=password] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  z-index: 1;
 }
 
 .loading-spinner__overlay > div {
@@ -243,6 +244,15 @@ input[type=password] {
 
 .hidden {
   display: none;
+}
+
+/**************** ErrorMessage ****************/
+.error-message {
+  color: white;
+  background-color: black;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.3rem;
+  font-size: 0.7rem;
 }
 
 /**************** MenuDisplayer ****************/
@@ -636,14 +646,6 @@ input[type=password] {
 
 .spinner {
   margin-top: 1rem;
-}
-
-.auth__error-message {
-  color: white;
-  background-color: black;
-  padding: 0.3rem 0.5rem;
-  border-radius: 0.3rem;
-  font-size: 0.7rem;
 }
 
 /**************** iconArtistAttribute ****************/
