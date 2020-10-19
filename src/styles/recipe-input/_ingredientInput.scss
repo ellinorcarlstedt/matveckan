@@ -1,0 +1,45 @@
+/**************** Ingredient Input ****************/
+
+.ingredient-input-wrapper {
+    @include flexSpaceBetween();
+    padding: 0 0.5rem;
+  }
+
+  .ingredient-input {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .ingredient-input-details-wrapper {
+    display: flex;
+    margin-top: 0.4rem;
+  }
+
+  .ingredient-input-name {
+    width: 100%;
+  }
+
+  .ingredient-input,
+  .ingredient-input-details,
+  .ingredient-input-details-wrapper,
+  .ingredient-input-amount,
+  .ingredient-input-unit {
+    min-width: 0;
+  }
+ 
+  .ingredient-input-amount,
+  .ingredient-input-unit {
+    margin-right: 0.4rem;
+  }
+
+  .tooltip .ingredient__tooltip {
+    max-width: calc(100% - 3.5rem);
+    bottom: 0;
+    right: 2rem;
+  }
+
+  .tooltip .amount__tooltip {
+    max-width: calc(100% - 2.5rem);
+    bottom: -2.2rem;
+    left: 0.5rem;
+  }

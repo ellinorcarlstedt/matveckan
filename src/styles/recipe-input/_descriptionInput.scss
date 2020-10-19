@@ -1,0 +1,15 @@
+/**************** Description Input ****************/
+
+.description-input {
+    @include flexSpaceBetween();
+    padding: 0 0.5rem;
+    input {
+      width: 100%;
+    }
+  }
+
+.tooltip .description__tooltip {
+    max-width: calc(100% - 3.5rem);
+    bottom: 0;
+    right: 2rem;
+  }
