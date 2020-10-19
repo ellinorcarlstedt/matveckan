@@ -15,12 +15,12 @@ function AddedRecipeItem(props) {
             {listItemNumber} {props.content}
             <div className="added-item-buttons">
 
-                <img    src={require("../../shared/icons/pencil.svg")}  
+                <img    src={require("../../shared/resources/icons/pencil.svg")}  
                         alt="Redigera" 
                         className={`input-clickable-icon ${iconClass}`} 
                         onClick={props.toggleEditMode}/>
 
-                <img    src={require("../../shared/icons/cross.svg")} 
+                <img    src={require("../../shared/resources/icons/cross.svg")} 
                         alt="Ta bort" 
                         className="input-clickable-icon remove-icon" 
                         onClick={props.deleteItem} />

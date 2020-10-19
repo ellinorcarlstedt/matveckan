@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import Background from "../../shared/UIElements/Background";
 import MenuDisplayer from './MenuDisplayer';
-import IconArtistAttribute from '../../shared/UIElements/IconArtistAttribute';
+import ArtistAttribute from '../../shared/UIElements/ArtistAttribute';
 
 function MenuModerator () {
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -46,7 +46,7 @@ function MenuModerator () {
     return (
     <Background className="menu-moderator">
         <MenuDisplayer menu={menu} reloadMenu={() => reloadMenu()}/> 
-        <IconArtistAttribute />
+        <ArtistAttribute />
     </Background>
     )
 

@@ -16,7 +16,7 @@ function DescriptionInput(props) {
                         autoComplete="off"
                         ref={props.inputFocus}/>
 
-                <img    src={require("../../shared/icons/plus.svg")} 
+                <img    src={require("../../shared/resources/icons/plus.svg")} 
                         alt="Lägg till" 
                         className="input-clickable-icon add-icon" 
                         onClick={props.addDescriptionRow} />

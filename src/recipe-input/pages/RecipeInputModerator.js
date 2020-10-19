@@ -13,7 +13,7 @@ import DescriptionInput from '../components/DescriptionInput';
 import CategoryInput from '../components/CategoryInput';
 import Recipe from '../../menu/components/Recipe';
 import AddedRecipeItem from '../components/AddedRecipeItem';
-import IconArtistAttribute from '../../shared/UIElements/IconArtistAttribute'; 
+import ArtistAttribute from '../../shared/UIElements/ArtistAttribute'; 
 
 
 const RecipeInputModerator = () => {
@@ -452,7 +452,7 @@ const RecipeInputModerator = () => {
 
         </div> 
 
-        <IconArtistAttribute />
+        <ArtistAttribute />
 
       </Background>
   

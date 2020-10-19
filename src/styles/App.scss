@@ -1,26 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
-@import "./partials/base";
-@import "./partials/variables";
-@import "./partials/mixins";
+@import "./main/base";
+@import "./main/variables";
+@import "./main/mixins";
 
+@import "./UIElements/mainNavbar";
 @import "./UIElements/background";
 @import "./UIElements/backdrop";
 @import "./UIElements/modal";
 @import "./UIElements/button";
 @import "./UIElements/loadingSpinner";
 @import "./UIElements/overlayInfo";
+@import "./UIElements/tooltip";
 @import "./UIElements/heightTransitionComponent";
 @import "./UIElements/errorMessage";
-@import "./partials/menuDisplayer";
-@import "./partials/inputModerator";
-@import "./partials/mainNavbar";
-@import "./partials/auth";
+@import "./UIElements/artistAttribute";
 
-@import "./partials/iconArtistAttribute";
-@import "./partials/tooltip";
-@import "./partials/arrowIcon";
-@import "./partials/mediaQueries";
+@import "./menu/menuModerator";
+@import "./menu/menuDisplayer";
+@import "./menu/mealDisplayer";
+@import "./menu/mealTitle";
+@import "./menu/mealCategory";
+@import "./menu/recipe";
+@import "./menu/recipeDescription";
+@import "./menu/recipeIngredients";
+@import "./menu/weekday";
+
+@import "./recipe-input/addedRecipeItem";
+@import "./recipe-input/categoryInput";
+@import "./recipe-input/descriptionInput";
+@import "./recipe-input/ingredientInput";
+@import "./recipe-input/inputModerator";
+@import "./recipe-input/titleInput";
+
+@import "./auth/auth";
+
+@import "./main/mediaQueries";
 
 
 

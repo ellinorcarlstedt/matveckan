@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import { render, fireEvent, waitFor, screen } from '@testing-library/react';
-import MealTitle from '../MealTitle';
+import MealTitle from '../menu/components/MealTitle';
 
 it('renders without crashing, shallow', () => {
     shallow(<MealTitle />);

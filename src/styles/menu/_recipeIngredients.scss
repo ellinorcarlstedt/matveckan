@@ -1,0 +1,14 @@
+/**************** RecipeIngredients ****************/
+
+.recipe-ingredients {
+    padding: 1rem;
+    margin-bottom: 0.7rem;
+    background-color: $lightGray;
+    list-style-type: none;
+    li {
+      margin-bottom: 0.2rem;
+      &:last-child {
+        margin-bottom: 0rem;
+      }
+    }
+  }

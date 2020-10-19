@@ -58,7 +58,7 @@ function IngredientInput(props) {
                         </div>
                 </div>
 
-                <img    src={require("../../shared/icons/plus.svg")} 
+                <img    src={require("../../shared/resources/icons/plus.svg")} 
                         alt="Lägg till" 
                         className="input-clickable-icon add-icon" 
                         onClick={props.addIngredient}/>

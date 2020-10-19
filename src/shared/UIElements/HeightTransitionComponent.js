@@ -10,17 +10,21 @@ function HeightTransitionComponent (props) {
 
     useEffect(() => {
         const element = document.getElementById(`height-transition-${props.id}`);
-        element.classList.remove("hidden");
-        const elementDimensions = element.getBoundingClientRect();
-        registerElementHeight(elementDimensions.height);
+        if (element) {
+            element.classList.remove("hidden");
+            const elementDimensions = element.getBoundingClientRect();
+            registerElementHeight(elementDimensions.height);
+        }
     }, [props.id]); 
 
     useEffect(() => {
         const element = document.getElementById(`height-transition-${props.id}`);
-        let animationHeight = props.isOpen ? elementHeight + "px" : "0px";
-        requestAnimationFrame(() => { 
-            element.style.height = animationHeight;
-        }); 
+        if (element) {
+            let animationHeight = props.isOpen ? elementHeight + "px" : "0px";
+            requestAnimationFrame(() => { 
+                element.style.height = animationHeight;
+            }); 
+        }
     }, [props.isOpen, props.id, elementHeight]);
 
     return (
