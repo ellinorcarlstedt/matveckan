@@ -2,8 +2,6 @@ A web app where you can add your own recipes and display a random selection of r
 Frontend part is public, backend part is avaliable upon request. <br />
 Made with **React, Node.js, Express** and **MongoDB**. <br />
 
-![printscreen](./shared/resources/printscreens/menu_1.png)
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
