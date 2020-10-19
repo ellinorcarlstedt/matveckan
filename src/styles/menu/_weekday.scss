@@ -1,6 +1,11 @@
 /**************** Weekday ****************/
 
 .weekday {
-    padding: 0.7rem;
-    text-align: left;
-  }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $primaryBlue;
+    padding: 0.5rem;
+    border-radius: 0.3rem 0 0 0.3rem;
+    min-width: 4.5rem;
+}

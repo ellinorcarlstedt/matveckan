@@ -2,11 +2,11 @@
 
 .meal-category {
     display: flex;
-    flex-direction: row-reverse;
+    align-items: center;
     img {
       box-sizing: content-box;
       height: 1.5rem;
       width: 1.5rem;
-      padding: 0 0.7rem;
+      padding: 0.5rem;
     }
   }

@@ -9,7 +9,9 @@
   }
   
   .meal-displayer-overview {
-    @include flexSpaceBetween(); 
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
   }
   
 
