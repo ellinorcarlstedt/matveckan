@@ -3,12 +3,11 @@ import { NavLink } from "react-router-dom";
 import { AuthContext } from "../context/auth-context";
 import "../../styles/App.css";
 
-const MainNav = () => {
+const NavLinks = () => {
   const auth = useContext(AuthContext);
 
     return (
-        <nav>
-            <ul className="main-nav">
+            <ul className="nav-links">
               <li>
                 <NavLink to="/meny">Skapa meny</NavLink>
               </li>
@@ -22,8 +21,7 @@ const MainNav = () => {
                 <button className="nav-button" onClick={auth.logout}>Logga ut</button> 
               </li>}
             </ul>
-        </nav>
     )
 }
 
-export default MainNav;
+export default NavLinks;

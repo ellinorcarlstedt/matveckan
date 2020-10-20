@@ -1,0 +1,36 @@
+/**************** Side Drawer ****************/
+
+.side-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 60%;
+    z-index: 100;
+    background-color: $primaryBlue;
+}
+
+.drawer-enter {
+    transform: translateX(-10rem);
+    opacity: 0;
+}
+
+.drawer-enter-active {
+    transform: translateX(0);
+    opacity: 1;
+    transition: all 200ms;
+}
+
+.drawer-exit {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.drawer-exit-active {
+    transform: translateX(-10rem);
+    opacity: 0;
+    transition: all 200ms;
+}
+
+
+

@@ -1,0 +1,19 @@
+/**************** Main Header ****************/
+
+.main-header {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: $primaryBlue;
+    box-shadow: 0.1rem 0.1rem 0.1rem -0.1rem $secondaryBlue;
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (min-width: 486px) {
+    .main-header {
+        justify-content: center;
+    }
+}

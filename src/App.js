@@ -6,7 +6,7 @@ import {
   Redirect
 } from "react-router-dom";
 import './styles/App.css';
-import MainNav from './shared/UIElements/MainNav';
+import MainNavigation from './shared/Navigation/MainNavigation';
 import MenuModerator from './menu/pages/MenuModerator';
 import RecipeInputModerator from './recipe-input/pages/RecipeInputModerator';
 import Auth from './shared/auth/pages/Auth';
@@ -54,7 +54,7 @@ function App() {
     <AuthContext.Provider value={{isLoggedin : isLoggedIn, userId: userId, login: login, logout: logout}}>
       <Router>
         <div className="App">
-          <MainNav />
+          <MainNavigation />
             {routs}
         </div>
       </Router>

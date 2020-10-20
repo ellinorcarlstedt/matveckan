@@ -4,7 +4,11 @@
 @import "./main/variables";
 @import "./main/mixins";
 
-@import "./UIElements/mainNavbar";
+@import "./navigation/mainNavigation";
+@import "./navigation/mainHeader";
+@import "./navigation/navLinks";
+@import "./navigation/sideDrawer";
+
 @import "./UIElements/background";
 @import "./UIElements/backdrop";
 @import "./UIElements/modal";

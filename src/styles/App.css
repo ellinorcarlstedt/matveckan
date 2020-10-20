@@ -42,31 +42,96 @@ input[type=password] {
 
 /**************** Variables ****************/
 /**************** Mixins ****************/
-/**************** mainNavbar ****************/
-.main-nav {
+/**************** Main Navigation ****************/
+.main-navigation__button {
+  border: none;
+  background-color: #b0eeee;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 3rem;
+  height: 2rem;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+}
+
+.main-navigation__button span {
+  display: block;
+  width: 2rem;
+  height: 2px;
+  background-color: #55adad;
+}
+
+.main-navigation__menu {
+  display: none;
+}
+
+@media screen and (min-width: 486px) {
+  .main-navigation__button {
+    display: none;
+  }
+  .main-navigation__menu {
+    display: block;
+  }
+}
+
+/**************** Main Header ****************/
+.main-header {
   position: fixed;
   z-index: 10;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  list-style-type: none;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   background-color: #b0eeee;
+  -webkit-box-shadow: 0.1rem 0.1rem 0.1rem -0.1rem #55adad;
+          box-shadow: 0.1rem 0.1rem 0.1rem -0.1rem #55adad;
   margin: 0;
   padding: 0;
 }
 
-.main-nav a {
-  display: inline-block;
+@media screen and (min-width: 486px) {
+  .main-header {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+/**************** NavLinks ****************/
+.nav-links {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  list-style-type: none;
+  background-color: #b0eeee;
+  text-align: end;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  display: block;
   color: black;
   text-decoration: none;
   padding: 0.7rem;
 }
 
-.main-nav a:hover, .main-nav a.active {
+.nav-links a:hover, .nav-links a.active {
   background-color: #55adad;
   color: white;
 }
@@ -77,11 +142,67 @@ input[type=password] {
   font: inherit;
   cursor: pointer;
   padding: 0.7rem;
+  width: 100%;
+  text-align: end;
 }
 
 .nav-button:hover, .nav-button.active {
   background-color: #55adad;
   color: white;
+}
+
+@media screen and (min-width: 486px) {
+  .nav-links {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .nav-links li {
+    margin-right: 2.5rem;
+  }
+  .nav-links li:last-child {
+    margin-right: 0;
+  }
+}
+
+/**************** Side Drawer ****************/
+.side-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 60%;
+  z-index: 100;
+  background-color: #b0eeee;
+}
+
+.drawer-enter {
+  -webkit-transform: translateX(-10rem);
+          transform: translateX(-10rem);
+  opacity: 0;
+}
+
+.drawer-enter-active {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  opacity: 1;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
+}
+
+.drawer-exit {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+  opacity: 1;
+}
+
+.drawer-exit-active {
+  -webkit-transform: translateX(-10rem);
+          transform: translateX(-10rem);
+  opacity: 0;
+  -webkit-transition: all 200ms;
+  transition: all 200ms;
 }
 
 /**************** Background ****************/
@@ -102,7 +223,7 @@ input[type=password] {
   width: 100%;
   height: 100vh;
   background: rgba(0, 0, 0, 0.75);
-  z-index: 10;
+  z-index: 50;
 }
 
 /**************** Modal ****************/
@@ -859,7 +980,7 @@ input[type=password] {
 
 @media screen and (min-width: 486px) {
   .App,
-  .main-nav,
+  .main-header,
   .icon-artist-attribute {
     width: 500px;
   }

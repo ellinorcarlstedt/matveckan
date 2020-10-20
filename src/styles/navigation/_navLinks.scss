@@ -1,17 +1,16 @@
-/**************** mainNavbar ****************/
+/**************** NavLinks ****************/
 
-.main-nav {
-  position: fixed;
-  z-index: 10;
+.nav-links {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
   list-style-type: none;
   background-color: $primaryBlue;
+  text-align: end;
   margin: 0;
   padding: 0;
     a {
-      display: inline-block;
+      display: block;
       color: black;
       text-decoration: none;
       padding: 0.7rem;
@@ -29,6 +28,8 @@
     font: inherit;
     cursor: pointer;
     padding: 0.7rem;
+    width: 100%;
+    text-align: end;
     &:hover,
     &.active {
       background-color: $secondaryBlue;
@@ -36,4 +37,15 @@
       }
   }
 
+  @media screen and (min-width: 486px) {
+    .nav-links {
+      flex-direction: row;
+      li {
+        margin-right: 2.5rem;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
   
