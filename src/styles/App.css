@@ -108,8 +108,8 @@ input[type=password] {
 /**************** Modal ****************/
 .modal {
   z-index: 100;
-  position: fixed;
-  top: 22vh;
+  position: absolute;
+  top: 20vh;
   left: 10%;
   width: 80%;
   background: white;
@@ -154,8 +154,9 @@ input[type=password] {
 
 @media (min-width: 768px) {
   .modal {
-    left: calc(50% - 15rem);
-    width: 30rem;
+    left: calc(50% - 12.5rem);
+    top: 15vh;
+    width: 25rem;
   }
 }
 
@@ -404,7 +405,7 @@ input[type=password] {
   cursor: pointer;
 }
 
-/**************** iconArtistAttribute ****************/
+/**************** ArtistAttribute ****************/
 .artist-attribute {
   position: absolute;
   bottom: 1rem;
@@ -442,106 +443,11 @@ input[type=password] {
 }
 
 /**************** MenuDisplayer ****************/
-.menu-moderator {
-  padding-bottom: 0.7rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
 .menu-displayer {
   margin: 5rem 0 2rem;
 }
 
 .menu-displayer-reload-button {
-  margin-bottom: 1rem;
-}
-
-.meal-displayer {
-  background-color: white;
-  margin: 0 0.5rem 0.5rem 0.5rem;
-  -webkit-box-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.25);
-          box-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.25);
-  border-radius: 0.3rem;
-  cursor: pointer;
-}
-
-.meal-displayer-overview {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 0.5rem 0;
-}
-
-.weekday {
-  padding: 0 0.7rem;
-  text-align: left;
-}
-
-.meal-category {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
-}
-
-.meal-category img {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
-  height: 1.5rem;
-  width: 1.5rem;
-  padding: 0 0.7rem;
-}
-
-.recipe {
-  text-align: left;
-  background-color: #ffffff;
-}
-
-.recipe-ingredients {
-  padding: 1rem;
-  margin-bottom: 0.7rem;
-  background-color: #e6eaed;
-  list-style-type: none;
-}
-
-.recipe-ingredients li {
-  margin-bottom: 0.2rem;
-}
-
-.recipe-ingredients li:last-child {
-  margin-bottom: 0.7rem;
-}
-
-.recipe-ingredients li:last-child {
-  margin-bottom: 0;
-}
-
-.recipe-description-row {
-  padding: 0 0.7rem 0 0.25rem;
-  margin-bottom: 0.5rem;
-}
-
-.recipe-description {
-  padding-left: 1.5rem;
-}
-
-.recipe-description li:last-child {
   margin-bottom: 1rem;
 }
 
@@ -559,81 +465,33 @@ input[type=password] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 0.5rem 0;
-}
-
-.weekday {
-  padding: 0 0.7rem;
-  text-align: left;
-}
-
-.meal-category {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
-}
-
-.meal-category img {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
-  height: 1.5rem;
-  width: 1.5rem;
-  padding: 0 0.7rem;
-}
-
-.recipe {
-  text-align: left;
-  background-color: #ffffff;
-}
-
-.recipe-ingredients {
-  padding: 1rem;
-  margin-bottom: 0.7rem;
-  background-color: #e6eaed;
-  list-style-type: none;
-}
-
-.recipe-ingredients li {
-  margin-bottom: 0.2rem;
-}
-
-.recipe-ingredients li:last-child {
-  margin-bottom: 0rem;
-}
-
-.recipe-description-row {
-  padding: 0 0.7rem 0 0.25rem;
-  margin-bottom: 0.5rem;
-}
-
-.recipe-description {
-  padding-left: 1.5rem;
-}
-
-.recipe-description li:last-child {
-  margin-bottom: 1rem;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
 }
 
 /**************** MealTitle ****************/
+.meal-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.5rem;
+}
+
 /**************** MealCategory ****************/
 .meal-category {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .meal-category img {
@@ -641,7 +499,7 @@ input[type=password] {
           box-sizing: content-box;
   height: 1.5rem;
   width: 1.5rem;
-  padding: 0 0.7rem;
+  padding: 0.5rem;
 }
 
 /**************** Recipe ****************/
@@ -682,49 +540,76 @@ input[type=password] {
 
 /**************** Weekday ****************/
 .weekday {
-  padding: 0 0.7rem;
-  text-align: left;
-}
-
-/********************** InputModerator with children *************************/
-.recipe-input-moderator-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #b0eeee;
+  padding: 0.5rem;
+  border-radius: 0.3rem 0 0 0.3rem;
+  min-width: 4.5rem;
 }
 
-.recipe-input-moderator {
-  margin: 5rem 0.5rem 3rem;
+/**************** Added Recipe Item ****************/
+.added-item {
+  text-align: left;
+  padding: 0.2rem 0.5rem 0.2rem 0.7rem;
 }
 
-.recipe-input-moderator form {
-  background-color: white;
-  padding: 1rem 0 1px;
-  /*1px to avoid collapsing margins*/
-  border-radius: 0.3rem;
-  margin-bottom: 1rem;
+.added-item,
+.added-item-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-/**************** Inputs ****************/
-.title-input {
-  margin-bottom: 0.7rem;
-  padding: 0 0.5rem;
+.input-clickable-icon {
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
 }
 
-.title-input input {
-  width: 100%;
+.input-clickable-icon:active {
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+  border: none;
 }
 
+.add-icon {
+  margin-left: 0.5rem;
+}
+
+.remove-icon {
+  padding: 0.1rem;
+}
+
+.remove-icon,
+.edit {
+  margin-left: 0.5rem;
+}
+
+.icon-edit-mode {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  margin-left: 0.3rem;
+}
+
+.item-edit-mode {
+  background-color: #e6eaed;
+}
+
+/**************** Category Input ****************/
 .category-input {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -764,10 +649,31 @@ input[type=password] {
   background-color: #b0eeee;
 }
 
-.input-with-items-wrapper {
-  margin-bottom: 1.5rem;
+/**************** Description Input ****************/
+.description-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 0.5rem;
 }
 
+.description-input input {
+  width: 100%;
+}
+
+.tooltip .description__tooltip {
+  max-width: calc(100% - 3.5rem);
+  bottom: 0;
+  right: 2rem;
+}
+
+/**************** Ingredient Input ****************/
 .ingredient-input-wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -813,86 +719,6 @@ input[type=password] {
   margin-right: 0.4rem;
 }
 
-.description-input {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 0 0.5rem;
-}
-
-.description-input input {
-  width: 100%;
-}
-
-/**************** Added items / icons / edit-mode ****************/
-.added-items-list {
-  margin-top: 0.7rem;
-  padding: 0;
-}
-
-.added-item {
-  text-align: left;
-  padding: 0.2rem 0.5rem 0.2rem 0.7rem;
-}
-
-.added-item,
-.added-item-buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.input-clickable-icon {
-  width: 1rem;
-  height: 1rem;
-  cursor: pointer;
-}
-
-.input-clickable-icon:active {
-  -webkit-transform: translateY(1px);
-          transform: translateY(1px);
-  border: none;
-}
-
-.add-icon {
-  margin-left: 0.5rem;
-}
-
-.remove-icon,
-.edit {
-  margin-left: 0.5rem;
-}
-
-.remove-icon {
-  padding: 0.1rem;
-}
-
-.icon-edit-mode {
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-  margin-left: 0.3rem;
-}
-
-.item-edit-mode {
-  background-color: #e6eaed;
-}
-
-.input-moderator__error-message {
-  margin: 0 0.5rem 1rem 0.5rem;
-}
-
 .tooltip .ingredient__tooltip {
   max-width: calc(100% - 3.5rem);
   bottom: 0;
@@ -905,14 +731,60 @@ input[type=password] {
   left: 0.5rem;
 }
 
-.tooltip .description__tooltip {
-  max-width: calc(100% - 3.5rem);
-  bottom: 0;
-  right: 2rem;
+/********************** Input Moderator *************************/
+.recipe-input-moderator-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.recipe-input-moderator {
+  margin: 5rem 0.5rem 3rem;
+}
+
+.recipe-input-moderator form {
+  background-color: white;
+  padding: 1rem 0 1px;
+  /*1px to avoid collapsing margins*/
+  border-radius: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+.input-with-items-wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.added-items-list {
+  margin-top: 0.7rem;
+  padding: 0;
+}
+
+.input-moderator__error-message {
+  margin: 0 0.5rem 1rem 0.5rem;
 }
 
 .confirmation-modal__footer {
   padding-top: 0;
+}
+
+/**************** Title Input ****************/
+.title-input {
+  margin-bottom: 0.7rem;
+  padding: 0 0.5rem;
+}
+
+.title-input input {
+  width: 100%;
 }
 
 /**************** Auth ****************/
