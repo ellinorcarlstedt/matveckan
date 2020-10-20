@@ -108,8 +108,8 @@ input[type=password] {
 /**************** Modal ****************/
 .modal {
   z-index: 100;
-  position: fixed;
-  top: 22vh;
+  position: absolute;
+  top: 20vh;
   left: 10%;
   width: 80%;
   background: white;
@@ -154,8 +154,9 @@ input[type=password] {
 
 @media (min-width: 768px) {
   .modal {
-    left: calc(50% - 15rem);
-    width: 30rem;
+    left: calc(50% - 12.5rem);
+    top: 15vh;
+    width: 25rem;
   }
 }
 
