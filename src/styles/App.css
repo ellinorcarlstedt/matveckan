@@ -119,6 +119,9 @@ input[type=password] {
           flex-direction: column;
   list-style-type: none;
   background-color: #b0eeee;
+  font-family: Garamond, Cambria;
+  font-family: 'Varela Round';
+  font-size: 0.8rem;
   text-align: end;
   margin: 0;
   padding: 0;

@@ -6,6 +6,7 @@
   flex-direction: column;
   list-style-type: none;
   background-color: $primaryBlue;
+  @include primaryFont();
   text-align: end;
   margin: 0;
   padding: 0;
