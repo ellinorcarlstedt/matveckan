@@ -1,5 +1,5 @@
 A web app where you can add your own recipes and display a random selection of recipes for a 7 day menu. <br />
-Frontend part is public, backend part is avaliable upon request. <br />
+This is the frontend part. If you also want access to the backend part, contact me! <br />
 Made with **React, Node.js, Express** and **MongoDB**. <br />
 
 ![](/src/shared/resources/printscreens/summary.png)
