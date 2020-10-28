@@ -6,10 +6,10 @@ import Modal from '../../shared/UIElements/Modal';
 import Button from '../../shared/UIElements/Button';
 import LoadingSpinner from '../../shared/UIElements/LoadingSpinner';
 import ArtistAttribute from '../../shared/UIElements/ArtistAttribute';
+import DUMMY_RECIPES from '../../shared/resources/dummyRecipes';
 
 function MenuModerator () {
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
-    const [ noRecipesError, setNoRecipesError ] = useState(false);
     const [ allRecipes, setAllRecipes ] = useState(null);
     const [ selectedRecipes, setSelectedRecipes ] = useState([]);
 
@@ -17,9 +17,7 @@ function MenuModerator () {
         if (allRecipes) {
             const newMenu = getMenu(allRecipes, 7);
             setSelectedRecipes(newMenu);
-        } else {
-            setNoRecipesError(true);
-        }
+        } 
     }
 
     const getRandomNumber = (maxNumber) => {
@@ -32,7 +30,7 @@ function MenuModerator () {
                 const response = await sendRequest("http://localhost:5000/api/recipes");
                 setAllRecipes(response.recipes);
             } catch(err) {
-                console.log(err);
+                setAllRecipes(DUMMY_RECIPES);
             }
         }
         fetchRecipes();
@@ -59,13 +57,6 @@ function MenuModerator () {
                 header="Någonting gick fel"
                 footer={<Button onClick={clearError}>OK</Button>}>
                 {error}
-            </Modal>
-            <Modal 
-                show={noRecipesError}
-                onCancel={() => setNoRecipesError(false)}
-                header="Kan inte visa några recept"
-                footer={<Button onClick={() => setNoRecipesError(false)}>OK</Button>}>
-                {"Några recept finns tyvärr inte att visa just nu."}
             </Modal>
             <Background className="menu-moderator">
                 {isLoading && <LoadingSpinner asOverlay />}
