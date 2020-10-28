@@ -5,7 +5,6 @@ import Background from "../../shared/UIElements/Background";
 import Modal from "../../shared/UIElements/Modal";
 import Button from '../../shared/UIElements/Button';
 import LoadingSpinner from '../../shared/UIElements/LoadingSpinner';
-import OverlayInfo from '../../shared/UIElements/OverlayInfo';
 import ErrorMessage from '../../shared/UIElements/ErrorMessage';
 import TitleInput from '../components/TitleInput';
 import IngredientInput from '../components/IngredientInput';
@@ -45,6 +44,8 @@ const RecipeInputModerator = () => {
 
   const handleSubmit = async event => {
     event.preventDefault();
+    clearErrorMessage();
+    clearEditMode();
     let validInput = false;
     validInput = validateInput();
     if (!validInput) { 
@@ -353,8 +354,8 @@ const RecipeInputModerator = () => {
 
 
 
-  return (
-    <React.Fragment>
+  return ( 
+    <React.Fragment> 
           <Modal 
             show={!!error}
             onCancel={clearError}
@@ -377,8 +378,6 @@ const RecipeInputModerator = () => {
        {isLoading && <LoadingSpinner asOverlay />}
 
         <div className="component-resizer">
-          
-        {!auth.isLoggedin && <OverlayInfo>Logga in för att lägga till ett nytt recept</OverlayInfo>}
  
           <div className="recipe-input-moderator">
 
