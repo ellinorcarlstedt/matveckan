@@ -31,10 +31,14 @@ export const useHttpClient = () => {
             setIsLoading(false);
             return data;
         } catch (err) {
-            setError(err.message);
+            if (err.name === "TypeError") {
+                setError("Kunde inte ansluta till databasen.");
+            } else {
+                setError(err.message);
+            }
             setIsLoading(false);
             throw err;
-        }
+        } 
         
     }, []);
 
