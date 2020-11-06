@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -10,26 +10,17 @@ import MainNavigation from './shared/Navigation/MainNavigation';
 import MenuModerator from './menu/pages/MenuModerator';
 import RecipeInputModerator from './recipe-input/pages/RecipeInputModerator';
 import Auth from './shared/auth/pages/Auth';
+import useAuth from './shared/hooks/auth-hook';
 import { AuthContext } from './shared/context/auth-context';
+
 
 function App() {
 
-  const [ isLoggedIn, setIsLoggedIn ] = useState(false);
-  const [ userId, setUserId ] = useState(null);
-
-  const login = useCallback((uid) => {
-      setIsLoggedIn(true);
-      setUserId(uid);
-    }, []);
-
-  const logout = useCallback(() => {
-      setIsLoggedIn(false);
-      setUserId(null);
-    }, []);
+  const { login, logout, token, userId } = useAuth();
 
   let routs = "";
 
-  if (isLoggedIn) {
+  if (!!token) {
     routs = (
       <Switch> 
         <Route exact path="/" component={MenuModerator} />
@@ -51,7 +42,14 @@ function App() {
   }
 
   return (
-    <AuthContext.Provider value={{isLoggedin : isLoggedIn, userId: userId, login: login, logout: logout}}>
+    <AuthContext.Provider 
+        value={{
+          isLoggedin : !!token, 
+          token: token, 
+          userId: userId, 
+          login: login, 
+          logout: logout
+          }}>
       <Router>
         <div className="App">
           <MainNavigation />
