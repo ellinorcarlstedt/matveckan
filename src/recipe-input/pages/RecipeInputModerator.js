@@ -19,12 +19,10 @@ const RecipeInputModerator = () => {
   const auth = useContext(AuthContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
-  const [ titleInput, setTitleInput ] = useState("");
-  const [ categoryInput, setCategoryInput ] = useState(null);
-
+  const [ title, setTitle ] = useState("");
+  const [ category, setCategory ] = useState(null);
   const [ ingredient, setIngredient ] = useState({ name: "", amount: "", unit: "", details: ""});
-
-  const [ descriptionInput, setdescriptionInput ] = useState("");
+  const [ description, setDescription ] = useState("");
 
   const [ currentIngredient, setCurrentIngredient ] = useState(null);
   const [ currentDescriptionRow, setCurrentDescriptionRow ] = useState(null);
@@ -55,8 +53,8 @@ const RecipeInputModerator = () => {
             "http://localhost:5000/api/recipes",
             "POST",
             JSON.stringify({
-              mealName: titleInput,
-              mealCategory: categoryInput,
+              mealName: title,
+              mealCategory: category,
               ingredients: addedIngredients,
               description: addedDescriptionRows,
               creator: auth.userId
@@ -113,10 +111,10 @@ const RecipeInputModerator = () => {
   }
 
   const validateInput = () => {
-    if(titleInput === "") {
+    if(title === "") {
         showError("Du behöver ange maträttens namn.");
         manageInputFocus(titleFocus);
-    } else if (categoryInput === null) {
+    } else if (category === null) {
         showError("Du behöver ange en kategori för receptet - klicka på en av symbolerna.");
     } else if(!addedIngredients.length) {
         showError("Lägg till minst en ingrediens.");
@@ -141,11 +139,11 @@ const RecipeInputModerator = () => {
 
 
   const clearTitleInput = () => {
-    setTitleInput("");
+    setTitle("");
   }
 
   const clearCategoryInput = () => {
-    setCategoryInput(null);
+    setCategory(null);
   }
 
   const clearIngredientsInput = () => {
@@ -161,7 +159,7 @@ const RecipeInputModerator = () => {
 
   const cleardescriptionInput = () => {
     setCurrentDescriptionRow(null);
-    setdescriptionInput("");
+    setDescription("");
   }
 
 
@@ -175,14 +173,14 @@ const RecipeInputModerator = () => {
 
 
   const handleTitleChange = (e) => {
-    setTitleInput(e.target.value);
+    setTitle(e.target.value);
     clearTooltip();
     clearErrorMessage();
   }
 
 
   const handleCategoryChange = (categoryId) => {
-    setCategoryInput(categoryId);
+    setCategory(categoryId);
     clearTooltip();
     clearErrorMessage();
   }
@@ -190,7 +188,7 @@ const RecipeInputModerator = () => {
 
   const handleDescriptionChange = (e) => {
     e.preventDefault();
-    setdescriptionInput(e.target.value);
+    setDescription(e.target.value);
     clearTooltip();
     clearErrorMessage();
     if (currentIngredient !== null) { clearIngredientsInput(); }
@@ -246,7 +244,7 @@ const RecipeInputModerator = () => {
 
   const addDescriptionRow = () => {
     clearErrorMessage();
-    if (descriptionInput === "") { 
+    if (description === "") { 
       showTooltip("description");
       manageInputFocus(descriptionFocus);
       if (currentIngredient !== null) { clearIngredientsInput(); }
@@ -255,7 +253,7 @@ const RecipeInputModerator = () => {
     const id = currentDescriptionRow === null ? getNewId(addedDescriptionRows) : currentDescriptionRow;
     const descriptionRowObject = {
       id: id,
-      description: descriptionInput
+      description: description
     }
     let allDescriptionRows = [...addedDescriptionRows];
     if (currentDescriptionRow === null) {
@@ -322,11 +320,7 @@ const RecipeInputModerator = () => {
         name: ingredientToEdit.name, 
         amount: ingredientToEdit.amount, 
         unit: ingredientToEdit.unit, 
-        details: ingredientToEdit.details})
-   //   setIngredientName(ingredientToEdit.name);
-   //   setIngredientAmount(ingredientToEdit.amount);
-   //   setIngredientUnit(ingredientToEdit.unit);
-   //   setIngredientDetails(ingredientToEdit.details);
+        details: ingredientToEdit.details});
     } else {
       clearIngredientsInput();
     }
@@ -343,7 +337,7 @@ const RecipeInputModerator = () => {
         return item.id === id;
       })
       setCurrentDescriptionRow(descriptionRowToEdit.id);
-      setdescriptionInput(descriptionRowToEdit.description);
+      setDescription(descriptionRowToEdit.description);
     } else {
       cleardescriptionInput();
     }
@@ -381,9 +375,9 @@ const RecipeInputModerator = () => {
 
             <form>
 
-              <TitleInput titleInput={titleInput} handleChange={handleTitleChange} titleFocus={titleFocus}/>
+              <TitleInput titleInput={title} handleChange={handleTitleChange} titleFocus={titleFocus}/>
 
-              <CategoryInput handleChange={handleCategoryChange} selectedCategory={categoryInput} handleEnter={handleEnter} />
+              <CategoryInput handleChange={handleCategoryChange} selectedCategory={category} handleEnter={handleEnter} />
 
               <div className="input-with-items-wrapper">
 
@@ -418,7 +412,7 @@ const RecipeInputModerator = () => {
                                   addDescriptionRow={addDescriptionRow} 
                                   handleEnter={handleEnter} 
                                   hideTooltip={hideTooltip}
-                                  value={descriptionInput}
+                                  value={description}
                                   inputFocus={descriptionFocus}
                                   showTooltip={tooltipTarget === "description"}
                                   editMode={currentDescriptionRow !== null}/>
