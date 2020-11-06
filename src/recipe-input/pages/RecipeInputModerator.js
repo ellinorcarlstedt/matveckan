@@ -21,10 +21,9 @@ const RecipeInputModerator = () => {
 
   const [ titleInput, setTitleInput ] = useState("");
   const [ categoryInput, setCategoryInput ] = useState(null);
-  const [ ingredientName, setIngredientName ] = useState("");
-  const [ ingredientAmount, setIngredientAmount ] = useState("");
-  const [ ingredientUnit, setIngredientUnit ] = useState("");
-  const [ ingredientDetails, setIngredientDetails ] = useState("");
+
+  const [ ingredient, setIngredient ] = useState({ name: "", amount: "", unit: "", details: ""});
+
   const [ descriptionInput, setdescriptionInput ] = useState("");
 
   const [ currentIngredient, setCurrentIngredient ] = useState(null);
@@ -151,10 +150,12 @@ const RecipeInputModerator = () => {
 
   const clearIngredientsInput = () => {
     setCurrentIngredient(null);
-    setIngredientName("");
-    setIngredientAmount("");
-    setIngredientUnit("");
-    setIngredientDetails("");
+    setIngredient({ 
+      name: "", 
+      amount: "", 
+      unit: "", 
+      details: ""
+    });
   }
 
 
@@ -200,15 +201,7 @@ const RecipeInputModerator = () => {
     e.preventDefault();
     const target = e.target.name;
     const value = e.target.value;
-    if (target === "name") {
-      setIngredientName(value);
-    } else if (target === "amount") {
-      setIngredientAmount(value);
-    } else if (target === "unit") {
-      setIngredientUnit(value);
-    } else if (target === "details") {
-      setIngredientDetails(value);
-    } 
+    setIngredient({ ...ingredient, [target]: value }); 
     clearTooltip();
     clearErrorMessage();
     if (currentDescriptionRow !== null) { cleardescriptionInput(); }
@@ -217,13 +210,13 @@ const RecipeInputModerator = () => {
 
   const addIngredient = () => {
     clearErrorMessage();
-    if (ingredientName === "") { 
+    if (ingredient.name === "") { 
       showTooltip("ingredient");
       manageInputFocus(ingredientFocus);
       if (currentDescriptionRow !== null) { cleardescriptionInput(); }
       clearErrorMessage();
       return; 
-    } else if (isNaN(ingredientAmount)) {
+    } else if (isNaN(ingredient.amount)) {
       showTooltip("amount");
       if (currentDescriptionRow !== null) { cleardescriptionInput(); }
       clearErrorMessage();
@@ -232,10 +225,10 @@ const RecipeInputModerator = () => {
     const id = currentIngredient === null ? getNewId(addedIngredients) : currentIngredient;
     const ingredientObject = {
       id: id,
-      name: ingredientName,
-      amount: ingredientAmount,
-      unit: ingredientUnit,
-      details: ingredientDetails
+      name: ingredient.name,
+      amount: ingredient.amount,
+      unit: ingredient.unit,
+      details: ingredient.details
     }
     let allIngredients = [...addedIngredients];
     if (currentIngredient === null) {
@@ -325,10 +318,15 @@ const RecipeInputModerator = () => {
         return item.id === id;
       });
       setCurrentIngredient(ingredientToEdit.id);
-      setIngredientName(ingredientToEdit.name);
-      setIngredientAmount(ingredientToEdit.amount);
-      setIngredientUnit(ingredientToEdit.unit);
-      setIngredientDetails(ingredientToEdit.details);
+      setIngredient({ 
+        name: ingredientToEdit.name, 
+        amount: ingredientToEdit.amount, 
+        unit: ingredientToEdit.unit, 
+        details: ingredientToEdit.details})
+   //   setIngredientName(ingredientToEdit.name);
+   //   setIngredientAmount(ingredientToEdit.amount);
+   //   setIngredientUnit(ingredientToEdit.unit);
+   //   setIngredientDetails(ingredientToEdit.details);
     } else {
       clearIngredientsInput();
     }
@@ -393,10 +391,10 @@ const RecipeInputModerator = () => {
                                   addIngredient={addIngredient}
                                   handleEnter={handleEnter} 
                                   hideTooltip={hideTooltip}
-                                  name={ingredientName} 
-                                  amount={ingredientAmount} 
-                                  unit={ingredientUnit} 
-                                  details={ingredientDetails}
+                                  name={ingredient.name} 
+                                  amount={ingredient.amount} 
+                                  unit={ingredient.unit} 
+                                  details={ingredient.details}
                                   inputFocus={ingredientFocus}
                                   tooltipTarget={tooltipTarget}
                                   editMode={currentIngredient !== null}/>
