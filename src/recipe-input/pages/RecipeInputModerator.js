@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { AuthContext } from "../../shared/context/auth-context";
 import { useHttpClient } from "../../shared/hooks/http-hook";
+import useCustomRef from "../../shared/hooks/ref-hook";
 import Background from "../../shared/UIElements/Background";
 import Modal from "../../shared/UIElements/Modal";
 import Button from '../../shared/UIElements/Button';
@@ -34,10 +35,10 @@ const RecipeInputModerator = () => {
   const [ errorMessage, setErrorMessage] = useState("");
   const [ postedRecipe, setPostedRecipe] = useState("");
 
-  const titleFocus = React.createRef();
-  const ingredientFocus = React.createRef();
-  const descriptionFocus = React.createRef();
-
+ 
+  const titleFocus = useCustomRef();
+  const ingredientFocus = useCustomRef();
+  const descriptionFocus = useCustomRef();
 
   const handleSubmit = async event => {
     event.preventDefault();
@@ -75,14 +76,14 @@ const RecipeInputModerator = () => {
   }
 
   const manageInputFocus = (refName) => {
-    refName.current.focus();
+      refName.current.focus();
   }
 
   useEffect(() => {
-    if (auth.isLoggedin) {
+    if (titleFocus) {
       manageInputFocus(titleFocus);
     }
-  }, [auth.isLoggedin]);
+  }, [titleFocus]);
 
   const showTooltip = (source) => {
     setTooltipTarget(source);
