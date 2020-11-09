@@ -35,7 +35,6 @@ const RecipeInputModerator = () => {
   const [ errorMessage, setErrorMessage] = useState("");
   const [ postedRecipe, setPostedRecipe] = useState("");
 
- 
   const titleFocus = useCustomRef();
   const ingredientFocus = useCustomRef();
   const descriptionFocus = useCustomRef();
@@ -96,7 +95,6 @@ const RecipeInputModerator = () => {
   const clearTooltip = () => {
     if (tooltipTarget !== "") { hideTooltip(); }
   }
-
 
   const showError = (message) => {
     setErrorMessage(message);

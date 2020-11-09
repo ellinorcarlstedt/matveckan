@@ -9,6 +9,7 @@ import './styles/App.css';
 import MainNavigation from './shared/Navigation/MainNavigation';
 import MenuModerator from './menu/pages/MenuModerator';
 import RecipeInputModerator from './recipe-input/pages/RecipeInputModerator';
+import TEST_COMP from './recipe-input/components/TEST_COMP';
 import Auth from './shared/auth/pages/Auth';
 import useAuth from './shared/hooks/auth-hook';
 import { AuthContext } from './shared/context/auth-context';
@@ -34,7 +35,7 @@ function App() {
       <Switch> 
         <Route exact path="/" component={MenuModerator} />
         <Route exact path="/meny" component={MenuModerator} />
-        <Route exact path="/recept" component={RecipeInputModerator} />
+        <Route exact path="/recept" component={TEST_COMP} />
         <Route exact path="/auth" component={Auth} />
         <Redirect to="/meny" />
       </Switch> 
