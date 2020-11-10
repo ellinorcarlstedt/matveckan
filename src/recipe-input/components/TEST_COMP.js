@@ -1,5 +1,6 @@
 import React, { useCallback, useReducer } from 'react';
 import IngredientInput from "./IngredientInput";
+import DescriptionInput from "./DescriptionInput";
 import AddedRecipeItem from "./AddedRecipeItem";
 
 const getNewId = (list) => {
@@ -112,7 +113,7 @@ const TEST_COMP = () => {
                 addedItems: [],
                 currentItem: null
             },
-            descriptions: {
+            description: {
                 inputs: {
                     description: ""
                 },
@@ -169,7 +170,7 @@ const TEST_COMP = () => {
         if (source === "name" || source === "unit" || source === "amount" || source === "details") {
             addItem("ingredients");
         } else if (source === "description") {
-            addItem("descriptions");
+            addItem("description");
         }
       }
     }
@@ -205,6 +206,31 @@ const TEST_COMP = () => {
                     })}
                 </ul>
             </div>
+            <div className="input-with-items-wrapper">
+                <DescriptionInput  
+                    handleChange={(e) => handleChange("description", e.target.name, e.target.value)} 
+                    addDescriptionRow={() => addItem("description")}
+                    value={itemsState.description.inputs.description} 
+                    handleEnter={handleEnter} 
+              //      hideTooltip={hideTooltip}
+              //      inputFocus={ingredientFocus}
+              //      tooltipTarget={tooltipTarget}
+                    editMode={itemsState.currentItem !== null}
+                />
+
+                <ul className="added-items-list">
+                {itemsState.description.addedItems.map((item, i) => {
+                return <AddedRecipeItem   
+                            key={item.id} 
+                            id={item.id}
+                            listItemNumber={i + 1}
+                            content={item.description}  
+                            currentItem={itemsState.description.currentItem}
+                            toggleEditMode={() => toggleEditMode("description", item.id)}
+                            deleteItem={() => deleteItem("description", item.id)}/>
+                    })}
+                </ul>
+            </div>
              
         </div>
     )
@@ -214,28 +240,4 @@ export default TEST_COMP;
 
 
 
-/** <div className="input-with-items-wrapper">
-                <DescriptionInput  
-                    handleChange={(e) => handleChange(e.target.name, e.target.value)} 
-                    addDescriptionRow={addItem}
-                    value={itemsState.inputs.description} 
-                    handleEnter={handleEnter} 
-                    hideTooltip={hideTooltip}
-                    inputFocus={ingredientFocus}
-                    tooltipTarget={tooltipTarget}
-                    editMode={itemsState.currentItem !== null}
-                />
-
-                <ul className="added-items-list">
-                {itemsState.addedItems.map((item, i) => {
-                return <AddedRecipeItem   
-                            key={item.id} 
-                            id={item.id}
-                            listItemNumber={i + 1}
-                            content={item.description}  
-                            currentItem={currentDescriptionRow}
-                            toggleEditMode={() => toggleEditMode(item.id)}
-                            deleteItem={() => deleteItem(item.id)}/>
-                    })}
-                </ul>
-            </div> **/
+/**  **/
