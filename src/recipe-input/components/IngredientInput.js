@@ -28,6 +28,7 @@ function IngredientInput(props) {
                                 className="ingredient-input-name" 
                                 placeholder="Ingrediens" 
                                 autoComplete="off" 
+                                itemType="ingredients"
                                 onChange={props.handleChange} 
                                 ref={props.inputFocus}/>
                                 
@@ -38,6 +39,7 @@ function IngredientInput(props) {
                                         className="ingredient-input-amount" 
                                         placeholder="Mängd" 
                                         autoComplete="off" 
+                                        itemType="ingredients"
                                         onChange={props.handleChange}/>
 
                                 <input  type="text" 
@@ -46,6 +48,7 @@ function IngredientInput(props) {
                                         className="ingredient-input-unit" 
                                         placeholder="Enhet" 
                                         autoComplete="off" 
+                                        itemType="ingredients"
                                         onChange={props.handleChange}/>
 
                                 <input  type="text" 
@@ -54,6 +57,7 @@ function IngredientInput(props) {
                                         className="ingredient-input-details" 
                                         placeholder="Övrigt" 
                                         autoComplete="off" 
+                                        itemType="ingredients"
                                         onChange={props.handleChange}/>
                         </div>
                 </div>

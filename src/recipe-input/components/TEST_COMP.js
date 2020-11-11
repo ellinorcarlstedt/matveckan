@@ -39,10 +39,14 @@ const TEST_COMP = () => {
                     let index = itemsList.findIndex(item => item.id === state[type].currentItem);
                     itemsList.splice((index), 1, action.item); 
                 }
+                console.log("state before cleared inputs");
+                console.log(state[type]);
                 let clearedInputs = {...state[type].inputs};
                 for (let input in clearedInputs) {
                     clearedInputs[input] = "";
                 }
+                console.log("state after cleared inputs");
+                console.log(state[type]);
             return {
                 ...state,
                 [type]: {
@@ -178,6 +182,7 @@ const TEST_COMP = () => {
 
     return (
         <div style={{ marginTop: "10rem", padding: "1rem", backgroundColor: "white"}}>
+            <h2>Test comp 1</h2>
             <div className="input-with-items-wrapper">
                 <IngredientInput  
                     handleChange={(e) => handleChange("ingredients", e.target.name, e.target.value)} 
@@ -237,7 +242,3 @@ const TEST_COMP = () => {
 }
 
 export default TEST_COMP;
-
-
-
-/**  **/

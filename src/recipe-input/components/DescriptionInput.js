@@ -14,6 +14,7 @@ function DescriptionInput(props) {
                         value={props.value} 
                         onChange={props.handleChange} 
                         autoComplete="off"
+                        itemType="description"
                         ref={props.inputFocus}/>
 
                 <img    src={require("../../shared/resources/icons/plus.svg")} 
