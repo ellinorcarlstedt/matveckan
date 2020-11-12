@@ -5,7 +5,13 @@ function DescriptionInput(props) {
 
     return (
         <div>
-            <Tooltip show={props.showTooltip} hideTooltip={props.hideTooltip} position="middle" tooltipClass="description__tooltip">Skriv en instruktion</Tooltip>
+            <Tooltip 
+                show={props.showTooltip} 
+                hideTooltip={props.hideTooltip} 
+                position="middle" 
+                tooltipClass="description__tooltip">
+                    Skriv en instruktion
+            </Tooltip>
             <div className="description-input" onKeyPress={props.handleEnter} >
 
                 <input  type="text" 
@@ -20,7 +26,7 @@ function DescriptionInput(props) {
                 <img    src={require("../../shared/resources/icons/plus.svg")} 
                         alt="Lägg till" 
                         className="input-clickable-icon add-icon" 
-                        onClick={props.addDescriptionRow} />
+                        onClick={props.addDescription} />
 
             </div>
         </div>

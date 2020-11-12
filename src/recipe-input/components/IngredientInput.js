@@ -10,7 +10,7 @@ function IngredientInput(props) {
                 hideTooltip={props.hideTooltip} 
                 position="middle" 
                 tooltipClass="ingredient__tooltip">
-                        Skriv ingrediensens namn
+                        Skriv ingrediensens namn.
            </Tooltip>
            <Tooltip 
                 show={props.tooltipTarget === "amount"} 
@@ -30,7 +30,7 @@ function IngredientInput(props) {
                                 autoComplete="off" 
                                 itemType="ingredients"
                                 onChange={props.handleChange} 
-                                ref={props.inputFocus}/>
+                                ref={props.ingredientFocus}/>
                                 
                         <div className="ingredient-input-details-wrapper">
                                 <input  type="text" 
@@ -40,7 +40,8 @@ function IngredientInput(props) {
                                         placeholder="Mängd" 
                                         autoComplete="off" 
                                         itemType="ingredients"
-                                        onChange={props.handleChange}/>
+                                        onChange={props.handleChange}
+                                        ref={props.amountFocus}/>
 
                                 <input  type="text" 
                                         name="unit" 

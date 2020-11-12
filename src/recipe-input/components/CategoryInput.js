@@ -10,7 +10,6 @@ function CategoryInput(props) {
                               value={item.value} 
                               key={item.value} 
                               handleChange={props.handleChange}
-                              handleEnter={props.handleEnter}
                               selectedCategory={props.selectedCategory}/>
   })
 

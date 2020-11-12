@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useCallback } from 'react';
+import React, { useEffect, useCallback, useReducer, useContext } from 'react';
 import { AuthContext } from "../../shared/context/auth-context";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import useCustomRef from "../../shared/hooks/ref-hook";
@@ -7,126 +7,156 @@ import Modal from "../../shared/UIElements/Modal";
 import Button from '../../shared/UIElements/Button';
 import LoadingSpinner from '../../shared/UIElements/LoadingSpinner';
 import ErrorMessage from '../../shared/UIElements/ErrorMessage';
-import TitleInput from '../components/TitleInput';
-import IngredientInput from '../components/IngredientInput';
-import DescriptionInput from '../components/DescriptionInput';
-import CategoryInput from '../components/CategoryInput';
+import TitleInput from "../components/TitleInput";
+import CategoryInput from "../components/CategoryInput";
+import IngredientInput from "../components/IngredientInput";
+import DescriptionInput from "../components/DescriptionInput";
+import AddedRecipeItem from "../components/AddedRecipeItem";
 import Recipe from '../../menu/components/Recipe';
-import AddedRecipeItem from '../components/AddedRecipeItem';
 import ArtistAttribute from '../../shared/UIElements/ArtistAttribute'; 
 
-
-const RecipeInputModerator = () => {
-  const auth = useContext(AuthContext);
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
-
-  const [ title, setTitle ] = useState("");
-  const [ category, setCategory ] = useState(null);
-  const [ ingredient, setIngredient ] = useState({ name: "", amount: "", unit: "", details: ""});
-  const [ description, setDescription ] = useState("");
-
-  const [ currentIngredient, setCurrentIngredient ] = useState(null);
-  const [ currentDescriptionRow, setCurrentDescriptionRow ] = useState(null);
-
-  const [ addedIngredients, setAddedIngredients ] = useState([]);
-  const [ addedDescriptionRows, setAddedDescriptionRows ] = useState([]);
-
-  const [ tooltipTarget, setTooltipTarget ] = useState("");
-  const [ errorMessage, setErrorMessage] = useState("");
-  const [ postedRecipe, setPostedRecipe] = useState("");
-
-  const titleFocus = useCustomRef();
-  const ingredientFocus = useCustomRef();
-  const descriptionFocus = useCustomRef();
-
-  const handleSubmit = async event => {
-    event.preventDefault();
-    clearErrorMessage();
-    clearEditMode();
-    let validInput = false;
-    validInput = validateInput();
-    if (!validInput) { 
-        return; 
-    } else {
-        try {
-          const response = await sendRequest(
-            "http://localhost:5000/api/recipes",
-            "POST",
-            JSON.stringify({
-              mealName: title,
-              mealCategory: category,
-              ingredients: addedIngredients,
-              description: addedDescriptionRows,
-              creator: auth.userId
-            }),
-            { 
-              "Content-Type" : "application/json"
+  const itemsReducer = (state, action) => {
+    switch (action.type) {
+        case "INPUT_CHANGE":
+            return {
+                ...state,
+                inputs: {
+                    ...state.inputs,
+                    [action.inputName] : {
+                        ...state.inputs[action.inputName],
+                        value: action.value
+                    }
+                },
+                tooltipTarget: "",
+                errorMessage: ""
             }
-            );
-            setPostedRecipe(response.recipe);
-            clearTitleInput();
-            clearCategoryInput();
-            clearIngredientsInput();
-            cleardescriptionInput();
-            setAddedIngredients([]);
-            setAddedDescriptionRows([]);
-        } catch (err) {}
-    }
-  }
-
-  const manageInputFocus = (refName) => {
-      refName.current.focus();
-  }
-
-  useEffect(() => {
-    if (titleFocus) {
-      manageInputFocus(titleFocus);
-    }
-  }, [titleFocus]);
-
-  const showTooltip = (source) => {
-    setTooltipTarget(source);
-  }
-
-  const hideTooltip = () => {
-    setTooltipTarget("");
-  }
-
-  const clearTooltip = () => {
-    if (tooltipTarget !== "") { hideTooltip(); }
-  }
-
-  const showError = (message) => {
-    setErrorMessage(message);
-  }
-
-  const hideError = () => {
-      setErrorMessage("");
-  }
-
-  const clearErrorMessage = () => {
-      if (errorMessage) { 
-          hideError() }
-  }
-
-  const validateInput = () => {
-    if(title === "") {
-        showError("Du behöver ange maträttens namn.");
-        manageInputFocus(titleFocus);
-    } else if (category === null) {
-        showError("Du behöver ange en kategori för receptet - klicka på en av symbolerna.");
-    } else if(!addedIngredients.length) {
-        showError("Lägg till minst en ingrediens.");
-        manageInputFocus(ingredientFocus);
-    } else if(!addedDescriptionRows.length) {
-        showError("Lägg till minst en beskrivningspunkt.");
-        manageInputFocus(descriptionFocus);
-    } else {
-        return true;
+        case "ADD_ITEM":
+            let itemsList = [...state.addedItems]; 
+            if (state.currentItem.id === null || state.currentItem.id !== action.newItem.id) {
+                itemsList.push(action.newItem);
+            } else {
+                let index = itemsList.findIndex(item => item.id === state.currentItem.id);
+                itemsList.splice((index), 1, action.newItem); 
+            } 
+            let clearedInputsAfterAdding = {};
+            for (let prop in state.inputs) {
+                let clearedValue = !state.inputs[prop].itemType ? state.inputs[prop].value : "";  
+                clearedInputsAfterAdding = {
+                    ...clearedInputsAfterAdding,
+                    [prop]: {
+                        ...state.inputs[prop],
+                        value: clearedValue
+                    }
+                }
+            } 
+            return {
+                ...state,
+                inputs: clearedInputsAfterAdding,
+                addedItems: itemsList,
+                currentItem: { id: null, itemType: "" },
+                tooltipTarget: "",
+                errorMessage: ""
+            }
+        case "DELETE_ITEM":
+            let updatedItems = state.addedItems.filter((item) => {
+                return item.id !== action.id;
+            }); 
+            let clearedInputsAfterDeleting = {};
+            for (let prop in state.inputs) {
+                let clearedValue = !state.inputs[prop].itemType ? state.inputs[prop].value : "";
+                clearedInputsAfterDeleting = {
+                    ...clearedInputsAfterDeleting,
+                    [prop]: {
+                        ...state.inputs[prop],
+                        value: clearedValue
+                    }
+                }
+            }         
+            return {
+                ...state,
+                inputs: clearedInputsAfterDeleting,
+                addedItems: updatedItems, 
+                currentItem: { id: null, itemType: "" },
+                tooltipTarget: "",
+                errorMessage: ""
+            }
+        case "SET_EDIT_MODE": 
+            let itemToEdit = state.addedItems.filter(item => item.id === action.id);
+            let editModeInputs = {};
+            for (let prop in state.inputs) {
+                let itemType = state.inputs[prop].itemType;
+                let updatedValue = "";
+                if (!itemType) {
+                    updatedValue = state.inputs[prop].value;
+                } else if (itemType === itemToEdit[0].itemType) {
+                    updatedValue = itemToEdit[0][prop];
+                } 
+                editModeInputs = {
+                    ...editModeInputs,
+                    [prop]: {
+                        ...state.inputs[prop],
+                        value: updatedValue
+                    }
+                }
+            }         
+            return {
+                ...state,
+                inputs: editModeInputs,
+                currentItem: { id: action.id, itemType: itemToEdit[0].itemType },
+                tooltipTarget: "",
+            }
+        case "CLEAR_ITEM_INPUTS":
+            let clearedInputs = {};
+            for (let prop in state.inputs) {
+                let clearedValue = !state.inputs[prop].itemType ? state.inputs[prop].value : "";
+                clearedInputs = {
+                    ...clearedInputs,
+                    [prop]: {
+                        ...state.inputs[prop],
+                        value: clearedValue
+                    }
+                }
+            }   
+            return {
+                ...state,
+                inputs: clearedInputs,
+                currentItem: { id: null, itemType: "" }
+            }
+        case "HANDLE_TOOLTIP":
+            return {
+                ...state,
+                tooltipTarget: action.target
+            }  
+        case "HANDLE_ERROR_MESSAGE":
+            return {
+                ...state,
+                errorMessage: action.errorMessage
+            }
+        case "HANDLE_POSTED_RECIPE":
+            let cleanedInputs = {};
+            for (let prop in state.inputs) {
+                cleanedInputs = {
+                    ...cleanedInputs,
+                    [prop]: {
+                        ...state.inputs[prop],
+                        value: ""
+                    }
+                }
+            }   
+            return {
+                inputs: cleanedInputs,
+                addedItems: [],
+                currentItem: { id: null, itemType: "" },
+                tooltipTarget: "",
+                errorMessage: "",
+                postedRecipe: action.recipe
+            }      
+        default:
+            return state;
     }
 }
 
-  const getNewId = (list) => {
+const getNewId = (list) => {
     let highestIdInList = 0; 
     for (let i=0; i < list.length; i++) {
       if (list[i].id > highestIdInList) {
@@ -137,232 +167,226 @@ const RecipeInputModerator = () => {
   } 
 
 
-  const clearTitleInput = () => {
-    setTitle("");
-  }
+const TEST_COMP = () => {
 
-  const clearCategoryInput = () => {
-    setCategory(null);
-  }
-
-  const clearIngredientsInput = () => {
-    setCurrentIngredient(null);
-    setIngredient({ 
-      name: "", 
-      amount: "", 
-      unit: "", 
-      details: ""
-    });
-  }
-
-
-  const cleardescriptionInput = () => {
-    setCurrentDescriptionRow(null);
-    setDescription("");
-  }
-
-
-  const clearEditMode = () => {
-    if (currentIngredient !== null) {
-      clearIngredientsInput();
-    } else if (currentDescriptionRow !== null) {
-      cleardescriptionInput();
+    const initialState = {
+        inputs: {
+            title: { name: "title", value: "" },
+            category: { name: "category", value: "" },
+            name: { name: "name", value: "", itemType: "ingredients" },
+            amount: { name: "amount", value: "", itemType: "ingredients"},
+            unit: { name: "unit", value: "", itemType: "ingredients" },
+            details: { name: "details", value: "", itemType: "ingredients" },
+            description: { name: "description", value: "", itemType: "description" }
+        },
+        addedItems: [],
+        currentItem: { id: null, itemType: "" },
+        tooltipTarget: "",
+        errorMessage: "",
+        postedRecipe: ""
     }
-  }
+
+    const [state, dispatch] = useReducer(itemsReducer, initialState);
+    const { isLoading, error, sendRequest, clearError } = useHttpClient();
+    const auth = useContext(AuthContext);
+
+    const titleFocus = useCustomRef();
+    const ingredientFocus = useCustomRef();
+    const amountFocus = useCustomRef();
+    const descriptionFocus = useCustomRef();
 
 
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value);
-    clearTooltip();
-    clearErrorMessage();
-  }
+    useEffect(() => {
+        if (titleFocus) {
+          titleFocus.current.focus();
+        }
+      }, [titleFocus]);
 
 
-  const handleCategoryChange = (value) => {
-    setCategory(value);
-    clearTooltip();
-    clearErrorMessage();
-  }
+    const handleChange = useCallback((name, value) => {
+        dispatch({
+            type: "INPUT_CHANGE",
+            inputName: name,
+            value: value
+        }); 
+    }, []);
 
 
-  const handleDescriptionChange = (e) => {
-    e.preventDefault();
-    setDescription(e.target.value);
-    clearTooltip();
-    clearErrorMessage();
-    if (currentIngredient !== null) { clearIngredientsInput(); }
-  }
+    const validateItemInput = useCallback((itemType) => {
+        let tooltipTarget; 
+        if (itemType === "ingredients") {
+            if (state.inputs.name.value === "") {
+                tooltipTarget = "ingredient";
+                ingredientFocus.current.focus();
+            } else if (isNaN(state.inputs.amount.value)) {
+                tooltipTarget = "amount";
+                amountFocus.current.focus();
+            }
+        } else if (itemType === "description" && state.inputs.description.value === "") {
+            tooltipTarget = "description";
+            descriptionFocus.current.focus();
+        }  
+        if (!!tooltipTarget) {
+            dispatch({
+                type: "HANDLE_TOOLTIP",
+                target: tooltipTarget
+            });
+            return false;
+        } else {
+            return true;
+        }
+    }, [state.inputs.name.value, state.inputs.amount.value, state.inputs.description.value, 
+        ingredientFocus, amountFocus, descriptionFocus]);
 
 
-  const handleIngredientChange = (e) => {
-    e.preventDefault();
-    const target = e.target.name;
-    const value = e.target.value;
-    setIngredient({ ...ingredient, [target]: value }); 
-    clearTooltip();
-    clearErrorMessage();
-    if (currentDescriptionRow !== null) { cleardescriptionInput(); }
-  }
+    const addItem = useCallback((itemType) => {
+        let isInputValid = validateItemInput(itemType);
+        if (!isInputValid) { return; }
+        let id;
+        if (state.currentItem.id === null || state.currentItem.itemType !== itemType) {
+            id = getNewId(state.addedItems);
+        } else {
+            id = state.currentItem.id;
+        }
+        let newItem;
+        for (let prop in state.inputs) {
+            if (state.inputs[prop].itemType === itemType) {
+                newItem = {
+                    ...newItem,
+                    [prop]: state.inputs[prop].value
+                }
+            }
+        }
+        dispatch({
+            type: "ADD_ITEM",
+            itemType: itemType,
+            newItem: { id, itemType, ...newItem } 
+        }); 
+    }, [state, validateItemInput]);
 
 
-  const addIngredient = () => {
-    clearErrorMessage();
-    if (ingredient.name === "") { 
-      showTooltip("ingredient");
-      manageInputFocus(ingredientFocus);
-      if (currentDescriptionRow !== null) { cleardescriptionInput(); }
-      clearErrorMessage();
-      return; 
-    } else if (isNaN(ingredient.amount)) {
-      showTooltip("amount");
-      if (currentDescriptionRow !== null) { cleardescriptionInput(); }
-      clearErrorMessage();
-      return;
+    const toggleEditMode = useCallback((id) => {
+        if (state.currentItem.id === null || state.currentItem.id !== id) {
+            dispatch({
+                type: "SET_EDIT_MODE",
+                id: id
+            }); 
+        } else {
+            dispatch({
+                type: "CLEAR_ITEM_INPUTS",
+            }); 
+        }
+    }, [state.currentItem.id]);
+
+
+    const handleEnter = (e) => {
+        let itemType = e.target.attributes.itemType.value;
+        if (e.key === "Enter") {
+            if (itemType === "ingredients" || itemType === "description") {
+                addItem(itemType);
+            } 
+        }
     }
-    const id = currentIngredient === null ? getNewId(addedIngredients) : currentIngredient;
-    const ingredientObject = {
-      id: id,
-      name: ingredient.name,
-      amount: ingredient.amount,
-      unit: ingredient.unit,
-      details: ingredient.details
-    }
-    let allIngredients = [...addedIngredients];
-    if (currentIngredient === null) {
-      allIngredients.push(ingredientObject);
-    } else {
-      let index = allIngredients.findIndex(ingredient => ingredient.id === currentIngredient);
-      allIngredients.splice((index), 1, ingredientObject); 
-    }
-    setAddedIngredients(allIngredients);
-    clearIngredientsInput();
-    if (currentDescriptionRow !== null) { cleardescriptionInput(); }
-    manageInputFocus(ingredientFocus);
-  }
 
 
-  const addDescriptionRow = () => {
-    clearErrorMessage();
-    if (description === "") { 
-      showTooltip("description");
-      manageInputFocus(descriptionFocus);
-      if (currentIngredient !== null) { clearIngredientsInput(); }
-      return; 
-    } 
-    const id = currentDescriptionRow === null ? getNewId(addedDescriptionRows) : currentDescriptionRow;
-    const descriptionRowObject = {
-      id: id,
-      description: description
+    const validateFormInput = () => {
+        let errorMessage;
+        if (!state.inputs.title.value) {
+            errorMessage = "Du behöver ange maträttens namn.";
+            titleFocus.current.focus();
+        } else if (!state.inputs.category.value) {
+            errorMessage = "Du behöver ange en kategori för receptet - klicka på en av symbolerna.";
+        } else if(!state.addedItems.length) {
+            errorMessage = "Lägg till minst en ingrediens.";
+            ingredientFocus.current.focus();
+        } else {
+            let addedIngredientItems = state.addedItems.filter((item) =>  item.itemType === "ingredients");
+            let addedDescriptionItem = state.addedItems.filter((item) =>  item.itemType === "description");
+            if (!addedIngredientItems.length) {
+                errorMessage = "Lägg till minst en ingrediens.";
+                ingredientFocus.current.focus();
+            } else if (!addedDescriptionItem.length) {
+                errorMessage = "Lägg till minst en beskrivningspunkt.";
+                descriptionFocus.current.focus();
+            }
+        }
+        if (!!errorMessage) {
+            dispatch({
+                type: "HANDLE_ERROR_MESSAGE",
+                errorMessage: errorMessage
+            });
+            return false;
+        } else {
+            return true;
+        }
     }
-    let allDescriptionRows = [...addedDescriptionRows];
-    if (currentDescriptionRow === null) {
-      allDescriptionRows.push(descriptionRowObject);
-    } else {
-      let index = allDescriptionRows.findIndex(row => row.id === currentDescriptionRow);
-      allDescriptionRows.splice((index), 1, descriptionRowObject); 
-    }
-    setAddedDescriptionRows(allDescriptionRows);
-    cleardescriptionInput();
-    if (currentIngredient !== null) { clearIngredientsInput(); }
-    manageInputFocus(descriptionFocus);
-  }
 
 
-  const handleEnter = (e) => {
-    if (e.key === "Enter") {
-      let source = e.target.name;
-      if (source === "name" || source === "unit" || source === "amount" || source === "details") {
-        addIngredient();
-      } else if (source === "description") {
-        addDescriptionRow();
-      } else if (source === "Nöt" || source === "Fläsk" || source === "Fågel" || source === "Fisk" || source === "Veg" ) {
-        handleCategoryChange(e.target.value);
+    const handleSubmit = async event => {
+        event.preventDefault();
+        let validInput = false;
+        validInput = validateFormInput();
+        if (!validInput) { 
+            return; 
+        } else {
+            let ingredients = state.addedItems.filter((item) => {
+                return item.itemType === "ingredients" }).map((item) => {
+                return {
+                    name: item.name,
+                    amount: item.amount,
+                    unit: item.unit,
+                    details: item.details
+                }
+            });
+            let descriptions = state.addedItems.filter((item) =>  {
+                return item.itemType === "description" }).map((item) => {
+                return {
+                    description: item.description
+                }    
+            });
+            try {
+              const response = await sendRequest(
+                "http://localhost:5000/api/recipes",
+                "POST",
+                JSON.stringify({
+                  mealName: state.inputs.title.value,
+                  mealCategory: state.inputs.category.value,
+                  ingredients: ingredients,
+                  description: descriptions,
+                  creator: auth.userId
+                }),
+                { 
+                  "Content-Type" : "application/json"
+                }
+                );
+                dispatch({ type: "HANDLE_POSTED_RECIPE", recipe: response.recipe })
+            } catch (err) {}
+        }
       }
-    }
-  }
 
+    console.log("state at rendering");
+    console.log(state);
 
-  const deleteIngredient = (id) => {
-    let allIngredients = [...addedIngredients];
-    let index = allIngredients.findIndex(ingredient => ingredient.id === id);
-    allIngredients.splice(index, 1); 
-    setAddedIngredients(allIngredients);
-    manageInputFocus(ingredientFocus);
-    clearTooltip();
-    clearEditMode();
-    clearErrorMessage();
-  }
-
-
-  const deleteDescriptionRow = (id) => {
-    let allDescriptionRows = [...addedDescriptionRows];
-    let index = allDescriptionRows.findIndex(row => row.id === id);
-    allDescriptionRows.splice(index, 1); 
-    setAddedDescriptionRows(allDescriptionRows);
-    manageInputFocus(descriptionFocus);
-    clearTooltip();
-    clearEditMode();
-    clearErrorMessage();
-  }
-
-
-  const toggleIngredientEditMode = (id) => {
-    clearTooltip();
-    clearErrorMessage();
-    if (currentDescriptionRow !== null) { cleardescriptionInput(); }
-    if (currentIngredient === null || currentIngredient !== id) {
-      let ingredientToEdit = addedIngredients.find((item) => {
-        return item.id === id;
-      });
-      setCurrentIngredient(ingredientToEdit.id);
-      setIngredient({ 
-        name: ingredientToEdit.name, 
-        amount: ingredientToEdit.amount, 
-        unit: ingredientToEdit.unit, 
-        details: ingredientToEdit.details});
-    } else {
-      clearIngredientsInput();
-    }
-    manageInputFocus(ingredientFocus);
-  }
-
-
-  const toggleDescriptionEditMode = (id) => {
-    clearTooltip();
-    clearErrorMessage();
-    if (currentIngredient !== null) { clearIngredientsInput(); } 
-    if (currentDescriptionRow === null || currentDescriptionRow !== id) {
-      let descriptionRowToEdit = addedDescriptionRows.find((item) => {
-        return item.id === id;
-      })
-      setCurrentDescriptionRow(descriptionRowToEdit.id);
-      setDescription(descriptionRowToEdit.description);
-    } else {
-      cleardescriptionInput();
-    }
-    manageInputFocus(descriptionFocus);
-  }
-
-
-
-  return ( 
+    return (
     <React.Fragment> 
-          <Modal 
+        <Modal 
             show={!!error}
             onCancel={clearError}
             header="Någonting gick fel"
             footer={<Button onClick={clearError}>OK</Button>}>
             {error}
-          </Modal>
+        </Modal>
 
-          <Modal
-            show={!!postedRecipe}
-            onCancel={() => setPostedRecipe("")}
-            header={`${postedRecipe.mealName} är sparat!`}
-            footer={<Button onClick={() => setPostedRecipe("")}>OK</Button>}
+        <Modal
+            show={!!state.postedRecipe}
+            onCancel={() => dispatch({ type: "HANDLE_POSTED_RECIPE", recipe: "" })}
+            header={`${state.postedRecipe.mealName} är sparat!`}
+            footer={<Button onClick={() => dispatch({ type: "HANDLE_POSTED_RECIPE", recipe: "" })}>OK</Button>}
             footerClass="confirmation-modal__footer">
-              {postedRecipe.creator && <Recipe ingredients={postedRecipe.ingredients} description={postedRecipe.description}/>}
-          </Modal>
+            <Recipe 
+                ingredients={state.postedRecipe.ingredients} 
+                description={state.postedRecipe.description}/>
+        </Modal>
 
       <Background className="recipe-input-moderator-container">
 
@@ -373,65 +397,71 @@ const RecipeInputModerator = () => {
           <div className="recipe-input-moderator">
 
             <form>
+            
+            <TitleInput 
+                titleInput={state.inputs.title.value} 
+                handleChange={(e) => handleChange(e.target.name, e.target.value)} 
+                inputFocus={titleFocus}/>
 
-              <TitleInput titleInput={title} handleChange={handleTitleChange} titleFocus={titleFocus}/>
+            <CategoryInput 
+                handleChange={handleChange} 
+                selectedCategory={state.inputs.category.value}/>
+            
+            <div className="input-with-items-wrapper">
 
-              <CategoryInput handleChange={handleCategoryChange} selectedCategory={category} handleEnter={handleEnter} />
+                <IngredientInput  
+                    handleChange={(e) => handleChange(e.target.name, e.target.value)} 
+                    addIngredient={() => addItem("ingredients")}
+                    name={state.inputs.name.value} 
+                    amount={state.inputs.amount.value} 
+                    unit={state.inputs.unit.value} 
+                    details={state.inputs.details.value}
+                    handleEnter={handleEnter} 
+                    hideTooltip={() => dispatch({ type: "HANDLE_TOOLTIP", target: "" })}
+                    ingredientFocus={ingredientFocus}
+                    amountFocus={amountFocus}
+                    tooltipTarget={state.tooltipTarget} />
 
-              <div className="input-with-items-wrapper">
-
-                <IngredientInput  handleChange={handleIngredientChange} 
-                                  addIngredient={addIngredient}
-                                  handleEnter={handleEnter} 
-                                  hideTooltip={hideTooltip}
-                                  name={ingredient.name} 
-                                  amount={ingredient.amount} 
-                                  unit={ingredient.unit} 
-                                  details={ingredient.details}
-                                  inputFocus={ingredientFocus}
-                                  tooltipTarget={tooltipTarget}
-                                  editMode={currentIngredient !== null}/>
-                
-                {(addedIngredients.length > 0) && <ul className="added-items-list">
-                  {addedIngredients.map((item) => {
-                  return <AddedRecipeItem   key={item.id} 
-                                            id={item.id}
-                                            content={`${item.amount} ${item.unit} ${item.name} ${item.details}`}  
-                                            currentItem={currentIngredient}
-                                            toggleEditMode={() => toggleIngredientEditMode(item.id)}
-                                            deleteItem={() => deleteIngredient(item.id)}/>
-                    })}
-                </ul>}
-
-              </div>
-
-              <div className="input-with-items-wrapper"> 
-
-                <DescriptionInput handleChange={handleDescriptionChange} 
-                                  addDescriptionRow={addDescriptionRow} 
-                                  handleEnter={handleEnter} 
-                                  hideTooltip={hideTooltip}
-                                  value={description}
-                                  inputFocus={descriptionFocus}
-                                  showTooltip={tooltipTarget === "description"}
-                                  editMode={currentDescriptionRow !== null}/>
-        
-                {(addedDescriptionRows.length > 0) && <ul className="added-items-list">
-                  {addedDescriptionRows.map((item, i) => {
-                    return <AddedRecipeItem   key={item.id} 
-                                              id={item.id}
-                                              listItemNumber={i + 1}
-                                              content={item.description}
-                                              currentItem={currentDescriptionRow}
-                                              toggleEditMode={() => toggleDescriptionEditMode(item.id)}
-                                              deleteItem={() => deleteDescriptionRow(item.id)}/>
-                      })}
-                  </ul>}
-              
-              </div>
-              {errorMessage && (
-                <ErrorMessage hideError={hideError} errorClass="input-moderator__error-message">
-                    {errorMessage}
+                <ul className="added-items-list">
+                {state.addedItems.filter((item) => item.itemType === "ingredients").map((item) => {
+                    return  <AddedRecipeItem   
+                                key={item.id} 
+                                id={item.id}
+                                content={`${item.amount} ${item.unit} ${item.name} ${item.details}`} 
+                                deleteItem={() => dispatch({ type: "DELETE_ITEM", id: item.id })} 
+                                toggleEditMode={() => toggleEditMode(item.id)}
+                                currentItem={state.currentItem.id}
+                                />
+                            })
+                    }
+                </ul>
+            </div>
+            <div className="input-with-items-wrapper">
+                <DescriptionInput  
+                    handleChange={(e) => handleChange(e.target.name, e.target.value)} 
+                    addDescription={() => addItem("description")}
+                    value={state.inputs.description.value} 
+                    handleEnter={handleEnter} 
+                    hideTooltip={() => dispatch({ type: "HANDLE_TOOLTIP", target: "" })}
+                    inputFocus={descriptionFocus}
+                    showTooltip={state.tooltipTarget === "description"}/>
+            
+                <ul className="added-items-list">
+                    {state.addedItems.filter((item) => item.itemType === "description").map((item, i) => {
+                    return <AddedRecipeItem   
+                                key={item.id} 
+                                id={item.id}
+                                listItemNumber={i + 1}
+                                content={item.description}  
+                                deleteItem={() => dispatch({ type: "DELETE_ITEM", id: item.id })} 
+                                toggleEditMode={() => toggleEditMode(item.id)}
+                                currentItem={state.currentItem.id}/>
+                        })}
+                </ul>
+                </div>
+                {state.errorMessage && (
+                <ErrorMessage hideError={() => dispatch({ type: "HANDLE_ERROR_MESSAGE", message: "" })} errorClass="input-moderator__error-message">
+                    {state.errorMessage}
                 </ErrorMessage>
                 )}
             </form>
@@ -450,6 +480,8 @@ const RecipeInputModerator = () => {
   );
 }
 
-export default RecipeInputModerator;
+export default TEST_COMP;
 
- 
+
+
+

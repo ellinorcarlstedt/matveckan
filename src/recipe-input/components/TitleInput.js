@@ -5,7 +5,7 @@ function TitleInput(props) {
         <div className="title-input">
           <label>
             <input type="text" 
-                  name="title" placeholder="Vad heter maträtten?" value={props.titleInput} autoComplete="off" onChange={props.handleChange} ref={props.titleFocus}/>
+                  name="title" placeholder="Vad heter maträtten?" value={props.titleInput} autoComplete="off" onChange={props.handleChange} ref={props.inputFocus}/>
           </label> 
         </div> 
     )
