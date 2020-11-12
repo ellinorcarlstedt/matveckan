@@ -178,8 +178,8 @@ const RecipeInputModerator = () => {
   }
 
 
-  const handleCategoryChange = (categoryId) => {
-    setCategory(categoryId);
+  const handleCategoryChange = (value) => {
+    setCategory(value);
     clearTooltip();
     clearErrorMessage();
   }
@@ -276,7 +276,7 @@ const RecipeInputModerator = () => {
       } else if (source === "description") {
         addDescriptionRow();
       } else if (source === "Nöt" || source === "Fläsk" || source === "Fågel" || source === "Fisk" || source === "Veg" ) {
-        handleCategoryChange(e.target.id);
+        handleCategoryChange(e.target.value);
       }
     }
   }

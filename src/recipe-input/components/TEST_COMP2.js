@@ -1,4 +1,6 @@
 import React, { useCallback, useReducer } from 'react';
+import TitleInput from "./TitleInput";
+import CategoryInput from "./CategoryInput";
 import IngredientInput from "./IngredientInput";
 import DescriptionInput from "./DescriptionInput";
 import AddedRecipeItem from "./AddedRecipeItem";
@@ -18,11 +20,12 @@ const getNewId = (list) => {
         case "INPUT_CHANGE":
             return {
                 ...state,
+                tooltipTarget: "",
                 inputs: {
                     ...state.inputs,
-                    [action.inputId] : {
-                        ...state.inputs[action.inputId],
-                         value: action.value
+                    [action.inputName] : {
+                        ...state.inputs[action.inputName],
+                        value: action.value
                     }
                 }
             }
@@ -34,11 +37,11 @@ const getNewId = (list) => {
                 let index = itemsList.findIndex(item => item.id === state.currentItem.id);
                 itemsList.splice((index), 1, action.newItem); 
             } 
-            let clearedInputsAfterAdd = {};
+            let clearedInputsAfterAdding = {};
             for (let prop in state.inputs) {
-                let clearedValue = "";
-                clearedInputsAfterAdd = {
-                    ...clearedInputsAfterAdd,
+                let clearedValue = !state.inputs[prop].itemType ? state.inputs[prop].value : "";  
+                clearedInputsAfterAdding = {
+                    ...clearedInputsAfterAdding,
                     [prop]: {
                         ...state.inputs[prop],
                         value: clearedValue
@@ -46,22 +49,20 @@ const getNewId = (list) => {
                 }
             } 
             return {
-                inputs: clearedInputsAfterAdd,
+                inputs: clearedInputsAfterAdding,
                 addedItems: itemsList,
-                currentItem: { id: null, itemType: "" }
+                currentItem: { id: null, itemType: "" },
+                tooltipTarget: "",
             }
         case "DELETE_ITEM":
             let updatedItems = state.addedItems.filter((item) => {
                 return item.id !== action.id;
             }); 
-            let clearedInputsAfterDelete = {};
+            let clearedInputsAfterDeleting = {};
             for (let prop in state.inputs) {
-                let clearedValue = "";
-                if (state.inputs[prop].itemType !== action.itemType && state.currentItem.id === null) {
-                    clearedValue = state.inputs[prop].value
-                }
-                clearedInputsAfterDelete = {
-                    ...clearedInputsAfterDelete,
+                let clearedValue = !state.inputs[prop].itemType ? state.inputs[prop].value : "";
+                clearedInputsAfterDeleting = {
+                    ...clearedInputsAfterDeleting,
                     [prop]: {
                         ...state.inputs[prop],
                         value: clearedValue
@@ -69,7 +70,7 @@ const getNewId = (list) => {
                 }
             }         
             return {
-                inputs: clearedInputsAfterDelete,
+                inputs: clearedInputsAfterDeleting,
                 addedItems: updatedItems, 
                 currentItem: { id: null, itemType: "" }
             }
@@ -77,7 +78,13 @@ const getNewId = (list) => {
             let itemToEdit = state.addedItems.filter(item => item.id === action.id);
             let editModeInputs = {};
             for (let prop in state.inputs) {
-                let updatedValue = state.inputs[prop].itemType === itemToEdit[0].itemType ? itemToEdit[0][prop] : "";
+                let itemType = state.inputs[prop].itemType;
+                let updatedValue = "";
+                if (!itemType) {
+                    updatedValue = state.inputs[prop].value;
+                } else if (itemType === itemToEdit[0].itemType) {
+                    updatedValue = itemToEdit[0][prop];
+                } 
                 editModeInputs = {
                     ...editModeInputs,
                     [prop]: {
@@ -89,16 +96,18 @@ const getNewId = (list) => {
             return {
                 ...state,
                 inputs: editModeInputs,
-                currentItem: { id: action.id, itemType: itemToEdit[0].itemType }
+                currentItem: { id: action.id, itemType: itemToEdit[0].itemType },
+                tooltipTarget: "",
             }
-        case "CLEAR_INPUTS":
+        case "CLEAR_ITEM_INPUTS":
             let clearedInputs = {};
             for (let prop in state.inputs) {
+                let clearedValue = !state.inputs[prop].itemType ? state.inputs[prop].value : "";
                 clearedInputs = {
                     ...clearedInputs,
                     [prop]: {
                         ...state.inputs[prop],
-                        value: ""
+                        value: clearedValue
                     }
                 }
             }   
@@ -106,6 +115,11 @@ const getNewId = (list) => {
                 ...state,
                 inputs: clearedInputs,
                 currentItem: { id: null, itemType: "" }
+            }
+        case "SHOW_TOOLTIP":
+            return {
+                ...state,
+                tooltipTarget: action.target
             }      
         default:
             return state;
@@ -114,40 +128,47 @@ const getNewId = (list) => {
 
 
 const TEST_COMP = () => {
-    
-        const [itemsState, dispatch] = useReducer(itemsReducer, {
+
+        const initialState = {
             inputs: {
-                name: { name: "name", itemType: "ingredients", value: "" },
-                amount: { name: "amount", itemType: "ingredients", value: ""},
-                unit: { name: "unit", itemType: "ingredients", value: "" },
-                details: { name: "details", itemType: "ingredients", value: "" },
-                description: { name: "description", itemType: "description", value: "" }
+                title: { name: "title", value: "" },
+                category: { name: "category", value: "" },
+                name: { name: "name", value: "", itemType: "ingredients" },
+                amount: { name: "amount", value: "", itemType: "ingredients"},
+                unit: { name: "unit", value: "", itemType: "ingredients" },
+                details: { name: "details", value: "", itemType: "ingredients" },
+                description: { name: "description", value: "", itemType: "description" }
             },
             addedItems: [],
-            currentItem: { id: null, itemType: "" }
-        });
+            currentItem: { id: null, itemType: "" },
+            tooltipTarget: "",
+            errorMessage: "",
+            postedRecipe: ""
+        }
     
-        const handleChange = useCallback((id, value) => {
+        const [state, dispatch] = useReducer(itemsReducer, initialState);
+    
+        const handleChange = useCallback((name, value) => {
             dispatch({
                 type: "INPUT_CHANGE",
-                inputId: id,
+                inputName: name,
                 value: value
             }); 
         }, []);
 
         const addItem = useCallback((itemType) => {
             let id;
-            if (itemsState.currentItem.id === null || itemsState.currentItem.itemType !== itemType) {
-                id = getNewId(itemsState.addedItems);
+            if (state.currentItem.id === null || state.currentItem.itemType !== itemType) {
+                id = getNewId(state.addedItems);
             } else {
-                id = itemsState.currentItem.id;
+                id = state.currentItem.id;
             }
             let newItem;
-            for (let input in itemsState.inputs) {
-                if (itemsState.inputs[input].itemType === itemType) {
+            for (let prop in state.inputs) {
+                if (state.inputs[prop].itemType === itemType) {
                     newItem = {
                         ...newItem,
-                        [input]: itemsState.inputs[input].value
+                        [prop]: state.inputs[prop].value
                     }
                 }
             }
@@ -156,7 +177,7 @@ const TEST_COMP = () => {
                 itemType: itemType,
                 newItem: { id, itemType, ...newItem } 
             }); 
-        }, [itemsState]);
+        }, [state]);
     
 
         const deleteItem = useCallback((id) => {
@@ -168,57 +189,72 @@ const TEST_COMP = () => {
     
 
         const toggleEditMode = useCallback((id) => {
-            if (itemsState.currentItem.id === null || itemsState.currentItem.id !== id) {
+            if (state.currentItem.id === null || state.currentItem.id !== id) {
                 dispatch({
                     type: "SET_EDIT_MODE",
                     id: id
                 }); 
             } else {
                 dispatch({
-                    type: "CLEAR_INPUTS",
+                    type: "CLEAR_ITEM_INPUTS",
                 }); 
             }
-        }, [itemsState.currentItem.id]);
+        }, [state.currentItem.id]);
     
 
     const handleEnter = (e) => {
-        if (e.key === "Enter") {
-            addItem(e.target.attributes.itemType.value);
-      }
+       let itemType = e.target.attributes.itemType.value;
+       if (e.key === "Enter") {
+           if (itemType === "ingredients" || itemType === "description") {
+            addItem(itemType);
+           }
+       }
     }
 
     console.log("state at rendering");
-    console.log(itemsState);
+    console.log(state);
 
     return (
         <div style={{ marginTop: "10rem", padding: "1rem", backgroundColor: "white"}}>
             
             <h2>Test comp 2 - working!</h2>
+
+            <TitleInput 
+                titleInput={state.inputs.title.value} 
+                handleChange={(e) => handleChange(e.target.name, e.target.value)} 
+            //    titleFocus={titleFocus}
+            />
+
+            <CategoryInput 
+                handleChange={handleChange} 
+                selectedCategory={state.inputs.category.value} 
+           //     handleEnter={handleEnter} 
+           />
             
             <div className="input-with-items-wrapper">
 
                 <IngredientInput  
                     handleChange={(e) => handleChange(e.target.name, e.target.value)} 
                     addIngredient={() => addItem("ingredients")}
-                    name={itemsState.inputs.name.value} 
-                    amount={itemsState.inputs.amount.value} 
-                    unit={itemsState.inputs.unit.value} 
-                    details={itemsState.inputs.details.value}
+                    name={state.inputs.name.value} 
+                    amount={state.inputs.amount.value} 
+                    unit={state.inputs.unit.value} 
+                    details={state.inputs.details.value}
                     handleEnter={handleEnter} 
               //      hideTooltip={hideTooltip}
              //       inputFocus={ingredientFocus}
              //       tooltipTarget={tooltipTarget}
-                    editMode={itemsState.currentItem.id !== null}/>
+                    editMode={state.currentItem.id !== null}/>
 
                 <ul className="added-items-list">
-                {itemsState.addedItems.filter((item) => item.itemType === "ingredients").map((item) => {
+                {state.addedItems.filter((item) => item.itemType === "ingredients").map((item) => {
                     return  <AddedRecipeItem   
                                 key={item.id} 
                                 id={item.id}
                                 content={`${item.amount} ${item.unit} ${item.name} ${item.details}`} 
                                 deleteItem={() => deleteItem(item.id)} 
                                 toggleEditMode={() => toggleEditMode(item.id)}
-                                currentItem={itemsState.currentItem.id}
+                                currentItem={state.currentItem.id}
                                 />
                         })
                     }
@@ -228,17 +264,17 @@ const TEST_COMP = () => {
              <DescriptionInput  
                     handleChange={(e) => handleChange(e.target.name, e.target.value)} 
                     addDescriptionRow={() => addItem("description")}
-                    value={itemsState.inputs.description.value} 
+                    value={state.inputs.description.value} 
                     handleEnter={handleEnter} 
             //        hideTooltip={hideTooltip}
             //        inputFocus={ingredientFocus}
             //        tooltipTarget={tooltipTarget}
-                    editMode={itemsState.currentItem.id !== null}
+                    editMode={state.currentItem.id !== null}
                 />
             
 
                 <ul className="added-items-list">
-                {itemsState.addedItems.filter((item) => item.itemType === "description").map((item, i) => {
+                {state.addedItems.filter((item) => item.itemType === "description").map((item, i) => {
                     return <AddedRecipeItem   
                                 key={item.id} 
                                 id={item.id}
@@ -246,7 +282,7 @@ const TEST_COMP = () => {
                                 content={item.description}  
                                 deleteItem={() => deleteItem(item.id)}
                                 toggleEditMode={() => toggleEditMode(item.id)}
-                                currentItem={itemsState.currentItem.id}/>
+                                currentItem={state.currentItem.id}/>
                         })}
                 </ul>
             </div>

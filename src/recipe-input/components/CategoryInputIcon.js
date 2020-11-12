@@ -5,9 +5,9 @@ function CategoryInputIcon(props) {
     let selected = props.selectedCategory === props.value ? "selected" : "";
 
     return (
-        <div className="category-input-icon" onClick={() => props.handleChange(props.value)} onKeyPress={props.handleEnter}>
+        <div className="category-input-icon" onClick={() => props.handleChange("category", props.value)} onKeyPress={props.handleEnter}>
             <label htmlFor={props.name}>
-                <img src={props.imgSrc} alt={props.name} name={props.name} id={props.value} className={selected} tabIndex="0"/>
+                <img src={props.imgSrc} alt={props.name} name={props.name} value={props.value} className={selected} tabIndex="0"/>
             </label>
         </div>  
     )
