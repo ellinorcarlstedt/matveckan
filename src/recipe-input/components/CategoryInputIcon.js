@@ -9,6 +9,7 @@ function CategoryInputIcon(props) {
             className="category-input-icon" 
             onClick={() => props.handleChange("category", props.value)} 
             onKeyPress={props.handleEnter}>
+                
             <label htmlFor={props.name}>
                 <img 
                     src={props.imgSrc} 

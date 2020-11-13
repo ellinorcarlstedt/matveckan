@@ -82,7 +82,7 @@ import ArtistAttribute from '../../shared/UIElements/ArtistAttribute';
             }
         case "SET_EDIT_MODE": 
             let itemToEdit = state.addedItems.filter(item => item.id === action.id);
-            let editModeInputs = {};
+            let editModeInputValues = {};
             for (let prop in state.inputs) {
                 let itemType = state.inputs[prop].itemType;
                 let updatedValue = "";
@@ -91,8 +91,8 @@ import ArtistAttribute from '../../shared/UIElements/ArtistAttribute';
                 } else if (itemType === itemToEdit[0].itemType) {
                     updatedValue = itemToEdit[0][prop];
                 } 
-                editModeInputs = {
-                    ...editModeInputs,
+                editModeInputValues = {
+                    ...editModeInputValues,
                     [prop]: {
                         ...state.inputs[prop],
                         value: updatedValue
@@ -101,11 +101,12 @@ import ArtistAttribute from '../../shared/UIElements/ArtistAttribute';
             }         
             return {
                 ...state,
-                inputs: editModeInputs,
+                inputs: editModeInputValues,
                 currentItem: { id: action.id, itemType: itemToEdit[0].itemType },
                 tooltipTarget: "",
+                errorMessage: ""
             }
-        case "CLEAR_ITEM_INPUTS":
+        case "CLEAR_EDIT_MODE":
             let clearedInputs = {};
             for (let prop in state.inputs) {
                 let clearedValue = !state.inputs[prop].itemType ? state.inputs[prop].value : "";
@@ -167,7 +168,7 @@ const getNewId = (list) => {
   } 
 
 
-const TEST_COMP = () => {
+const RecipeInputModerator = () => {
 
     const initialState = {
         inputs: {
@@ -273,7 +274,7 @@ const TEST_COMP = () => {
             }); 
         } else {
             dispatch({
-                type: "CLEAR_ITEM_INPUTS",
+                type: "CLEAR_EDIT_MODE",
             }); 
         }
     }, [state.currentItem.id]);
@@ -296,16 +297,13 @@ const TEST_COMP = () => {
             titleFocus.current.focus();
         } else if (!state.inputs.category.value) {
             errorMessage = "Du behöver ange en kategori för receptet - klicka på en av symbolerna.";
-        } else if(!state.addedItems.length) {
-            errorMessage = "Lägg till minst en ingrediens.";
-            ingredientFocus.current.focus();
         } else {
-            let addedIngredientItems = state.addedItems.filter((item) =>  item.itemType === "ingredients");
-            let addedDescriptionItem = state.addedItems.filter((item) =>  item.itemType === "description");
-            if (!addedIngredientItems.length) {
+            let addedIngredients = state.addedItems.filter((item) =>  item.itemType === "ingredients");
+            let addedDescriptions = state.addedItems.filter((item) =>  item.itemType === "description");
+            if (!addedIngredients.length) {
                 errorMessage = "Lägg till minst en ingrediens.";
                 ingredientFocus.current.focus();
-            } else if (!addedDescriptionItem.length) {
+            } else if (!addedDescriptions.length) {
                 errorMessage = "Lägg till minst en beskrivningspunkt.";
                 descriptionFocus.current.focus();
             }
@@ -327,7 +325,7 @@ const TEST_COMP = () => {
         let validInput = false;
         validInput = validateFormInput();
         if (!validInput) { 
-            return; 
+           return; 
         } else {
             let ingredients = state.addedItems.filter((item) => {
                 return item.itemType === "ingredients" }).map((item) => {
@@ -364,9 +362,6 @@ const TEST_COMP = () => {
         }
       }
 
-    console.log("state at rendering");
-    console.log(state);
-
     return (
     <React.Fragment> 
         <Modal 
@@ -376,7 +371,6 @@ const TEST_COMP = () => {
             footer={<Button onClick={clearError}>OK</Button>}>
             {error}
         </Modal>
-
         <Modal
             show={!!state.postedRecipe}
             onCancel={() => dispatch({ type: "HANDLE_POSTED_RECIPE", recipe: "" })}
@@ -388,9 +382,9 @@ const TEST_COMP = () => {
                 description={state.postedRecipe.description}/>
         </Modal>
 
-      <Background className="recipe-input-moderator-container">
+        <Background className="recipe-input-moderator-container">
 
-       {isLoading && <LoadingSpinner asOverlay />}
+        {isLoading && <LoadingSpinner asOverlay />}
 
         <div className="component-resizer">
  
@@ -398,72 +392,77 @@ const TEST_COMP = () => {
 
             <form>
             
-            <TitleInput 
-                titleInput={state.inputs.title.value} 
-                handleChange={(e) => handleChange(e.target.name, e.target.value)} 
-                inputFocus={titleFocus}/>
-
-            <CategoryInput 
-                handleChange={handleChange} 
-                selectedCategory={state.inputs.category.value}/>
-            
-            <div className="input-with-items-wrapper">
-
-                <IngredientInput  
+                <TitleInput 
+                    titleInput={state.inputs.title.value} 
                     handleChange={(e) => handleChange(e.target.name, e.target.value)} 
-                    addIngredient={() => addItem("ingredients")}
-                    name={state.inputs.name.value} 
-                    amount={state.inputs.amount.value} 
-                    unit={state.inputs.unit.value} 
-                    details={state.inputs.details.value}
-                    handleEnter={handleEnter} 
-                    hideTooltip={() => dispatch({ type: "HANDLE_TOOLTIP", target: "" })}
-                    ingredientFocus={ingredientFocus}
-                    amountFocus={amountFocus}
-                    tooltipTarget={state.tooltipTarget} />
+                    inputFocus={titleFocus}/>
 
-                <ul className="added-items-list">
-                {state.addedItems.filter((item) => item.itemType === "ingredients").map((item) => {
-                    return  <AddedRecipeItem   
-                                key={item.id} 
-                                id={item.id}
-                                content={`${item.amount} ${item.unit} ${item.name} ${item.details}`} 
-                                deleteItem={() => dispatch({ type: "DELETE_ITEM", id: item.id })} 
-                                toggleEditMode={() => toggleEditMode(item.id)}
-                                currentItem={state.currentItem.id}
-                                />
-                            })
-                    }
-                </ul>
-            </div>
-            <div className="input-with-items-wrapper">
-                <DescriptionInput  
-                    handleChange={(e) => handleChange(e.target.name, e.target.value)} 
-                    addDescription={() => addItem("description")}
-                    value={state.inputs.description.value} 
-                    handleEnter={handleEnter} 
-                    hideTooltip={() => dispatch({ type: "HANDLE_TOOLTIP", target: "" })}
-                    inputFocus={descriptionFocus}
-                    showTooltip={state.tooltipTarget === "description"}/>
-            
-                <ul className="added-items-list">
-                    {state.addedItems.filter((item) => item.itemType === "description").map((item, i) => {
-                    return <AddedRecipeItem   
-                                key={item.id} 
-                                id={item.id}
-                                listItemNumber={i + 1}
-                                content={item.description}  
-                                deleteItem={() => dispatch({ type: "DELETE_ITEM", id: item.id })} 
-                                toggleEditMode={() => toggleEditMode(item.id)}
-                                currentItem={state.currentItem.id}/>
-                        })}
-                </ul>
+                <CategoryInput 
+                    handleChange={handleChange} 
+                    selectedCategory={state.inputs.category.value}/>
+                
+                <div className="input-with-items-wrapper">
+
+                    <IngredientInput  
+                        handleChange={(e) => handleChange(e.target.name, e.target.value)} 
+                        addIngredient={() => addItem("ingredients")}
+                        name={state.inputs.name.value} 
+                        amount={state.inputs.amount.value} 
+                        unit={state.inputs.unit.value} 
+                        details={state.inputs.details.value}
+                        handleEnter={handleEnter} 
+                        hideTooltip={() => dispatch({ type: "HANDLE_TOOLTIP", target: "" })}
+                        ingredientFocus={ingredientFocus}
+                        amountFocus={amountFocus}
+                        tooltipTarget={state.tooltipTarget} />
+
+                    <ul className="added-items-list">
+                    {state.addedItems.filter((item) => item.itemType === "ingredients").map((item) => {
+                        return  <AddedRecipeItem   
+                                    key={item.id} 
+                                    id={item.id}
+                                    content={`${item.amount} ${item.unit} ${item.name} ${item.details}`} 
+                                    deleteItem={() => dispatch({ type: "DELETE_ITEM", id: item.id })} 
+                                    toggleEditMode={() => toggleEditMode(item.id)}
+                                    currentItem={state.currentItem.id}
+                                    />
+                                })
+                        }
+                    </ul>
+
                 </div>
-                {state.errorMessage && (
-                <ErrorMessage hideError={() => dispatch({ type: "HANDLE_ERROR_MESSAGE", message: "" })} errorClass="input-moderator__error-message">
-                    {state.errorMessage}
-                </ErrorMessage>
-                )}
+
+                <div className="input-with-items-wrapper">
+                    <DescriptionInput  
+                        handleChange={(e) => handleChange(e.target.name, e.target.value)} 
+                        addDescription={() => addItem("description")}
+                        value={state.inputs.description.value} 
+                        handleEnter={handleEnter} 
+                        hideTooltip={() => dispatch({ type: "HANDLE_TOOLTIP", target: "" })}
+                        inputFocus={descriptionFocus}
+                        showTooltip={state.tooltipTarget === "description"}/>
+                
+                    <ul className="added-items-list">
+                        {state.addedItems.filter((item) => item.itemType === "description").map((item, i) => {
+                        return <AddedRecipeItem   
+                                    key={item.id} 
+                                    id={item.id}
+                                    listItemNumber={i + 1}
+                                    content={item.description}  
+                                    deleteItem={() => dispatch({ type: "DELETE_ITEM", id: item.id })} 
+                                    toggleEditMode={() => toggleEditMode(item.id)}
+                                    currentItem={state.currentItem.id}/>
+                            })}
+                    </ul>
+
+                </div>
+
+               {state.errorMessage && (
+               <ErrorMessage hideError={() => dispatch({ type: "HANDLE_ERROR_MESSAGE", message: "" })} errorClass="input-moderator__error-message">
+                   {state.errorMessage}
+               </ErrorMessage>
+               )}
+            
             </form>
           
             <Button type="button" onClick={handleSubmit}>Lägg upp recept</Button>
@@ -480,7 +479,7 @@ const TEST_COMP = () => {
   );
 }
 
-export default TEST_COMP;
+export default RecipeInputModerator;
 
 
 
