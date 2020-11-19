@@ -8,6 +8,7 @@ import {
 import './styles/App.css';
 import MainNavigation from './shared/Navigation/MainNavigation';
 import MenuModerator from './menu/pages/MenuModerator';
+import MyRecipes from './menu/pages/MyRecipes';
 import RecipeInputModerator from './recipe-input/pages/RecipeInputModerator';
 import Auth from './shared/auth/pages/Auth';
 import useAuth from './shared/hooks/auth-hook';
@@ -25,8 +26,9 @@ function App() {
       <Switch> 
         <Route exact path="/" component={MenuModerator} />
         <Route exact path="/meny" component={MenuModerator} />
-        <Route exact path="/recept" component={RecipeInputModerator} />
-        <Redirect to="/recept" />
+        <Route exact path="/mina-recept" component={MyRecipes} />
+        <Route exact path="/nytt-recept" component={RecipeInputModerator} />
+        <Redirect to="/nytt-recept" />
       </Switch> 
     );
   } else {
@@ -34,7 +36,7 @@ function App() {
       <Switch> 
         <Route exact path="/" component={MenuModerator} />
         <Route exact path="/meny" component={MenuModerator} />
-        <Route exact path="/recept" component={RecipeInputModerator} />
+        <Route exact path="/nytt-recept" component={RecipeInputModerator} />
         <Route exact path="/auth" component={Auth} />
         <Redirect to="/meny" />
       </Switch> 
