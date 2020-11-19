@@ -16,7 +16,7 @@ function MealDisplayer(props) {
         return (
             <div className="meal-displayer" onClick={() => toggleRecipe()}>
                 <div className="meal-displayer-overview">
-                    <Weekday weekday={props.weekday}/>
+                    {props.weekday && <Weekday weekday={props.weekday}/>}
                     <MealTitle  title={props.meal.mealName}/>
                     <MealCategory category={props.meal.mealCategory}/>
                 </div>

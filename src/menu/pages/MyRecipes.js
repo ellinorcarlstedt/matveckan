@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useHttpClient } from '../../shared/hooks/http-hook';
 import { AuthContext } from '../../shared/context/auth-context';
+import RecipesList from './RecipesList';
 import Background from '../../shared/UIElements/Background';
 import Modal from '../../shared/UIElements/Modal';
 import Button from '../../shared/UIElements/Button';
@@ -10,7 +11,7 @@ import ArtistAttribute from '../../shared/UIElements/ArtistAttribute';
 const MyRecipes = () => {
 
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
-    const [ loadedRecipes, setLoadedRecipes ] = useState(null);
+    const [ loadedRecipes, setLoadedRecipes ] = useState();
     const auth = useContext(AuthContext);
 
     useEffect(() => {
@@ -24,7 +25,7 @@ const MyRecipes = () => {
     }, [sendRequest, auth.userId]);
 
     console.log(loadedRecipes);
-    
+
     return (
         <React.Fragment>
             <Modal 
@@ -36,6 +37,7 @@ const MyRecipes = () => {
             </Modal>
             <Background className="my-recipes">
                 {isLoading && <LoadingSpinner asOverlay />} 
+                <RecipesList recipes={loadedRecipes} />
                 <ArtistAttribute />
             </Background>
         </React.Fragment>
