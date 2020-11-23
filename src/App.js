@@ -27,8 +27,11 @@ function App() {
         <Route exact path="/" component={MenuModerator} />
         <Route exact path="/meny" component={MenuModerator} />
         <Route exact path="/mina-recept" component={MyRecipes} />
+        <Route exact path="/mina-recept/:rid">
+          <RecipeInputModerator />
+        </Route>
         <Route exact path="/nytt-recept" component={RecipeInputModerator} />
-        <Redirect to="/nytt-recept" />
+        <Redirect to="/mina-recept" />
       </Switch> 
     );
   } else {
