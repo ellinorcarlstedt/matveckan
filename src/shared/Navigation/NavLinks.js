@@ -11,8 +11,13 @@ const NavLinks = () => {
               <li>
                 <NavLink to="/meny">Skapa meny</NavLink>
               </li>
+              {auth.isLoggedin && 
               <li>
-                <NavLink to="/recept">Lägg in recept</NavLink>
+                <NavLink to="/mina-recept">Mina recept</NavLink>
+              </li>
+              }
+              <li>
+                <NavLink to="/nytt-recept">Nytt recept</NavLink>
               </li>
               {!auth.isLoggedin && <li>
                 <NavLink to="/auth">Logga in</NavLink>
