@@ -24,8 +24,6 @@ const MyRecipes = () => {
         fetchRecipes();
     }, [sendRequest, auth.userId]);
 
-    console.log(loadedRecipes);
-
     return (
         <React.Fragment>
             <Modal 
@@ -37,7 +35,7 @@ const MyRecipes = () => {
             </Modal>
             <Background className="my-recipes">
                 {isLoading && <LoadingSpinner asOverlay />} 
-                <RecipesList recipes={loadedRecipes} />
+                {loadedRecipes && <RecipesList recipes={loadedRecipes} />}
                 <ArtistAttribute />
             </Background>
         </React.Fragment>

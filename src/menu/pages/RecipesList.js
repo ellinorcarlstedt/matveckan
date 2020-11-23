@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import MealDisplayer from '../components/MealDisplayer';
 
 const RecipesList = (props) => {
 
-    const [ filteredRecipes, setFilteredRecipes ] = useState();
     const [indexOfOpenRecipe, setIndexOfOpenRecipe] = useState(null);
 
     const openRecipe = (recipe) => {
@@ -14,14 +13,10 @@ const RecipesList = (props) => {
         setIndexOfOpenRecipe(null);
     }
 
-    useEffect(() => {
-        setFilteredRecipes(props.recipes);
-    }, [props.recipes]);
-
     return (
         <div className="component-resizer">
             <div className="recipes-list">
-                {filteredRecipes && filteredRecipes.map((recipe, index) => {
+                {props.recipes.map((recipe) => {
                     return (
                         <MealDisplayer 
                             key={recipe.id} 
