@@ -102,9 +102,9 @@ input[type=password] {
 
 @media screen and (min-width: 486px) {
   .main-header {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
   }
 }
 
@@ -163,10 +163,13 @@ input[type=password] {
             flex-direction: row;
   }
   .nav-links li {
-    margin-right: 2.5rem;
+    margin-right: 1em;
   }
-  .nav-links li:last-child {
-    margin-right: 0;
+  .nav-links a.active, .nav-links a:hover {
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+  .nav-button:hover, .nav-button.active {
+    border-radius: 0.5rem 0.5rem 0 0;
   }
 }
 
@@ -214,7 +217,7 @@ input[type=password] {
   min-height: 100vh;
   position: relative;
   background-image: url("../shared/resources/backgrounds/kitchen.jpg");
-  background-size: auto 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
@@ -535,13 +538,19 @@ input[type=password] {
   position: absolute;
   bottom: 1rem;
   width: 100%;
-  padding: 0.1rem;
-  font-size: 0.5rem;
   color: white;
+  text-align: center;
+}
+
+.artist-attribute span {
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  font-size: 0.5rem;
   background-color: rgba(0, 0, 0, 0.3);
 }
 
 .artist-attribute a {
+  color: white;
   text-decoration: none;
 }
 
@@ -550,7 +559,17 @@ input[type=password] {
 }
 
 .artist-attribute a:hover {
-  color: #d1cdcd;
+  color: #b0eeee;
+}
+
+@media screen and (min-width: 486px) {
+  .artist-attribute {
+    position: fixed;
+    text-align: end;
+  }
+  .artist-attribute span {
+    margin-right: 1em;
+  }
 }
 
 /**************** MenuModerator ****************/
@@ -576,6 +595,12 @@ input[type=password] {
   margin-bottom: 1rem;
 }
 
+@media screen and (min-width: 486px) {
+  .menu-displayer {
+    margin-top: 50%;
+  }
+}
+
 /**************** MealDisplayer ****************/
 .meal-displayer {
   background-color: white;
@@ -584,6 +609,8 @@ input[type=password] {
           box-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.25);
   border-radius: 0.3rem;
   cursor: pointer;
+  z-index: 1;
+  position: relative;
 }
 
 .meal-displayer-overview {
@@ -921,6 +948,12 @@ input[type=password] {
   padding-top: 0;
 }
 
+@media screen and (min-width: 486px) {
+  .recipe-input-moderator {
+    margin-top: 50%;
+  }
+}
+
 /**************** Title Input ****************/
 .title-input {
   margin-bottom: 0.7rem;
@@ -1002,11 +1035,6 @@ input[type=password] {
 }
 
 @media screen and (min-width: 486px) {
-  .App,
-  .main-header,
-  .icon-artist-attribute {
-    width: 500px;
-  }
   .component-resizer {
     width: 350px;
   }

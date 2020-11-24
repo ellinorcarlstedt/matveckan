@@ -42,10 +42,20 @@
     .nav-links {
       flex-direction: row;
       li {
-        margin-right: 2.5rem;
-        &:last-child {
-          margin-right: 0;
+        margin-right: 1em;
+      }
+      a {
+        &.active,
+        &:hover {
+          border-radius: 0.5rem 0.5rem 0 0;
         }
+      }
+    }
+
+    .nav-button {
+      &:hover,
+      &.active {
+        border-radius: 0.5rem 0.5rem 0 0;
       }
     }
   }

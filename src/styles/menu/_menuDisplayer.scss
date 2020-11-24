@@ -7,3 +7,9 @@
   .menu-displayer-reload-button {
     margin-bottom: 1rem;
   }
+
+  @media screen and (min-width: 486px) {
+    .menu-displayer {
+      margin-top: 50%;
+    }
+  }

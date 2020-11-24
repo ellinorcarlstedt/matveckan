@@ -33,3 +33,10 @@
   .confirmation-modal__footer {
     padding-top: 0;
   }
+
+
+  @media screen and (min-width: 486px) {
+    .recipe-input-moderator {
+      margin-top: 50%;
+    }
+}

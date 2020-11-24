@@ -4,17 +4,32 @@
     position: absolute;
     bottom: 1rem;
     width: 100%;
-    padding: 0.1rem;
-    font-size: 0.5rem;
     color: white;
-    background-color: rgba(0, 0, 0, 0.3);
+    text-align: center;
+    span {
+      padding: 0.5em 1em;
+      border-radius: 0.5em;
+      font-size: 0.5rem;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
     a {
+      color: white;
       text-decoration: none;
       &:visited {
         color: white;
       } 
       &:hover {
-      color: rgb(209, 205, 205);
+      color: $primaryBlue;
+      }
+    }
+  }
+
+  @media screen and (min-width: 486px) {
+    .artist-attribute {
+      position: fixed;
+      text-align: end;
+      span {
+        margin-right: 1em;
       }
     }
   }
