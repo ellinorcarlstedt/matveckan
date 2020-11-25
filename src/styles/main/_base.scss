@@ -21,7 +21,7 @@ body {
   input[type=email],
   input[type=password] {
     background-color: white;
-    padding: 0.4rem 0.3rem 0.3rem 0.4rem;
+    padding: 0.5em 0.4em 0.4em 0.5em;
     border: 1px solid rgb(221, 213, 213);
     border-radius: 0.3rem;
     @include primaryFont();
@@ -37,3 +37,18 @@ body {
     width: 100%;
   }
   
+  @media all and (max-width: 486px) {
+
+    html {
+      font-size: 1.4rem;
+    }
+
+}
+
+@media screen and (min-width: 486px) {
+
+  .component-resizer {
+    width: 350px;
+  }
+  
+}

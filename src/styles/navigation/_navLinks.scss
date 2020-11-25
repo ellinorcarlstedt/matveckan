@@ -10,15 +10,19 @@
   text-align: end;
   margin: 0;
   padding: 0;
+    li {
+      margin-top: 0.5rem;
+    }
     a {
-      display: block;
+      display: inline-block;
       color: black;
       text-decoration: none;
       padding: 0.7rem;
       &:hover,
       &.active {
-      background-color: $secondaryBlue;
-       color: white;
+        border-radius: 0.5rem 0 0 0.5rem;
+        background-color: $secondaryBlue;
+        color: white;
       }
     }
   }
@@ -29,12 +33,12 @@
     font: inherit;
     cursor: pointer;
     padding: 0.7rem;
-    width: 100%;
     text-align: end;
     &:hover,
     &.active {
+      border-radius: 0.5rem 0 0 0.5rem;
       background-color: $secondaryBlue;
-       color: white;
+      color: white;
       }
   }
 
@@ -42,6 +46,7 @@
     .nav-links {
       flex-direction: row;
       li {
+        margin-top: 0;
         margin-right: 1em;
       }
       a {
