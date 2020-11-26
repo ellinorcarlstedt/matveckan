@@ -12,6 +12,7 @@ const MyRecipes = () => {
 
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const [ loadedRecipes, setLoadedRecipes ] = useState();
+    const [ deletedRecipe, setDeletedRecipe ] = useState("");
     const auth = useContext(AuthContext);
 
     useEffect(() => {
@@ -24,6 +25,22 @@ const MyRecipes = () => {
         fetchRecipes();
     }, [sendRequest, auth.userId]);
 
+
+    const deleteRecipe = async (id) => {
+        try {
+            const response = await sendRequest(`http://localhost:5000/api/recipes/${id}`, 
+                "DELETE",
+                null,
+                {}
+            );
+            setDeletedRecipe(response.deleted);
+            let filteredRecipes = loadedRecipes.filter((recipe) => {
+                return recipe.id !== id;
+            })
+            setLoadedRecipes(filteredRecipes);
+        } catch(err) {}
+    }
+
     return (
         <React.Fragment>
             <Modal 
@@ -33,9 +50,16 @@ const MyRecipes = () => {
                 footer={<Button onClick={clearError}>OK</Button>}>
                 {error}
             </Modal>
+            <Modal 
+                show={!!deletedRecipe}
+                onCancel={() => setDeletedRecipe("")}
+                header="Recept borttaget"
+                footer={<Button onClick={() => setDeletedRecipe("")}>OK</Button>}>
+                {deletedRecipe.mealName} har tagits bort.
+            </Modal>
             <Background className="my-recipes">
                 {isLoading && <LoadingSpinner asOverlay />} 
-                {loadedRecipes && <RecipesList recipes={loadedRecipes} />}
+                {loadedRecipes && <RecipesList recipes={loadedRecipes} deleteRecipe={deleteRecipe}/>}
                 <ArtistAttribute />
             </Background>
         </React.Fragment>

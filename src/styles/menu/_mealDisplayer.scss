@@ -10,30 +10,10 @@
     position: relative;
   }
   
-.meal-overview--menu-displayer {
-    display: flex;
-    justify-content: space-between;
-}
+  .delete-recipe-cancel-button {
+    margin-right: 0.7rem;
+  }
 
-.meal-overview--recipes-list {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.meal-overview--recipes-list__inner {
-  display: flex;
-  flex-grow: 2;
-  padding-left: 1rem;
-  text-align: left;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.meal-overview--recipes-list__button {
-  margin: 0.3rem;
-}
-  
 
   
 

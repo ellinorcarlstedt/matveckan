@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import MealDisplayer from '../components/MealDisplayer';
 
+
 const RecipesList = (props) => {
 
     const [indexOfOpenRecipe, setIndexOfOpenRecipe] = useState(null);
@@ -25,6 +26,7 @@ const RecipesList = (props) => {
                             indexOfOpenRecipe={indexOfOpenRecipe}
                             openRecipe={() => openRecipe(recipe.id)}
                             closeRecipe={closeRecipe}
+                            deleteRecipe={() => props.deleteRecipe(recipe.id)}
                             />
                     )
                 })}
