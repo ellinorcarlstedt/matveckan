@@ -14,13 +14,14 @@
       margin-top: 0.5rem;
     }
     a {
-      display: inline-block;
+      display: block;
       color: black;
+      text-align: left;
       text-decoration: none;
       padding: 0.7rem;
       &:hover,
       &.active {
-        border-radius: 0.5rem 0 0 0.5rem;
+        border-radius: 0 0.5rem 0.5rem 0;
         background-color: $secondaryBlue;
         color: white;
       }
@@ -28,15 +29,16 @@
   }
 
   .nav-button {
+    width: 100%;
     border: none;
     background-color: $primaryBlue;
     font: inherit;
     cursor: pointer;
     padding: 0.7rem;
-    text-align: end;
+    text-align: left;
     &:hover,
     &.active {
-      border-radius: 0.5rem 0 0 0.5rem;
+      border-radius: 0 0.5rem 0.5rem 0;
       background-color: $secondaryBlue;
       color: white;
       }

@@ -145,29 +145,31 @@ input[type=password] {
 }
 
 .nav-links a {
-  display: inline-block;
+  display: block;
   color: black;
+  text-align: left;
   text-decoration: none;
   padding: 0.7rem;
 }
 
 .nav-links a:hover, .nav-links a.active {
-  border-radius: 0.5rem 0 0 0.5rem;
+  border-radius: 0 0.5rem 0.5rem 0;
   background-color: #55adad;
   color: white;
 }
 
 .nav-button {
+  width: 100%;
   border: none;
   background-color: #b0eeee;
   font: inherit;
   cursor: pointer;
   padding: 0.7rem;
-  text-align: end;
+  text-align: left;
 }
 
 .nav-button:hover, .nav-button.active {
-  border-radius: 0.5rem 0 0 0.5rem;
+  border-radius: 0 0.5rem 0.5rem 0;
   background-color: #55adad;
   color: white;
 }
