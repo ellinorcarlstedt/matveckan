@@ -19,11 +19,13 @@ const RecipesList = (props) => {
                 {props.recipes.map((recipe) => {
                     return (
                         <MealDisplayer 
+                            source="recipes-list"
                             key={recipe.id} 
                             meal={recipe} 
                             indexOfOpenRecipe={indexOfOpenRecipe}
                             openRecipe={() => openRecipe(recipe.id)}
-                            closeRecipe={() => closeRecipe()}/>
+                            closeRecipe={closeRecipe}
+                            />
                     )
                 })}
             </div>

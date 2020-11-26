@@ -23,6 +23,7 @@ function MenuDisplayer (props) {
     const menu = props.menu.map((meal, index) => 
             (
             <MealDisplayer 
+                source="menu-displayer"
                 key={meal.id} 
                 weekday={index + 1}
                 meal={meal} 

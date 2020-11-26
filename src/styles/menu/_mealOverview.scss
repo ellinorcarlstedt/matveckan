@@ -1,15 +1,5 @@
-/**************** MealDisplayer ****************/
+/**************** MealOverview ****************/
 
-.meal-displayer {
-    background-color: white;
-    margin: 0 0.5rem 0.5rem 0.5rem;
-    box-shadow: 0.1rem 0.1rem 0.3rem rgba(0,0,0,0.25);
-    border-radius: 0.3rem;
-    cursor: pointer;
-    z-index: 1;
-    position: relative;
-  }
-  
 .meal-overview--menu-displayer {
     display: flex;
     justify-content: space-between;
@@ -34,10 +24,3 @@
   margin: 0.3rem;
 }
   
-
-  
-
-
-
-
- 

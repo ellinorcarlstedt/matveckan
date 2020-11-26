@@ -12,7 +12,7 @@ const Button = (props) => {
             )
     } else {
         return (
-            <button className={`button ${props.buttonClass} ${props.large && "button--large"} `} 
+            <button className={`button ${props.buttonClass} ${props.large && "button--large"} ${props.small && "button--small"}`} 
                     type={props.type || "button"} 
                     onClick={props.onClick}>
                 {props.children}

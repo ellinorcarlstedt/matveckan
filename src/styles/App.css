@@ -344,10 +344,10 @@ input[type=password] {
   background-color: #b0eeee;
   color: black;
   border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.3rem;
-  -webkit-box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.25);
-          box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.25);
+  padding: 0.7em 1.2em;
+  border-radius: 0.4em;
+  -webkit-box-shadow: 0 0 0.2em rgba(0, 0, 0, 0.25);
+          box-shadow: 0 0 0.2em rgba(0, 0, 0, 0.25);
   cursor: pointer;
   outline: none;
   text-decoration: none;
@@ -368,6 +368,10 @@ input[type=password] {
 .button--large {
   font-size: 1.3rem;
   font-weight: bold;
+}
+
+.button--small {
+  font-size: 0.7rem;
 }
 
 /**************** Loading Spinner ****************/
@@ -633,13 +637,89 @@ input[type=password] {
   position: relative;
 }
 
-.meal-displayer-overview {
+.meal-overview--menu-displayer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.meal-overview--recipes-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.meal-overview--recipes-list__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  padding-left: 1rem;
+  text-align: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.meal-overview--recipes-list__button {
+  margin: 0.3rem;
+}
+
+/**************** MealOverview ****************/
+.meal-overview--menu-displayer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.meal-overview--recipes-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.meal-overview--recipes-list__inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 2;
+      -ms-flex-positive: 2;
+          flex-grow: 2;
+  padding-left: 1rem;
+  text-align: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.meal-overview--recipes-list__button {
+  margin: 0.3rem;
 }
 
 /**************** MealTitle ****************/

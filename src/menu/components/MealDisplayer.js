@@ -1,7 +1,5 @@
 import React  from 'react';
-import Weekday from './Weekday';
-import MealCategory from './MealCategory';
-import MealTitle from './MealTitle';
+import MealOverview from './MealOverview';
 import Recipe from './Recipe';
 import HeightTransitionComponent from '../../shared/UIElements/HeightTransitionComponent';
 
@@ -14,13 +12,16 @@ function MealDisplayer(props) {
     }
     
         return (
-            <div className="meal-displayer" onClick={() => toggleRecipe()}>
-                <div className="meal-displayer-overview">
-                    {props.weekday && <Weekday weekday={props.weekday}/>}
-                    <MealTitle  title={props.meal.mealName}/>
-                    <MealCategory category={props.meal.mealCategory}/>
-                </div>
-                <div>
+            <div className="meal-displayer">
+                <MealOverview 
+                    source={props.source}
+                    toggleRecipe={toggleRecipe}
+                    title={props.meal.mealName}
+                    category={props.meal.mealCategory}
+                    weekday={props.weekday}
+                    deleteRecipe={props.deleteRecipe}
+                    />
+                <div onClick={toggleRecipe}>
                     <HeightTransitionComponent isOpen={isOpen} id={props.meal.id} className="border-radius">
                         <Recipe description={props.meal.description} ingredients={props.meal.ingredients}/> 
                     </HeightTransitionComponent>
