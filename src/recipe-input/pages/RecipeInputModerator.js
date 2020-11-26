@@ -377,9 +377,9 @@ const RecipeInputModerator = () => {
             header={`${state.postedRecipe.mealName} är sparat!`}
             footer={<Button onClick={() => dispatch({ type: "HANDLE_POSTED_RECIPE", recipe: "" })}>OK</Button>}
             footerClass="confirmation-modal__footer">
-            <Recipe 
+            {state.postedRecipe && <Recipe 
                 ingredients={state.postedRecipe.ingredients} 
-                description={state.postedRecipe.description}/>
+                description={state.postedRecipe.description}/>}
         </Modal>
 
         <Background className="recipe-input-moderator-container">
@@ -418,10 +418,16 @@ const RecipeInputModerator = () => {
 
                     <ul className="added-items-list">
                     {state.addedItems.filter((item) => item.itemType === "ingredients").map((item) => {
+                        let itemName;
+                        if (item.amount || item.unit) {
+                            itemName = item.name.toLowerCase();
+                        } else {
+                            itemName = item.name.charAt(0).toUpperCase() + item.name.slice(1);
+                        }
                         return  <AddedRecipeItem   
                                     key={item.id} 
                                     id={item.id}
-                                    content={`${item.amount} ${item.unit} ${item.name} ${item.details}`} 
+                                    content={`${item.amount} ${item.unit} ${itemName} ${item.details}`} 
                                     deleteItem={() => dispatch({ type: "DELETE_ITEM", id: item.id })} 
                                     toggleEditMode={() => toggleEditMode(item.id)}
                                     currentItem={state.currentItem.id}
