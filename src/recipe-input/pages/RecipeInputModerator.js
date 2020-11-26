@@ -196,6 +196,7 @@ const RecipeInputModerator = () => {
     const amountFocus = useCustomRef();
     const descriptionFocus = useCustomRef();
 
+    console.log("Rendered...");
 
     useEffect(() => {
         if (titleFocus) {
@@ -263,7 +264,10 @@ const RecipeInputModerator = () => {
             itemType: itemType,
             newItem: { id, itemType, ...newItem } 
         }); 
-    }, [state, validateItemInput]);
+        if (itemType === "ingredients") {
+            ingredientFocus.current.focus();
+        }
+    }, [state, validateItemInput, ingredientFocus]);
 
 
     const toggleEditMode = useCallback((id) => {
