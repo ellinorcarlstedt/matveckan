@@ -196,8 +196,6 @@ const RecipeInputModerator = () => {
     const amountFocus = useCustomRef();
     const descriptionFocus = useCustomRef();
 
-    console.log("Rendered...");
-
     useEffect(() => {
         if (titleFocus) {
           titleFocus.current.focus();
