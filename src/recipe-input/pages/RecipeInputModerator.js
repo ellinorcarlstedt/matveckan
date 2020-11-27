@@ -384,11 +384,11 @@ const RecipeInputModerator = () => {
                 description={state.postedRecipe.description}/>}
         </Modal>
 
-        <Background className="recipe-input-moderator-container">
+        <Background className="recipe-input-moderator">
 
         {isLoading && <LoadingSpinner asOverlay />}
  
-          <div className="recipe-input-moderator">
+          <div className="recipe-input-form-container">
 
             <form>
             

@@ -1,18 +1,20 @@
 /********************** Input Moderator *************************/
 
-  .recipe-input-moderator-container {
+  .recipe-input-moderator {
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: flex-start;
-  }
+  } 
   
-  .recipe-input-moderator {
-    margin: 5rem 0.5rem 3rem;
+  .recipe-input-form-container {
+    margin: 5rem 0 3rem;
+    width: 100%;
     form {
       background-color: white;
       padding: 1rem 0 1px; /*1px to avoid collapsing margins*/
       border-radius: 0.3rem;
-      margin-bottom: 1rem;
+      margin: 0 0.5rem 1rem;
     }
   } 
 
@@ -35,12 +37,8 @@
 
 
   @media screen and (min-width: 486px) {
-    
-    .recipe-input-moderator-container {
-      align-items: center;
-    }
 
-    .recipe-input-moderator {
+    .recipe-input-form-container {
       margin-top: 10rem;
       width: 350px;
       form {

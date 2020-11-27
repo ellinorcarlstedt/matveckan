@@ -602,6 +602,7 @@ input[type=password] {
 
 /**************** MenuDisplayer ****************/
 .menu-displayer {
+  width: 100%;
   margin: 5rem 0 2rem;
 }
 
@@ -712,6 +713,7 @@ input[type=password] {
 
 /**************** RecipesList ****************/
 .recipes-list {
+  width: 100%;
   margin: 5rem 0 3rem;
 }
 
@@ -959,7 +961,7 @@ input[type=password] {
 }
 
 /********************** Input Moderator *************************/
-.recipe-input-moderator-container {
+.recipe-input-moderator {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -967,21 +969,25 @@ input[type=password] {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
 }
 
-.recipe-input-moderator {
-  margin: 5rem 0.5rem 3rem;
+.recipe-input-form-container {
+  margin: 5rem 0 3rem;
+  width: 100%;
 }
 
-.recipe-input-moderator form {
+.recipe-input-form-container form {
   background-color: white;
   padding: 1rem 0 1px;
   /*1px to avoid collapsing margins*/
   border-radius: 0.3rem;
-  margin-bottom: 1rem;
+  margin: 0 0.5rem 1rem;
 }
 
 .input-with-items-wrapper {
@@ -1002,16 +1008,11 @@ input[type=password] {
 }
 
 @media screen and (min-width: 486px) {
-  .recipe-input-moderator-container {
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  .recipe-input-moderator {
+  .recipe-input-form-container {
     margin-top: 10rem;
     width: 350px;
   }
-  .recipe-input-moderator form {
+  .recipe-input-form-container form {
     padding: 1rem 0.5rem 0.5rem;
   }
 }
@@ -1028,6 +1029,7 @@ input[type=password] {
 
 /**************** Auth ****************/
 .auth-background {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
