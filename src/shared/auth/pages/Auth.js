@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useReducer } from 'react';
 import { AuthContext } from "../../context/auth-context";
 import { useHttpClient } from "../../hooks/http-hook";
 import Background from "../../../shared/UIElements/Background";
@@ -8,58 +8,53 @@ import ErrorMessage from "../../../shared/UIElements/ErrorMessage";
 import LoadingSpinner from "../../../shared/UIElements/LoadingSpinner";
 import "../../../styles/App.css";
 
+const formReducer = (state, action) => {
+    switch (action.type) {
+        case "INPUT_CHANGE": 
+            return {
+                ...state,
+                [action.inputName]: action.value,
+                errorMessage: ""
+            }
+        case "SWITCH_MODE":
+            return {
+                ...state,
+                isLoginMode: !state.isLoginMode
+            }
+        case "SET_ERROR":
+            return {
+                ...state,
+                errorMessage: action.error
+            }
+        default:
+            return state;
+    }
+}
+
 const Auth = () => {
     const auth = useContext(AuthContext);
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
-    const [ isLoginMode, setIsLogInMode ] = useState(true);
-    const [ errorMessage, setErrorMessage] = useState("");
-    const [ formName, setFormName ] = useState("");
-    const [ formEmail, setFormEmail ] = useState("");
-    const [ formPassword, setFormPassword ] = useState("");
-
-
-    const switchModeHandler = () => {
-        setIsLogInMode(!isLoginMode);
-        clearErrorMessage();
-    }
-
-    const formNameHandler = (e) => {
-        setFormName(e.target.value);
-        clearErrorMessage();
-    }
-
-    const formEmailHandler = (e) => {
-        setFormEmail(e.target.value);
-        clearErrorMessage();
-    }
-
-    const formPasswordHandler = (e) => {
-        setFormPassword(e.target.value);
-        clearErrorMessage();
-    }
-
-    const showError = (message) => {
-        setErrorMessage(message);
-    }
-
-    const hideError = () => {
-        setErrorMessage("");
-    }
-
-    const clearErrorMessage = () => {
-        if (errorMessage) { 
-            hideError() }
-    }
+    const [ state, dispatch ] = useReducer(formReducer, {
+        isLoginMode: true,
+        errorMessage: "",
+        name: "",
+        email: "",
+        password: ""
+    });
 
     const validateInput = () => {
-        if(!isLoginMode && formName === "") {
-            showError("Ange ett namn.");
-        } else if (formEmail.length < 4) {
-            showError("Ange en (giltig) mailadress.");
-        } else if(!isLoginMode && formPassword.length < 6) {
-            showError("Ange ett lösenord på minst 6 tecken.");
-        } else if (isLoginMode && !formPassword) {
-            showError("Ange ditt lösenord.");
+        let errorMessage;
+        if (!state.isLoginMode && state.name === "") {
+            errorMessage = "Ange ett namn.";
+        } else if (state.email.length < 4) {
+            errorMessage = "Ange en (giltig) mailadress.";
+        } else if(!state.isLoginMode && state.password.length < 6) {
+            errorMessage = "Ange ett lösenord på minst 6 tecken.";
+        } else if (state.isLoginMode && !state.password) {
+            errorMessage = "Ange ditt lösenord.";
+        } 
+        if (!!errorMessage) {
+            dispatch({ type: "SET_ERROR", error: errorMessage });
         } else {
             return true;
         }
@@ -72,14 +67,14 @@ const Auth = () => {
         if (!validInput) { 
             return; 
         } else {
-        if (isLoginMode) {
+        if (state.isLoginMode) {
                 try {
                     const responseData = await sendRequest(
                         "http://localhost:5000/api/users/login",
                         "POST",
                         JSON.stringify({
-                            email: formEmail,
-                            password: formPassword
+                            email: state.email,
+                            password: state.password
                         }),
                         {
                             "Content-Type": "application/json"
@@ -93,9 +88,9 @@ const Auth = () => {
                         "http://localhost:5000/api/users/signup",
                         "POST",
                         JSON.stringify({
-                            name: formName,
-                            email: formEmail,
-                            password: formPassword
+                            name: state.name,
+                            email: state.email,
+                            password: state.password
                         }),
                         {
                             "Content-Type": "application/json"
@@ -120,34 +115,34 @@ const Auth = () => {
             </Modal>
             <div className="auth">
                 <form onSubmit={submitHandler}>
-                {!isLoginMode && ( 
+                {!state.isLoginMode && ( 
                     <input  type="name" 
-                            value={formName} 
+                            value={state.name} 
                             placeholder="namn" 
                             autoComplete="off"
-                            onChange={formNameHandler}/> 
+                            onChange={(e) => dispatch({ type: "INPUT_CHANGE", inputName: "name", value: e.target.value })}/> 
                     )}
                     <input  type="email" 
-                            value={formEmail} 
+                            value={state.email} 
                             autoComplete="off"
                             placeholder="mailadress" 
-                            onChange={formEmailHandler}/>
+                            onChange={(e) => dispatch({ type: "INPUT_CHANGE", inputName: "email", value: e.target.value })}/>
                     <input  type="password" 
-                            value={formPassword} 
+                            value={state.password} 
                             autoComplete="off"
                             placeholder="lösenord" 
-                            onChange={formPasswordHandler}/>
-                    {errorMessage && (
-                    <ErrorMessage hideError={hideError}>
-                        {errorMessage}
+                            onChange={(e) => dispatch({ type: "INPUT_CHANGE", inputName: "password", value: e.target.value })}/>
+                    {state.errorMessage && (
+                    <ErrorMessage hideError={() => dispatch({ type: "SET_ERROR", error: "" })}>
+                        {state.errorMessage}
                     </ErrorMessage>
                     )}
                     <Button type="submit" buttonClass="login-button">
-                        {isLoginMode ? "Logga in" : "Bli medlem"}
+                        {state.isLoginMode ? "Logga in" : "Bli medlem"}
                     </Button>
                 </form>
-                <Button onClick={switchModeHandler} buttonClass="switch-mode-button">
-                    {isLoginMode ? "Ny användare?" : "Redan medlem?"}
+                <Button buttonClass="switch-mode-button" onClick={() => dispatch({ type: "SWITCH_MODE" })}>
+                    {state.isLoginMode ? "Ny användare?" : "Redan medlem?"}
                 </Button>
                 {isLoading && <LoadingSpinner asOverlay />}  
             </div>
