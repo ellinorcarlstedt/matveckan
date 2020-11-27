@@ -3,3 +3,9 @@
 .recipes-list {
     margin: 5rem 0 3rem;
   }
+
+  @media screen and (min-width: 486px) {
+    .recipes-list {
+      width: 350px;
+    }
+  }

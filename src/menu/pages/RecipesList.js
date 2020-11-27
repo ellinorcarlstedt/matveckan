@@ -15,7 +15,6 @@ const RecipesList = (props) => {
     }
 
     return (
-        <div className="component-resizer">
             <div className="recipes-list">
                 {props.recipes.map((recipe) => {
                     return (
@@ -31,7 +30,6 @@ const RecipesList = (props) => {
                     )
                 })}
             </div>
-        </div>
     )
 }
 

@@ -20,25 +20,21 @@ function MenuDisplayer (props) {
         closeRecipe();
     }
 
-    const menu = props.menu.map((meal, index) => 
-            (
-            <MealDisplayer 
-                source="menu-displayer"
-                key={meal.id} 
-                weekday={index + 1}
-                meal={meal} 
-                indexOfOpenRecipe={indexOfOpenRecipe}
-                openRecipe={() => openRecipe(meal.id)}
-                closeRecipe={() => closeRecipe()}/>
-            )
-        )
-
     const reloadButtonText = props.menu.length ? "Nytt menyförslag" : "Visa menyförslag";
 
         return (
             <div className="menu-displayer">
                 <Button buttonClass="menu-displayer-reload-button" onClick={reloadMenu}>{reloadButtonText}</Button>
-                    {menu}
+                    {props.menu.map((meal, index) => 
+                        <MealDisplayer 
+                            source="menu-displayer"
+                            key={meal.id} 
+                            weekday={index + 1}
+                            meal={meal} 
+                            indexOfOpenRecipe={indexOfOpenRecipe}
+                            openRecipe={() => openRecipe(meal.id)}
+                            closeRecipe={() => closeRecipe()}/>
+                    )}
             </div>
         )
 }
