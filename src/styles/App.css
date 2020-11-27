@@ -355,9 +355,14 @@ input[type=password] {
   border: none;
 }
 
-.button--large {
-  font-size: 1.3rem;
-  font-weight: bold;
+.button--danger {
+  background-color: #fd8ea6;
+}
+
+.button--danger:hover,
+.button--danger:active {
+  color: white;
+  background-color: #cc4771;
 }
 
 .button--small {

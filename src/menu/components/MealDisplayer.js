@@ -32,7 +32,7 @@ function MealDisplayer(props) {
                     header="Är du säker?"
                     footer={<React.Fragment>
                                 <Button onClick={toggleConfirmModal} buttonClass="delete-recipe-cancel-button">Avbryt</Button>
-                                <Button onClick={deleteRecipe}>Radera</Button>
+                                <Button danger onClick={deleteRecipe}>Radera</Button>
                             </React.Fragment>}
                     footerClass="delete-recipe-buttons"
                     >
