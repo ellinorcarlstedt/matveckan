@@ -36,12 +36,10 @@ function MenuDisplayer (props) {
     const reloadButtonText = props.menu.length ? "Nytt menyförslag" : "Visa menyförslag";
 
         return (
-        <div className="component-resizer">
             <div className="menu-displayer">
                 <Button buttonClass="menu-displayer-reload-button" onClick={reloadMenu}>{reloadButtonText}</Button>
                     {menu}
             </div>
-        </div>
         )
 }
 
