@@ -387,8 +387,6 @@ const RecipeInputModerator = () => {
         <Background className="recipe-input-moderator-container">
 
         {isLoading && <LoadingSpinner asOverlay />}
-
-        <div className="component-resizer">
  
           <div className="recipe-input-moderator">
 
@@ -476,8 +474,6 @@ const RecipeInputModerator = () => {
             <Button type="button" onClick={handleSubmit}>Lägg upp recept</Button>
 
           </div> 
-
-        </div> 
 
         <ArtistAttribute />
 

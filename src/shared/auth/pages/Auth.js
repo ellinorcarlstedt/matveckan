@@ -110,48 +110,46 @@ const Auth = () => {
 
     return (
         <Background className="auth-background">
-             <div className="component-resizer">
-                <Modal 
-                    show={!!error}
-                    onCancel={clearError}
-                    header="Någonting gick fel"
-                    footer={<Button onClick={clearError}>OK</Button>}
-                    >
-                {error}
-                </Modal>
-                <div className="auth">
-                    <form onSubmit={submitHandler}>
-                    {!isLoginMode && ( 
-                        <input  type="name" 
-                                value={formName} 
-                                placeholder="namn" 
-                                autoComplete="off"
-                                onChange={formNameHandler}/> 
-                        )}
-                        <input  type="email" 
-                                value={formEmail} 
-                                autoComplete="off"
-                                placeholder="mailadress" 
-                                onChange={formEmailHandler}/>
-                        <input  type="password" 
-                                value={formPassword} 
-                                autoComplete="off"
-                                placeholder="lösenord" 
-                                onChange={formPasswordHandler}/>
-                        {errorMessage && (
-                        <ErrorMessage hideError={hideError}>
-                            {errorMessage}
-                        </ErrorMessage>
-                        )}
-                        <Button type="submit" buttonClass="login-button">
-                            {isLoginMode ? "Logga in" : "Bli medlem"}
-                        </Button>
-                    </form>
-                    <Button onClick={switchModeHandler} buttonClass="switch-mode-button">
-                        {isLoginMode ? "Ny användare?" : "Redan medlem?"}
+            <Modal 
+                show={!!error}
+                onCancel={clearError}
+                header="Någonting gick fel"
+                footer={<Button onClick={clearError}>OK</Button>}
+                >
+            {error}
+            </Modal>
+            <div className="auth">
+                <form onSubmit={submitHandler}>
+                {!isLoginMode && ( 
+                    <input  type="name" 
+                            value={formName} 
+                            placeholder="namn" 
+                            autoComplete="off"
+                            onChange={formNameHandler}/> 
+                    )}
+                    <input  type="email" 
+                            value={formEmail} 
+                            autoComplete="off"
+                            placeholder="mailadress" 
+                            onChange={formEmailHandler}/>
+                    <input  type="password" 
+                            value={formPassword} 
+                            autoComplete="off"
+                            placeholder="lösenord" 
+                            onChange={formPasswordHandler}/>
+                    {errorMessage && (
+                    <ErrorMessage hideError={hideError}>
+                        {errorMessage}
+                    </ErrorMessage>
+                    )}
+                    <Button type="submit" buttonClass="login-button">
+                        {isLoginMode ? "Logga in" : "Bli medlem"}
                     </Button>
-                    {isLoading && <LoadingSpinner asOverlay />}  
-                </div>
+                </form>
+                <Button onClick={switchModeHandler} buttonClass="switch-mode-button">
+                    {isLoginMode ? "Ny användare?" : "Redan medlem?"}
+                </Button>
+                {isLoading && <LoadingSpinner asOverlay />}  
             </div>
         </Background>
     )

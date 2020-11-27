@@ -4,16 +4,15 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
   }
   
   .recipe-input-moderator {
     margin: 5rem 0.5rem 3rem;
     form {
-    background-color: white;
-    padding: 1rem 0 1px; /*1px to avoid collapsing margins*/
-    border-radius: 0.3rem;
-    margin-bottom: 1rem;
+      background-color: white;
+      padding: 1rem 0 1px; /*1px to avoid collapsing margins*/
+      border-radius: 0.3rem;
+      margin-bottom: 1rem;
     }
   } 
 
@@ -36,8 +35,14 @@
 
 
   @media screen and (min-width: 486px) {
+    
+    .recipe-input-moderator-container {
+      align-items: center;
+    }
+
     .recipe-input-moderator {
-      margin-top: 50%;
+      margin-top: 10rem;
+      width: 350px;
       form {
         padding: 1rem 0.5rem 0.5rem;
       }

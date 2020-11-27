@@ -36,19 +36,9 @@ input[type=password] {
   font-size: 0.8rem;
 }
 
-.component-resizer {
-  width: 100%;
-}
-
 @media all and (max-width: 486px) {
   html {
     font-size: 1.4rem;
-  }
-}
-
-@media screen and (min-width: 486px) {
-  .component-resizer {
-    width: 350px;
   }
 }
 
@@ -980,9 +970,6 @@ input[type=password] {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .recipe-input-moderator {
@@ -1015,8 +1002,14 @@ input[type=password] {
 }
 
 @media screen and (min-width: 486px) {
+  .recipe-input-moderator-container {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
   .recipe-input-moderator {
-    margin-top: 50%;
+    margin-top: 10rem;
+    width: 350px;
   }
   .recipe-input-moderator form {
     padding: 1rem 0.5rem 0.5rem;
@@ -1097,7 +1090,8 @@ input[type=password] {
 
 @media screen and (min-width: 486px) {
   .auth {
-    margin-top: 50%;
+    margin-top: 10rem;
+    width: 350px;
   }
 }
 /*# sourceMappingURL=App.css.map */
