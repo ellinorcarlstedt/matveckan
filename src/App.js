@@ -10,7 +10,6 @@ import MainNavigation from './shared/Navigation/MainNavigation';
 import MenuModerator from './menu/pages/MenuModerator';
 import MyRecipes from './menu/pages/MyRecipes';
 import RecipeInputModerator from './recipe-input/pages/RecipeInputModerator';
-import EditRecipe from './recipe-input/components/EditRecipe';
 import Auth from './shared/auth/pages/Auth';
 import useAuth from './shared/hooks/auth-hook';
 import { AuthContext } from './shared/context/auth-context';
@@ -29,7 +28,7 @@ function App() {
         <Route exact path="/meny" component={MenuModerator} />
         <Route exact path="/mina-recept" component={MyRecipes} />
         <Route exact path="/nytt-recept" component={RecipeInputModerator} />
-        <Route exact path="/nytt-recept/:rid" component={RecipeInputModerator} />
+        <Route exact path="/redigera/:rid" component={RecipeInputModerator} />
         <Redirect to="/mina-recept"/>
       </Switch> 
     );

@@ -17,7 +17,7 @@ const NavLinks = () => {
               </li>
               }
               <li>
-                <NavLink to="/nytt-recept/5f7ed7225c2ec25690af8e55">Nytt recept</NavLink>
+                <NavLink to="/nytt-recept">Nytt recept</NavLink>
               </li>
               {!auth.isLoggedin && <li>
                 <NavLink to="/auth">Logga in</NavLink>

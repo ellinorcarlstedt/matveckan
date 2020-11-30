@@ -17,7 +17,10 @@ const MealOverview = (props) => {
     } else if (props.source === "recipes-list") {
         return (
             <div className="meal-overview--recipes-list">
-                <Button size="small" danger buttonClass="meal-overview--recipes-list__button" small onClick={props.toggleConfirmModal}>Radera</Button>
+                <div className="meal-overview--recipes-list__buttons">
+                    <Button size="small" danger onClick={props.toggleConfirmModal}>Radera</Button>
+                    <Button size="small" to={`/redigera/${props.id}`}>Ändra</Button>
+                </div>
                 <div className="meal-overview--recipes-list__inner" onClick={props.toggleRecipe}>
                     <MealTitle title={props.title}/>
                     <MealCategory category={props.category}/>

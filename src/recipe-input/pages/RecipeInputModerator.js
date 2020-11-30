@@ -1,5 +1,5 @@
 import React, { useEffect, useCallback, useReducer, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { AuthContext } from "../../shared/context/auth-context";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import useCustomRef from "../../shared/hooks/ref-hook";
@@ -39,7 +39,7 @@ import ArtistAttribute from '../../shared/UIElements/ArtistAttribute';
                 let index = itemsList.findIndex(item => item.id === state.currentItem.id);
                 itemsList.splice((index), 1, action.newItem); 
             } 
-            let clearedInputsAfterAdding = {};
+            let clearedInputsAfterAdding;
             for (let prop in state.inputs) {
                 let clearedValue = !state.inputs[prop].itemType ? state.inputs[prop].value : "";  
                 clearedInputsAfterAdding = {
@@ -208,6 +208,7 @@ const RecipeInputModerator = () => {
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const auth = useContext(AuthContext);
     const recipeToEdit = useParams().rid;
+    const history = useHistory();
 
     const titleFocus = useCustomRef();
     const ingredientFocus = useCustomRef();
@@ -403,10 +404,13 @@ const RecipeInputModerator = () => {
                     description: item.description
                 }    
             });
+            const url = recipeToEdit ? `http://localhost:5000/api/recipes/${recipeToEdit}` : "http://localhost:5000/api/recipes";
+            const method = recipeToEdit ? "PATCH" : "POST";
+
             try {
               const response = await sendRequest(
-                "http://localhost:5000/api/recipes",
-                "POST",
+                url,
+                method,
                 JSON.stringify({
                   mealName: state.inputs.title.value,
                   mealCategory: state.inputs.category.value,
@@ -423,6 +427,14 @@ const RecipeInputModerator = () => {
         }
       }
 
+      const confirmPostedRecipe = () => {
+          if (recipeToEdit) {
+            history.push("/mina-recept");
+          } else {
+            dispatch({ type: "HANDLE_POSTED_RECIPE", recipe: "" });
+          }
+      }
+
     return (
     <React.Fragment> 
         <Modal 
@@ -436,7 +448,7 @@ const RecipeInputModerator = () => {
             show={!!state.postedRecipe}
             onCancel={() => dispatch({ type: "HANDLE_POSTED_RECIPE", recipe: "" })}
             header={`${state.postedRecipe.mealName} är sparat!`}
-            footer={<Button onClick={() => dispatch({ type: "HANDLE_POSTED_RECIPE", recipe: "" })}>OK</Button>}
+            footer={<Button onClick={confirmPostedRecipe}>OK</Button>}
             footerClass="confirmation-modal__footer">
             {state.postedRecipe && <Recipe 
                 ingredients={state.postedRecipe.ingredients} 

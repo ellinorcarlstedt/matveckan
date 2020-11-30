@@ -367,6 +367,7 @@ input[type=password] {
 
 .button--small {
   font-size: 0.7rem;
+  padding: 0.6em 1em;
 }
 
 /**************** Loading Spinner ****************/
@@ -677,8 +678,15 @@ input[type=password] {
           justify-content: space-between;
 }
 
-.meal-overview--recipes-list__button {
-  margin: 0.3rem;
+.meal-overview--recipes-list__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.meal-overview--recipes-list__buttons button,
+.meal-overview--recipes-list__buttons a {
+  margin: 0.3rem 0 0.3rem 0.3rem;
 }
 
 /**************** MealTitle ****************/

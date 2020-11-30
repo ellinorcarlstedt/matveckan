@@ -20,11 +20,13 @@
   justify-content: space-between;
 }
 
-.meal-overview--recipes-list__button {
-  margin: 0.3rem;
+.meal-overview--recipes-list__buttons {
+  display: flex;
+  button,
+  a {
+    margin: 0.3rem 0 0.3rem 0.3rem;
+  }
 }
 
-.delete-recipe-buttons {
-    
-}
+
   

@@ -40,6 +40,7 @@ function MealDisplayer(props) {
                 </Modal>
                 <div className="meal-displayer">
                     <MealOverview 
+                        id={props.meal.id}
                         source={props.source}
                         toggleRecipe={toggleRecipe}
                         title={props.meal.mealName}
