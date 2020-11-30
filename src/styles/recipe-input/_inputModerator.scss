@@ -27,7 +27,7 @@
     padding: 0;
   }
   
-  .input-moderator__error-message {
+  .input-moderator--error-message {
     margin: 0 0.5rem 1rem 0.5rem;
   }
 
@@ -35,6 +35,9 @@
     padding-top: 0;
   }
 
+  .input-moderator--button__cancel {
+    margin-right: 0.5rem;
+  }
 
   @media screen and (min-width: 486px) {
 

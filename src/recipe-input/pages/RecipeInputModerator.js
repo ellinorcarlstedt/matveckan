@@ -446,7 +446,7 @@ const RecipeInputModerator = () => {
         </Modal>
         <Modal
             show={!!state.postedRecipe}
-            onCancel={() => dispatch({ type: "HANDLE_POSTED_RECIPE", recipe: "" })}
+            onCancel={confirmPostedRecipe}
             header={`${state.postedRecipe.mealName} är sparat!`}
             footer={<Button onClick={confirmPostedRecipe}>OK</Button>}
             footerClass="confirmation-modal__footer">
@@ -535,14 +535,18 @@ const RecipeInputModerator = () => {
                 </div>
 
                {state.errorMessage && (
-               <ErrorMessage hideError={() => dispatch({ type: "HANDLE_ERROR_MESSAGE", message: "" })} errorClass="input-moderator__error-message">
+               <ErrorMessage 
+                    hideError={() => dispatch({ type: "HANDLE_ERROR_MESSAGE", message: "" })} 
+                    errorClass="input-moderator--error-message">
                    {state.errorMessage}
                </ErrorMessage>
                )}
             
             </form>
+
+            {!!recipeToEdit && <Button to="/mina-recept" buttonClass="input-moderator--button__cancel">Avbryt</Button>}
           
-            <Button type="button" onClick={handleSubmit}>Lägg upp recept</Button>
+            <Button onClick={handleSubmit}>{ !!recipeToEdit ? "Uppdatera" : "Lägg upp recept" }</Button>
 
           </div> 
 
