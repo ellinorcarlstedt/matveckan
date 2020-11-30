@@ -31,7 +31,9 @@ const MyRecipes = () => {
             const response = await sendRequest(`http://localhost:5000/api/recipes/${id}`, 
                 "DELETE",
                 null,
-                {}
+                {
+                    "Authorization": "Bearer " + auth.token
+                }
             );
             setDeletedRecipe(response.deleted);
             let filteredRecipes = loadedRecipes.filter((recipe) => {

@@ -232,7 +232,7 @@ const RecipeInputModerator = () => {
                     return {
                         itemType: "ingredients",
                         name: ing.name,
-                        amount: ing.amount,
+                        amount: ing.amount || "",
                         unit: ing.unit,
                         details: ing.details
                     }
@@ -418,7 +418,8 @@ const RecipeInputModerator = () => {
                   creator: auth.userId
                 }),
                 { 
-                  "Content-Type" : "application/json"
+                  "Content-Type" : "application/json",
+                  "Authorization": "Bearer " + auth.token
                 }
                 );
                 dispatch({ type: "HANDLE_POSTED_RECIPE", recipe: response.recipe })
