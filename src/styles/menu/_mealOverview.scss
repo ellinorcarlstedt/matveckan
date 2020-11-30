@@ -22,11 +22,15 @@
 
 .meal-overview--recipes-list__buttons {
   display: flex;
-  button,
-  a {
-    margin: 0.3rem 0 0.3rem 0.3rem;
-  }
+  flex-direction: column;
+  margin-bottom: 0.3rem;
+   button, a {
+    margin: 0.3rem 0 0 0.3rem;
+  } 
 }
 
-
-  
+@media screen and (min-width: 486px) {
+  .meal-overview--recipes-list__buttons {
+    flex-direction: row;
+  }
+}

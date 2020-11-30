@@ -682,11 +682,24 @@ input[type=password] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 0.3rem;
 }
 
-.meal-overview--recipes-list__buttons button,
-.meal-overview--recipes-list__buttons a {
-  margin: 0.3rem 0 0.3rem 0.3rem;
+.meal-overview--recipes-list__buttons button, .meal-overview--recipes-list__buttons a {
+  margin: 0.3rem 0 0 0.3rem;
+}
+
+@media screen and (min-width: 486px) {
+  .meal-overview--recipes-list__buttons {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
 }
 
 /**************** MealTitle ****************/
