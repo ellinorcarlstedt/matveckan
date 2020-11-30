@@ -153,7 +153,7 @@ import ArtistAttribute from '../../shared/UIElements/ArtistAttribute';
                 errorMessage: "",
                 postedRecipe: action.recipe
             } 
-        case "SET_RECIPE_TO_EDIT":
+        case "SET_INPUT_DATA":
             return {
                 ...state,
                 inputs: {
@@ -250,7 +250,7 @@ const RecipeInputModerator = () => {
                     };
                 });
                 dispatch({ 
-                    type: "SET_RECIPE_TO_EDIT", 
+                    type: "SET_INPUT_DATA", 
                     title: response.recipe.mealName, 
                     category: response.recipe.mealCategory.toString(), 
                     addedItems: allItems 
@@ -258,6 +258,13 @@ const RecipeInputModerator = () => {
             }
             getRecipeToEdit();
         } catch (err) {}
+      } else {
+        dispatch({ 
+            type: "SET_INPUT_DATA", 
+            title: "",
+            category: "", 
+            addedItems: []
+        });
       }
     }, [sendRequest, recipeToEdit]);
 
