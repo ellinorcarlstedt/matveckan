@@ -49,8 +49,13 @@ function MealDisplayer(props) {
                         toggleConfirmModal={toggleConfirmModal}
                         />
                     <div onClick={toggleRecipe}>
-                        <HeightTransitionComponent isOpen={isOpen} id={props.meal.id} className="border-radius">
-                            <Recipe description={props.meal.description} ingredients={props.meal.ingredients}/> 
+                        <HeightTransitionComponent 
+                            isOpen={isOpen} 
+                            id={props.meal.id} 
+                            className="border-radius">
+                            <Recipe 
+                                description={props.meal.description} 
+                                ingredients={props.meal.ingredients}/> 
                         </HeightTransitionComponent>
                     </div>
                 </div>

@@ -215,11 +215,13 @@ const RecipeInputModerator = () => {
     const amountFocus = useCustomRef();
     const descriptionFocus = useCustomRef();
 
+
     useEffect(() => {
         if (titleFocus) {
           titleFocus.current.focus();
         }
       }, [titleFocus]);
+
 
     useEffect(() => {
     if (!!recipeToEdit) {
@@ -255,11 +257,8 @@ const RecipeInputModerator = () => {
                 })
             }
             getRecipeToEdit();
-        } catch (err) {
-            console.log(err);
-        }
-    }
-
+        } catch (err) {}
+      }
     }, [sendRequest, recipeToEdit]);
 
     
