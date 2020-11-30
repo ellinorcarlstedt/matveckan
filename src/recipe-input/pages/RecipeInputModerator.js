@@ -252,7 +252,7 @@ const RecipeInputModerator = () => {
                 dispatch({ 
                     type: "SET_RECIPE_TO_EDIT", 
                     title: response.recipe.mealName, 
-                    category: response.recipe.mealCategory, 
+                    category: response.recipe.mealCategory.toString(), 
                     addedItems: allItems 
                 })
             }
