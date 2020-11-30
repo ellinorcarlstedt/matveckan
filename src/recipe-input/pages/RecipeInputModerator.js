@@ -1,4 +1,5 @@
 import React, { useEffect, useCallback, useReducer, useContext } from 'react';
+import { useParams } from 'react-router-dom';
 import { AuthContext } from "../../shared/context/auth-context";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import useCustomRef from "../../shared/hooks/ref-hook";
@@ -151,7 +152,23 @@ import ArtistAttribute from '../../shared/UIElements/ArtistAttribute';
                 tooltipTarget: "",
                 errorMessage: "",
                 postedRecipe: action.recipe
-            }      
+            } 
+        case "SET_RECIPE_TO_EDIT":
+            return {
+                ...state,
+                inputs: {
+                    ...state.inputs,
+                    title: {
+                        ...state.inputs.title,
+                        value: action.title,
+                    },
+                    category: {
+                        ...state.inputs.category,
+                        value: action.category
+                    }
+                },
+                addedItems: action.addedItems
+            }        
         default:
             return state;
     }
@@ -190,6 +207,7 @@ const RecipeInputModerator = () => {
     const [state, dispatch] = useReducer(itemsReducer, initialState);
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const auth = useContext(AuthContext);
+    const recipeToEdit = useParams().rid;
 
     const titleFocus = useCustomRef();
     const ingredientFocus = useCustomRef();
@@ -202,7 +220,48 @@ const RecipeInputModerator = () => {
         }
       }, [titleFocus]);
 
+    useEffect(() => {
+    if (!!recipeToEdit) {
+        try {
+            const getRecipeToEdit = async () => {
+                const response = await sendRequest(`http://localhost:5000/api/recipes/${recipeToEdit}`);
+                const ingredients = response.recipe.ingredients.map((ing) => {
+                    return {
+                        itemType: "ingredients",
+                        name: ing.name,
+                        amount: ing.amount,
+                        unit: ing.unit,
+                        details: ing.details
+                    }
+                });
+                const descriptions = response.recipe.description.map((desc) => {
+                    return {
+                        itemType: "description",
+                        description: desc.description
+                    }
+                });
+                const allItems = ingredients.concat(descriptions).map((item, index) => {
+                    return {
+                        ...item,
+                        id: index + 1
+                    };
+                });
+                dispatch({ 
+                    type: "SET_RECIPE_TO_EDIT", 
+                    title: response.recipe.mealName, 
+                    category: response.recipe.mealCategory, 
+                    addedItems: allItems 
+                })
+            }
+            getRecipeToEdit();
+        } catch (err) {
+            console.log(err);
+        }
+    }
 
+    }, [sendRequest, recipeToEdit]);
+
+    
     const handleChange = useCallback((name, value) => {
         dispatch({
             type: "INPUT_CHANGE",
