@@ -3,17 +3,13 @@ import React, { useState, useEffect } from 'react';
 function HeightTransitionComponent (props) {
 
     const [elementHeight, setElementHeight] = useState(null);
-    
-    const registerElementHeight = (height) => {
-        setElementHeight(height);
-    }
 
     useEffect(() => {
         const element = document.getElementById(`height-transition-${props.id}`);
         if (element) {
             element.classList.remove("hidden");
             const elementDimensions = element.getBoundingClientRect();
-            registerElementHeight(elementDimensions.height);
+            setElementHeight(elementDimensions.height);
         }
     }, [props.id]); 
 

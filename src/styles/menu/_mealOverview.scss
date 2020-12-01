@@ -18,17 +18,16 @@
 
 .meal-overview--recipes-list__buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
   justify-content: center;
-  margin-bottom: 0.3rem;
-   button, a {
-    margin: 0.3rem 0 0 0.3rem;
+  margin: 0.5rem 0;
+   img {
+    height: 1.5rem;
+    padding: 0.1rem;
+    margin-left: 0.5rem;
+    &:active {
+      transform: translateY(1px);
+    }
   } 
-}
-
-@media screen and (min-width: 486px) {
-  .meal-overview--recipes-list__buttons {
-    flex-direction: row;
-    align-items: center;
-  }
 }

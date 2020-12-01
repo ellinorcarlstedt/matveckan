@@ -3,10 +3,9 @@
 .meal-category {
     display: flex;
     align-items: center;
+    margin: 0.5rem 0;
     img {
-      box-sizing: content-box;
-      height: 1.5rem;
       width: 1.5rem;
-      padding: 0.5rem;
+      margin-right: 0.5rem;
     }
   }

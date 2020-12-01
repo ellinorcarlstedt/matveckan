@@ -674,30 +674,28 @@ input[type=password] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-bottom: 0.3rem;
+  margin: 0.5rem 0;
 }
 
-.meal-overview--recipes-list__buttons button, .meal-overview--recipes-list__buttons a {
-  margin: 0.3rem 0 0 0.3rem;
+.meal-overview--recipes-list__buttons img {
+  height: 1.5rem;
+  padding: 0.1rem;
+  margin-left: 0.5rem;
 }
 
-@media screen and (min-width: 486px) {
-  .meal-overview--recipes-list__buttons {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
+.meal-overview--recipes-list__buttons img:active {
+  -webkit-transform: translateY(1px);
+          transform: translateY(1px);
 }
 
 /**************** MealTitle ****************/
@@ -712,7 +710,7 @@ input[type=password] {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  padding: 0.5rem 0 0.5rem 0.5rem;
+  padding: 0.5rem;
 }
 
 /**************** MealCategory ****************/
@@ -723,14 +721,12 @@ input[type=password] {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin: 0.5rem 0;
 }
 
 .meal-category img {
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
-  height: 1.5rem;
   width: 1.5rem;
-  padding: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 /**************** Recipe ****************/
